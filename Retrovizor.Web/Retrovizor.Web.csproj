@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Retrovizor.Data\Retrovizor.Data.csproj" />
+    <ProjectReference Include="..\Retrovizor.Domain\Retrovizor.Domain.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

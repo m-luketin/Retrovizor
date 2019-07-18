@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using Retrovizor.Data.Entities;
+using Retrovizor.Domain.Repositories.Implementations;
+using Retrovizor.Domain.Repositories.Interfaces;
 
 namespace Retrovizor
 {
@@ -26,7 +28,9 @@ namespace Retrovizor
         {
             services.AddDbContext<RetrovizorContext>(options => 
                 options.UseSqlServer(Configuration.GetConnectionString("RetrovizorContext")));
-            
+
+            services.AddScoped<IStudentRepository, StudentRepository>();
+
             services.AddMvc().AddJsonOptions(options =>
             {
                 options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
