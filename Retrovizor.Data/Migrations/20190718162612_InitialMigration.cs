@@ -114,7 +114,7 @@ namespace Retrovizor.Data.Migrations
                     Username = table.Column<string>(nullable: true),
                     Password = table.Column<string>(nullable: true),
                     OIB = table.Column<string>(nullable: true),
-                    Param = table.Column<string>(nullable: true),
+                    PhoneNumber = table.Column<string>(nullable: true),
                     Category = table.Column<string>(nullable: true),
                     DrivingSchoolId = table.Column<int>(nullable: false)
                 },

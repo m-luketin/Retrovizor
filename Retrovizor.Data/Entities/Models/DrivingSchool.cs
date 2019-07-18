@@ -11,6 +11,6 @@ namespace Retrovizor.Data.Entities.Models
         public string Address { get; set; }
         public ICollection<Student> Students { get; set; }
         public ICollection<Instructor> Instructors { get; set; }
-        public ICollection<Admin> Administrators { get; set; }
+        public ICollection<Admin> Admins { get; set; }
     }
 }

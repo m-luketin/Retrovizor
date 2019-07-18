@@ -181,9 +181,9 @@ namespace Retrovizor.Data.Migrations
 
                     b.Property<string>("OIB");
 
-                    b.Property<string>("Param");
-
                     b.Property<string>("Password");
+
+                    b.Property<string>("PhoneNumber");
 
                     b.Property<string>("Username");
 
@@ -295,14 +295,14 @@ namespace Retrovizor.Data.Migrations
             modelBuilder.Entity("Retrovizor.Data.Entities.Models.Admin", b =>
                 {
                     b.HasOne("Retrovizor.Data.Entities.Models.DrivingSchool", "DrivingSchool")
-                        .WithMany("Administrators")
+                        .WithMany("Admins")
                         .HasForeignKey("DrivingSchoolId");
                 });
 
             modelBuilder.Entity("Retrovizor.Data.Entities.Models.Event", b =>
                 {
                     b.HasOne("Retrovizor.Data.Entities.Models.Location", "Location")
-                        .WithMany()
+                        .WithMany("Events")
                         .HasForeignKey("LocationId");
                 });
 

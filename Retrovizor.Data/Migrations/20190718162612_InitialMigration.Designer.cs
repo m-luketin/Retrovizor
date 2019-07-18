@@ -10,7 +10,7 @@ using Retrovizor.Data.Entities;
 namespace Retrovizor.Data.Migrations
 {
     [DbContext(typeof(RetrovizorContext))]
-    [Migration("20190718145925_InitialMigration")]
+    [Migration("20190718162612_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -183,9 +183,9 @@ namespace Retrovizor.Data.Migrations
 
                     b.Property<string>("OIB");
 
-                    b.Property<string>("Param");
-
                     b.Property<string>("Password");
+
+                    b.Property<string>("PhoneNumber");
 
                     b.Property<string>("Username");
 
@@ -297,14 +297,14 @@ namespace Retrovizor.Data.Migrations
             modelBuilder.Entity("Retrovizor.Data.Entities.Models.Admin", b =>
                 {
                     b.HasOne("Retrovizor.Data.Entities.Models.DrivingSchool", "DrivingSchool")
-                        .WithMany("Administrators")
+                        .WithMany("Admins")
                         .HasForeignKey("DrivingSchoolId");
                 });
 
             modelBuilder.Entity("Retrovizor.Data.Entities.Models.Event", b =>
                 {
                     b.HasOne("Retrovizor.Data.Entities.Models.Location", "Location")
-                        .WithMany()
+                        .WithMany("Events")
                         .HasForeignKey("LocationId");
                 });
 
