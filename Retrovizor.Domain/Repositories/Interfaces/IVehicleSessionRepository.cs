@@ -10,8 +10,8 @@ namespace Retrovizor.Domain.Repositories.Interfaces
         List<VehicleSession> GetAllVehicleSessions();
         bool AddVehicleSession(VehicleSession vehicleSessionToAdd);
         bool DeleteVehicleSession(int idOfVehicleSessionToDelete);
-        VehicleSession GetVehicleSessionByVehicleId(int id);
-        VehicleSession GetVehicleSessionByInstructorId(int id);
-        VehicleSession GetVehicleSessionByStudentId(int id);
+        List<VehicleSession> GetVehicleSessionsByStudentId(int id);
+        List<VehicleSession> GetVehicleSessionsByInstructorId(int id);
+        List<VehicleSession> GetVehicleSessionsByVehicleId(int id);
     }
 }
