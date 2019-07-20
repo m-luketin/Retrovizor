@@ -91,6 +91,18 @@ namespace Retrovizor.Data.Entities
                 .WithMany(sc => sc.VehicleSessions)
                 .HasForeignKey(sc => sc.StudentId);
 
+            modelBuilder.Entity<Review>()
+                .HasOne(r => r.Instructor)
+                .WithMany(r => r.Reviews)
+                .HasForeignKey(r => r.InstructorId);
+            modelBuilder.Entity<Review>()
+                .HasOne(r => r.Student)
+                .WithMany(r => r.Reviews)
+                .HasForeignKey(r => r.StudentId);
+
+
+
+            // overriding default delete behaviour
             var cascadeFKs = modelBuilder.Model.GetEntityTypes()
                 .SelectMany(t => t.GetForeignKeys())
                 .Where(fk => !fk.IsOwnership && fk.DeleteBehavior == DeleteBehavior.Cascade);

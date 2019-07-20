@@ -12,6 +12,7 @@ namespace Retrovizor.Data.Entities.Models
         public string FuelType { get; set; }
         public string Image { get; set; }
         public string Type { get; set; }
+        public string LicensePlate { get; set; }
         public ICollection<VehicleSession> VehicleSessions { get; set; }
         public ICollection<Instructor> Instructors { get; set; }
     }

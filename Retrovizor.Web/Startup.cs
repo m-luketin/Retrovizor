@@ -30,6 +30,8 @@ namespace Retrovizor
                 options.UseSqlServer(Configuration.GetConnectionString("RetrovizorContext")));
 
             services.AddScoped<IStudentRepository, StudentRepository>();
+            services.AddScoped<IInstructorRepository, InstructorRepository>();
+            services.AddScoped<IAdminRepository, AdminRepository>();
 
             services.AddMvc().AddJsonOptions(options =>
             {
