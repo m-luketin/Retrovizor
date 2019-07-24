@@ -7,7 +7,6 @@ namespace Retrovizor.Domain.Repositories.Interfaces
 {
     public interface IStudentEventRepository
     {
-        List<StudentEvent> GetAllStudentEvents();
         bool AddStudentEvent(StudentEvent studentEventToAdd);
         bool DeleteStudentEvent(int idOfStudentEventToDelete);
         List<StudentEvent> GetStudentEventsByStudentId(int id);

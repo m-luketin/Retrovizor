@@ -8,7 +8,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
 {
     public class DrivingSchoolRepository : IDrivingSchoolRepository
     {
-        DrivingSchoolRepository(RetrovizorContext context)
+        public DrivingSchoolRepository(RetrovizorContext context)
         {
             _context = context;
         }

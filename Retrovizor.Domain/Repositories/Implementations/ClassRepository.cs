@@ -9,7 +9,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
 {
     public class ClassRepository : IClassRepository
     {
-        ClassRepository(RetrovizorContext context)
+        public ClassRepository(RetrovizorContext context)
         {
             _context = context;
         }
@@ -19,6 +19,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
         {
             return _context.Classes.ToList();
         }
+                
         public bool AddClass(Class classToAdd)
         {
             var doesClassExist = _context.Classes.Any(c =>
@@ -33,12 +34,6 @@ namespace Retrovizor.Domain.Repositories.Implementations
         }
         public bool EditClass(Class editedClass)
         {
-            var doesClassExist = _context.Classes.Any(c =>
-                string.Equals(c.Name, editedClass.Name, StringComparison.CurrentCultureIgnoreCase));
-
-            if(doesClassExist)
-                return false;
-
             var classToEdit = _context.Classes.Find(editedClass.Id);
 
             if(classToEdit == null)

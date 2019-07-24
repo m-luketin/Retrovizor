@@ -10,7 +10,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
 {
     public class InstructorRepository : IInstructorRepository
     {
-        InstructorRepository(RetrovizorContext context)
+        public InstructorRepository(RetrovizorContext context)
         {
             _context = context;
         }
@@ -33,12 +33,6 @@ namespace Retrovizor.Domain.Repositories.Implementations
         }
         public bool EditInstructor(Instructor editedInstructor)
         {
-            var doesInstructorExist = _context.Instructors.Any(instructor =>
-                string.Equals(instructor.OIB, editedInstructor.OIB, StringComparison.CurrentCultureIgnoreCase));
-
-            if(doesInstructorExist)
-                return false;
-
             var instructorToEdit = _context.Instructors.Find(editedInstructor.Id);
 
             if(instructorToEdit == null)

@@ -10,7 +10,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
 {
     public class AdminRepository : IAdminRepository
     {
-        AdminRepository(RetrovizorContext context)
+        public AdminRepository(RetrovizorContext context)
         {
             _context = context;
         }

@@ -9,6 +9,8 @@ namespace Retrovizor.Domain.Repositories.Interfaces
     {
         List<Review> GetAllReviews();
         bool AddReview(Review reviewToAdd);
+        bool EditReview(Review editedReview);
+        bool DeleteReview(int idOfReviewToDelete);
         Review GetReviewById(int id);
     }
 }

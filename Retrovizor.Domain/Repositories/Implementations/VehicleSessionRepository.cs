@@ -10,7 +10,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
 {
     public class VehicleSessionRepository : IVehicleSessionRepository
     {
-        VehicleSessionRepository(RetrovizorContext context)
+        public VehicleSessionRepository(RetrovizorContext context)
         {
             _context = context;
         }
@@ -22,6 +22,13 @@ namespace Retrovizor.Domain.Repositories.Implementations
         }
         public bool AddVehicleSession(VehicleSession vehicleSessionToAdd)
         {
+            var doesVehicleExist = _context.Vehicles.Any(v => v.Id == vehicleSessionToAdd.VehicleId);
+            var doesInstructorExist = _context.Instructors.Any(i => i.Id == vehicleSessionToAdd.InstructorId);
+            var doesStudentExist = _context.Students.Any(s => s.Id == vehicleSessionToAdd.StudentId);
+
+            if(!doesVehicleExist || !doesInstructorExist || !doesStudentExist)
+                return false;
+
             var doesVehicleSessionExist = _context.VehicleSessions.Any(vehicleSession =>
                 vehicleSession.StudentId == vehicleSessionToAdd.StudentId && 
                 vehicleSession.InstructorId == vehicleSessionToAdd.InstructorId && 

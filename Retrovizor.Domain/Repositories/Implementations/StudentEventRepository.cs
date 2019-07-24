@@ -10,22 +10,24 @@ namespace Retrovizor.Domain.Repositories.Implementations
 {
     public class StudentEventRepository : IStudentEventRepository
     {
-        StudentEventRepository(RetrovizorContext context)
+        public StudentEventRepository(RetrovizorContext context)
         {
             _context = context;
         }
         private readonly RetrovizorContext _context;
 
-        public List<StudentEvent> GetAllStudentEvents()
-        {
-            return _context.StudentEvents.ToList();
-        }
         public bool AddStudentEvent(StudentEvent studentEventToAdd)
         {
             var doesStudentEventExist = _context.StudentEvents.Any(studentEvent =>
                 studentEvent.StudentId == studentEventToAdd.StudentId && studentEvent.EventId == studentEventToAdd.EventId);
 
             if(doesStudentEventExist)
+                return false;
+
+            var isStudentBusy = _context.StudentEvents.Any(studentEvent =>
+                            studentEvent.StudentId == studentEventToAdd.StudentId && studentEvent.Event.Time == studentEventToAdd.Event.Time);
+
+            if(isStudentBusy)
                 return false;
 
             _context.StudentEvents.Add(studentEventToAdd);

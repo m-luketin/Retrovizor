@@ -10,7 +10,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
 {
     public class ExamRepository : IExamRepository
     {
-        ExamRepository(RetrovizorContext context)
+        public ExamRepository(RetrovizorContext context)
         {
             _context = context;
         }

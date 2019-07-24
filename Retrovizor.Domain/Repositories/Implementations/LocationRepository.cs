@@ -9,7 +9,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
 {
     public class LocationRepository : ILocationRepository
     {
-        LocationRepository(RetrovizorContext context)
+        public LocationRepository(RetrovizorContext context)
         {
             _context = context;
         }

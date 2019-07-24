@@ -10,7 +10,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
 {
     public class VehicleRepository : IVehicleRepository
     {
-        VehicleRepository(RetrovizorContext context)
+        public VehicleRepository(RetrovizorContext context)
         {
             _context = context;
         }
@@ -34,12 +34,6 @@ namespace Retrovizor.Domain.Repositories.Implementations
         }
         public bool EditVehicle(Vehicle editedVehicle)
         {
-            var doesVehicleExist = _context.Vehicles.Any(vehicle =>
-                string.Equals(vehicle.LicensePlate, editedVehicle.LicensePlate, StringComparison.CurrentCultureIgnoreCase));
-
-            if(doesVehicleExist)
-                return false;
-
             var vehicleToEdit = _context.Vehicles.Find(editedVehicle.Id);
 
             if(vehicleToEdit == null)

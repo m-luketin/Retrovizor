@@ -10,7 +10,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
 {
     public class StudentRepository : IStudentRepository
     {
-        StudentRepository(RetrovizorContext context)
+        public StudentRepository(RetrovizorContext context)
         {
             _context = context;
         }
@@ -34,12 +34,6 @@ namespace Retrovizor.Domain.Repositories.Implementations
         }
         public bool EditStudent(Student editedStudent)
         {
-            var doesStudentExist = _context.Students.Any(student =>
-                string.Equals(student.OIB, editedStudent.OIB, StringComparison.CurrentCultureIgnoreCase));
-
-            if(doesStudentExist)
-                return false;
-
             var studentToEdit = _context.Students.Find(editedStudent.Id);
 
             if(studentToEdit == null)

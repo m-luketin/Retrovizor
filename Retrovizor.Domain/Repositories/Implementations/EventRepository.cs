@@ -10,7 +10,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
 {
     public class EventRepository : IEventRepository
     {
-        EventRepository(RetrovizorContext context)
+        public EventRepository(RetrovizorContext context)
         {
             _context = context;
         }
