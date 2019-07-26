@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "../Common.css";
 import "./Materials.css";
 
@@ -11,48 +12,52 @@ export default class Materials extends Component {
         </header>
 
         <main>
-          <button class="main__button--big bc-blue">
-            <div class="main__button--images">
+          <Link to="/materijali/propisi">
+            <button class="main__button--big bc-blue">
+              <div class="main__button--images">
+                <img
+                  class="main__button--car"
+                  src="./assets/images/TEMP-ICON.jpg"
+                  alt="Vehicle"
+                />
+                <img
+                  class="main__button--bus"
+                  src="./assets/images/TEMP-ICON.jpg"
+                  alt="Vehicle"
+                />
+              </div>
+
+              <div class="main__button--text">
+                <h3>Prometni propisi</h3>
+                <p>Pitanja i probni ispiti iz prometnih propisa</p>
+              </div>
+
               <img
-                class="main__button--car"
-                src="./assets/images/TEMP-ICON.jpg"
-                alt="Vehicle"
+                class="main__button--arrow"
+                src="./assets/images/ARROW-TEMP.png"
+                alt="Arrow"
               />
+            </button>
+          </Link>
+
+          <Link to="/materijali/prva-pomoc">
+            <button class="main__button--big bc-red">
               <img
-                class="main__button--bus"
-                src="./assets/images/TEMP-ICON.jpg"
-                alt="Vehicle"
+                class="main__button--images main__button--heart"
+                src="./assets/images/HEART-TEMP.png"
+                alt="Heart"
               />
-            </div>
-
-            <div class="main__button--text">
-              <h3>Prometni propisi</h3>
-              <p>Pitanja i probni ispiti iz prometnih propisa</p>
-            </div>
-
-            <img
-              class="main__button--arrow"
-              src="./assets/images/ARROW-TEMP.png"
-              alt="Arrow"
-            />
-          </button>
-
-          <button class="main__button--big bc-red">
-            <img
-              class="main__button--images main__button--heart"
-              src="./assets/images/HEART-TEMP.png"
-              alt="Heart"
-            />
-            <div class="main__button--text">
-              <h3>Prva pomoć</h3>
-              <p>Pitanja i probni ispiti iz prve pomoći</p>
-            </div>
-            <img
-              class="main__button--arrow"
-              src="./assets/images/ARROW-TEMP.png"
-              alt="Arrow"
-            />
-          </button>
+              <div class="main__button--text">
+                <h3>Prva pomoć</h3>
+                <p>Pitanja i probni ispiti iz prve pomoći</p>
+              </div>
+              <img
+                class="main__button--arrow"
+                src="./assets/images/ARROW-TEMP.png"
+                alt="Arrow"
+              />
+            </button>
+          </Link>
         </main>
       </React.Fragment>
     );

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "../Common.css";
 import "./MaterialsContent.css";
 
@@ -7,12 +8,14 @@ export default class FirstAid extends Component {
     return (
       <React.Fragment>
         <header>
-          <img
-            class="header__arrow"
-            src="./assets/images/ARROW-TEMP.png"
-            alt="Arrow"
-          />
-          <h1 class="header__title">Prva pomoć</h1>
+          <Link to="/materijali">
+            <img
+              class="header__arrow"
+              src="./assets/images/ARROW-TEMP.png"
+              alt="Arrow"
+            />
+            <h1 class="header__title">Prva pomoć</h1>
+          </Link>
         </header>
 
         <main>

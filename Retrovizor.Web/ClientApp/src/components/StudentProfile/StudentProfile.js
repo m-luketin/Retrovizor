@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "../Common.css";
 import "./StudentProfile.css";
 
@@ -9,11 +10,13 @@ export default class StudentProfile extends Component {
         <header class="header">
           <h1 class="header__title">Profil</h1>
           <button>
-            <img
-              src="./assets/images/settings.png"
-              alt="Settings button"
-              class="header__settings"
-            />
+            <Link to="/profil/postavke">
+              <img
+                src="./assets/images/settings.png"
+                alt="Settings button"
+                class="header__settings"
+              />
+            </Link>
           </button>
         </header>
         <main>

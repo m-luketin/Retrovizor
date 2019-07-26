@@ -8,6 +8,7 @@ nav {
   width: 100vw;
   height: 58px;
   box-shadow: #e4e4e4 0 0 30px;
+  background-color: white;
 }
 
 .nav__hamburger {
