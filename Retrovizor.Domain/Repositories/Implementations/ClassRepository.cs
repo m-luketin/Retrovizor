@@ -61,5 +61,25 @@ namespace Retrovizor.Domain.Repositories.Implementations
         {
             return _context.Classes.Find(id);
         }
+        public List<Class> GetClassesByStudentId(int id)
+        {
+            var studentClasses = _context.StudentClasses.Where(c => c.StudentId == id);
+
+            if(studentClasses == null)
+                return null;
+
+            var classesToGet = new List<Class>();
+
+            foreach(var studentClass in studentClasses)
+            {
+                var tmpClass = _context.Classes.Find(studentClass.ClassId);
+
+                if(tmpClass != null)
+                    classesToGet.Add(tmpClass);
+            }
+
+            return classesToGet;
+
+        }
     }
 }

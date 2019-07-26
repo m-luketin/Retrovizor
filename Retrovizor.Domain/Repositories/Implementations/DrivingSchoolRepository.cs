@@ -23,5 +23,17 @@ namespace Retrovizor.Domain.Repositories.Implementations
         {
             return _context.DrivingSchools.Find(id);
         }
+        public DrivingSchool GetDrivingSchoolByStudentId(int id)
+        {
+            var student = _context.Students.Find(id);
+
+            return _context.DrivingSchools.Find(student.DrivingSchoolId);
+        }
+        public DrivingSchool GetDrivingSchoolByInstructorId(int id)
+        {
+            var instructor = _context.Instructors.Find(id);
+
+            return _context.DrivingSchools.Find(instructor.DrivingSchoolId);
+        }
     }
 }

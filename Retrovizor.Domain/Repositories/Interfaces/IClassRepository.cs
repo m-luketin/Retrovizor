@@ -12,5 +12,6 @@ namespace Retrovizor.Domain.Repositories.Interfaces
         bool EditClass(Class editedClass);
         bool DeleteClass(int idOfClassToDelete);
         Class GetClassById(int id);
+        List<Class> GetClassesByStudentId(int id);
     }
 }
