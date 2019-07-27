@@ -64,5 +64,21 @@ namespace Retrovizor.Domain.Repositories.Implementations
         {
             return _context.Exams.Find(id);
         }
+        public List<Exam> GetExamsByStudentId(int id)
+        {
+            var studentExams = _context.StudentExams.Where(se => se.StudentId == id);
+
+            var exams = new List<Exam>();
+
+            foreach(var studentExam in studentExams)
+            {
+                var tmpExam = _context.Exams.Find(studentExam.ExamId);
+
+                if(tmpExam != null)
+                    exams.Add(tmpExam);
+            }
+            return exams;
+        }
+        //get student test results from studentexam
     }
 }

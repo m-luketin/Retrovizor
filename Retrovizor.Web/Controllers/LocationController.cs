@@ -68,5 +68,16 @@ namespace Retrovizor.Web.Controllers
 
             return Ok(locationToGet);
         }
+        [HttpGet("get-by-event/{id}")]
+        public IActionResult GetLocationByEventId(int id)
+        {
+            var locationToGet = _locationRepository.GetLocationByEventId(id);
+
+            if(locationToGet == null)
+                return NotFound();
+
+            return Ok(locationToGet);
+        }
+
     }
 }

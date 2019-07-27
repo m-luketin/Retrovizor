@@ -9,5 +9,8 @@ namespace Retrovizor.Domain.Repositories.Interfaces
     {
         List<DrivingSchool> GetAllDrivingSchools();
         DrivingSchool GetDrivingSchoolById(int id);
+        DrivingSchool GetDrivingSchoolByStudentId(int id);
+        DrivingSchool GetDrivingSchoolByInstructorId(int id);
+        DrivingSchool GetDrivingSchoolByAdminId(int id);
     }
 }

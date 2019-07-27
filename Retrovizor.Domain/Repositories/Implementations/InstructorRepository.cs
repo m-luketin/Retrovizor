@@ -63,5 +63,29 @@ namespace Retrovizor.Domain.Repositories.Implementations
         {
             return _context.Instructors.Find(id);
         }
+
+        public Instructor GetCurrentInstructorByStudentId(int id)
+        {
+            var vehicleSessions = _context.VehicleSessions.Where(vs => vs.StudentId == id);
+
+            if(vehicleSessions == null)
+                return null;
+
+            var currentVehicleSession = vehicleSessions.First();
+
+            foreach(var vehicleSession in vehicleSessions)
+            {
+                if(vehicleSession.DateAssigned - currentVehicleSession.DateAssigned < new TimeSpan(0))
+                {
+                    currentVehicleSession = vehicleSession;
+                }
+            }
+
+            return _context.Instructors.Find(currentVehicleSession.InstructorId);
+        }
+        public List<Instructor> GetInstructorsByDrivingSchoolId(int id)
+        {
+            return _context.Instructors.Where(i => i.DrivingSchoolId == id).ToList();
+        }
     }
 }

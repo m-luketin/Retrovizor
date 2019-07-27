@@ -15,11 +15,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             _context = context;
         }
         private readonly RetrovizorContext _context;
-
-        public List<Event> GetAllEvents()
-        {
-            return _context.Events.ToList();
-        }
+        
         public bool AddEvent(Event eventToAdd)
         {
             var doesEventExist = _context.Events.Any(e =>
@@ -66,6 +62,40 @@ namespace Retrovizor.Domain.Repositories.Implementations
         public Event GetEventById(int id)
         {
             return _context.Events.Find(id);
+        }
+
+        public List<Event> GetEventsByStudentId(int id)
+        {
+            var studentEvents = _context.StudentEvents.Where(c => c.StudentId == id);
+
+            if(studentEvents == null)
+                return null;
+
+            var eventsToGet = new List<Event>();
+
+            foreach(var studentEvent in studentEvents)
+                eventsToGet.Add(studentEvent.Event);
+
+            return eventsToGet;
+        }
+
+        public List<Event> GetInstructorDrivingLessons(int id)
+        {
+            var vehicleSessions = _context.VehicleSessions.Where(vs => vs.InstructorId == id);
+
+            var drivingLessons = new List<Event>();
+
+            foreach(var vehicleSession in vehicleSessions)
+            {
+                var studentEvents = _context.StudentEvents.Where(se => se.StudentId == vehicleSession.StudentId);
+
+                foreach(var studentEvent in studentEvents)
+                {
+                    if(studentEvent.Event.Type == "Driving Lesson")
+                        drivingLessons.Add(studentEvent.Event);
+                }
+            }
+            return drivingLessons;
         }
     }
 }

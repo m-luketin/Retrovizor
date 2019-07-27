@@ -12,5 +12,7 @@ namespace Retrovizor.Domain.Repositories.Interfaces
         bool EditReview(Review editedReview);
         bool DeleteReview(int idOfReviewToDelete);
         Review GetReviewById(int id);
+        List<Review> GetReviewsByStudentId(int id);
+        List<Review> GetReviewsByInstructorId(int id);
     }
 }

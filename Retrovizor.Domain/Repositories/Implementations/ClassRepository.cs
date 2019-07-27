@@ -79,7 +79,6 @@ namespace Retrovizor.Domain.Repositories.Implementations
             }
 
             return classesToGet;
-
         }
     }
 }

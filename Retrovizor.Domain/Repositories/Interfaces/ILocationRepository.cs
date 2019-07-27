@@ -12,5 +12,6 @@ namespace Retrovizor.Domain.Repositories.Interfaces
         bool EditLocation(Location editedLocation);
         bool DeleteLocation(int idOfLocationToDelete);
         Location GetLocationById(int id);
+        Location GetLocationByEventId(int id);
     }
 }

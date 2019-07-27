@@ -68,5 +68,27 @@ namespace Retrovizor.Web.Controllers
 
             return Ok(reviewToGet);
         }
+
+        [HttpGet("get-by-student/{id}")]
+        public IActionResult GetReviewsById(int id)
+        {
+            var reviewsToGet = _reviewRepository.GetReviewsByStudentId(id);
+
+            if(reviewsToGet == null)
+                return NotFound();
+
+            return Ok(reviewsToGet);
+        }
+
+        [HttpGet("get-by-instructor/{id}")]
+        public IActionResult GetReviewsByInstructorId(int id)
+        {
+            var reviewToGet = _reviewRepository.GetReviewsByInstructorId(id);
+
+            if(reviewToGet == null)
+                return NotFound();
+
+            return Ok(reviewToGet);
+        }
     }
 }

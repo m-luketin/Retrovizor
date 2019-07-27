@@ -19,12 +19,6 @@ namespace Retrovizor.Web.Controllers
         }
         private readonly IEventRepository _eventRepository;
 
-        [HttpGet("all")]
-        public IActionResult GetAllEvents()
-        {
-            return Ok(_eventRepository.GetAllEvents());
-        }
-
         [HttpPost("add")]
         public IActionResult AddEvent(Event eventToAdd)
         {
@@ -67,6 +61,26 @@ namespace Retrovizor.Web.Controllers
                 return NotFound();
 
             return Ok(eventToGet);
+        }
+        [HttpGet("get-by-student/{id}")]
+        public IActionResult GetEventsByStudentId(int id)
+        {
+            var events = _eventRepository.GetEventsByStudentId(id);
+
+            if(events == null)
+                return NotFound();
+
+            return Ok(events);
+        }
+        [HttpGet("get-by-instructor/{id}")]
+        public IActionResult GetInstructorSchedule(int id)
+        {
+            var instructorSchedule = _eventRepository.GetInstructorDrivingLessons(id);
+
+            if(instructorSchedule == null)
+                return NotFound();
+
+            return Ok(instructorSchedule);
         }
     }
 }

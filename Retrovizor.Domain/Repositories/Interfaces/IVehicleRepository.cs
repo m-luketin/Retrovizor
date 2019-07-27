@@ -12,5 +12,9 @@ namespace Retrovizor.Domain.Repositories.Interfaces
         bool EditVehicle(Vehicle editedVehicle);
         bool DeleteVehicle(int idOfVehicleToDelete);
         Vehicle GetVehicleById(int id);
+        Vehicle GetCurrentVehicleByStudentId(int id);
+        Vehicle GetCurrentVehicleByInstructorId(int id);
+        List<Vehicle> GetVehiclesByStudentId(int id);
+        List<Vehicle> GetVehiclesByInstructorId(int id);
     }
 }

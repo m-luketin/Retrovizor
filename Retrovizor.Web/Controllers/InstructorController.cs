@@ -68,5 +68,26 @@ namespace Retrovizor.Web.Controllers
 
             return Ok(instructorToGet);
         }
+
+        [HttpGet("get-by-student/{id}")]
+        public IActionResult GetCurrentInstructorByStudentId(int id)
+        {
+            var instructorToGet = _instructorRepository.GetCurrentInstructorByStudentId(id);
+
+            if(instructorToGet == null)
+                return NotFound();
+
+            return Ok(instructorToGet);
+        }
+        [HttpGet("get-by-driving-school/{id}")]
+        public IActionResult GetInstructorsByDrivingSchoolId(int id)
+        {
+            var instructorsToGet = _instructorRepository.GetInstructorsByDrivingSchoolId(id);
+
+            if(instructorsToGet == null)
+                return NotFound();
+
+            return Ok(instructorsToGet);
+        }
     }
 }

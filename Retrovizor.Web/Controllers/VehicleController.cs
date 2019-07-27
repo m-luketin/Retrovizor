@@ -68,5 +68,45 @@ namespace Retrovizor.Web.Controllers
 
             return Ok(vehicleToGet);
         }
+        [HttpGet("get-by-student/{id}")]
+        public IActionResult GetVehiclesByStudentId(int id)
+        {
+            var vehiclesToGet = _vehicleRepository.GetVehiclesByStudentId(id);
+
+            if(vehiclesToGet == null)
+                return NotFound();
+
+            return Ok(vehiclesToGet);
+        }
+        [HttpGet("get-by-instructor/{id}")]
+        public IActionResult GetVehiclesByInstructorId(int id)
+        {
+            var vehiclesToGet = _vehicleRepository.GetVehiclesByInstructorId(id);
+
+            if(vehiclesToGet == null)
+                return NotFound();
+
+            return Ok(vehiclesToGet);
+        }
+        [HttpGet("get-current-by-student/{id}")]
+        public IActionResult GetCurrentVehicleByStudentId(int id)
+        {
+            var vehicleToGet = _vehicleRepository.GetCurrentVehicleByStudentId(id);
+
+            if(vehicleToGet == null)
+                return NotFound();
+
+            return Ok(vehicleToGet);
+        }
+        [HttpGet("get-current-by-instructor/{id}")]
+        public IActionResult GetCurrentVehicleByInstructorId(int id)
+        {
+            var vehicleToGet = _vehicleRepository.GetCurrentVehicleByInstructorId(id);
+
+            if(vehicleToGet == null)
+                return NotFound();
+
+            return Ok(vehicleToGet);
+        }
     }
 }

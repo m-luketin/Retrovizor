@@ -18,7 +18,6 @@ namespace Retrovizor.Data.Entities.Models
         public int DrivingSchoolId { get; set; }
         public DrivingSchool DrivingSchool { get; set; }
         public ICollection<Review> Reviews { get; set; }
-        public ICollection<StudentInstructor> StudentInstructors { get; set; }
         public ICollection<VehicleSession> VehicleSessions { get; set; }
     }
 }

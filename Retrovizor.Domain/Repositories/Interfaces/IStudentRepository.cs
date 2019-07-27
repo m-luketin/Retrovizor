@@ -12,5 +12,11 @@ namespace Retrovizor.Domain.Repositories.Interfaces
         bool EditStudent(Student editedStudent);
         bool DeleteStudent(int idOfStudentToDelete);
         Student GetStudentById(int id);
+        List<Student> GetStudentsByDrivingSchoolId(int id);
+        List<Student> GetStudentsByInstructorId(int id);
+        List<Student> GetCurrentStudentsByInstructorId(int id);
+        bool EditCurrentLesson(int studentId, int classId, int newCurrentLesson);
+        bool EditExamPoints(int studentId, int examId, int newPoints);
+        bool HasStudentPassedExam(int studentId, int examId);
     }
 }

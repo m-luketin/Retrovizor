@@ -12,5 +12,7 @@ namespace Retrovizor.Domain.Repositories.Interfaces
         bool EditInstructor(Instructor editedInstructor);
         bool DeleteInstructor(int idOfInstructorToDelete);
         Instructor GetInstructorById(int id);
+        Instructor GetCurrentInstructorByStudentId(int id);
+        List<Instructor> GetInstructorsByDrivingSchoolId(int id);
     }
 }

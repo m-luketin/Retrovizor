@@ -64,5 +64,59 @@ namespace Retrovizor.Domain.Repositories.Implementations
         {
             return _context.Vehicles.Find(id);
         }
+
+        public Vehicle GetCurrentVehicleByStudentId(int id)
+        {
+            var vehicleSessions = _context.VehicleSessions.Where(vs => vs.StudentId == id);
+            if(vehicleSessions == null)
+                return null;
+
+            var currentVehicleSession = vehicleSessions.First();
+
+            foreach(var vehicleSession in vehicleSessions)
+                if(vehicleSession.DateAssigned - currentVehicleSession.DateAssigned < new TimeSpan(0))
+                    currentVehicleSession = vehicleSession;
+
+            return _context.Vehicles.Find(currentVehicleSession.Vehicle);
+        }
+
+        public Vehicle GetCurrentVehicleByInstructorId(int id)
+        {
+            var vehicleSessions = _context.VehicleSessions.Where(vs => vs.InstructorId == id);
+            if(vehicleSessions == null)
+                return null;
+
+            var currentVehicleSession = vehicleSessions.First();
+
+            foreach(var vehicleSession in vehicleSessions)
+                if(vehicleSession.DateAssigned - currentVehicleSession.DateAssigned < new TimeSpan(0))
+                    currentVehicleSession = vehicleSession;
+
+            return _context.Vehicles.Find(currentVehicleSession.Vehicle);
+        }
+
+        public List<Vehicle> GetVehiclesByInstructorId(int id)
+        {
+            var vehicleSessions = _context.VehicleSessions.Where(vs => vs.InstructorId == id);
+
+            var vehicles = new List<Vehicle>();
+
+            foreach(var vehicleSession in vehicleSessions)
+                vehicles.Add(vehicleSession.Vehicle);
+
+            return vehicles;
+        }
+
+        public List<Vehicle> GetVehiclesByStudentId(int id)
+        {
+            var vehicleSessions = _context.VehicleSessions.Where(vs => vs.StudentId == id);
+
+            var vehicles = new List<Vehicle>();
+
+            foreach(var vehicleSession in vehicleSessions)
+                vehicles.Add(vehicleSession.Vehicle);
+
+            return vehicles;
+        }
     }
 }

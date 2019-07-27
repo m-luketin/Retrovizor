@@ -15,15 +15,12 @@ namespace Retrovizor.Domain.Repositories.Implementations
             _context = context;
         }
         private readonly RetrovizorContext _context;
-
-        public List<Admin> GetAllAdmins()
+       
+        public List<Admin> GetAdminsByDrivingSchoolId(int id)
         {
-            return _context.Admins.ToList();
+            return _context.Admins.Where(a => a.DrivingSchoolId == id).ToList();
         }
 
-        public Admin GetAdminById(int id)
-        {
-            return _context.Admins.Find(id);
-        }
+        //change password, validate password
     }
 }

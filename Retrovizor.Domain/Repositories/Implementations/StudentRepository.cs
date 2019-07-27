@@ -65,5 +65,79 @@ namespace Retrovizor.Domain.Repositories.Implementations
         {
             return _context.Students.Find(id);
         }
+        public List<Student> GetStudentsByDrivingSchoolId(int id)
+        {
+            return _context.Students.Where(s => s.DrivingSchoolId == id).ToList();
+        }
+        public List<Student> GetStudentsByInstructorId(int id)
+        {
+            var vehicleSessions = _context.VehicleSessions.Where(vs => vs.InstructorId == id);
+
+            var students = new List<Student>();
+
+            foreach(var vehicleSession in vehicleSessions)
+                students.Add(vehicleSession.Student);
+
+            return students.Distinct().ToList();
+        }
+        public List<Student> GetCurrentStudentsByInstructorId(int id)
+        {
+            var instructorVehicleSessions = _context.VehicleSessions.Where(vs => vs.InstructorId == id);
+            var students = new List<Student>();
+
+            foreach(var instructorVehicleSession in instructorVehicleSessions)
+                students.Add(instructorVehicleSession.Student);
+
+            students =  students.Distinct().ToList();
+            var instructorsStudents = new List<Student>();
+
+            foreach(var student in students)
+            {
+                var studentVehicleSessions = _context.VehicleSessions.Where(vs => vs.StudentId == student.Id);
+                if(studentVehicleSessions == null)
+                   continue;
+
+                var currentVehicleSession = studentVehicleSessions.First();
+
+                foreach(var vehicleSession in studentVehicleSessions)
+                    if(vehicleSession.DateAssigned - currentVehicleSession.DateAssigned < new TimeSpan(0))
+                        currentVehicleSession = vehicleSession;
+                
+                if(currentVehicleSession.InstructorId == id)
+                    instructorsStudents.Add(student);
+            }
+
+            return instructorsStudents;
+        }
+        public bool EditExamPoints(int studentId, int examId, int newPoints)
+        {
+            var studentExam = _context.StudentExams.Find(studentId, examId);
+
+            studentExam.Points = newPoints;
+
+            _context.SaveChanges();
+            return true;
+        }
+        public bool EditCurrentLesson(int studentId, int classId, int newCurrentLesson)
+        {
+            var studentClass = _context.StudentClasses.Find(studentId, classId);
+
+            studentClass.CurrentLesson = newCurrentLesson;
+
+            _context.SaveChanges();
+            return true;
+        }
+
+        public bool HasStudentPassedExam(int studentId, int examId)
+        {
+            var studentExams = _context.StudentExams.Where(se => se.StudentId == studentId && se.ExamId == examId);
+            var examToPass = _context.Exams.Find(examId);
+
+            foreach(var studentExam in studentExams)
+                if(studentExam.Points >= examToPass.PointsToPass)
+                    return true;
+
+            return false;
+        }
     }
 }

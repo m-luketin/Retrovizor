@@ -56,5 +56,15 @@ namespace Retrovizor.Domain.Repositories.Implementations
         {
             return _context.Reviews.Find(id);
         }
+
+        public List<Review> GetReviewsByStudentId(int id)
+        {
+            return _context.Reviews.Where(r => r.StudentId == id).ToList();
+        }
+
+        public List<Review> GetReviewsByInstructorId(int id)
+        {
+            return _context.Reviews.Where(r => r.InstructorId == id).ToList();
+        }
     }
 }

@@ -68,5 +68,16 @@ namespace Retrovizor.Web.Controllers
 
             return Ok(examToGet);
         }
+
+        [HttpGet("get-by-student/{id}")]
+        public IActionResult GetExamsByStudentId(int id)
+        {
+            var exams = _examRepository.GetExamsByStudentId(id);
+
+            if(exams == null)
+                return NotFound();
+
+            return Ok(exams);
+        }
     }
 }
