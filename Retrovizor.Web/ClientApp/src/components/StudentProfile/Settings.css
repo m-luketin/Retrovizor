@@ -3,11 +3,6 @@ header {
   align-items: flex-end;
 }
 
-.header__title {
-  color: #1488cc;
-  margin-left: 21px;
-}
-
 .main__button--description {
   position: absolute;
   font-size: 20px;

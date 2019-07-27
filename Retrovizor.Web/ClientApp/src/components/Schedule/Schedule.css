@@ -1,3 +1,10 @@
+.header__icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 5px;
+  margin-top: 25px;
+}
+
 .main__button--schedule {
   padding: 9px 25px;
 }

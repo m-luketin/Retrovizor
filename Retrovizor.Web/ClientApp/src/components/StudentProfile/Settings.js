@@ -14,7 +14,7 @@ export default class Settings extends Component {
               src="./assets/images/ARROW-TEMP.png"
               alt="Arrow"
             />
-            <h1 class="header__title">Postavke</h1>
+            <h1 class="header__title header__title--blue">Postavke</h1>
           </Link>
         </header>
 

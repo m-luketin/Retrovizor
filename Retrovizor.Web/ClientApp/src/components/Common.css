@@ -9,16 +9,22 @@
 /* Header */
 .header__title {
   color: #676767;
-  margin: 36px 0 0 17px;
+  margin-top: 36px;
+  margin-left: 5px;
   font-size: 28px;
   display: inline-block;
+  font-weight: 600;
+}
+
+.header__title--blue {
+  color: #1488cc;
+  margin-left: 12px;
 }
 
 .header__arrow {
   width: 25px;
   height: 25px;
-  margin-bottom: 3px;
-  margin-left: 19.35px;
+  margin-bottom: 10px;
 }
 /* Header */
 
@@ -45,7 +51,7 @@ main {
 .main__button--arrow {
   position: absolute;
   right: 24.5px;
-  height: 19px;
-  width: 19px;
+  /* height: 19px;
+  width: 19px; */
 }
 /* Main */

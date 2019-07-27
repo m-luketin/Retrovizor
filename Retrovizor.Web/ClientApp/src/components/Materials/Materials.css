@@ -1,7 +1,8 @@
 .main__button--big {
   margin-top: 20px;
   width: 380px;
-  height: 120px;
+  /* height: 120px; */
+  height: 74px;
   border-radius: 17px;
   position: relative;
   display: flex;
@@ -12,10 +13,12 @@
 .main__button--text {
   position: absolute;
   left: 113px;
+  height: 42px;
 }
 
 .main__button--text h3 {
-  font-size: 15px;
+  font-size: 20px;
+  margin-bottom: 0;
 }
 
 .main__button--text p {

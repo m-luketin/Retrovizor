@@ -78,11 +78,44 @@ export default class Materials extends Component {
                 <p>Pitanja i probni ispiti iz prometnih propisa</p>
               </div>
 
-              <img
+              <svg
                 class="main__button--arrow"
-                src="./assets/images/ARROW-TEMP.png"
-                alt="Arrow"
-              />
+                xmlns="http://www.w3.org/2000/svg"
+                width="14px"
+                height="26px"
+                viewBox="0 0 14 26"
+                version="1.1"
+              >
+                <g
+                  id="Polaznik"
+                  stroke="none"
+                  stroke-width="1"
+                  fill="none"
+                  fill-rule="evenodd"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <g
+                    id="Propisi"
+                    transform="translate(-363.000000, -137.000000)"
+                    stroke="#FFFFFF"
+                    stroke-width="3"
+                  >
+                    <g
+                      transform="translate(17.000000, 113.000000)"
+                      id="Group-5"
+                    >
+                      <g transform="translate(66.000000, 10.000000)">
+                        <polyline
+                          id="Path"
+                          transform="translate(281.606602, 27.000000) rotate(-135.000000) translate(-281.606602, -27.000000) "
+                          points="274.106602 19.5 274.106602 34.5 289.106602 34.5"
+                        />
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
             </button>
           </Link>
 
@@ -120,11 +153,44 @@ export default class Materials extends Component {
                 <h3>Prva pomoć</h3>
                 <p>Pitanja i probni ispiti iz prve pomoći</p>
               </div>
-              <img
+              <svg
                 class="main__button--arrow"
-                src="./assets/images/ARROW-TEMP.png"
-                alt="Arrow"
-              />
+                xmlns="http://www.w3.org/2000/svg"
+                width="14px"
+                height="26px"
+                viewBox="0 0 14 26"
+                version="1.1"
+              >
+                <g
+                  id="Polaznik"
+                  stroke="none"
+                  stroke-width="1"
+                  fill="none"
+                  fill-rule="evenodd"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <g
+                    id="Propisi"
+                    transform="translate(-363.000000, -137.000000)"
+                    stroke="#FFFFFF"
+                    stroke-width="3"
+                  >
+                    <g
+                      transform="translate(17.000000, 113.000000)"
+                      id="Group-5"
+                    >
+                      <g transform="translate(66.000000, 10.000000)">
+                        <polyline
+                          id="Path"
+                          transform="translate(281.606602, 27.000000) rotate(-135.000000) translate(-281.606602, -27.000000) "
+                          points="274.106602 19.5 274.106602 34.5 289.106602 34.5"
+                        />
+                      </g>
+                    </g>
+                  </g>
+                </g>
+              </svg>
             </button>
           </Link>
         </main>
