@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="23px" viewBox="0 0 20 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Budicon-Solid/Interface/notification" transform="translate(-3.000000, -1.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <path d="M10,22 L16,22 C15.4953739,23.2111026 14.3120278,24 13,24 C11.6879722,24 10.5046261,23.2111026 10,22 L10,22 Z M22.5607,18.5605 L21.5858,17.5859 C21.2106521,17.2107593 20.9999276,16.7019342 21,16.1714 L21,9 C21,4.581722 17.418278,1 13,1 C8.581722,1 5,4.581722 5,9 L5,16.1714 C5.00009891,16.7019688 4.78937243,17.2108348 4.4142,17.586 L3.4393,18.5606 C3.15804928,18.8418718 3,19.2233365 3,19.6211 L3,21 L23,21 L23,19.6211 C23,19.2233018 22.8419752,18.8417963 22.5607,18.5605 L22.5607,18.5605 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

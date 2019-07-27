@@ -39,7 +39,7 @@ main {
   display: flex;
   align-items: center;
   border: none;
-  background-image: linear-gradient(to right, #1583ca, #2a37b3);
+  background-image: linear-gradient(to top right, #1488cc, #2b32b2);
 }
 
 .main__button--arrow {

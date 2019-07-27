@@ -24,6 +24,8 @@
 
 .main__button--images {
   position: absolute;
+  display: flex;
+  align-items: flex-end;
 }
 
 .main__button--car {
@@ -33,20 +35,21 @@
 }
 
 .main__button--bus {
-  width: 34px;
-  height: 23px;
+  width: 31.28px;
+  height: 31.28px;
+  margin-left: 6px;
 }
 
 .main__button--heart {
-  width: 51px;
-  height: 46px;
+  width: 43px;
+  height: 38.64px;
   margin-left: 29px;
 }
 
 .bc-blue {
-  background-image: linear-gradient(to right, #1583ca, #2a37b3);
+  background-image: linear-gradient(to top right, #1488cc, #2b32b2);
 }
 
 .bc-red {
-  background-image: linear-gradient(to right, #fd4069, #ec344b);
+  background-image: linear-gradient(to top right, #ff416c, #eb3349);
 }

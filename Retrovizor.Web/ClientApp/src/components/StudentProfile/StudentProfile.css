@@ -55,11 +55,11 @@
   padding: 2px 0;
   font-size: 16px;
   font-weight: 500;
-  color: #1587cc;
+  color: #1488cc;
 }
 
 .profile__category--type {
-  border: 1px solid #1587cc;
+  border: 1px solid #1488cc;
   border-radius: 4px;
   padding: 0px 5px;
   margin-right: 7px;
@@ -85,15 +85,15 @@
 }
 
 .timeline__item--passed {
-  background: #7fc549;
+  background-image: linear-gradient(to top right, #a8e063, #56ab2f);
 }
 
 .timeline__item--warning {
-  background: #f53a5b;
+  background-image: linear-gradient(to top right, #ff416c, #eb3349);
 }
 
 .timeline__item--waiting {
-  background: #1f5dbf;
+  background-image: linear-gradient(to top right, #1488cc, #2b32b2);
 }
 
 .item__title {
