@@ -1,0 +1,103 @@
+.main__instructor--list {
+  margin-top: 27px;
+}
+
+.main__button--instructor {
+  margin-bottom: 20px;
+}
+
+.instructor__name {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.instructor__car {
+  font-size: 12px;
+}
+
+.instructor__stars {
+  height: 9px;
+  display: flex;
+  margin-top: 3px;
+}
+
+.instructor__star {
+  width: 9px;
+  height: 9px;
+  margin-right: 3px;
+}
+
+.main__button--name {
+  background-image: none;
+  margin-left: 11px;
+}
+
+.main__button--name h3,
+.main__button--name p {
+  color: gray;
+}
+
+.main__instructor {
+  padding: 18px;
+}
+
+.instructor__item {
+  display: flex;
+}
+
+.instructor__item div {
+  margin-left: 15px;
+}
+
+.instructor__item svg {
+  margin-top: 7px;
+}
+
+.instructor__item--title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #676767;
+}
+
+.instructor__item--text {
+  font-size: 15px;
+  margin-bottom: 0;
+  color: #676767;
+}
+
+.instructor__item--phone {
+  width: 17px;
+  height: 20px;
+}
+
+.instructor__item--people {
+  width: 22px;
+  height: 20px;
+}
+
+.intructor__item--car {
+  width: 21px;
+  height: 18.48px;
+}
+
+.instructor__item--preview {
+  width: 302px;
+  height: 138px;
+  margin-right: -132px;
+  margin-left: 47px;
+}
+
+.instructor__item--calendar {
+  width: 22.8px;
+  height: 16px;
+}
+
+.instructor__item--itinerary {
+  margin-top: -30px;
+}
+
+.instructor__item--wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: -30px;
+}

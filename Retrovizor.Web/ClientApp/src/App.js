@@ -9,6 +9,8 @@ import Schedule from "./components/Schedule/Schedule";
 import Driving from "./components/Driving/Driving";
 import StudentProfile from "./components/StudentProfile/StudentProfile";
 import Settings from "./components/StudentProfile/Settings";
+import InstructorList from "./components/Driving/InstructorList";
+import InstructorDetails from "./components/Driving/InstructorDetails";
 
 export default class App extends Component {
   static displayName = App.name;
@@ -23,7 +25,8 @@ export default class App extends Component {
         <Route exact path="/materijali/prva-pomoc" component={FirstAid} />
         <Route exact path="/raspored" component={Schedule} />
         <Route exact path="/voznja" component={Driving} />
-        <Route exact path="/voznja/instruktor" component={Driving} />
+        <Route exact path="/voznja/instruktor" component={InstructorDetails} />
+        <Route exact path="/voznja/instruktori" component={InstructorList} />
         <Route exact path="/profil" component={StudentProfile} />
         <Route exact path="/profil/postavke" component={Settings} />
       </Layout>

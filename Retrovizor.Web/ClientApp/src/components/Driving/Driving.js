@@ -10,7 +10,7 @@ export default class Driving extends Component {
     super(props);
     this.state = {
       doesStudentHaveInstructor: true,
-      doesStudentHaveLesson: true
+      doesStudentHaveLesson: false
     };
   }
   render() {
@@ -24,9 +24,9 @@ export default class Driving extends Component {
         {doesStudentHaveLesson && doesStudentHaveInstructor ? (
           <DrivingWithLesson />
         ) : doesStudentHaveInstructor ? (
-          <DrivingWithoutInstructor />
-        ) : (
           <DrivingWithoutLesson />
+        ) : (
+          <DrivingWithoutInstructor />
         )}
       </React.Fragment>
     );

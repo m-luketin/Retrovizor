@@ -63,3 +63,7 @@ main {
 .d-none {
   display: none;
 }
+
+.c-blue {
+  color: #1488cc !important;
+}
