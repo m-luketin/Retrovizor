@@ -6,11 +6,15 @@
   /* font */
 }
 
+.container {
+  margin-bottom: 48px;
+}
+
 /* Header */
 .header__title {
   color: #676767;
   margin-top: 36px;
-  margin-left: 5px;
+  margin-left: 3px;
   font-size: 28px;
   display: inline-block;
   font-weight: 600;
@@ -55,3 +59,7 @@ main {
   width: 19px; */
 }
 /* Main */
+
+.d-none {
+  display: none;
+}

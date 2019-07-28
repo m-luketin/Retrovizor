@@ -10,7 +10,7 @@ export default class Regulations extends Component {
         <header>
           <Link to="/materijali">
             <svg
-              class="header__arrow"
+              className="header__arrow"
               xmlns="http://www.w3.org/2000/svg"
               width="15px"
               height="27px"
@@ -20,17 +20,17 @@ export default class Regulations extends Component {
               <g
                 id="Polaznik"
                 stroke="none"
-                stroke-width="1"
+                strokeWidth="1"
                 fill="none"
-                fill-rule="evenodd"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                fillRule="evenodd"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <g
                   id="Instruktor"
                   transform="translate(-15.000000, -58.000000)"
                   stroke="#1488CC"
-                  stroke-width="4"
+                  strokeWidth="4"
                 >
                   <polyline
                     id="Path"
@@ -40,14 +40,16 @@ export default class Regulations extends Component {
                 </g>
               </g>
             </svg>
-            <h1 class="header__title header__title--blue">Prometni propisi</h1>
+            <h1 className="header__title header__title--blue">
+              Prometni propisi
+            </h1>
           </Link>
         </header>
 
         <main>
-          <button class="main__button main__button--green">
+          <button className="main__button main__button--green">
             <svg
-              class="main__button--exclimation"
+              className="main__button--exclimation"
               xmlns="http://www.w3.org/2000/svg"
               width="25px"
               height="23px"
@@ -57,15 +59,15 @@ export default class Regulations extends Component {
               <g
                 id="Symbols"
                 stroke="none"
-                stroke-width="1"
+                strokeWidth="1"
                 fill="none"
-                fill-rule="evenodd"
+                fillRule="evenodd"
               >
                 <g
                   id="Budicon-Solid/Interface/heart"
                   transform="translate(0.000000, -1.000000)"
                   fill="#FFFFFF"
-                  fill-rule="nonzero"
+                  fillRule="nonzero"
                 >
                   <path
                     d="M25,8 C25,15.5225 13.5543,23.34 13.067,23.6755 L12.497,24 L11.9289,23.6049 C11.4418,23.2658 0,15.437 0,8 C0,3.813 2.6121,1 6.5,1 C9.2249,1 11.3841,3.025 12.5045,4.349 C13.6332,3.027 15.8035,1 18.5,1 C22.3879,1 25,3.813 25,8 Z"
@@ -74,11 +76,11 @@ export default class Regulations extends Component {
                 </g>
               </g>
             </svg>
-            <h3 class="main__button--description">
+            <h3 className="main__button--description">
               Probni ispit iz prometnih propisa
             </h3>
             <svg
-              class="main__button--arrow"
+              className="main__button--arrow"
               xmlns="http://www.w3.org/2000/svg"
               width="14px"
               height="26px"
@@ -88,17 +90,17 @@ export default class Regulations extends Component {
               <g
                 id="Polaznik"
                 stroke="none"
-                stroke-width="1"
+                strokeWidth="1"
                 fill="none"
-                fill-rule="evenodd"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                fillRule="evenodd"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <g
                   id="Propisi"
                   transform="translate(-363.000000, -137.000000)"
                   stroke="#FFFFFF"
-                  stroke-width="3"
+                  strokeWidth="3"
                 >
                   <g transform="translate(17.000000, 113.000000)" id="Group-5">
                     <g transform="translate(66.000000, 10.000000)">
@@ -114,13 +116,13 @@ export default class Regulations extends Component {
             </svg>
           </button>
 
-          <button class="main__button">
-            <h1 class="main__button--number">1.</h1>
-            <h3 class="main__button--description">
+          <button className="main__button">
+            <h1 className="main__button--number">1.</h1>
+            <h3 className="main__button--description">
               Propisi u cestovnom prometu
             </h3>
             <svg
-              class="main__button--arrow"
+              className="main__button--arrow"
               xmlns="http://www.w3.org/2000/svg"
               width="14px"
               height="26px"
@@ -130,17 +132,17 @@ export default class Regulations extends Component {
               <g
                 id="Polaznik"
                 stroke="none"
-                stroke-width="1"
+                strokeWidth="1"
                 fill="none"
-                fill-rule="evenodd"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                fillRule="evenodd"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <g
                   id="Propisi"
                   transform="translate(-363.000000, -137.000000)"
                   stroke="#FFFFFF"
-                  stroke-width="3"
+                  strokeWidth="3"
                 >
                   <g transform="translate(17.000000, 113.000000)" id="Group-5">
                     <g transform="translate(66.000000, 10.000000)">
@@ -156,13 +158,13 @@ export default class Regulations extends Component {
             </svg>
           </button>
 
-          <button class="main__button">
-            <h1 class="main__button--number">2.</h1>
-            <h3 class="main__button--description">
+          <button className="main__button">
+            <h1 className="main__button--number">2.</h1>
+            <h3 className="main__button--description">
               Ponašanje sudinika u prometu
             </h3>
             <svg
-              class="main__button--arrow"
+              className="main__button--arrow"
               xmlns="http://www.w3.org/2000/svg"
               width="14px"
               height="26px"
@@ -172,17 +174,17 @@ export default class Regulations extends Component {
               <g
                 id="Polaznik"
                 stroke="none"
-                stroke-width="1"
+                strokeWidth="1"
                 fill="none"
-                fill-rule="evenodd"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                fillRule="evenodd"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <g
                   id="Propisi"
                   transform="translate(-363.000000, -137.000000)"
                   stroke="#FFFFFF"
-                  stroke-width="3"
+                  strokeWidth="3"
                 >
                   <g transform="translate(17.000000, 113.000000)" id="Group-5">
                     <g transform="translate(66.000000, 10.000000)">
@@ -198,11 +200,13 @@ export default class Regulations extends Component {
             </svg>
           </button>
 
-          <button class="main__button">
-            <h1 class="main__button--number">3.</h1>
-            <h3 class="main__button--description">Cesta i njena obilježja</h3>
+          <button className="main__button">
+            <h1 className="main__button--number">3.</h1>
+            <h3 className="main__button--description">
+              Cesta i njena obilježja
+            </h3>
             <svg
-              class="main__button--arrow"
+              className="main__button--arrow"
               xmlns="http://www.w3.org/2000/svg"
               width="14px"
               height="26px"
@@ -212,17 +216,17 @@ export default class Regulations extends Component {
               <g
                 id="Polaznik"
                 stroke="none"
-                stroke-width="1"
+                strokeWidth="1"
                 fill="none"
-                fill-rule="evenodd"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                fillRule="evenodd"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <g
                   id="Propisi"
                   transform="translate(-363.000000, -137.000000)"
                   stroke="#FFFFFF"
-                  stroke-width="3"
+                  strokeWidth="3"
                 >
                   <g transform="translate(17.000000, 113.000000)" id="Group-5">
                     <g transform="translate(66.000000, 10.000000)">
@@ -238,11 +242,11 @@ export default class Regulations extends Component {
             </svg>
           </button>
 
-          <button class="main__button">
-            <h1 class="main__button--number">4.</h1>
-            <h3 class="main__button--description">Znakovi u prometu</h3>
+          <button className="main__button">
+            <h1 className="main__button--number">4.</h1>
+            <h3 className="main__button--description">Znakovi u prometu</h3>
             <svg
-              class="main__button--arrow"
+              className="main__button--arrow"
               xmlns="http://www.w3.org/2000/svg"
               width="14px"
               height="26px"
@@ -252,17 +256,17 @@ export default class Regulations extends Component {
               <g
                 id="Polaznik"
                 stroke="none"
-                stroke-width="1"
+                strokeWidth="1"
                 fill="none"
-                fill-rule="evenodd"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                fillRule="evenodd"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <g
                   id="Propisi"
                   transform="translate(-363.000000, -137.000000)"
                   stroke="#FFFFFF"
-                  stroke-width="3"
+                  strokeWidth="3"
                 >
                   <g transform="translate(17.000000, 113.000000)" id="Group-5">
                     <g transform="translate(66.000000, 10.000000)">
@@ -278,13 +282,13 @@ export default class Regulations extends Component {
             </svg>
           </button>
 
-          <button class="main__button">
-            <h1 class="main__button--number">5.</h1>
-            <h3 class="main__button--description">
+          <button className="main__button">
+            <h1 className="main__button--number">5.</h1>
+            <h3 className="main__button--description">
               Ostali sudionici u cestovnom prometu
             </h3>
             <svg
-              class="main__button--arrow"
+              className="main__button--arrow"
               xmlns="http://www.w3.org/2000/svg"
               width="14px"
               height="26px"
@@ -294,17 +298,17 @@ export default class Regulations extends Component {
               <g
                 id="Polaznik"
                 stroke="none"
-                stroke-width="1"
+                strokeWidth="1"
                 fill="none"
-                fill-rule="evenodd"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                fillRule="evenodd"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 <g
                   id="Propisi"
                   transform="translate(-363.000000, -137.000000)"
                   stroke="#FFFFFF"
-                  stroke-width="3"
+                  strokeWidth="3"
                 >
                   <g transform="translate(17.000000, 113.000000)" id="Group-5">
                     <g transform="translate(66.000000, 10.000000)">

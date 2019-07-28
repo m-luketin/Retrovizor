@@ -38,7 +38,6 @@ header {
   width: 22.68px;
   height: 24.84px;
   left: 22.24px;
-  filter: invert(100%);
 }
 
 .main__button--info {
@@ -46,4 +45,20 @@ header {
   width: 27px;
   height: 27px;
   left: 20px;
+}
+
+.logout {
+  position: absolute;
+  bottom: 58px;
+  left: 18px;
+  margin-bottom: 21px;
+  display: flex;
+  align-items: center;
+}
+
+.logout figcaption {
+  display: inline-block;
+  font-size: 20px;
+  color: #676767;
+  margin-left: 11px;
 }
