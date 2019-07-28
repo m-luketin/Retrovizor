@@ -18,13 +18,7 @@ namespace Retrovizor.Web.Controllers
             _reviewRepository = reviewRepository;
         }
         private readonly IReviewRepository _reviewRepository;
-
-        [HttpGet("all")]
-        public IActionResult GetAllReviews()
-        {
-            return Ok(_reviewRepository.GetAllReviews());
-        }
-
+        
         [HttpPost("add")]
         public IActionResult AddReview(Review reviewToAdd)
         {

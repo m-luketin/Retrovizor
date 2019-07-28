@@ -62,6 +62,7 @@ namespace Retrovizor.Web.Controllers
 
             return Ok(eventToGet);
         }
+
         [HttpGet("get-by-student/{id}")]
         public IActionResult GetEventsByStudentId(int id)
         {
@@ -72,6 +73,7 @@ namespace Retrovizor.Web.Controllers
 
             return Ok(events);
         }
+
         [HttpGet("get-by-instructor/{id}")]
         public IActionResult GetInstructorSchedule(int id)
         {

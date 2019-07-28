@@ -37,8 +37,12 @@ namespace Retrovizor
             services.AddScoped<IInstructorRepository, InstructorRepository>();
             services.AddScoped<ILocationRepository, LocationRepository>();
             services.AddScoped<IReviewRepository, ReviewRepository>();
+            services.AddScoped<IStudentClassRepository, StudentClassRepository>();
+            services.AddScoped<IStudentEventRepository, StudentEventRepository>();
+            services.AddScoped<IStudentExamRepository, StudentExamRepository>();
             services.AddScoped<IStudentRepository, StudentRepository>();
             services.AddScoped<IVehicleRepository, VehicleRepository>();
+            services.AddScoped<IVehicleSessionRepository, VehicleSessionRepository>();
 
 
             services.AddMvc().AddJsonOptions(options =>

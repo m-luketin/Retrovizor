@@ -19,10 +19,10 @@ namespace Retrovizor.Web.Controllers
         }
         private readonly IClassRepository _classRepository;
 
-        [HttpGet("all")]
-        public IActionResult GetAllClasses()
+        [HttpGet("get-by-driving-school/{id}")]
+        public IActionResult GetAllClasses(int id)
         {
-            return Ok(_classRepository.GetAllClasses());
+            return Ok(_classRepository.GetAllClassesByDrivingSchoolId(id));
         }
 
         [HttpPost("add")]
@@ -68,6 +68,7 @@ namespace Retrovizor.Web.Controllers
 
             return Ok(classToGet); 
         }
+
         [HttpGet("get-by-student/{id}")]
         public IActionResult GetClassesByStudentId(int id)
         {

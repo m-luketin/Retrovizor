@@ -7,7 +7,7 @@ namespace Retrovizor.Domain.Repositories.Interfaces
 {
     public interface IClassRepository
     {
-        List<Class> GetAllClasses();
+        List<Class> GetAllClassesByDrivingSchoolId(int id);
         bool AddClass(Class classToAdd);
         bool EditClass(Class editedClass);
         bool DeleteClass(int idOfClassToDelete);

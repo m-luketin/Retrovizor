@@ -19,12 +19,6 @@ namespace Retrovizor.Web.Controllers
         }
         private readonly ILocationRepository _locationRepository;
 
-        [HttpGet("all")]
-        public IActionResult GetAllLocations()
-        {
-            return Ok(_locationRepository.GetAllLocations());
-        }
-
         [HttpPost("add")]
         public IActionResult AddLocation(Location locationToAdd)
         {
@@ -68,6 +62,7 @@ namespace Retrovizor.Web.Controllers
 
             return Ok(locationToGet);
         }
+
         [HttpGet("get-by-event/{id}")]
         public IActionResult GetLocationByEventId(int id)
         {
@@ -78,6 +73,5 @@ namespace Retrovizor.Web.Controllers
 
             return Ok(locationToGet);
         }
-
     }
 }

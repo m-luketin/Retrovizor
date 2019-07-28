@@ -7,7 +7,7 @@ namespace Retrovizor.Domain.Repositories.Interfaces
 {
     public interface IExamRepository
     {
-        List<Exam> GetAllExams();
+        List<Exam> GetAllExamsByDrivingSchoolId(int id);
         bool AddExam(Exam examToAdd);
         bool EditExam(Exam editedExam);
         bool DeleteExam(int idOfExamToDelete);

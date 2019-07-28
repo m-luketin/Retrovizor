@@ -15,9 +15,21 @@ namespace Retrovizor.Domain.Repositories.Implementations
         }
         private readonly RetrovizorContext _context;
 
-        public List<Class> GetAllClasses()
+        public List<Class> GetAllClassesByDrivingSchoolId(int id)
         {
-            return _context.Classes.ToList();
+            var students = _context.Students.Where(s => s.DrivingSchoolId == id);
+
+            var studentClasses = new List<StudentClass>();
+
+            foreach(var student in students)
+                studentClasses.AddRange(student.StudentClasses);
+
+            var classes = new List<Class>();
+
+            foreach(var studentClass in studentClasses)
+                classes.Add(studentClass.Class);
+
+            return classes.Distinct().ToList();
         }
                 
         public bool AddClass(Class classToAdd)
@@ -32,6 +44,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             _context.SaveChanges();
             return true;
         }
+
         public bool EditClass(Class editedClass)
         {
             var classToEdit = _context.Classes.Find(editedClass.Id);
@@ -46,6 +59,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             _context.SaveChanges();
             return true;
         }
+
         public bool DeleteClass(int idOfClassToDelete)
         {
             var classToDelete = _context.Classes.Find(idOfClassToDelete);
@@ -57,10 +71,12 @@ namespace Retrovizor.Domain.Repositories.Implementations
             _context.SaveChanges();
             return true;
         }
+
         public Class GetClassById(int id)
         {
             return _context.Classes.Find(id);
         }
+
         public List<Class> GetClassesByStudentId(int id)
         {
             var studentClasses = _context.StudentClasses.Where(c => c.StudentId == id);
@@ -71,12 +87,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             var classesToGet = new List<Class>();
 
             foreach(var studentClass in studentClasses)
-            {
-                var tmpClass = _context.Classes.Find(studentClass.ClassId);
-
-                if(tmpClass != null)
-                    classesToGet.Add(tmpClass);
-            }
+                classesToGet.Add(studentClass.Class);
 
             return classesToGet;
         }

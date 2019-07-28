@@ -28,6 +28,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             _context.SaveChanges();
             return true;
         }
+
         public bool EditEvent(Event editedEvent)
         {
             var doesEventExist = _context.Events.Any(e =>
@@ -48,6 +49,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             _context.SaveChanges();
             return true;
         }
+
         public bool DeleteEvent(int idOfEventToDelete)
         {
             var eventToDelete = _context.Events.Find(idOfEventToDelete);
@@ -59,6 +61,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             _context.SaveChanges();
             return true;
         }
+
         public Event GetEventById(int id)
         {
             return _context.Events.Find(id);
@@ -90,10 +93,8 @@ namespace Retrovizor.Domain.Repositories.Implementations
                 var studentEvents = _context.StudentEvents.Where(se => se.StudentId == vehicleSession.StudentId);
 
                 foreach(var studentEvent in studentEvents)
-                {
                     if(studentEvent.Event.Type == "Driving Lesson")
                         drivingLessons.Add(studentEvent.Event);
-                }
             }
             return drivingLessons;
         }

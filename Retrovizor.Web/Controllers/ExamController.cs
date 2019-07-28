@@ -19,10 +19,10 @@ namespace Retrovizor.Web.Controllers
         }
         private readonly IExamRepository _examRepository;
 
-        [HttpGet("all")]
-        public IActionResult GetAllExams()
+        [HttpGet("get-by-driving-school")]
+        public IActionResult GetAllExams(int id)
         {
-            return Ok(_examRepository.GetAllExams());
+            return Ok(_examRepository.GetAllExamsByDrivingSchoolId(id));
         }
 
         [HttpPost("add")]

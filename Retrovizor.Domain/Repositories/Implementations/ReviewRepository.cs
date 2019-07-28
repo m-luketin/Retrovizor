@@ -13,10 +13,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             _context = context;
         }
         private readonly RetrovizorContext _context;
-        public List<Review> GetAllReviews()
-        {
-            return _context.Reviews.ToList();
-        }
+        
         public bool AddReview(Review reviewToAdd)
         {
             var doesReviewExist = _context.Reviews.Any(e =>
@@ -29,6 +26,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             _context.SaveChanges();
             return true;
         }
+
         public bool EditReview(Review editedReview)
         {
             var reviewToEdit = _context.Reviews.Find(editedReview.Id);
@@ -41,6 +39,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             _context.SaveChanges();
             return true;
         }
+
         public bool DeleteReview(int idOfReviewToDelete)
         {
             var reviewToDelete = _context.Reviews.Find(idOfReviewToDelete);
@@ -52,6 +51,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             _context.SaveChanges();
             return true;
         }
+
         public Review GetReviewById(int id)
         {
             return _context.Reviews.Find(id);

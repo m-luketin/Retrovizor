@@ -15,10 +15,12 @@ namespace Retrovizor.Domain.Repositories.Implementations
             _context = context;
         }
         private readonly RetrovizorContext _context;
-        public List<Instructor> GetAllInstructors()
+
+        public List<Instructor> GetAllInstructorsByDrivingSchoolId(int id)
         {
-            return _context.Instructors.ToList();
+            return _context.Instructors.Where(i => i.DrivingSchoolId == id).ToList();
         }
+
         public bool AddInstructor(Instructor instructorToAdd)
         {
             var doesInstructorExist = _context.Instructors.Any(instructor =>
@@ -31,6 +33,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             _context.SaveChanges();
             return true;
         }
+
         public bool EditInstructor(Instructor editedInstructor)
         {
             var instructorToEdit = _context.Instructors.Find(editedInstructor.Id);
@@ -48,6 +51,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             _context.SaveChanges();
             return true;
         }
+
         public bool DeleteInstructor(int idOfInstructorToDelete)
         {
             var instructorToDelete = _context.Instructors.Find(idOfInstructorToDelete);
@@ -59,6 +63,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             _context.SaveChanges();
             return true;
         }
+
         public Instructor GetInstructorById(int id)
         {
             return _context.Instructors.Find(id);
@@ -74,15 +79,12 @@ namespace Retrovizor.Domain.Repositories.Implementations
             var currentVehicleSession = vehicleSessions.First();
 
             foreach(var vehicleSession in vehicleSessions)
-            {
                 if(vehicleSession.DateAssigned - currentVehicleSession.DateAssigned < new TimeSpan(0))
-                {
                     currentVehicleSession = vehicleSession;
-                }
-            }
 
             return _context.Instructors.Find(currentVehicleSession.InstructorId);
         }
+
         public List<Instructor> GetInstructorsByDrivingSchoolId(int id)
         {
             return _context.Instructors.Where(i => i.DrivingSchoolId == id).ToList();

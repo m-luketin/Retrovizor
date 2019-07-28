@@ -20,7 +20,5 @@ namespace Retrovizor.Domain.Repositories.Implementations
         {
             return _context.Admins.Where(a => a.DrivingSchoolId == id).ToList();
         }
-
-        //change password, validate password
     }
 }

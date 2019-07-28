@@ -68,6 +68,7 @@ namespace Retrovizor.Web.Controllers
 
             return Ok(studentToGet);
         }
+
         [HttpGet("get-by-driving-school/{id}")]
         public IActionResult GetStudentsByDrivingSchoolId(int id)
         {
@@ -78,6 +79,7 @@ namespace Retrovizor.Web.Controllers
 
             return Ok(studentToGet);
         }
+
         [HttpGet("get-by-instructor/{id}")]
         public IActionResult GetStudentsByInstructorId(int id)
         {
@@ -88,6 +90,7 @@ namespace Retrovizor.Web.Controllers
 
             return Ok(studentToGet);
         }
+
         [HttpGet("get-current-by-instructor/{id}")]
         public IActionResult GetCurrentStudentsByInstructorId(int id)
         {
@@ -97,34 +100,6 @@ namespace Retrovizor.Web.Controllers
                 return NotFound();
 
             return Ok(studentToGet);
-        }
-
-        [HttpPost("edit-current-lesson")]
-        public IActionResult EditCurrentLesson(int studentId, int classId, int newCurrentLesson)
-        {
-            var wasEditSucessful = _studentRepository.EditCurrentLesson(studentId, classId, newCurrentLesson);
-
-            if(wasEditSucessful)
-                return Ok();
-
-            return NotFound();
-        }
-        [HttpPost("edit-exam-points")]
-        public IActionResult EditExamPoints(int studentId, int classId, int newPoints)
-        {
-            var wasEditSucessful = _studentRepository.EditExamPoints(studentId, classId, newPoints);
-
-            if(wasEditSucessful)
-                return Ok();
-
-            return NotFound();
-        }
-        [HttpPost("did-pass-exam")]
-        public IActionResult HasStudentPassedExam(int studentId, int examId)
-        {
-            var didPass = _studentRepository.HasStudentPassedExam(studentId, examId);
-
-            return Ok(didPass);
         }
     }
 }

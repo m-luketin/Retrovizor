@@ -16,9 +16,22 @@ namespace Retrovizor.Domain.Repositories.Implementations
         }
         private readonly RetrovizorContext _context;
 
-        public List<Exam> GetAllExams()
+        public List<Exam> GetAllExamsByDrivingSchoolId(int id)
         {
-            return _context.Exams.ToList();
+            var students = _context.Students.Where(s => s.DrivingSchoolId == id);
+
+            var studentExams = new List<StudentExam>();
+
+            foreach(var student in students)
+                studentExams.AddRange(student.StudentExams);
+
+            var exams = new List<Exam>();
+
+            foreach(var studentExam in studentExams)
+                exams.Add(studentExam.Exam);
+
+            return exams.Distinct().ToList();
+
         }
         public bool AddExam(Exam examToAdd)
         {
@@ -31,6 +44,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             _context.SaveChanges();
             return true;
         }
+
         public bool EditExam(Exam editedExam)
         {
             var doesExamExist = _context.Exams.Any(e => string.Equals(e.Type, editedExam.Type, StringComparison.CurrentCultureIgnoreCase));
@@ -49,6 +63,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             _context.SaveChanges();
             return true;
         }
+
         public bool DeleteExam(int idOfExamToDelete)
         {
             var examToDelete = _context.Exams.Find(idOfExamToDelete);
@@ -60,10 +75,12 @@ namespace Retrovizor.Domain.Repositories.Implementations
             _context.SaveChanges();
             return true;
         }
+
         public Exam GetExamById(int id)
         {
             return _context.Exams.Find(id);
         }
+
         public List<Exam> GetExamsByStudentId(int id)
         {
             var studentExams = _context.StudentExams.Where(se => se.StudentId == id);
@@ -71,12 +88,9 @@ namespace Retrovizor.Domain.Repositories.Implementations
             var exams = new List<Exam>();
 
             foreach(var studentExam in studentExams)
-            {
-                var tmpExam = _context.Exams.Find(studentExam.ExamId);
+                if(studentExam.Exam != null)
+                    exams.Add(studentExam.Exam);
 
-                if(tmpExam != null)
-                    exams.Add(tmpExam);
-            }
             return exams;
         }
         //get student test results from studentexam

@@ -14,11 +14,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             _context = context;
         }
         private readonly RetrovizorContext _context;
-
-        public List<Location> GetAllLocations()
-        {
-            return _context.Locations.ToList();
-        }
+        
         public bool AddLocation(Location locationToAdd)
         {
             var doesLocationExist = _context.Locations.Any(c =>
@@ -31,6 +27,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             _context.SaveChanges();
             return true;
         }
+
         public bool EditLocation(Location editedLocation)
         {
             var doesLocationExist = _context.Locations.Any(c =>
@@ -51,6 +48,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             _context.SaveChanges();
             return true;
         }
+
         public bool DeleteLocation(int idOfLocationToDelete)
         {
             var locationToDelete = _context.Locations.Find(idOfLocationToDelete);
@@ -62,10 +60,12 @@ namespace Retrovizor.Domain.Repositories.Implementations
             _context.SaveChanges();
             return true;
         }
+
         public Location GetLocationById(int id)
         {
             return _context.Locations.Find(id);
         }
+
         public Location GetLocationByEventId(int id)
         {
             var eventToGet = _context.Events.Find(id);

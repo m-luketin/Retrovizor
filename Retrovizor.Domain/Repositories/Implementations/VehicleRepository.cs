@@ -20,6 +20,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
         {
             return _context.Vehicles.ToList();
         }
+
         public bool AddVehicle(Vehicle vehicleToAdd)
         {
             var doesVehicleExist = _context.Vehicles.Any(vehicle =>
@@ -32,6 +33,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             _context.SaveChanges();
             return true;
         }
+
         public bool EditVehicle(Vehicle editedVehicle)
         {
             var vehicleToEdit = _context.Vehicles.Find(editedVehicle.Id);
@@ -49,6 +51,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             _context.SaveChanges();
             return true;
         }
+
         public bool DeleteVehicle(int idOfVehicleToDelete)
         {
             var vehicleToDelete = _context.Vehicles.Find(idOfVehicleToDelete);
@@ -60,6 +63,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             _context.SaveChanges();
             return true;
         }
+
         public Vehicle GetVehicleById(int id)
         {
             return _context.Vehicles.Find(id);
@@ -68,6 +72,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
         public Vehicle GetCurrentVehicleByStudentId(int id)
         {
             var vehicleSessions = _context.VehicleSessions.Where(vs => vs.StudentId == id);
+
             if(vehicleSessions == null)
                 return null;
 
@@ -77,22 +82,14 @@ namespace Retrovizor.Domain.Repositories.Implementations
                 if(vehicleSession.DateAssigned - currentVehicleSession.DateAssigned < new TimeSpan(0))
                     currentVehicleSession = vehicleSession;
 
-            return _context.Vehicles.Find(currentVehicleSession.Vehicle);
+            return currentVehicleSession.Instructor.Vehicle;
         }
 
         public Vehicle GetCurrentVehicleByInstructorId(int id)
         {
-            var vehicleSessions = _context.VehicleSessions.Where(vs => vs.InstructorId == id);
-            if(vehicleSessions == null)
-                return null;
+            var instructor = _context.Instructors.Find(id);
 
-            var currentVehicleSession = vehicleSessions.First();
-
-            foreach(var vehicleSession in vehicleSessions)
-                if(vehicleSession.DateAssigned - currentVehicleSession.DateAssigned < new TimeSpan(0))
-                    currentVehicleSession = vehicleSession;
-
-            return _context.Vehicles.Find(currentVehicleSession.Vehicle);
+            return instructor.Vehicle;
         }
 
         public List<Vehicle> GetVehiclesByInstructorId(int id)

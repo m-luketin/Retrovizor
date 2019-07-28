@@ -7,7 +7,6 @@ namespace Retrovizor.Domain.Repositories.Interfaces
 {
     public interface IReviewRepository
     {
-        List<Review> GetAllReviews();
         bool AddReview(Review reviewToAdd);
         bool EditReview(Review editedReview);
         bool DeleteReview(int idOfReviewToDelete);
