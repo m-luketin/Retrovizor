@@ -19,7 +19,7 @@ namespace Retrovizor.Web.Controllers
         }
         private readonly IStudentExamRepository _studentExamRepository;
 
-        [HttpPost("edit-student-exam")]
+        [HttpPost("edit")]
         public IActionResult EditStudentExam(StudentExam studentExamToEdit)
         {
             var wasEditSucessful = _studentExamRepository.EditStudentExam(studentExamToEdit);
@@ -30,7 +30,7 @@ namespace Retrovizor.Web.Controllers
             return NotFound();
         }
 
-        [HttpPost("assign-exam")]
+        [HttpPost("add")]
         public IActionResult AssignExamToStudent(StudentExam studentExam)
         {
             var wasSucessful = _studentExamRepository.AddStudentExam(studentExam);
@@ -41,7 +41,7 @@ namespace Retrovizor.Web.Controllers
             return Forbid();
         }
 
-        [HttpDelete("delete-student-class")]
+        [HttpDelete("delete")]
         public IActionResult DeleteStudentExam(int studentId, int examId)
         {
             var wasSucessful = _studentExamRepository.DeleteStudentExam(studentId, examId);

@@ -36,7 +36,7 @@ namespace Retrovizor.Web.Controllers
             return Ok(drivingSchoolToGet);
         }
 
-        [HttpGet("get-by-student/{id}")]
+        [HttpGet("get-by-instructor/{id}")]
         public IActionResult GetDrivingSchoolByInstructorId(int id)
         {
             var classes = _drivingSchoolRepository.GetDrivingSchoolByInstructorId(id);
@@ -58,7 +58,7 @@ namespace Retrovizor.Web.Controllers
             return Ok(classes);
         }
 
-        [HttpGet("get-by-student/{id}")]
+        [HttpGet("get-by-admin/{id}")]
         public IActionResult GetDrivingSchoolByAdminId(int id)
         {
             var classes = _drivingSchoolRepository.GetDrivingSchoolByAdminId(id);

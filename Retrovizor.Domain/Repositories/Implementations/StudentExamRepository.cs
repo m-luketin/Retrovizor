@@ -37,6 +37,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             _context.SaveChanges();
             return true;
         }
+
         public bool EditStudentExam(StudentExam editedStudentExam)
         {
             var studentExamToEdit = _context.StudentExams.Find(editedStudentExam.StudentId, editedStudentExam.ExamId);
