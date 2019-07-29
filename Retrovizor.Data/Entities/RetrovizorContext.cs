@@ -10,8 +10,7 @@ namespace Retrovizor.Data.Entities
     public class RetrovizorContext : DbContext
     {
         public RetrovizorContext(DbContextOptions options) : base(options)
-        {
-        }
+        {}
 
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Class> Classes { get; set; }

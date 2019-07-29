@@ -21,6 +21,5 @@ namespace Retrovizor.Data.Entities.Models
         public ICollection<StudentExam> StudentExams { get; set; }
         public ICollection<VehicleSession> VehicleSessions { get; set; }
         public ICollection<Review> Reviews { get; set; }
-
     }
 }

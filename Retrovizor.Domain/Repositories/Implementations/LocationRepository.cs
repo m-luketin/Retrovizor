@@ -2,7 +2,6 @@
 using Retrovizor.Data.Entities.Models;
 using Retrovizor.Domain.Repositories.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Retrovizor.Domain.Repositories.Implementations
