@@ -46,7 +46,7 @@ export default class InstructorDetails extends Component {
         </header>
         <main className="main__drive main__instructor">
           <section className="main__next--lesson--wrapper">
-            <div className="main__driving">
+            <div className="main__driving mb-20px">
               <img
                 className="main__driving--instructor"
                 src={instructorImg}
@@ -214,6 +214,124 @@ export default class InstructorDetails extends Component {
                 </figcaption>
               </div>
             </figure>
+          </section>
+
+          <section>
+            <div className="instructor__item--schedule">
+              <svg
+                className="intructor__item--arrow"
+                xmlns="http://www.w3.org/2000/svg"
+                width="15px"
+                height="27px"
+                viewBox="0 0 15 27"
+                version="1.1"
+              >
+                <g
+                  id="Polaznik"
+                  stroke="none"
+                  strokeWidth="1"
+                  fill="none"
+                  fillRule="evenodd"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <g
+                    id="Instruktor"
+                    transform="translate(-15.000000, -58.000000)"
+                    stroke="#1488CC"
+                    strokeWidth="4"
+                  >
+                    <polyline
+                      id="Path"
+                      transform="translate(27.606602, 71.500000) rotate(-315.000000) translate(-27.606602, -71.500000) "
+                      points="20.1066017 64 20.1066017 79 35.1066017 79"
+                    />
+                  </g>
+                </g>
+              </svg>
+              <h3 className="instructor__schedule--date">Srijeda,</h3>
+              <p className="instructor__schedule--day">17. srpnja</p>
+            </div>
+
+            <button className="main__button main__button--schedule instructor__schedule--button instructor__schedule--taken">
+              <div className="instructor__schedule--time">
+                <h3>08:30</h3>
+              </div>
+              <p className="button__info">Zauzeto</p>
+            </button>
+
+            <button className="main__button main__button--schedule instructor__schedule--button ">
+              <div className="instructor__schedule--time">
+                <h3>10:15</h3>
+              </div>
+              <p className="button__info">Rezervirano</p>
+              <svg
+                className="button__garbage"
+                xmlns="http://www.w3.org/2000/svg"
+                width="21px"
+                height="24px"
+                viewBox="0 0 21 24"
+                version="1.1"
+              >
+                <g
+                  id="Symbols"
+                  stroke="none"
+                  strokeWidth="1"
+                  fill="none"
+                  fillRule="evenodd"
+                >
+                  <g
+                    id="Budicon-Solid/Interface/trash"
+                    transform="translate(-2.000000, 0.000000)"
+                    fill="#EB3349"
+                    fillRule="nonzero"
+                  >
+                    <path
+                      d="M22.5,3 L17.75,3 L17.2841,1.1362 C17.117165,0.468453106 16.5171973,0 15.8289,0 L9.1711,0 C8.48280266,0 7.88283505,0.468453106 7.7159,1.1362 L7.25,3 L2.5,3 C2.22385763,3 2,3.22385763 2,3.5 C2,3.77614237 2.22385763,4 2.5,4 L4.05,4 L4.9785,22.5757 C5.0188233,23.3736904 5.67759146,24 6.4766,24 L18.5742,24 C19.3735375,24 20.032393,23.3730457 20.0722,22.5747 L21.0008,4 L22.5,4 C22.7761424,4 23,3.77614237 23,3.5 C23,3.22385763 22.7761424,3 22.5,3 Z M10,17.5 C10,17.7761424 9.77614237,18 9.5,18 C9.22385763,18 9,17.7761424 9,17.5 L9,9.5 C9,9.22385763 9.22385763,9 9.5,9 C9.77614237,9 10,9.22385763 10,9.5 L10,17.5 Z M13,18.5 C13,18.7761424 12.7761424,19 12.5,19 C12.2238576,19 12,18.7761424 12,18.5 L12,8.5 C12,8.22385763 12.2238576,8 12.5,8 C12.7761424,8 13,8.22385763 13,8.5 L13,18.5 Z M16,17.5 C16,17.7761424 15.7761424,18 15.5,18 C15.2238576,18 15,17.7761424 15,17.5 L15,9.5 C15,9.22385763 15.2238576,9 15.5,9 C15.7761424,9 16,9.22385763 16,9.5 L16,17.5 Z M8.2808,2.99999971 L8.686,1.3789 C8.74136025,1.15609463 8.9415201,0.999754555 9.1711,0.999999711 L15.8288,0.999999711 C16.0583799,0.999754555 16.2585398,1.15609463 16.3139,1.3789 L16.7192,2.99999971 L8.2808,2.99999971 Z"
+                      id="Shape"
+                    />
+                  </g>
+                </g>
+              </svg>
+            </button>
+
+            <button className="main__button main__button--schedule instructor__schedule--button instructor__schedule--free">
+              <div className="brc-blue instructor__schedule--time ">
+                <h3>11:15</h3>
+              </div>
+              <p className="button__info">Slobodno</p>
+              <svg
+                className="button__info--arrow button__garbage"
+                xmlns="http://www.w3.org/2000/svg"
+                width="15px"
+                height="27px"
+                viewBox="0 0 15 27"
+                version="1.1"
+              >
+                <g
+                  id="Polaznik"
+                  stroke="none"
+                  strokeWidth="1"
+                  fill="none"
+                  fillRule="evenodd"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <g
+                    id="Instruktor"
+                    transform="translate(-15.000000, -58.000000)"
+                    stroke="#1488CC"
+                    strokeWidth="4"
+                  >
+                    <polyline
+                      id="Path"
+                      transform="translate(27.606602, 71.500000) rotate(-315.000000) translate(-27.606602, -71.500000) "
+                      points="20.1066017 64 20.1066017 79 35.1066017 79"
+                    />
+                  </g>
+                </g>
+              </svg>
+            </button>
           </section>
         </main>
       </React.Fragment>

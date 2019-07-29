@@ -50,6 +50,7 @@
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
+  margin-bottom: 0;
 }
 
 .button__info h3,

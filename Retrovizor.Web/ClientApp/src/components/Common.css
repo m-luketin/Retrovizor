@@ -8,6 +8,7 @@
 
 .container {
   margin-bottom: 48px;
+  overflow-x: hidden;
 }
 
 /* Header */
@@ -66,4 +67,12 @@ main {
 
 .c-blue {
   color: #1488cc !important;
+}
+
+.brc-blue {
+  border-right-color: #1488cc !important;
+}
+
+.mb-20px {
+  margin-bottom: 20px;
 }

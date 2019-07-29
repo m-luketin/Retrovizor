@@ -43,6 +43,7 @@
 
 .instructor__item {
   display: flex;
+  margin-bottom: 20px;
 }
 
 .instructor__item div {
@@ -100,4 +101,80 @@
   display: flex;
   align-items: center;
   margin-top: -30px;
+}
+
+.intructor__item--arrow {
+  width: 13px;
+  height: 13px;
+  transform: rotate(270deg);
+  margin-left: 3px;
+  margin-top: 7px;
+}
+
+.instructor__item--schedule {
+  display: flex;
+  height: 27px;
+}
+
+.instructor__schedule--date {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1488cc;
+  margin-left: 10.5px;
+}
+
+.instructor__schedule--day {
+  font-size: 16px;
+  color: #1488cc;
+  margin-left: 4px;
+  margin-top: 1px;
+}
+
+.instructor__schedule--button {
+  width: 354px;
+  position: relative;
+}
+
+.instructor__schedule--button p {
+  font-size: 20px;
+}
+
+.instructor__schedule--time {
+  height: 52px;
+  padding: 0 !important;
+  width: auto !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.instructor__schedule--time h3 {
+  font-size: 20px;
+  padding-right: 20px;
+  margin-bottom: 0;
+}
+
+.instructor__schedule--taken {
+  background-image: none;
+  background-color: #c5cacf;
+}
+
+.button__garbage {
+  position: absolute;
+  right: 20px;
+}
+
+.instructor__schedule--free {
+  background-image: none;
+  background-color: #fff;
+  border: 1px solid #1488cc;
+}
+
+.instructor__schedule--free h3,
+.instructor__schedule--free p {
+  color: #1488cc;
+}
+
+.button__info--arrow {
+  transform: rotate(180deg);
 }

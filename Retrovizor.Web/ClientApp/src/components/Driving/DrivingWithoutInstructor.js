@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import instructorImg from "../../assets/instructor.gif";
 
 export default class DrivingWithoutInstructor extends Component {
   render() {

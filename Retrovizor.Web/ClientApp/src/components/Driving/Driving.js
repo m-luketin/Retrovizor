@@ -9,7 +9,7 @@ export default class Driving extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      doesStudentHaveInstructor: true,
+      doesStudentHaveInstructor: false,
       doesStudentHaveLesson: false
     };
   }
