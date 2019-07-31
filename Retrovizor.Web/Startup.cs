@@ -44,6 +44,7 @@ namespace Retrovizor
             services.AddScoped<IVehicleRepository, VehicleRepository>();
             services.AddScoped<IVehicleSessionRepository, VehicleSessionRepository>();
 
+            services.Configure<Web.JWTSettings>(Configuration.GetSection("JWTSettings"));
 
             services.AddMvc().AddJsonOptions(options =>
             {

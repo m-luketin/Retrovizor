@@ -13,5 +13,6 @@ namespace Retrovizor.Data.Entities.Models
         public int VehicleId { get; set; }
         public Vehicle Vehicle { get; set; }
         public DateTime DateAssigned { get; set; }
+        public bool IsActive { get; set; }
     }
 }

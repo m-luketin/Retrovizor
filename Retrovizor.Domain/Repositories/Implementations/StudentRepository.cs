@@ -76,7 +76,10 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public List<Student> GetStudentsByInstructorId(int id)
         {
-            var vehicleSessions = _context.VehicleSessions.Where(vs => vs.InstructorId == id);
+            var vehicleSessions = _context.VehicleSessions.Where(vs => vs.InstructorId == id).ToList();
+
+            if(vehicleSessions == null)
+                return null;
 
             var students = new List<Student>();
 
@@ -88,7 +91,11 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public List<Student> GetCurrentStudentsByInstructorId(int id)
         {
-            var instructorVehicleSessions = _context.VehicleSessions.Where(vs => vs.InstructorId == id);
+            var instructorVehicleSessions = _context.VehicleSessions.Where(vs => vs.InstructorId == id).ToList();
+
+            if(instructorVehicleSessions == null)
+                return null;
+
             var students = new List<Student>();
 
             foreach(var instructorVehicleSession in instructorVehicleSessions)
@@ -99,7 +106,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
             foreach(var student in students)
             {
-                var studentVehicleSessions = _context.VehicleSessions.Where(vs => vs.StudentId == student.Id);
+                var studentVehicleSessions = _context.VehicleSessions.Where(vs => vs.StudentId == student.Id).ToList();
                 if(studentVehicleSessions == null)
                    continue;
 

@@ -13,5 +13,6 @@ namespace Retrovizor.Domain.Repositories.Interfaces
         bool DeleteExam(int idOfExamToDelete);
         Exam GetExamById(int id);
         List<Exam> GetExamsByStudentId(int id);
+        double GetExamPassRateByExamId(int id);
     }
 }

@@ -12,6 +12,7 @@ namespace Retrovizor.Data.Entities.Models
         public Location Location { get; set; }
         public ICollection<StudentEvent> StudentEvents { get; set; }
         public string Type { get; set; }
-        public DateTime Time { get; set; }
+        public DateTime StartsAt { get; set; }
+        public DateTime EndsAt { get; set; }
     }
 }

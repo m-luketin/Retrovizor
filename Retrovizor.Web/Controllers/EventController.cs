@@ -77,7 +77,7 @@ namespace Retrovizor.Web.Controllers
         [HttpGet("get-by-instructor/{id}")]
         public IActionResult GetInstructorSchedule(int id)
         {
-            var instructorSchedule = _eventRepository.GetInstructorDrivingLessons(id);
+            var instructorSchedule = _eventRepository.GetInstructorDrivingLessonsByInstructorId(id);
 
             if(instructorSchedule == null)
                 return NotFound();

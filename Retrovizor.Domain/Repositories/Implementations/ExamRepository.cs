@@ -17,7 +17,10 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public List<Exam> GetAllExamsByDrivingSchoolId(int id)
         {
-            var students = _context.Students.Where(s => s.DrivingSchoolId == id);
+            var students = _context.Students.Where(s => s.DrivingSchoolId == id).ToList();
+
+            if(students == null)
+                return null;
 
             var studentExams = new List<StudentExam>();
 
@@ -46,7 +49,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public bool EditExam(Exam editedExam)
         {
-            var doesExamExist = _context.Exams.Any(e => string.Equals(e.Type, editedExam.Type, StringComparison.CurrentCultureIgnoreCase));
+            var doesExamExist = _context.Exams.Any(e => string.Equals(e.Type, editedExam.Type, StringComparison.CurrentCultureIgnoreCase) && editedExam.Id != e.Id);
         
             if(doesExamExist)
                 return false;
@@ -55,7 +58,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
             if(examToEdit == null)
                 return false;
-
+            
             examToEdit.TotalPoints = editedExam.TotalPoints;
             examToEdit.Type = editedExam.Type;
 
@@ -82,7 +85,10 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public List<Exam> GetExamsByStudentId(int id)
         {
-            var studentExams = _context.StudentExams.Where(se => se.StudentId == id);
+            var studentExams = _context.StudentExams.Where(se => se.StudentId == id).ToList();
+
+            if(studentExams == null)
+                return null;
 
             var exams = new List<Exam>();
 
@@ -92,6 +98,26 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
             return exams;
         }
-        //get student test results from studentexam
+        
+        public double GetExamPassRateByExamId(int id)
+        {
+            var exam = _context.Exams.Find(id);
+
+            if(exam == null)
+                return 0;
+
+            var studentExams = _context.StudentExams.Where(se => se.ExamId == id).ToList();
+
+            if(studentExams == null)
+                return 0;
+
+            var studentsPassed = 0.0;
+
+            foreach(var studentExam in studentExams)
+                if(studentExam.Points >= exam.PointsToPass)
+                    studentsPassed++;
+
+            return studentsPassed / studentExams.Count();
+        }
     }
 }

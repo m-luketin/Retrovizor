@@ -28,6 +28,9 @@ namespace Retrovizor.Domain.Repositories.Implementations
         {
             var student = _context.Students.Find(id);
 
+            if(student == null)
+                return null;
+
             return _context.DrivingSchools.Find(student.DrivingSchoolId);
         }
 
@@ -35,12 +38,18 @@ namespace Retrovizor.Domain.Repositories.Implementations
         {
             var instructor = _context.Instructors.Find(id);
 
+            if(instructor == null)
+                return null;
+
             return _context.DrivingSchools.Find(instructor.DrivingSchoolId);
         }
 
         public DrivingSchool GetDrivingSchoolByAdminId(int id)
         {
             var admin = _context.Admins.Find(id);
+
+            if(admin == null)
+                return null;
 
             return _context.DrivingSchools.Find(admin.DrivingSchoolId);
         }

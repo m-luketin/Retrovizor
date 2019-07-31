@@ -18,7 +18,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
         public bool AddEvent(Event eventToAdd)
         {
             var doesEventExist = _context.Events.Any(e =>
-                DateTime.Equals(e.Time, eventToAdd.Time) && e.LocationId == eventToAdd.LocationId);
+                DateTime.Equals(e.StartsAt, eventToAdd.StartsAt) && DateTime.Equals(e.EndsAt, eventToAdd.EndsAt) && e.LocationId == eventToAdd.LocationId);
 
             if(doesEventExist)
                 return false;
@@ -31,7 +31,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
         public bool EditEvent(Event editedEvent)
         {
             var doesEventExist = _context.Events.Any(e =>
-                DateTime.Equals(e.Time, editedEvent.Time) && e.LocationId == editedEvent.LocationId);
+                DateTime.Equals(e.StartsAt, editedEvent.StartsAt) && DateTime.Equals(e.EndsAt, editedEvent.EndsAt) && e.LocationId == editedEvent.LocationId);
 
             if(doesEventExist)
                 return false;
@@ -43,7 +43,8 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
             eventToEdit.Name = editedEvent.Name;
             eventToEdit.Type = editedEvent.Type;
-            eventToEdit.Time = editedEvent.Time;
+            eventToEdit.StartsAt = editedEvent.StartsAt;
+            eventToEdit.EndsAt = editedEvent.EndsAt;
 
             _context.SaveChanges();
             return true;
@@ -81,21 +82,47 @@ namespace Retrovizor.Domain.Repositories.Implementations
             return eventsToGet;
         }
 
-        public List<Event> GetInstructorDrivingLessons(int id)
+        public List<Event> GetInstructorDrivingLessonsByInstructorId(int id)
         {
-            var vehicleSessions = _context.VehicleSessions.Where(vs => vs.InstructorId == id);
+            var vehicleSessions = _context.VehicleSessions.Where(vs => vs.InstructorId == id).ToList();
+
+            if(vehicleSessions == null)
+                return null;
 
             var drivingLessons = new List<Event>();
 
             foreach(var vehicleSession in vehicleSessions)
             {
-                var studentEvents = _context.StudentEvents.Where(se => se.StudentId == vehicleSession.StudentId);
+                var studentEvents = _context.StudentEvents.Where(se => se.StudentId == vehicleSession.StudentId).ToList();
 
                 foreach(var studentEvent in studentEvents)
                     if(studentEvent.Event.Type == "Driving Lesson")
                         drivingLessons.Add(studentEvent.Event);
             }
             return drivingLessons;
+        }
+
+        public List<Event> GetEventsByDrivingSchoolId(int id)
+        {
+            var students = _context.Students.Where(s => s.DrivingSchoolId == id).ToList();
+
+            if(students == null)
+                return null;
+
+            var studentEvents = new List<StudentEvent>();
+
+            foreach(var student in students)
+                studentEvents.AddRange(student.StudentEvents);
+
+            if(studentEvents == null)
+                return null;
+
+            var events = new List<Event>();
+
+            foreach(var studentEvent in studentEvents)
+                events.Add(studentEvent.Event);
+
+            return events;
         }
     }
 }

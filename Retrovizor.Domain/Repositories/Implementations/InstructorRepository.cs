@@ -75,13 +75,12 @@ namespace Retrovizor.Domain.Repositories.Implementations
             if(vehicleSessions == null)
                 return null;
 
-            var currentVehicleSession = vehicleSessions.First();
+            var currentVehicleSession = vehicleSessions.FirstOrDefault(vs => vs.IsActive);
 
-            foreach(var vehicleSession in vehicleSessions)
-                if(vehicleSession.DateAssigned - currentVehicleSession.DateAssigned < new TimeSpan(0))
-                    currentVehicleSession = vehicleSession;
+            if(currentVehicleSession == null)
+                return null;
 
-            return _context.Instructors.Find(currentVehicleSession.InstructorId);
+            return currentVehicleSession.Instructor;
         }
 
         public List<Instructor> GetInstructorsByDrivingSchoolId(int id)

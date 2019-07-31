@@ -68,6 +68,10 @@ namespace Retrovizor.Domain.Repositories.Implementations
         public Location GetLocationByEventId(int id)
         {
             var eventToGet = _context.Events.Find(id);
+
+            if(eventToGet == null)
+                return null;
+
             return _context.Locations.Find(eventToGet.LocationId);
         }
     }

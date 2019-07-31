@@ -12,6 +12,7 @@ namespace Retrovizor.Domain.Repositories.Interfaces
         bool DeleteEvent(int idOfEventToDelete);
         Event GetEventById(int id);
         List<Event> GetEventsByStudentId(int id);
-        List<Event> GetInstructorDrivingLessons(int id);
+        List<Event> GetInstructorDrivingLessonsByInstructorId(int id);
+        List<Event> GetEventsByDrivingSchoolId(int id);
     }
 }

@@ -19,6 +19,9 @@ namespace Retrovizor.Domain.Repositories.Implementations
         {
             var students = _context.Students.Where(s => s.DrivingSchoolId == id);
 
+            if(students == null)
+                return null;
+
             var studentClasses = new List<StudentClass>();
 
             foreach(var student in students)

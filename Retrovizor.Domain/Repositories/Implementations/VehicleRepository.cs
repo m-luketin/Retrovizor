@@ -105,7 +105,10 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public List<Vehicle> GetVehiclesByStudentId(int id)
         {
-            var vehicleSessions = _context.VehicleSessions.Where(vs => vs.StudentId == id);
+            var vehicleSessions = _context.VehicleSessions.Where(vs => vs.StudentId == id).ToList();
+
+            if(vehicleSessions == null)
+                return null;
 
             var vehicles = new List<Vehicle>();
 

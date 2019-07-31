@@ -21,8 +21,9 @@ namespace Retrovizor.Domain.Repositories.Implementations
             if(doesStudentEventExist)
                 return false;
 
-            var isStudentBusy = _context.StudentEvents.Any(studentEvent =>
-                            studentEvent.StudentId == studentEventToAdd.StudentId && studentEvent.Event.Time == studentEventToAdd.Event.Time);
+            var isStudentBusy = _context.StudentEvents.Any(se => se.StudentId == studentEventToAdd.StudentId && (
+                                    (se.Event.StartsAt < studentEventToAdd.Event.StartsAt && se.Event.EndsAt > studentEventToAdd.Event.StartsAt) || 
+                                    (se.Event.StartsAt < studentEventToAdd.Event.EndsAt && se.Event.EndsAt > studentEventToAdd.Event.EndsAt)));
 
             if(isStudentBusy)
                 return false;

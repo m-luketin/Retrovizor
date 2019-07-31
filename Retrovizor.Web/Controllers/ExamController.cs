@@ -79,5 +79,13 @@ namespace Retrovizor.Web.Controllers
 
             return Ok(exams);
         }
+
+        [HttpGet("get-pass-rate/{id}")]
+        public IActionResult GetExamPassRateByExamId(int id)
+        {
+            var passRate = _examRepository.GetExamPassRateByExamId(id);
+
+            return Ok(passRate);
+        }
     }
 }
