@@ -10,6 +10,7 @@ namespace Retrovizor.Data.Entities.Models
         public Student Student { get; set; }
         public int ExamId { get; set; }
         public Exam Exam { get; set; }
+        public DateTime DateTaken { get; set; }
         public int Points { get; set; }
     }
 }

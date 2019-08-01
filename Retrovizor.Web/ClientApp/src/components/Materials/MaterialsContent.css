@@ -1,0 +1,35 @@
+header {
+  display: flex;
+  align-items: flex-end;
+}
+
+.header__title {
+  color: #1488cc;
+  margin-left: 21px;
+}
+
+.main__button--star {
+  position: absolute;
+  width: 25.92px;
+  height: 24.84px;
+  left: 23.08px;
+}
+
+.main__button--description {
+  position: absolute;
+  font-size: 20px;
+  left: 66px;
+  max-width: 235px;
+}
+
+.main__button--number {
+  position: absolute;
+  width: 21px;
+  height: 33px;
+  font-size: 24px;
+  left: 29.5px;
+}
+
+.main__button--green {
+  background-image: linear-gradient(to right, #a6de61, #57ac30);
+}

@@ -9,6 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using Retrovizor.Data.Entities;
+using Retrovizor.Domain.Repositories.Implementations;
+using Retrovizor.Domain.Repositories.Interfaces;
 
 namespace Retrovizor
 {
@@ -26,7 +28,24 @@ namespace Retrovizor
         {
             services.AddDbContext<RetrovizorContext>(options => 
                 options.UseSqlServer(Configuration.GetConnectionString("RetrovizorContext")));
-            
+
+            services.AddScoped<IAdminRepository, AdminRepository>();
+            services.AddScoped<IClassRepository, ClassRepository>();
+            services.AddScoped<IDrivingSchoolRepository, DrivingSchoolRepository>();
+            services.AddScoped<IEventRepository, EventRepository>();
+            services.AddScoped<IExamRepository, ExamRepository>();
+            services.AddScoped<IInstructorRepository, InstructorRepository>();
+            services.AddScoped<ILocationRepository, LocationRepository>();
+            services.AddScoped<IReviewRepository, ReviewRepository>();
+            services.AddScoped<IStudentClassRepository, StudentClassRepository>();
+            services.AddScoped<IStudentEventRepository, StudentEventRepository>();
+            services.AddScoped<IStudentExamRepository, StudentExamRepository>();
+            services.AddScoped<IStudentRepository, StudentRepository>();
+            services.AddScoped<IVehicleRepository, VehicleRepository>();
+            services.AddScoped<IVehicleSessionRepository, VehicleSessionRepository>();
+
+            services.Configure<Web.JWTSettings>(Configuration.GetSection("JWTSettings"));
+
             services.AddMvc().AddJsonOptions(options =>
             {
                 options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();

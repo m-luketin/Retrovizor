@@ -44,6 +44,8 @@ namespace Retrovizor.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Name");
+
                     b.Property<int>("TotalLessons");
 
                     b.Property<string>("Type");
@@ -76,6 +78,8 @@ namespace Retrovizor.Data.Migrations
 
                     b.Property<int>("LocationId");
 
+                    b.Property<string>("Name");
+
                     b.Property<DateTime>("Time");
 
                     b.Property<string>("Type");
@@ -92,6 +96,8 @@ namespace Retrovizor.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("PointsToPass");
 
                     b.Property<int>("TotalPoints");
 
@@ -113,6 +119,8 @@ namespace Retrovizor.Data.Migrations
                     b.Property<string>("FirstName");
 
                     b.Property<string>("LastName");
+
+                    b.Property<string>("OIB");
 
                     b.Property<string>("Password");
 
@@ -158,9 +166,13 @@ namespace Retrovizor.Data.Migrations
 
                     b.Property<string>("ReviewText");
 
+                    b.Property<int>("StudentId");
+
                     b.HasKey("Id");
 
                     b.HasIndex("InstructorId");
+
+                    b.HasIndex("StudentId");
 
                     b.ToTable("Reviews");
                 });
@@ -228,28 +240,15 @@ namespace Retrovizor.Data.Migrations
 
                     b.Property<int>("ExamId");
 
+                    b.Property<DateTime>("DateTaken");
+
                     b.Property<int>("Points");
 
-                    b.HasKey("StudentId", "ExamId", "Points");
+                    b.HasKey("StudentId", "ExamId", "DateTaken");
 
                     b.HasIndex("ExamId");
 
                     b.ToTable("StudentExams");
-                });
-
-            modelBuilder.Entity("Retrovizor.Data.Entities.Models.StudentInstructor", b =>
-                {
-                    b.Property<int>("StudentId");
-
-                    b.Property<int>("InstructorId");
-
-                    b.Property<DateTime>("DateAssigned");
-
-                    b.HasKey("StudentId", "InstructorId", "DateAssigned");
-
-                    b.HasIndex("InstructorId");
-
-                    b.ToTable("StudentInstructors");
                 });
 
             modelBuilder.Entity("Retrovizor.Data.Entities.Models.Vehicle", b =>
@@ -261,6 +260,8 @@ namespace Retrovizor.Data.Migrations
                     b.Property<string>("FuelType");
 
                     b.Property<string>("Image");
+
+                    b.Property<string>("LicensePlate");
 
                     b.Property<string>("Manufacturer");
 
@@ -322,6 +323,10 @@ namespace Retrovizor.Data.Migrations
                     b.HasOne("Retrovizor.Data.Entities.Models.Instructor", "Instructor")
                         .WithMany("Reviews")
                         .HasForeignKey("InstructorId");
+
+                    b.HasOne("Retrovizor.Data.Entities.Models.Student", "Student")
+                        .WithMany("Reviews")
+                        .HasForeignKey("StudentId");
                 });
 
             modelBuilder.Entity("Retrovizor.Data.Entities.Models.Student", b =>
@@ -361,17 +366,6 @@ namespace Retrovizor.Data.Migrations
 
                     b.HasOne("Retrovizor.Data.Entities.Models.Student", "Student")
                         .WithMany("StudentExams")
-                        .HasForeignKey("StudentId");
-                });
-
-            modelBuilder.Entity("Retrovizor.Data.Entities.Models.StudentInstructor", b =>
-                {
-                    b.HasOne("Retrovizor.Data.Entities.Models.Instructor", "Instructor")
-                        .WithMany("StudentInstructors")
-                        .HasForeignKey("InstructorId");
-
-                    b.HasOne("Retrovizor.Data.Entities.Models.Student", "Student")
-                        .WithMany("StudentInstructors")
                         .HasForeignKey("StudentId");
                 });
 
