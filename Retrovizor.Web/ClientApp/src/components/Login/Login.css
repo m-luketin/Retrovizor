@@ -42,7 +42,7 @@
   font-size: 22px;
 }
 
-.field__input,
+.login-form__field,
 .login-container__logo {
   margin-bottom: 48px;
 }
@@ -62,13 +62,41 @@
   color: #1488cc;
 }
 
+.field__border-overlay {
+  background: #fff;
+  width: 0px;
+  height: 5px;
+  position: absolute;
+  left: 26px;
+  top: 0;
+  transition: all ease-in-out 0.15s;
+}
+
+.field__border-overlay--delay {
+  transition-delay: 0.175s;
+}
+
+.field__border-overlay--focused {
+  width: 120px;
+}
+
 .field__label {
   padding: 0 4px;
-  background-color: #fff;
   position: absolute;
   left: 28px;
-  top: -9px;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 2;
+  font-size: 22px;
+  font-weight: 400;
+  pointer-events: none;
+  transition: all ease-in-out 0.25s;
+}
+
+.field__label--focused {
+  top: 0px;
+  font-weight: 500;
+  font-size: 16px;
 }
 
 .field__submit {
