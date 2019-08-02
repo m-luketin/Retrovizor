@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import ProfileImg from "../../assets/instructor.gif";
-import "../Common.css";
+import ProfileImg from "../../../assets/instructor.gif";
 import "./StudentProfile.css";
 
 export default class StudentProfile extends Component {

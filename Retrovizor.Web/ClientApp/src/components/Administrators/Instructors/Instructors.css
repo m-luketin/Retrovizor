@@ -1,0 +1,18 @@
+.header__icon--plus {
+  margin-top: 25px;
+}
+
+.header__icon--pencil {
+  width: 17.64px;
+  height: 16.8px;
+  margin-right: 17px;
+  margin-top: 30px;
+}
+
+.button__info--small {
+  font-size: 14px !important;
+}
+
+.instructor__schedule--button--exam {
+  background-image: linear-gradient(to top right, #a8e063, #56ab2f);
+}

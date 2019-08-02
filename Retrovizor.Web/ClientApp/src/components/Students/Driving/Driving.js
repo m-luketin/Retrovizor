@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../Common.css";
 import "./Driving.css";
 import DrivingWithLesson from "./DrivingWithLesson";
 import DrivingWithoutLesson from "./DrivingWithoutLesson";

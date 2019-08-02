@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import instructorImg from "../../assets/instructor.gif";
+import instructorImg from "../../../assets/instructor.gif";
 
 export default class DrivingWithLesson extends Component {
   render() {

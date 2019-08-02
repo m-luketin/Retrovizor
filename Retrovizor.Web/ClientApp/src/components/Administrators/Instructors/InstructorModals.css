@@ -1,0 +1,99 @@
+.modal--wrapper {
+  width: 380px;
+  background-color: #fff;
+  border-radius: 17px;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.modal__title {
+  font-size: 25px;
+  color: #8b959e;
+  margin: 0;
+  margin-bottom: 17px;
+}
+
+.modal__input--wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal__input--wrapper--bottom {
+  margin-bottom: 0;
+}
+
+.modal__input--wrapper input {
+  width: 280px;
+  height: 32px;
+  box-sizing: border-box;
+  border-radius: 7px;
+  border: 1px solid #8b959e;
+  font-size: 17px;
+  padding: 10px;
+}
+
+.modal__input--wrapper input:focus {
+  border-color: #1488cc;
+  color: #1488cc;
+  outline: none;
+}
+
+.modal__input--wrapper input:focus::placeholder {
+  color: #1488cc;
+}
+
+.modal__input--car {
+  width: 125px !important;
+}
+
+.modal__input--year {
+  width: 100px !important;
+}
+
+.modal__icon--name {
+  width: 16px;
+  height: 20px;
+}
+
+.modal__icon--phone {
+  width: 18px;
+  height: 18px;
+}
+
+.modal__icon--car {
+  width: 20px;
+  height: 17.6px;
+}
+
+.modal__icon--calendar {
+  width: 20px;
+  height: 19.2px;
+}
+
+.modal__input--wrapper button {
+  width: 154px;
+  height: 32px;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 7px;
+  text-align: center;
+}
+
+.modal__button--empty {
+  background: none;
+  color: #1488cc;
+}
+
+.modal__button--blue {
+  background-color: #1488cc;
+  color: #fff;
+}
+
+.modal__button--red {
+  background: none;
+  color: #eb3349;
+}

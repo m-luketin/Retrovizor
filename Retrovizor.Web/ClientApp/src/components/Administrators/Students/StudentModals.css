@@ -1,0 +1,56 @@
+.modal__icon--category {
+  width: 20px;
+  height: 20px;
+  background-color: #8b959e;
+  color: #fff;
+  text-align: center;
+  font-size: 17px;
+  border-radius: 4px;
+  margin: 0;
+}
+
+.modal__input--points {
+  width: 100% !important;
+}
+
+.modal__input--radio {
+  display: none;
+}
+
+.modal__input--radio:checked + .modal__input--passed,
+.modal__input--radio:checked + .modal__input--failed {
+  /* what to do when clicked*/
+}
+
+.modal__input--passed,
+.modal__input--failed {
+  cursor: pointer;
+  color: #fff;
+  padding: 5px 15px;
+  border-radius: 7px;
+  font-size: 18px;
+}
+
+.modal__input--passed {
+  background-image: linear-gradient(to top right, #a8e063, #56ab2f);
+}
+
+.modal__input--failed {
+  background-color: #8b959e;
+}
+
+.modal__input--wrapper input:disabled {
+  background: none;
+}
+
+.modal__instructor--wrapper {
+  position: relative;
+}
+
+.modal__instructor--arrow {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  right: 9.5px;
+  top: 9.5px;
+}

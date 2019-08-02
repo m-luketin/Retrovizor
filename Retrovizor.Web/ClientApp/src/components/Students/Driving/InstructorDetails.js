@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import instructorImg from "../../assets/instructor.gif";
-import instructorCar from "../../assets/instructor-car.png";
+import instructorImg from "../../../assets/instructor.gif";
+import instructorCar from "../../../assets/instructor-car.png";
 import "./Instructor.css";
 
 export default class InstructorDetails extends Component {

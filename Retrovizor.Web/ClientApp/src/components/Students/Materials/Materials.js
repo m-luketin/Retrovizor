@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "../Common.css";
 import "./Materials.css";
 
 export default class Materials extends Component {

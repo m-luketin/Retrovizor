@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "../Common.css";
 import "./MaterialsContent.css";
 
 export default class Regulations extends Component {
