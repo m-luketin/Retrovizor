@@ -3,8 +3,8 @@
     <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
     <title>Shape</title>
     <desc>Created with Sketch.</desc>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Budicon-Solid/Interface/heart" transform="translate(0.000000, -1.000000)" fill="#FFFFFF" fill-rule="nonzero">
+    <g id="Symbols" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+        <g id="Budicon-Solid/Interface/heart" transform="translate(0.000000, -1.000000)" fill="#FFFFFF" fillRule="nonzero">
             <path d="M25,8 C25,15.5225 13.5543,23.34 13.067,23.6755 L12.497,24 L11.9289,23.6049 C11.4418,23.2658 0,15.437 0,8 C0,3.813 2.6121,1 6.5,1 C9.2249,1 11.3841,3.025 12.5045,4.349 C13.6332,3.027 15.8035,1 18.5,1 C22.3879,1 25,3.813 25,8 Z" id="Shape"></path>
         </g>
     </g>

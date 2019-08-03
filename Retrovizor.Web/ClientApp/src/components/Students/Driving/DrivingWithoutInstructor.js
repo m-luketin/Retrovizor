@@ -12,7 +12,7 @@ export default class DrivingWithoutInstructor extends Component {
         </section>
         <section className="main__next--lesson--wrapper">
           <h3 className="main__next--lesson">Sljedeći termin:</h3>
-          <Link to="/voznja/instruktori">
+          <Link to="/kandidat/voznja/administrator/instruktori">
             <div className="main__driving">
               <button className="main__button main__button--schedule main__button--driving main__button--driving--add main__button--driving--nothing">
                 <svg
@@ -25,7 +25,7 @@ export default class DrivingWithoutInstructor extends Component {
                   <g
                     id="Symbols"
                     stroke="none"
-                    stroke-width="1"
+                    strokeWidth="1"
                     fill="none"
                     fillRule="evenodd"
                   >

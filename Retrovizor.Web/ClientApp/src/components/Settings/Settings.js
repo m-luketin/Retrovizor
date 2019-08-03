@@ -1,46 +1,47 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import "./Settings.css";
 
 export default class Settings extends Component {
+  returnToLastPage = () => {
+    this.props.history.goBack();
+  };
+
   render() {
     return (
       <React.Fragment>
-        <header>
-          <Link to="/profil">
-            <svg
-              className="header__arrow"
-              xmlns="http://www.w3.org/2000/svg"
-              width="15px"
-              height="27px"
-              viewBox="0 0 15 27"
-              version="1.1"
+        <header onClick={this.returnToLastPage}>
+          <svg
+            className="header__arrow"
+            xmlns="http://www.w3.org/2000/svg"
+            width="15px"
+            height="27px"
+            viewBox="0 0 15 27"
+            version="1.1"
+          >
+            <g
+              id="Polaznik"
+              stroke="none"
+              strokeWidth="1"
+              fill="none"
+              fillRule="evenodd"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
               <g
-                id="Polaznik"
-                stroke="none"
-                strokeWidth="1"
-                fill="none"
-                fillRule="evenodd"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+                id="Instruktor"
+                transform="translate(-15.000000, -58.000000)"
+                stroke="#1488CC"
+                strokeWidth="4"
               >
-                <g
-                  id="Instruktor"
-                  transform="translate(-15.000000, -58.000000)"
-                  stroke="#1488CC"
-                  strokeWidth="4"
-                >
-                  <polyline
-                    id="Path"
-                    transform="translate(27.606602, 71.500000) rotate(-315.000000) translate(-27.606602, -71.500000) "
-                    points="20.1066017 64 20.1066017 79 35.1066017 79"
-                  />
-                </g>
+                <polyline
+                  id="Path"
+                  transform="translate(27.606602, 71.500000) rotate(-315.000000) translate(-27.606602, -71.500000) "
+                  points="20.1066017 64 20.1066017 79 35.1066017 79"
+                />
               </g>
-            </svg>
-            <h1 className="header__title header__title--blue">Postavke</h1>
-          </Link>
+            </g>
+          </svg>
+          <h1 className="header__title header__title--blue">Postavke</h1>
         </header>
 
         <main>

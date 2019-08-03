@@ -11,7 +11,7 @@ export default class Materials extends Component {
         </header>
 
         <main>
-          <Link to="/materijali/propisi">
+          <Link to="/kandidat/materijali/propisi">
             <button className="main__button--big bc-blue">
               <div className="main__button--images">
                 <svg
@@ -118,7 +118,7 @@ export default class Materials extends Component {
             </button>
           </Link>
 
-          <Link to="/materijali/prva-pomoc">
+          <Link to="/kandidat/materijali/prva-pomoc">
             <button className="main__button--big bc-red">
               <svg
                 className="main__button--images main__button--heart"

@@ -3,8 +3,8 @@
     <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
     <title>Shape</title>
     <desc>Created with Sketch.</desc>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Budicon-Solid/Travel/location-pin" transform="translate(-4.000000, 0.000000)" fill="#1488CC" fill-rule="nonzero">
+    <g id="Symbols" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+        <g id="Budicon-Solid/Travel/location-pin" transform="translate(-4.000000, 0.000000)" fill="#1488CC" fillRule="nonzero">
             <path d="M12.5,0 C7.80557963,0 4,3.80557963 4,8.5 C4,13.4769 8.9834,21.3966 11.3184,24.4174 C11.600883,24.7844276 12.0376598,24.999632 12.5008074,24.9999849 C12.9639551,25.0003368 13.4010588,24.7857973 13.6841,24.4192 C16.0205,21.4063 21,13.5069 21,8.5 C21,6.24565984 20.1044669,4.08365158 18.5104076,2.48959236 C16.9163484,0.895533143 14.7543402,0 12.5,0 L12.5,0 Z M12.5,11 C10.5670034,11 9,9.43299662 9,7.5 C9,5.56700338 10.5670034,4 12.5,4 C14.4329966,4 16,5.56700338 16,7.5 C16,9.43299662 14.4329966,11 12.5,11 L12.5,11 Z" id="Shape"></path>
         </g>
     </g>

@@ -33,4 +33,12 @@ nav {
   height: 32.08px;
   margin-right: 10px;
 }
+
+.nav__hamburger--admin {
+  margin-left: 0;
+}
+
+.nav__car--admin {
+  margin-left: 10px;
+}
 /* Navigation */

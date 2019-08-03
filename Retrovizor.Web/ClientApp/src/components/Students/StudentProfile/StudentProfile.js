@@ -10,7 +10,7 @@ export default class StudentProfile extends Component {
         <header className="header">
           <h1 className="header__title">Profil</h1>
           <button>
-            <Link to="/profil/postavke">
+            <Link to="/kandidat/profil/postavke">
               <img
                 className="bi x0 y0 w1 h1 header__settings"
                 alt="Settings button"

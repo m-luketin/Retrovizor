@@ -3,8 +3,8 @@
     <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
     <title>Path</title>
     <desc>Created with Sketch.</desc>
-    <g id="Polaznik" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
-        <g id="Instruktor" transform="translate(-15.000000, -58.000000)" stroke="#1488CC" stroke-width="4">
+    <g id="Polaznik" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd" strokeLinecap="round" strokeLinejoin="round">
+        <g id="Instruktor" transform="translate(-15.000000, -58.000000)" stroke="#1488CC" strokeWidth="4">
             <polyline id="Path" transform="translate(27.606602, 71.500000) rotate(-315.000000) translate(-27.606602, -71.500000) " points="20.1066017 64 20.1066017 79 35.1066017 79"></polyline>
         </g>
     </g>

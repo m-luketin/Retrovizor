@@ -7,7 +7,7 @@ export default class FirstAid extends Component {
     return (
       <React.Fragment>
         <header>
-          <Link to="/materijali">
+          <Link to="/kandidat/materijali">
             <svg
               className="header__arrow"
               xmlns="http://www.w3.org/2000/svg"

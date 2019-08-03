@@ -49,7 +49,7 @@ export default class Instructors extends Component {
                 alt="Instruktor"
               />
 
-              <Link to="/instruktori/detalji">
+              <Link to="/administrator/instruktori/detalji">
                 <button className="main__button main__button--schedule main__button--driving main__button--instructor">
                   <span className="button__info">
                     <h3 className="instructor__name">Ivan Bartičević</h3>
