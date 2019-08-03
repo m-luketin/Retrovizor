@@ -1,5 +1,8 @@
-﻿using Retrovizor.Data.Entities;
+﻿using CashRegister.Data.Helpers;
+using Retrovizor.Data.Entities;
 using Retrovizor.Data.Entities.Models;
+using Retrovizor.Data.Enums;
+using Retrovizor.Domain.Classes;
 using Retrovizor.Domain.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -120,6 +123,19 @@ namespace Retrovizor.Domain.Repositories.Implementations
                     instructorsStudents.Add(student);
             }
             return instructorsStudents;
+        }
+
+        public UserCredentials VerifyCredentials(UserCredentials credentials)
+        {
+            var studentMatch = _context.Students.First(student => student.Username == credentials.Username
+            && HashHelper.ValidatePassword(student.Password, credentials.Password));
+
+            if (studentMatch == null) return null;
+
+            credentials.Id = studentMatch.Id;
+            credentials.Role = (Role)0;
+
+            return credentials;
         }
     }
 }

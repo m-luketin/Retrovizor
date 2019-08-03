@@ -1,5 +1,8 @@
-﻿using Retrovizor.Data.Entities;
+﻿using CashRegister.Data.Helpers;
+using Retrovizor.Data.Entities;
 using Retrovizor.Data.Entities.Models;
+using Retrovizor.Data.Enums;
+using Retrovizor.Domain.Classes;
 using Retrovizor.Domain.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -86,6 +89,19 @@ namespace Retrovizor.Domain.Repositories.Implementations
         public List<Instructor> GetInstructorsByDrivingSchoolId(int id)
         {
             return _context.Instructors.Where(i => i.DrivingSchoolId == id).ToList();
+        }
+
+        public UserCredentials VerifyCredentials(UserCredentials credentials)
+        {
+            var instructorMatch = _context.Instructors.First(instructor => instructor.Username == credentials.Username
+            && HashHelper.ValidatePassword(instructor.Password, credentials.Password));
+
+            if (instructorMatch == null) return null;
+
+            credentials.Id = instructorMatch.Id;
+            credentials.Role = (Role)1;
+
+            return credentials;
         }
     }
 }

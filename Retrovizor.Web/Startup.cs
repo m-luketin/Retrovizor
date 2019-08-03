@@ -1,14 +1,17 @@
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using Retrovizor.Data.Entities;
+using Retrovizor.Domain.Helpers;
 using Retrovizor.Domain.Repositories.Implementations;
 using Retrovizor.Domain.Repositories.Interfaces;
 
@@ -26,6 +29,23 @@ namespace Retrovizor
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(cfg =>
+                {
+                    cfg.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+                    {
+                        ValidateLifetime = true,
+                        ValidateIssuer = true,
+                        ValidIssuer = Configuration["JWT:Issuer"],
+                        ValidateAudience = true,
+                        ValidAudience = Configuration["JWT:Audience"],
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Secret"]))
+                    };
+                });
+
             services.AddDbContext<RetrovizorContext>(options => 
                 options.UseSqlServer(Configuration.GetConnectionString("RetrovizorContext")));
 
@@ -43,6 +63,8 @@ namespace Retrovizor
             services.AddScoped<IStudentRepository, StudentRepository>();
             services.AddScoped<IVehicleRepository, VehicleRepository>();
             services.AddScoped<IVehicleSessionRepository, VehicleSessionRepository>();
+
+            services.AddSingleton<JwtHelper>();
 
             services.Configure<Web.JWTSettings>(Configuration.GetSection("JWTSettings"));
 
@@ -76,6 +98,8 @@ namespace Retrovizor
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+            app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {

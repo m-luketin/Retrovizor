@@ -1,9 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Retrovizor.Data.Entities.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Retrovizor.Data.Entities
 {
@@ -26,6 +23,7 @@ namespace Retrovizor.Data.Entities
         public DbSet<StudentExam> StudentExams { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<VehicleSession> VehicleSessions { get; set; }
+        public object HashHelper { get; private set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -46,7 +44,7 @@ namespace Retrovizor.Data.Entities
                 .HasOne(se => se.Exam)
                 .WithMany(se => se.StudentExams)
                 .HasForeignKey(se => se.ExamId);
-            
+
             modelBuilder.Entity<StudentClass>()
                 .HasOne(sc => sc.Student)
                 .WithMany(sc => sc.StudentClasses)
@@ -86,13 +84,13 @@ namespace Retrovizor.Data.Entities
                 .HasOne(r => r.Student)
                 .WithMany(r => r.Reviews)
                 .HasForeignKey(r => r.StudentId);
-            
+
             // overriding default delete behaviour
             var cascadeFKs = modelBuilder.Model.GetEntityTypes()
                 .SelectMany(t => t.GetForeignKeys())
                 .Where(fk => !fk.IsOwnership && fk.DeleteBehavior == DeleteBehavior.Cascade);
 
-            foreach(var fk in cascadeFKs)
+            foreach (var fk in cascadeFKs)
                 fk.DeleteBehavior = DeleteBehavior.ClientSetNull;
 
             base.OnModelCreating(modelBuilder);

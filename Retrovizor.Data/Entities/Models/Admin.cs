@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Retrovizor.Data.Enums;
 
 namespace Retrovizor.Data.Entities.Models
 {
