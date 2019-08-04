@@ -31,7 +31,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             if(student == null)
                 return null;
 
-            return _context.DrivingSchools.Find(student.DrivingSchoolId);
+            return _context.DrivingSchools.Find(student.User.DrivingSchoolId);
         }
 
         public DrivingSchool GetDrivingSchoolByInstructorId(int id)
@@ -41,7 +41,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             if(instructor == null)
                 return null;
 
-            return _context.DrivingSchools.Find(instructor.DrivingSchoolId);
+            return _context.DrivingSchools.Find(instructor.User.DrivingSchoolId);
         }
 
         public DrivingSchool GetDrivingSchoolByAdminId(int id)
@@ -51,7 +51,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             if(admin == null)
                 return null;
 
-            return _context.DrivingSchools.Find(admin.DrivingSchoolId);
+            return _context.DrivingSchools.Find(admin.User.DrivingSchoolId);
         }
     }
 }

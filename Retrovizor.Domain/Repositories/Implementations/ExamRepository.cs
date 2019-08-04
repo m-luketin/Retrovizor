@@ -17,7 +17,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public List<Exam> GetAllExamsByDrivingSchoolId(int id)
         {
-            var students = _context.Students.Where(s => s.DrivingSchoolId == id).ToList();
+            var students = _context.Students.Where(s => s.User.DrivingSchoolId == id).ToList();
 
             if(students == null)
                 return null;

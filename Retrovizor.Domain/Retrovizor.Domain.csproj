@@ -32,7 +32,5 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Helpers\JwtSecurityToken.cs" />
-    <Compile Remove="Repositories\Implementations\UserRepository.cs" />
-    <Compile Remove="Repositories\Implementations\UserRepository.cs" />
   </ItemGroup>
 </Project>

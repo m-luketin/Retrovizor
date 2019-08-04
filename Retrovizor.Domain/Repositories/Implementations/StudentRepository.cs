@@ -25,11 +25,10 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public bool AddStudent(Student studentToAdd)
         {
-            var doesStudentExist = _context.Students.Any(student =>
-                string.Equals(student.OIB, studentToAdd.OIB, StringComparison.CurrentCultureIgnoreCase));
+            if (_context.Users.Any(u => u.Username == studentToAdd.User.Username
+                || u.OIB == studentToAdd.User.OIB || u.PhoneNumber == studentToAdd.User.PhoneNumber)) return false;
 
-            if(doesStudentExist)
-                return false;
+            studentToAdd.User.DrivingSchool = _context.DrivingSchools.Find(studentToAdd.User.DrivingSchoolId);
 
             _context.Students.Add(studentToAdd);
             _context.SaveChanges();
@@ -45,10 +44,10 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
             studentToEdit.FirstName = editedStudent.FirstName;
             studentToEdit.LastName = editedStudent.LastName;
-            studentToEdit.Username = editedStudent.Username;
-            studentToEdit.Password = editedStudent.Password;
-            studentToEdit.OIB = editedStudent.OIB;
-            studentToEdit.PhoneNumber = editedStudent.PhoneNumber;
+            studentToEdit.User.Username = editedStudent.User.Username;
+            studentToEdit.User.Password = editedStudent.User.Password;
+            studentToEdit.User.OIB = editedStudent.User.OIB;
+            studentToEdit.User.PhoneNumber = editedStudent.User.PhoneNumber;
             studentToEdit.Category = editedStudent.Category;
 
             _context.SaveChanges();
@@ -74,7 +73,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public List<Student> GetStudentsByDrivingSchoolId(int id)
         {
-            return _context.Students.Where(s => s.DrivingSchoolId == id).ToList();
+            return _context.Students.Where(s => s.User.DrivingSchoolId == id).ToList();
         }
 
         public List<Student> GetStudentsByInstructorId(int id)
@@ -127,13 +126,13 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public UserCredentials VerifyCredentials(UserCredentials credentials)
         {
-            var studentMatch = _context.Students.First(student => student.Username == credentials.Username
+            /*var studentMatch = _context.Students.First(student => student.Username == credentials.Username
             && HashHelper.ValidatePassword(student.Password, credentials.Password));
 
             if (studentMatch == null) return null;
 
             credentials.Id = studentMatch.Id;
-            credentials.Role = (Role)0;
+            credentials.Role = (Role)0;*/
 
             return credentials;
         }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Retrovizor.Domain.Classes;
 using Retrovizor.Domain.Helpers;
@@ -47,6 +48,14 @@ namespace Retrovizor.Web.Controllers
             return Ok(_jwtHelper.GetJwtToken(verifiedCredentials));
         }
 
+        /*[HttpPost("refresh")]
+        public IActionResult Refresh(string token, string refreshToken)
+        {
+            var principal = _jwtHelper.GetNewToken(token);
+            var username = principal.Identity.Name;
+            var savedRefreshToken = ;
+        }*/
+        
         [Authorize(Roles = "Admin")]
         [HttpGet("test-authorize")]
         public IActionResult TestAuthorize()
