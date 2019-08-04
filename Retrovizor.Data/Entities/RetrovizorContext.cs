@@ -198,7 +198,7 @@ namespace Retrovizor.Data.Entities
                     OIB = "12345123461",
                     PhoneNumber = "00385976086801",
                     Category = "A1",
-                    DrivingSchoolId = 0
+                    DrivingSchoolId = 1
                 },
                 new
                 {
@@ -210,7 +210,7 @@ namespace Retrovizor.Data.Entities
                     OIB = "12345123462",
                     PhoneNumber = "00385976086801",
                     Category = "B",
-                    DrivingSchoolId = 0
+                    DrivingSchoolId = 1
                 },
                 new
                 {
@@ -222,7 +222,7 @@ namespace Retrovizor.Data.Entities
                     OIB = "12345123463",
                     PhoneNumber = "00385976086801",
                     Category = "B",
-                    DrivingSchoolId = 0
+                    DrivingSchoolId = 1
                 },
                 new
                 {
@@ -234,7 +234,7 @@ namespace Retrovizor.Data.Entities
                     OIB = "12345123464",
                     PhoneNumber = "00385976086801",
                     Category = "A2",
-                    DrivingSchoolId = 0
+                    DrivingSchoolId = 1
                 },
                 new
                 {
@@ -245,8 +245,8 @@ namespace Retrovizor.Data.Entities
                     Password = "",
                     OIB = "12345123465",
                     PhoneNumber = "00385976086801",
-                    Category = "",
-                    DrivingSchoolId = 0
+                    Category = "B",
+                    DrivingSchoolId = 1
                 },
                 new
                 {
@@ -254,11 +254,11 @@ namespace Retrovizor.Data.Entities
                     FirstName = "Petra",
                     LastName = "Condic",
                     Username = "PCondic",
-                    Password = "",
+                    Password = "B",
                     OIB = "12345123466",
                     PhoneNumber = "00385976086801",
                     Category = "",
-                    DrivingSchoolId = 0
+                    DrivingSchoolId = 1
                 },
                 new
                 {
@@ -269,8 +269,8 @@ namespace Retrovizor.Data.Entities
                     Password = "",
                     OIB = "12345123467",
                     PhoneNumber = "00385976086801",
-                    Category = "",
-                    DrivingSchoolId = 0
+                    Category = "B",
+                    DrivingSchoolId = 2
                 },
                 new
                 {
@@ -281,8 +281,8 @@ namespace Retrovizor.Data.Entities
                     Password = "",
                     OIB = "12345123468",
                     PhoneNumber = "00385976086801",
-                    Category = "",
-                    DrivingSchoolId = 0
+                    Category = "A",
+                    DrivingSchoolId = 2
                 }
             );
 
@@ -491,6 +491,423 @@ namespace Retrovizor.Data.Entities
                     Image = "",
                     Type = "Motorcycle",
                     LicensePlate = "ST-408-TO"
+                }
+            );
+
+            modelBuilder.Entity<Review>().HasData(
+                new
+                {
+                    Id = 1,
+                    InstructorId = 1,
+                    StudentId = 1,
+                    Text = "Odlicna instruktorica! Dobri savjeti, vrlo smirena i iskustvo se vidi! Preporucam."
+                },
+                new
+                {
+                    Id = 2,
+                    InstructorId = 2,
+                    StudentId = 2,
+                    Text = "Imali smo vrlo stresno druzenje, ali polozio sam isprve. Hvala instruktore!"
+                },
+                new
+                {
+                    Id = 3,
+                    InstructorId = 3,
+                    StudentId = 3,
+                    Text = "Uvjerljivo najbolji instruktor ikad!!!"
+                },
+                new
+                {
+                    Id = 4,
+                    InstructorId = 2,
+                    StudentId = 4,
+                    Text = "Reka mi je da mu ostavin neki komentar pa evo."
+                },
+                new
+                {
+                    Id = 5,
+                    InstructorId = 4,
+                    StudentId = 7,
+                    Text = "Ne znan jel instruktor autoskole ili se samo ubacija u auto sa mnon?!?!"
+                },
+                new
+                {
+                    Id = 6,
+                    InstructorId = 4,
+                    StudentId = 8,
+                    Text = "Nope. Nope. Nope."
+                }
+            );
+
+            modelBuilder.Entity<VehicleSession>().HasData(
+                new
+                {
+                    Id = 1,
+                    StudentId = 1,
+                    InstructorId = 1,
+                    VehicleId = 1,
+                    IsActive = true
+                },
+                new
+                {
+                    Id = 2,
+                    StudentId = 2,
+                    InstructorId = 2,
+                    VehicleId = 2,
+                    IsActive = true
+                },
+                new
+                {
+                    Id = 3,
+                    StudentId = 3,
+                    InstructorId = 3,
+                    VehicleId = 3,
+                    IsActive = true
+                },
+                new
+                {
+                    Id = 4,
+                    StudentId = 8,
+                    InstructorId = 4,
+                    VehicleId = 4,
+                    IsActive = true
+                },
+                new
+                {
+                    Id = 5,
+                    StudentId = 4,
+                    InstructorId = 2,
+                    VehicleId = 2,
+                    IsActive = true
+                },
+                new
+                {
+                    Id = 6,
+                    StudentId = 7,
+                    InstructorId = 4,
+                    VehicleId = 4,
+                    IsActive = true
+                },
+                new
+                {
+                    Id = 7,
+                    StudentId = 8,
+                    InstructorId = 4,
+                    VehicleId = 4,
+                    IsActive = true
+                }
+            );
+
+            modelBuilder.Entity<StudentClass>().HasData(
+                new
+                {
+                    StudentId = 1,
+                    ClassId = 1,
+                    CurrentLesson = 5
+                },
+                new
+                {
+                    StudentId = 1,
+                    ClassId = 2,
+                    CurrentLesson = 5
+                },
+                new
+                {
+                    StudentId = 2,
+                    ClassId = 1,
+                    CurrentLesson = 5
+                },
+                new
+                {
+                    StudentId = 2,
+                    ClassId = 2,
+                    CurrentLesson = 5
+                },
+                new
+                {
+                    StudentId = 3,
+                    ClassId = 1,
+                    CurrentLesson = 15
+                },
+                new
+                {
+                    StudentId = 3,
+                    ClassId = 2,
+                    CurrentLesson = 10
+                },
+                new
+                {
+                    StudentId = 4,
+                    ClassId = 1,
+                    CurrentLesson = 15
+                },
+                new
+                {
+                    StudentId = 4,
+                    ClassId = 2,
+                    CurrentLesson = 10
+                },
+                new
+                {
+                    StudentId = 5,
+                    ClassId = 1,
+                    CurrentLesson = 5
+                },
+                new
+                {
+                    StudentId = 5,
+                    ClassId = 2,
+                    CurrentLesson = 5
+                },
+                new
+                {
+                    StudentId = 6,
+                    ClassId = 1,
+                    CurrentLesson = 5
+                },
+                new
+                {
+                    StudentId = 6,
+                    ClassId = 2,
+                    CurrentLesson = 5
+                },
+                new
+                {
+                    StudentId = 7,
+                    ClassId = 1,
+                    CurrentLesson = 5
+                },
+                new
+                {
+                    StudentId = 7,
+                    ClassId = 2,
+                    CurrentLesson = 5
+                },
+                new
+                {
+                    StudentId = 8,
+                    ClassId = 1,
+                    CurrentLesson = 5
+                },
+                new
+                {
+                    StudentId = 8,
+                    ClassId = 2,
+                    CurrentLesson = 5
+                }
+            );
+
+            modelBuilder.Entity<StudentEvent>().HasData(
+                new
+                {
+                    StudentId = 1,
+                    EventId = 1
+                },
+                new
+                {
+                    StudentId = 1,
+                    EventId = 2
+                },
+                new
+                {
+                    StudentId = 1,
+                    EventId = 3
+                },
+                new
+                {
+                    StudentId = 1,
+                    EventId = 4
+                },
+                new
+                {
+                    StudentId = 1,
+                    EventId = 5
+                },
+                new
+                {
+                    StudentId = 1,
+                    EventId = 6
+                },
+                new
+                {
+                    StudentId = 2,
+                    EventId = 1
+                },
+                new
+                {
+                    StudentId = 2,
+                    EventId = 2
+                },
+                new
+                {
+                    StudentId = 2,
+                    EventId = 3
+                },
+                new
+                {
+                    StudentId = 2,
+                    EventId = 4
+                },
+                new
+                {
+                    StudentId = 2,
+                    EventId = 5
+                },
+                new
+                {
+                    StudentId = 2,
+                    EventId = 6
+                },
+                new
+                {
+                    StudentId = 5,
+                    EventId = 1
+                },
+                new
+                {
+                    StudentId = 5,
+                    EventId = 2
+                },
+                new
+                {
+                    StudentId = 5,
+                    EventId = 3
+                },
+                new
+                {
+                    StudentId = 5,
+                    EventId = 4
+                },
+                new
+                {
+                    StudentId = 5,
+                    EventId = 5
+                },
+                new
+                {
+                    StudentId = 5,
+                    EventId = 6
+                },
+                new
+                {
+                    StudentId = 6,
+                    EventId = 1
+                },
+                new
+                {
+                    StudentId = 6,
+                    EventId = 2
+                },
+                new
+                {
+                    StudentId = 6,
+                    EventId = 3
+                },
+                new
+                {
+                    StudentId = 6,
+                    EventId = 4
+                },
+                new
+                {
+                    StudentId = 6,
+                    EventId = 5
+                },
+                new
+                {
+                    StudentId = 6,
+                    EventId = 6
+                },
+                new
+                {
+                    StudentId = 7,
+                    EventId = 1
+                },
+                new
+                {
+                    StudentId = 7,
+                    EventId = 2
+                },
+                new
+                {
+                    StudentId = 7,
+                    EventId = 3
+                },
+                new
+                {
+                    StudentId = 7,
+                    EventId = 4
+                },
+                new
+                {
+                    StudentId = 7,
+                    EventId = 5
+                },
+                new
+                {
+                    StudentId = 7,
+                    EventId = 6
+                },
+                new
+                {
+                    StudentId = 8,
+                    EventId = 1
+                }, 
+                new
+                {
+                    StudentId = 8,
+                    EventId = 2
+                },
+                new
+                {
+                    StudentId = 8,
+                    EventId = 3
+                }, 
+                new
+                {
+                    StudentId = 8,
+                    EventId = 4
+                }, 
+                new
+                {
+                    StudentId = 8,
+                    EventId = 5
+                },
+                new
+                {
+                    StudentId = 8,
+                    EventId = 6
+                }
+            );
+
+            modelBuilder.Entity<StudentExam>().HasData(
+                new
+                {
+                    StudentId = 3,
+                    ExamId = 1,
+                    DateTaken = new DateTime(2019, 6, 31),
+                    Points = 115
+                },
+                new
+                {
+                    StudentId = 3,
+                    ExamId = 2,
+                    DateTaken = new DateTime(2019, 8, 1),
+                    Points = 55
+                },
+                new
+                {
+                    StudentId = 4,
+                    ExamId = 1,
+                    DateTaken = new DateTime(2019, 7, 1),
+                    Points = 100
+                },
+                new
+                {
+                    StudentId = 4,
+                    ExamId = 2,
+                    DateTaken = new DateTime(2019, 7, 31),
+                    Points = 35
                 }
             );
 
