@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Retrovizor.Data.Entities.Models;
@@ -19,6 +20,7 @@ namespace Retrovizor.Web.Controllers
         }
         private readonly ILocationRepository _locationRepository;
 
+        [Authorize]
         [HttpPost("add")]
         public IActionResult AddLocation(Location locationToAdd)
         {
@@ -30,6 +32,7 @@ namespace Retrovizor.Web.Controllers
             return Forbid();
         }
 
+        [Authorize]
         [HttpPost("edit")]
         public IActionResult EditLocation(Location editedLocation)
         {
@@ -41,6 +44,7 @@ namespace Retrovizor.Web.Controllers
             return NotFound();
         }
 
+        [Authorize]
         [HttpDelete("delete/{id}")]
         public IActionResult DeleteLocation(int id)
         {
@@ -52,6 +56,7 @@ namespace Retrovizor.Web.Controllers
             return NotFound();
         }
 
+        [Authorize]
         [HttpGet("get/{id}")]
         public IActionResult GetLocationById(int id)
         {
@@ -63,6 +68,7 @@ namespace Retrovizor.Web.Controllers
             return Ok(locationToGet);
         }
 
+        [Authorize]
         [HttpGet("get-by-event/{id}")]
         public IActionResult GetLocationByEventId(int id)
         {

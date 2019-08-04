@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Retrovizor.Data.Entities.Models;
@@ -19,12 +20,6 @@ namespace Retrovizor.Web.Controllers
         }
         private readonly IDrivingSchoolRepository _drivingSchoolRepository;
 
-        [HttpGet("all")]
-        public IActionResult GetAllDrivingSchools()
-        {
-            return Ok(_drivingSchoolRepository.GetAllDrivingSchools());
-        }
-
         [HttpGet("get/{id}")]
         public IActionResult GetDrivingSchoolById(int id)
         {
@@ -36,6 +31,7 @@ namespace Retrovizor.Web.Controllers
             return Ok(drivingSchoolToGet);
         }
 
+        [Authorize]
         [HttpGet("get-by-instructor/{id}")]
         public IActionResult GetDrivingSchoolByInstructorId(int id)
         {
@@ -47,6 +43,7 @@ namespace Retrovizor.Web.Controllers
             return Ok(classes);
         }
 
+        [Authorize]
         [HttpGet("get-by-student/{id}")]
         public IActionResult GetDrivingSchoolByStudentId(int id)
         {
@@ -58,6 +55,7 @@ namespace Retrovizor.Web.Controllers
             return Ok(classes);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("get-by-admin/{id}")]
         public IActionResult GetDrivingSchoolByAdminId(int id)
         {

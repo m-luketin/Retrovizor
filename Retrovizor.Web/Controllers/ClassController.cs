@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Retrovizor.Data.Entities.Models;
@@ -19,12 +20,14 @@ namespace Retrovizor.Web.Controllers
         }
         private readonly IClassRepository _classRepository;
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("get-by-driving-school/{id}")]
         public IActionResult GetAllClasses(int id)
         {
             return Ok(_classRepository.GetAllClassesByDrivingSchoolId(id));
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("add")]
         public IActionResult AddClass(Class classToAdd)
         {
@@ -36,6 +39,7 @@ namespace Retrovizor.Web.Controllers
             return Forbid();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("edit")]
         public IActionResult EditClass(Class editedClass)
         {
@@ -47,6 +51,7 @@ namespace Retrovizor.Web.Controllers
             return NotFound();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("delete/{id}")]
         public IActionResult DeleteClass(int id)
         {
@@ -58,6 +63,7 @@ namespace Retrovizor.Web.Controllers
             return NotFound();
         }
 
+        [Authorize]
         [HttpGet("get/{id}")]
         public IActionResult GetClassById(int id)
         {
@@ -69,6 +75,7 @@ namespace Retrovizor.Web.Controllers
             return Ok(classToGet); 
         }
 
+        [Authorize]
         [HttpGet("get-by-student/{id}")]
         public IActionResult GetClassesByStudentId(int id)
         {

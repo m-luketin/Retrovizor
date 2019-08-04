@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Retrovizor.Data.Entities.Models;
@@ -19,6 +20,7 @@ namespace Retrovizor.Web.Controllers
         }
         private readonly IStudentEventRepository _studentEventRepository;
 
+        [Authorize("Admin, Instructor")]
         [HttpPost("add")]
         public IActionResult AddStudentEvent(StudentEvent studentEvent)
         {
@@ -30,6 +32,7 @@ namespace Retrovizor.Web.Controllers
             return Forbid();
         }
 
+        [Authorize("Admin, Instructor")]
         [HttpDelete("delete")]
         public IActionResult DeleteStudentEvent(int studentId, int eventId)
         {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Retrovizor.Data.Entities.Models;
@@ -19,6 +20,7 @@ namespace Retrovizor.Web.Controllers
         }
         private readonly IVehicleSessionRepository _vehicleSessionRepository;
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("add")]
         public IActionResult AddVehicleSession(VehicleSession vehicleSessionToAdd)
         {
@@ -30,6 +32,7 @@ namespace Retrovizor.Web.Controllers
             return Forbid();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("delete")]
         public IActionResult DeleteVehicleSession(int studentId, int instructorId, int vehicleId)
         {
@@ -40,6 +43,7 @@ namespace Retrovizor.Web.Controllers
             return NotFound();
         }
 
+        [Authorize]
         [HttpGet("get-by-student/{id}")]
         public IActionResult GetVehicleSessionByStudentId(int id)
         {
@@ -51,6 +55,7 @@ namespace Retrovizor.Web.Controllers
             return Ok(vehicleSessionToGet);
         }
 
+        [Authorize]
         [HttpGet("get-by-instructor/{id}")]
         public IActionResult GetVehicleSessionsByInstructorId(int id)
         {
@@ -62,6 +67,7 @@ namespace Retrovizor.Web.Controllers
             return Ok(vehicleSessionToGet);
         }
 
+        [Authorize]
         [HttpGet("get-by-vehicle/{id}")]
         public IActionResult GetVehicleSessionsByVehicleId(int id)
         {

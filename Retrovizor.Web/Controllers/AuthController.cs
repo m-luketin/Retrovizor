@@ -1,6 +1,11 @@
 ﻿using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
+using Retrovizor.Data.Enums;
 using Retrovizor.Domain.Classes;
 using Retrovizor.Domain.Helpers;
 using Retrovizor.Domain.Repositories.Interfaces;
@@ -11,56 +16,75 @@ namespace Retrovizor.Web.Controllers
     [ApiController]
     public class AuthController : Controller
     {
-        public AuthController(JwtHelper jwtHelper, IStudentRepository studentRepository,
-            IInstructorRepository instructorRepository, IAdminRepository adminRepository)
+        public AuthController(JwtHelper jwtHelper, IUserRepository userRepository, IRefreshTokenRepository refreshTokenRepository)
         {
-            _studentRepository = studentRepository;
-            _instructorRepository = instructorRepository;
-            _adminRepository = adminRepository;
+            _refreshTokenRepository = refreshTokenRepository;
+            _userRepository = userRepository;
             _jwtHelper = jwtHelper;
         }
 
-        private readonly IStudentRepository _studentRepository;
-        private readonly IInstructorRepository _instructorRepository;
-        private readonly IAdminRepository _adminRepository;
+        private readonly IRefreshTokenRepository _refreshTokenRepository;
+        private readonly IUserRepository _userRepository;
         private readonly JwtHelper _jwtHelper;
 
         [HttpPost("login")]
         public IActionResult Login(UserCredentials credentials)
         {            
-            UserCredentials verifiedCredentials = null;
+            var verifiedCredentials = _userRepository.VerifyCredentials(credentials);
 
-            verifiedCredentials = _adminRepository.VerifyCredentials(credentials);
+            if (verifiedCredentials == null) return BadRequest("Username or password is incorrect!");
 
-            if (verifiedCredentials == null)
-            {
-                verifiedCredentials = _instructorRepository.VerifyCredentials(credentials);
+            var accessToken = _jwtHelper.GetAccessToken(verifiedCredentials);
+            var refreshToken = _jwtHelper.GetRefreshToken();
 
-                if(verifiedCredentials == null)
-                {
-                    verifiedCredentials = _studentRepository.VerifyCredentials(credentials);
+            if (!_refreshTokenRepository.AddRefreshToken(refreshToken, verifiedCredentials.Id)) return Unauthorized();
 
-                    if (verifiedCredentials == null)
-                        return BadRequest("Username or password is incorrect");
-                }
-            }
-
-            return Ok(_jwtHelper.GetJwtToken(verifiedCredentials));
+            return Ok(new Token(accessToken, refreshToken));
         }
 
-        /*[HttpPost("refresh")]
-        public IActionResult Refresh(string token, string refreshToken)
+        [Authorize]
+        [HttpPost("refresh")]
+        public IActionResult Refresh(string refreshToken)
         {
-            var principal = _jwtHelper.GetNewToken(token);
-            var username = principal.Identity.Name;
-            var savedRefreshToken = ;
-        }*/
-        
-        [Authorize(Roles = "Admin")]
-        [HttpGet("test-authorize")]
-        public IActionResult TestAuthorize()
+            var tokenHandler = new JwtSecurityTokenHandler();
+
+            var accessTokenAsString = Request.Headers["Authorization"].ToString().Substring("Bearer ".Length).Trim();
+            var accessToken = tokenHandler.ReadToken(accessTokenAsString) as JwtSecurityToken;
+
+            var claims = accessToken.Claims.ToList();
+            var userId = int.Parse(claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value);
+            var username = claims.First(c => c.Type == ClaimTypes.Name).Value;
+            var userRole = (Role)Enum.Parse(typeof(Role), claims.First(c => c.Type == ClaimTypes.Role).Value);
+            var verifiedCredentials = new UserCredentials(userId, username, null, userRole);
+
+            var savedRefreshToken = _refreshTokenRepository.GetUserRefreshToken(refreshToken, userId);
+
+            if (savedRefreshToken == null) throw new SecurityTokenException("Invalid refresh token!");
+
+            var newJwtToken = _jwtHelper.GetAccessToken(verifiedCredentials);
+            var newRefreshToken = _jwtHelper.GetRefreshToken();
+
+            if (!_refreshTokenRepository.AddRefreshToken(newRefreshToken, userId)) return Unauthorized();
+
+            if (!_refreshTokenRepository.DeleteRefreshToken(savedRefreshToken)) return Unauthorized();
+
+            return Ok(new Token(newJwtToken, newRefreshToken));
+        }
+
+        [Authorize]
+        [HttpPost("revoke-tokens")]
+        public IActionResult RevokeTokens()
         {
-            return Ok("Authorized");
+            var tokenHandler = new JwtSecurityTokenHandler();
+
+            var accessTokenAsString = Request.Headers["Authorization"].ToString().Substring("Bearer ".Length).Trim();
+            var accessToken = tokenHandler.ReadToken(accessTokenAsString) as JwtSecurityToken;
+
+            var claims = accessToken.Claims;
+            var userId = int.Parse(claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value);
+
+            _refreshTokenRepository.RevokeUserTokens(userId);
+            return Ok();
         }
     }
 }

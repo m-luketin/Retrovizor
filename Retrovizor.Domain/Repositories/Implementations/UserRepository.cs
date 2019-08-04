@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Linq;
+using CashRegister.Data.Helpers;
 using Retrovizor.Data.Entities;
 using Retrovizor.Data.Entities.Models;
 using Retrovizor.Data.Enums;
+using Retrovizor.Domain.Classes;
+using Retrovizor.Domain.Repositories.Interfaces;
 
 namespace Retrovizor.Domain.Repositories.Implementations
 {
-    public class UserRepository
+    public class UserRepository : IUserRepository
     {
         public UserRepository(RetrovizorContext context)
         {
@@ -15,21 +18,17 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         private readonly RetrovizorContext _context;
 
-        public bool AddUser(User userToAdd)
+        public UserCredentials VerifyCredentials(UserCredentials credentials)
         {
-            if (_context.Users.Any(u => u.Username == userToAdd.Username
-            || u.OIB == userToAdd.OIB || u.PhoneNumber == userToAdd.PhoneNumber)) return false;
+            var userMatch = _context.Users.FirstOrDefault(u => u.Username == credentials.Username
+                && HashHelper.ValidatePassword(credentials.Password, u.Password));
 
-            _context.Users.Add(userToAdd);
- 
-            return true;
+           if (userMatch == null) return null;
+
+            credentials.Id = userMatch.Id;
+            credentials.Role = userMatch.Role;
+
+            return credentials;
         }
-
-       /* public bool EditUser(User editedUser)
-        {
-            if (editedUser.Role )
-
-            return true;
-        }*/
     }
 }

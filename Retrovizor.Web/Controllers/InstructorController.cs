@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Retrovizor.Data.Entities.Models;
@@ -19,12 +20,14 @@ namespace Retrovizor.Web.Controllers
         }
         private readonly IInstructorRepository _instructorRepository;
 
+        [Authorize]
         [HttpGet("get-by-driving-school/{id}")]
         public IActionResult GetAllInstructors(int id)
         {
             return Ok(_instructorRepository.GetAllInstructorsByDrivingSchoolId(id));
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("add")]
         public IActionResult AddInstructor(Instructor instructorToAdd)
         {
@@ -36,6 +39,7 @@ namespace Retrovizor.Web.Controllers
             return Forbid();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("edit")]
         public IActionResult EditInstructor(Instructor editedInstructor)
         {
@@ -47,6 +51,7 @@ namespace Retrovizor.Web.Controllers
             return NotFound();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("delete/{id}")]
         public IActionResult DeleteInstructor(int id)
         {
@@ -58,17 +63,7 @@ namespace Retrovizor.Web.Controllers
             return NotFound();
         }
 
-        [HttpGet("get/{id}")]
-        public IActionResult GetInstructorById(int id)
-        {
-            var instructorToGet = _instructorRepository.GetInstructorById(id);
-
-            if(instructorToGet == null)
-                return NotFound();
-
-            return Ok(instructorToGet);
-        }
-
+        [Authorize]
         [HttpGet("get-by-student/{id}")]
         public IActionResult GetCurrentInstructorByStudentId(int id)
         {
@@ -80,6 +75,7 @@ namespace Retrovizor.Web.Controllers
             return Ok(instructorToGet);
         }
 
+        [Authorize]
         [HttpGet("get-by-driving-school/{id}")]
         public IActionResult GetInstructorsByDrivingSchoolId(int id)
         {

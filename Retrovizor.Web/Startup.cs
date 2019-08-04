@@ -1,4 +1,6 @@
+using System;
 using System.Text;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -44,11 +46,23 @@ namespace Retrovizor
                         ValidateIssuerSigningKey = true,
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Secret"]))
                     };
+
+                    cfg.Events = new JwtBearerEvents
+                    {
+                        OnAuthenticationFailed = context =>
+                        {
+                            if (context.Exception.GetType() == typeof(SecurityTokenExpiredException))
+                                context.Response.Headers.Add("Token-Expired", "true");
+
+                            return Task.CompletedTask;
+                        }
+                    };
                 });
 
             services.AddDbContext<RetrovizorContext>(options => 
                 options.UseSqlServer(Configuration.GetConnectionString("RetrovizorContext")));
 
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IAdminRepository, AdminRepository>();
             services.AddScoped<IClassRepository, ClassRepository>();
             services.AddScoped<IDrivingSchoolRepository, DrivingSchoolRepository>();
@@ -63,6 +77,7 @@ namespace Retrovizor
             services.AddScoped<IStudentRepository, StudentRepository>();
             services.AddScoped<IVehicleRepository, VehicleRepository>();
             services.AddScoped<IVehicleSessionRepository, VehicleSessionRepository>();
+            services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 
             services.AddSingleton<JwtHelper>();
 

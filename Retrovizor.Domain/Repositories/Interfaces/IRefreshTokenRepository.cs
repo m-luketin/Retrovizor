@@ -2,6 +2,9 @@
 {
     public interface IRefreshTokenRepository
     {
-        string GetRefreshTokenByValue(string username);
+        string GetUserRefreshToken(string token, int userId);
+        bool AddRefreshToken(string tokenToAdd, int userId);
+        bool DeleteRefreshToken(string tokenToDelete);
+        bool RevokeUserTokens(int userId);
     }
 }

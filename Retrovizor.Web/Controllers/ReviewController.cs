@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Retrovizor.Data.Entities.Models;
@@ -18,7 +19,8 @@ namespace Retrovizor.Web.Controllers
             _reviewRepository = reviewRepository;
         }
         private readonly IReviewRepository _reviewRepository;
-        
+
+        [Authorize(Roles = "Student")]
         [HttpPost("add")]
         public IActionResult AddReview(Review reviewToAdd)
         {
@@ -30,6 +32,7 @@ namespace Retrovizor.Web.Controllers
             return Forbid();
         }
 
+        [Authorize(Roles = "Student")]
         [HttpPost("edit")]
         public IActionResult EditReview(Review editedReview)
         {
@@ -41,6 +44,7 @@ namespace Retrovizor.Web.Controllers
             return NotFound();
         }
 
+        [Authorize(Roles = "Student")]
         [HttpDelete("delete/{id}")]
         public IActionResult DeleteReview(int id)
         {
@@ -52,6 +56,7 @@ namespace Retrovizor.Web.Controllers
             return NotFound();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("get/{id}")]
         public IActionResult GetReviewById(int id)
         {
@@ -63,6 +68,7 @@ namespace Retrovizor.Web.Controllers
             return Ok(reviewToGet);
         }
 
+        [Authorize(Roles = "Admin, Student")]
         [HttpGet("get-by-student/{id}")]
         public IActionResult GetReviewsById(int id)
         {
@@ -74,6 +80,7 @@ namespace Retrovizor.Web.Controllers
             return Ok(reviewsToGet);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("get-by-instructor/{id}")]
         public IActionResult GetReviewsByInstructorId(int id)
         {

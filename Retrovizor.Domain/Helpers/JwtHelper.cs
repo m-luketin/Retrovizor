@@ -24,11 +24,9 @@ namespace Retrovizor.Domain.Helpers
         private readonly string _audience;
         private readonly string _secret;
 
-        public string GetJwtToken(UserCredentials userToGenerateFor)
+        public string GetAccessToken(UserCredentials userToGenerateFor)
         {
             var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secret));
-
-            var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256Signature);
 
             var claims = new List<Claim> {
                 new Claim(ClaimTypes.NameIdentifier, $"{userToGenerateFor.Id}"),
@@ -40,26 +38,11 @@ namespace Retrovizor.Domain.Helpers
                 issuer: _issuer,
                 audience: _audience,
                 expires: DateTime.Now.AddMinutes(15),
-                signingCredentials: signingCredentials,
+                signingCredentials: new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256),
                 claims: claims
             );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
-        }
-
-        public ClaimsPrincipal GetNewToken(string token)
-        {
-            var validationParameters = GetTokenValidationParameters();
-
-            var tokenHandler = new JwtSecurityTokenHandler();
-            SecurityToken securityToken;
-            var principal = tokenHandler.ValidateToken(token, validationParameters, out securityToken);
-            var jwtSecurityToken = securityToken as JwtSecurityToken;
-            if (jwtSecurityToken == null || !jwtSecurityToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256
-                , StringComparison.InvariantCultureIgnoreCase))
-                throw new SecurityTokenException("Invalid token");
-
-            return principal;
         }
 
         public string GetRefreshToken()
@@ -70,19 +53,6 @@ namespace Retrovizor.Domain.Helpers
                 rng.GetBytes(randomNumber);
                 return Convert.ToBase64String(randomNumber);
             }
-        }
-
-        public TokenValidationParameters GetTokenValidationParameters()
-        {
-            return new TokenValidationParameters {
-                ValidateLifetime = false,
-                ValidateIssuer = true,
-                ValidIssuer = _issuer,
-                ValidateAudience = true,
-                ValidAudience = _audience,
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secret))
-            };
         }
     }
 }
