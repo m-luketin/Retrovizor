@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Retrovizor.Data.Entities;
 
 namespace Retrovizor.Data.Migrations
 {
     [DbContext(typeof(RetrovizorContext))]
-    partial class RetrovizorContextModelSnapshot : ModelSnapshot
+    [Migration("20190803095149_SmallCorrections")]
+    partial class SmallCorrections
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,25 +38,6 @@ namespace Retrovizor.Data.Migrations
                     b.HasIndex("DrivingSchoolId");
 
                     b.ToTable("Admins");
-                });
-
-            modelBuilder.Entity("Retrovizor.Data.Entities.Models.Answer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("IsCorrect");
-
-                    b.Property<int>("QuestionId");
-
-                    b.Property<string>("Text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("QuestionId");
-
-                    b.ToTable("Answers");
                 });
 
             modelBuilder.Entity("Retrovizor.Data.Entities.Models.Class", b =>
@@ -175,21 +158,6 @@ namespace Retrovizor.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Locations");
-                });
-
-            modelBuilder.Entity("Retrovizor.Data.Entities.Models.Question", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Text");
-
-                    b.Property<string>("Type");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Questions");
                 });
 
             modelBuilder.Entity("Retrovizor.Data.Entities.Models.Review", b =>
@@ -336,13 +304,6 @@ namespace Retrovizor.Data.Migrations
                     b.HasOne("Retrovizor.Data.Entities.Models.DrivingSchool", "DrivingSchool")
                         .WithMany("Admins")
                         .HasForeignKey("DrivingSchoolId");
-                });
-
-            modelBuilder.Entity("Retrovizor.Data.Entities.Models.Answer", b =>
-                {
-                    b.HasOne("Retrovizor.Data.Entities.Models.Question", "Question")
-                        .WithMany("Answers")
-                        .HasForeignKey("QuestionId");
                 });
 
             modelBuilder.Entity("Retrovizor.Data.Entities.Models.Event", b =>
