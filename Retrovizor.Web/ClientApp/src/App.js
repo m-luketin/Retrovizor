@@ -17,6 +17,7 @@ import Students from "./components/Administrators/Students/Students";
 import AdministratorSchedule from "./components/Administrators/Schedule/AdministratorSchedule";
 import EventStudentsToAdd from "./components/Administrators/Schedule/EventStudentsToAdd";
 import AdministratorProfile from "./components/Administrators/AdministratorProfile/AdministratorProfile";
+import Student from "./components/Administrators/Students/Student";
 
 export default class App extends Component {
   static displayName = App.name;
@@ -93,6 +94,11 @@ export default class App extends Component {
               exact
               path="/administrator/kandidati"
               render={props => <Students {...props} />}
+            />
+            <Route
+              exact
+              path="/administrator/kandidati/kandidat"
+              render={props => <Student {...props} />}
             />
             <Route
               exact

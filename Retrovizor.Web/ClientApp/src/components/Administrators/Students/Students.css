@@ -6,3 +6,13 @@
   top: 50%;
   transform: translateY(-50%) rotate(180deg);
 }
+
+.main__student--timeline {
+  width: 368px;
+  padding: 0;
+}
+
+.timeline__item--smaller {
+  width: 314px;
+  margin-left: 20px;
+}
