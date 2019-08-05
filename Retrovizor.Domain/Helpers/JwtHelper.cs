@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
@@ -32,6 +33,7 @@ namespace Retrovizor.Domain.Helpers
                 new Claim(ClaimTypes.NameIdentifier, $"{userToGenerateFor.Id}"),
                 new Claim(ClaimTypes.Name, $"{userToGenerateFor.Username}"),
                 new Claim(ClaimTypes.Role, $"{userToGenerateFor.Role}"),
+                new Claim("DrivingSchoolId", $"{userToGenerateFor.DrivingSchoolId}")
             };
 
             var token = new JwtSecurityToken(
@@ -45,6 +47,20 @@ namespace Retrovizor.Domain.Helpers
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
+        public static UserCredentials GetCredentialsFromToken(string accessTokenAsString)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var accessToken = tokenHandler.ReadToken(accessTokenAsString) as JwtSecurityToken;
+            
+            var claims = accessToken.Claims.ToList();
+            var userId = int.Parse(claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value);
+            var username = claims.First(c => c.Type == ClaimTypes.Name).Value;
+            var userRole = (Role)Enum.Parse(typeof(Role), claims.First(c => c.Type == ClaimTypes.Role).Value);
+            var userDrivingSchoolId = int.Parse(claims.First(c => c.Type == "DrivingSchoolId").Value);
+
+            return new UserCredentials(userId, username, null, userRole, userDrivingSchoolId);
+        } 
+
         public string GetRefreshToken()
         {
             var randomNumber = new byte[32];
@@ -53,6 +69,11 @@ namespace Retrovizor.Domain.Helpers
                 rng.GetBytes(randomNumber);
                 return Convert.ToBase64String(randomNumber);
             }
+        }
+
+        public static string GetTokenSubstring(string header)
+        {
+            return header.Substring("Bearer ".Length).Trim();
         }
     }
 }

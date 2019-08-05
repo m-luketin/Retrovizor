@@ -46,25 +46,17 @@ namespace Retrovizor.Web.Controllers
         [HttpPost("refresh")]
         public IActionResult Refresh(string refreshToken)
         {
-            var tokenHandler = new JwtSecurityTokenHandler();
+            var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+            var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
 
-            var accessTokenAsString = Request.Headers["Authorization"].ToString().Substring("Bearer ".Length).Trim();
-            var accessToken = tokenHandler.ReadToken(accessTokenAsString) as JwtSecurityToken;
-
-            var claims = accessToken.Claims.ToList();
-            var userId = int.Parse(claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value);
-            var username = claims.First(c => c.Type == ClaimTypes.Name).Value;
-            var userRole = (Role)Enum.Parse(typeof(Role), claims.First(c => c.Type == ClaimTypes.Role).Value);
-            var verifiedCredentials = new UserCredentials(userId, username, null, userRole);
-
-            var savedRefreshToken = _refreshTokenRepository.GetUserRefreshToken(refreshToken, userId);
+            var savedRefreshToken = _refreshTokenRepository.GetUserRefreshToken(refreshToken, userCredentials.Id);
 
             if (savedRefreshToken == null) throw new SecurityTokenException("Invalid refresh token!");
 
-            var newJwtToken = _jwtHelper.GetAccessToken(verifiedCredentials);
+            var newJwtToken = _jwtHelper.GetAccessToken(userCredentials);
             var newRefreshToken = _jwtHelper.GetRefreshToken();
 
-            if (!_refreshTokenRepository.AddRefreshToken(newRefreshToken, userId)) return Unauthorized();
+            if (!_refreshTokenRepository.AddRefreshToken(newRefreshToken, userCredentials.Id)) return Unauthorized();
 
             if (!_refreshTokenRepository.DeleteRefreshToken(savedRefreshToken)) return Unauthorized();
 
@@ -75,15 +67,10 @@ namespace Retrovizor.Web.Controllers
         [HttpPost("revoke-tokens")]
         public IActionResult RevokeTokens()
         {
-            var tokenHandler = new JwtSecurityTokenHandler();
+            var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+            var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
 
-            var accessTokenAsString = Request.Headers["Authorization"].ToString().Substring("Bearer ".Length).Trim();
-            var accessToken = tokenHandler.ReadToken(accessTokenAsString) as JwtSecurityToken;
-
-            var claims = accessToken.Claims;
-            var userId = int.Parse(claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value);
-
-            _refreshTokenRepository.RevokeUserTokens(userId);
+            _refreshTokenRepository.RevokeUserTokens(userCredentials.Id);
             return Ok();
         }
     }

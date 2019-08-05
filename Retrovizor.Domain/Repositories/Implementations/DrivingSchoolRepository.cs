@@ -46,12 +46,12 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public DrivingSchool GetDrivingSchoolByAdminId(int id)
         {
-            var admin = _context.Admins.Find(id);
+            var admin = _context.Users.Find(id);
 
             if(admin == null)
                 return null;
 
-            return _context.DrivingSchools.Find(admin.User.DrivingSchoolId);
+            return _context.DrivingSchools.Find(admin.DrivingSchoolId);
         }
     }
 }

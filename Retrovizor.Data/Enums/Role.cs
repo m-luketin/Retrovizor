@@ -5,6 +5,7 @@ namespace Retrovizor.Data.Enums
     {
         Student,
         Instructor,
-        Admin
+        Admin,
+        Developer
     }
 }

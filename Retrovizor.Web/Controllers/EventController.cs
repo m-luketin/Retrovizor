@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Retrovizor.Data.Entities.Models;
+using Retrovizor.Domain.Helpers;
 using Retrovizor.Domain.Repositories.Interfaces;
 
 namespace Retrovizor.Web.Controllers
@@ -24,7 +25,10 @@ namespace Retrovizor.Web.Controllers
         [HttpPost("add")]
         public IActionResult AddEvent(Event eventToAdd)
         {
-            var wasAddSuccessful = _eventRepository.AddEvent(eventToAdd);
+            var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+            var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
+
+            var wasAddSuccessful = _eventRepository.AddEvent(eventToAdd, userCredentials.Id);
 
             if(wasAddSuccessful)
                 return Ok();
@@ -47,7 +51,7 @@ namespace Retrovizor.Web.Controllers
         [Authorize(Roles = "Admin, Instructor")]
         [HttpDelete("delete/{id}")]
         public IActionResult DeleteEvent(int id)
-        {
+        {                                                              
             var wasDeleteSucessful = _eventRepository.DeleteEvent(id);
 
             if(wasDeleteSucessful)

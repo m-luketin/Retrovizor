@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Retrovizor.Data.Entities.Models;
+using Retrovizor.Domain.Classes;
+using Retrovizor.Domain.Helpers;
 using Retrovizor.Domain.Repositories.Interfaces;
 
 namespace Retrovizor.Web.Controllers
@@ -20,7 +22,7 @@ namespace Retrovizor.Web.Controllers
         }
         private readonly IClassRepository _classRepository;
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Developer")]
         [HttpGet("get-by-driving-school/{id}")]
         public IActionResult GetAllClasses(int id)
         {
@@ -31,7 +33,10 @@ namespace Retrovizor.Web.Controllers
         [HttpPost("add")]
         public IActionResult AddClass(Class classToAdd)
         {
-            var wasAddSuccessful = _classRepository.AddClass(classToAdd);
+            var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+            var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
+
+            var wasAddSuccessful = _classRepository.AddClass(classToAdd, userCredentials.DrivingSchoolId);
 
             if(wasAddSuccessful)
                 return Ok();
@@ -43,7 +48,10 @@ namespace Retrovizor.Web.Controllers
         [HttpPost("edit")]
         public IActionResult EditClass(Class editedClass)
         {
-            var wasEditSucessful = _classRepository.EditClass(editedClass);
+            var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+            var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
+
+            var wasEditSucessful = _classRepository.EditClass(editedClass, userCredentials.DrivingSchoolId);
 
             if(wasEditSucessful)
                 return Ok();
@@ -55,7 +63,10 @@ namespace Retrovizor.Web.Controllers
         [HttpDelete("delete/{id}")]
         public IActionResult DeleteClass(int id)
         {
-            var wasDeleteSucessful = _classRepository.DeleteClass(id);
+            var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+            var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
+
+            var wasDeleteSucessful = _classRepository.DeleteClass(id, userCredentials.DrivingSchoolId);
 
             if(wasDeleteSucessful)
                 return Ok();
@@ -67,7 +78,10 @@ namespace Retrovizor.Web.Controllers
         [HttpGet("get/{id}")]
         public IActionResult GetClassById(int id)
         {
-            var classToGet = _classRepository.GetClassById(id);
+            var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+            var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
+
+            var classToGet = _classRepository.GetClassById(id, userCredentials.DrivingSchoolId);
 
             if(classToGet == null)
                 return NotFound();
@@ -79,7 +93,10 @@ namespace Retrovizor.Web.Controllers
         [HttpGet("get-by-student/{id}")]
         public IActionResult GetClassesByStudentId(int id)
         {
-            var classes = _classRepository.GetClassesByStudentId(id);
+            var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+            var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
+
+            var classes = _classRepository.GetClassesByStudentId(id, userCredentials.DrivingSchoolId);
 
             if(classes == null)
                 return NotFound();
