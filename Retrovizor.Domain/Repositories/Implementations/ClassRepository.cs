@@ -57,7 +57,6 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
             classToEdit.Name = editedClass.Name;
             classToEdit.TotalLessons = editedClass.TotalLessons;
-            classToEdit.Type = editedClass.Type;
 
             _context.SaveChanges();
             return true;

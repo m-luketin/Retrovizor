@@ -117,21 +117,21 @@ namespace Retrovizor.Data.Entities
                 {
                     Id = 1,
                     Username = "Duje",
-                    Password = "",
+                    Password = "NqSs3eyOEG9CA8AbO6GgIXjZOgqjAX6tJ0nq1WOOWAt9YnwY", //onphdvwr
                     DrivingSchoolId = 1
                 },
                 new
                 {
                     Id = 2,
                     Username = "Kreso",
-                    Password = "",
+                    Password = "zaFUUQie8N96psne7PziMc24lTzDt+75t6MoUqCB83kwaSU6", //jxfqcnh
                     DrivingSchoolId = 1
                 },
                 new
                 {
                     Id = 3,
                     Username = "Drazen",
-                    Password = "",
+                    Password = "CZ/N7zgZL4faI4Cp4pgd0/L98ZlWS2M6K+VhQf360Ywv2Vkh", //xxjdkpdk
                     DrivingSchoolId = 2
                 }
             );
@@ -143,7 +143,7 @@ namespace Retrovizor.Data.Entities
                     FirstName = "Izabela",
                     LastName = "Domazet",
                     Username = "IDomazet",
-                    Password = "",
+                    Password = "yxq0Ed+O2iWi98Toqah+BS75nkM7Z7+SXaoi/SPwsXkbVWHA", //npfzcpvqu
                     OIB = "12345123451",
                     PhoneNumber = "00385976086801",
                     VehicleId = 1,
@@ -155,7 +155,7 @@ namespace Retrovizor.Data.Entities
                     FirstName = "Mario",
                     LastName = "Ceprnja",
                     Username = "MCeprnja",
-                    Password = "",
+                    Password = "wyWLW6MQdogtds5NSUP/NJhVcrUVFGDPk9zS58Nk3Xnykq/e", //tfetheb
                     OIB = "12345123452",
                     PhoneNumber = "00385976086801",
                     VehicleId = 2,
@@ -167,7 +167,7 @@ namespace Retrovizor.Data.Entities
                     FirstName = "Zvonimir",
                     LastName = "Delas",
                     Username = "ZDelas",
-                    Password = "",
+                    Password = "wnCehHvutg39CCPGSMSABgFA6dKxI1GS/TpYkgEArLBcv16O", //irmhlobp
                     OIB = "12345123453",
                     PhoneNumber = "00385976086801",
                     VehicleId = 3,
@@ -179,7 +179,7 @@ namespace Retrovizor.Data.Entities
                     FirstName = "Josip",
                     LastName = "Svalina",
                     Username = "JSvalina",
-                    Password = "",
+                    Password = "V+dugmSl5R+gGdUFn8fLVNMd3f67CAtoNaxYlCIi+aR4hn1b", //unqpza
                     OIB = "12345123454",
                     PhoneNumber = "00385976086801",
                     VehicleId = 4,
@@ -194,7 +194,7 @@ namespace Retrovizor.Data.Entities
                     FirstName = "Matija",
                     LastName = "Luketin",
                     Username = "MLuketin",
-                    Password = "",
+                    Password = "gIrZXsGJ1KwFWOkycqVaS1N7zAtxOwqVGYfJEkrOshKIPlwa", //fgabxer
                     OIB = "12345123461",
                     PhoneNumber = "00385976086801",
                     Category = "A1",
@@ -206,7 +206,7 @@ namespace Retrovizor.Data.Entities
                     FirstName = "Luka",
                     LastName = "Nola",
                     Username = "LNola",
-                    Password = "",
+                    Password = "4otiXl9sR1IrN1Oxk7JXw5b8jn5kcQ2GSKVvBriy4F0Ct72H", //zkcuurig
                     OIB = "12345123462",
                     PhoneNumber = "00385976086801",
                     Category = "B",
@@ -218,7 +218,7 @@ namespace Retrovizor.Data.Entities
                     FirstName = "Nino",
                     LastName = "Borovic",
                     Username = "NBorovic",
-                    Password = "",
+                    Password = "Q/2RZdW5Q3AwxcWIKlk4jGizvLawjC5kAU11YDL+1UKDQHFT", //tqznrrif
                     OIB = "12345123463",
                     PhoneNumber = "00385976086801",
                     Category = "B",
@@ -230,7 +230,7 @@ namespace Retrovizor.Data.Entities
                     FirstName = "Luka",
                     LastName = "Bendic",
                     Username = "LBendic",
-                    Password = "",
+                    Password = "e+5Zz+VgZHqNuaK5p8c/OGHpwlnO6zNTI89ouMxxy5fEja/P", //kdwcjys
                     OIB = "12345123464",
                     PhoneNumber = "00385976086801",
                     Category = "A2",
@@ -242,7 +242,7 @@ namespace Retrovizor.Data.Entities
                     FirstName = "Klara Bruna",
                     LastName = "Tomic",
                     Username = "KTomic",
-                    Password = "",
+                    Password = "oINRmcaSWlLomk6pbdtw9m7tBVjHzvsQvgm1lbGDiB713H0R", //vzndlm
                     OIB = "12345123465",
                     PhoneNumber = "00385976086801",
                     Category = "B",
@@ -254,10 +254,10 @@ namespace Retrovizor.Data.Entities
                     FirstName = "Petra",
                     LastName = "Condic",
                     Username = "PCondic",
-                    Password = "B",
+                    Password = "Ae5m6kB/XbEkj6vPzceoGLeguy7oVink9iK+smuifbgSQMlQ", //ktjokers
                     OIB = "12345123466",
                     PhoneNumber = "00385976086801",
-                    Category = "",
+                    Category = "b",
                     DrivingSchoolId = 1
                 },
                 new
@@ -266,7 +266,7 @@ namespace Retrovizor.Data.Entities
                     FirstName = "Alex",
                     LastName = "Amanzi",
                     Username = "AAmanzi",
-                    Password = "",
+                    Password = "zEXK/8+DyNVCBICYavDmMnA4x7iT5AwMQkLVQBJSDeNwA1Ic", //wvvlziix
                     OIB = "12345123467",
                     PhoneNumber = "00385976086801",
                     Category = "B",
@@ -278,7 +278,7 @@ namespace Retrovizor.Data.Entities
                     FirstName = "Ante",
                     LastName = "Vuletic",
                     Username = "AVuletic",
-                    Password = "",
+                    Password = "hQFfPhep54nqhqGES06j18OyU79CeUPrDK/iSEZdt4BhFzq+", //fglrhth
                     OIB = "12345123468",
                     PhoneNumber = "00385976086801",
                     Category = "A",
@@ -542,58 +542,50 @@ namespace Retrovizor.Data.Entities
             modelBuilder.Entity<VehicleSession>().HasData(
                 new
                 {
-                    Id = 1,
                     StudentId = 1,
                     InstructorId = 1,
                     VehicleId = 1,
+                    DateAssigned = new DateTime(2019, 5, 1),
                     IsActive = true
                 },
                 new
                 {
-                    Id = 2,
                     StudentId = 2,
                     InstructorId = 2,
                     VehicleId = 2,
+                    DateAssigned = new DateTime(2019, 5, 1),
                     IsActive = true
                 },
                 new
                 {
-                    Id = 3,
                     StudentId = 3,
                     InstructorId = 3,
                     VehicleId = 3,
+                    DateAssigned = new DateTime(2019, 5, 1),
                     IsActive = true
                 },
                 new
                 {
-                    Id = 4,
                     StudentId = 8,
                     InstructorId = 4,
                     VehicleId = 4,
+                    DateAssigned = new DateTime(2019, 5, 1),
                     IsActive = true
                 },
                 new
                 {
-                    Id = 5,
                     StudentId = 4,
                     InstructorId = 2,
                     VehicleId = 2,
+                    DateAssigned = new DateTime(2019, 5, 1),
                     IsActive = true
                 },
                 new
                 {
-                    Id = 6,
                     StudentId = 7,
                     InstructorId = 4,
                     VehicleId = 4,
-                    IsActive = true
-                },
-                new
-                {
-                    Id = 7,
-                    StudentId = 8,
-                    InstructorId = 4,
-                    VehicleId = 4,
+                    DateAssigned = new DateTime(2019, 5, 1),
                     IsActive = true
                 }
             );
@@ -885,7 +877,7 @@ namespace Retrovizor.Data.Entities
                 {
                     StudentId = 3,
                     ExamId = 1,
-                    DateTaken = new DateTime(2019, 6, 31),
+                    DateTaken = new DateTime(2019, 6, 30),
                     Points = 115
                 },
                 new
