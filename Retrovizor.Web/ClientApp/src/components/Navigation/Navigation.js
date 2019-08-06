@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Navigation.css";
 import StudentNav from "./StudentNav";
 import AdministratorNav from "./AdministratorNav";
+import InstructorNav from "./InstructorNav";
 
 export default class Navigation extends Component {
   constructor(props) {
@@ -38,7 +39,7 @@ export default class Navigation extends Component {
     const { navDisplay } = this.state;
 
     if (navDisplay[0]) return <StudentNav />;
-    else if (navDisplay[1]) return null;
+    else if (navDisplay[1]) return <InstructorNav />;
     else if (navDisplay[2]) return <AdministratorNav />;
     else return null;
   }

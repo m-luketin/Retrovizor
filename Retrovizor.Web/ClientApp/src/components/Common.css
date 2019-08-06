@@ -107,6 +107,20 @@ main {
   font-size: 14px;
   margin-bottom: 0;
 }
+
+.main__button--free {
+  background-image: none;
+  border: 1px solid #1488cc;
+}
+
+.main__button--free span,
+.main__button--free p {
+  color: #1488cc;
+}
+
+.main__button--free div {
+  border-right: 1px solid #1488cc !important;
+}
 /* Main */
 
 .d-none {
@@ -123,4 +137,8 @@ main {
 
 .mb-20px {
   margin-bottom: 20px;
+}
+
+.pl-8px {
+  padding-left: 8px !important;
 }

@@ -18,6 +18,9 @@ import AdministratorSchedule from "./components/Administrators/Schedule/Administ
 import EventStudentsToAdd from "./components/Administrators/Schedule/EventStudentsToAdd";
 import AdministratorProfile from "./components/Administrators/AdministratorProfile/AdministratorProfile";
 import Student from "./components/Administrators/Students/Student";
+import StudentList from "./components/Instructors/Students/StudentList";
+import StudentDetails from "./components/Instructors/Students/StudentDetails";
+import InstructorSchedule from "./components/Instructors/Schedule/InstructorSchedule";
 
 export default class App extends Component {
   static displayName = App.name;
@@ -57,11 +60,11 @@ export default class App extends Component {
             <Route
               exact
               path="/kandidat/voznja/instruktor"
-              crender={props => <InstructorDetails {...props} />}
+              render={props => <InstructorDetails {...props} />}
             />
             <Route
               exact
-              path="/kandidat/voznja/administrator/instruktori"
+              path="/kandidat/voznja/instruktori"
               render={props => <InstructorList {...props} />}
             />
             <Route
@@ -77,6 +80,26 @@ export default class App extends Component {
             {/* Students */}
 
             {/* Instructors */}
+            <Route
+              exact
+              path="/instruktor/kandidati"
+              render={props => <StudentList {...props} />}
+            />
+            <Route
+              exact
+              path="/instruktor/kandidati/kandidat"
+              render={props => <StudentDetails {...props} />}
+            />
+            <Route
+              exact
+              path="/instruktor/raspored"
+              render={props => <InstructorSchedule {...props} />}
+            />
+            <Route
+              exact
+              path="/instruktor/profil"
+              render={props => <Instructors {...props} />}
+            />
             {/* Instructors */}
 
             {/* Administrator */}
