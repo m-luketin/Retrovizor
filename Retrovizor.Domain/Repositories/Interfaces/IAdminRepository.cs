@@ -9,6 +9,5 @@ namespace Retrovizor.Domain.Repositories.Interfaces
     public interface IAdminRepository
     {
         List<Admin> GetAdminsByDrivingSchoolId(int id);
-        UserCredentials VerifyCredentials(UserCredentials userToVerify);
     }
 }

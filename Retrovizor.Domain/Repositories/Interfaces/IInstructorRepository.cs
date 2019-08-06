@@ -15,6 +15,5 @@ namespace Retrovizor.Domain.Repositories.Interfaces
         Instructor GetInstructorById(int id);
         Instructor GetCurrentInstructorByStudentId(int id);
         List<Instructor> GetInstructorsByDrivingSchoolId(int id);
-        UserCredentials VerifyCredentials(UserCredentials userToVerify);
     }
 }

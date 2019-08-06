@@ -21,7 +21,7 @@ namespace Retrovizor.Web.Controllers
         private readonly IExamRepository _examRepository;
 
         [Authorize(Roles = "Admin")]
-        [HttpGet("get-by-driving-school")]
+        [HttpGet("get-by-driving-school/{id}")]
         public IActionResult GetAllExams(int id)
         {
             return Ok(_examRepository.GetAllExamsByDrivingSchoolId(id));

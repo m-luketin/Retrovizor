@@ -7,7 +7,6 @@ namespace Retrovizor.Domain.Repositories.Interfaces
 {
     public interface IEventRepository
     {
-        List<Event> GetAll();
         bool AddEvent(Event eventToAdd);
         bool EditEvent(Event editedEvent);
         bool DeleteEvent(int idOfEventToDelete);

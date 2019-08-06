@@ -25,10 +25,7 @@ namespace Retrovizor.Web.Controllers
         [HttpPost("add")]
         public IActionResult AddEvent(Event eventToAdd)
         {
-            var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
-            var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
-
-            var wasAddSuccessful = _eventRepository.AddEvent(eventToAdd, userCredentials.Id);
+            var wasAddSuccessful = _eventRepository.AddEvent(eventToAdd);
 
             if(wasAddSuccessful)
                 return Ok();

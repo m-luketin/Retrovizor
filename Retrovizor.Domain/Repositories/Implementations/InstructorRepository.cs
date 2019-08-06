@@ -89,18 +89,5 @@ namespace Retrovizor.Domain.Repositories.Implementations
         {
             return _context.Instructors.Where(i => i.User.DrivingSchoolId == id).ToList();
         }
-
-        public UserCredentials VerifyCredentials(UserCredentials credentials)
-        {
-            /*var instructorMatch = _context.Instructors.First(instructor => instructor.Username == credentials.Username
-            && HashHelper.ValidatePassword(instructor.Password, credentials.Password));
-
-            if (instructorMatch == null) return null;
-
-            credentials.Id = instructorMatch.Id;
-            credentials.Role = (Role)1;*/
-
-            return credentials;
-        }
     }
 }

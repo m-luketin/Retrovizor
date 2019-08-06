@@ -35,11 +35,8 @@ namespace Retrovizor.Domain.Repositories.Implementations
             return classes.Distinct().ToList();
         }
                 
-        public bool AddClass(Class classToAdd, int drivingSchoolId)
+        public bool AddClass(Class classToAdd)
         {
-            var studentsFromOtherSchoolExist = classToAdd.StudentClasses.Any(sc => sc.Student.User.DrivingSchoolId != drivingSchoolId);
-            if (studentsFromOtherSchoolExist) return false;
-
             var doesClassExist = _context.Classes.Any(c =>
                 string.Equals(c.Name, classToAdd.Name, StringComparison.CurrentCultureIgnoreCase));
 
@@ -51,11 +48,8 @@ namespace Retrovizor.Domain.Repositories.Implementations
             return true;
         }
 
-        public bool EditClass(Class editedClass, int drivingSchoolId)
+        public bool EditClass(Class editedClass)
         {
-            var studentsFromOtherSchoolExist = editedClass.StudentClasses.Any(sc => sc.Student.User.DrivingSchoolId != drivingSchoolId);
-            if (studentsFromOtherSchoolExist) return false;
-
             var classToEdit = _context.Classes.Find(editedClass.Id);
 
             if(classToEdit == null)
@@ -69,34 +63,28 @@ namespace Retrovizor.Domain.Repositories.Implementations
             return true;
         }
 
-        public bool DeleteClass(int idOfClassToDelete, int drivingSchoolId)
+        public bool DeleteClass(int idOfClassToDelete)
         {
             var classToDelete = _context.Classes.Find(idOfClassToDelete);
 
             if(classToDelete == null)
                 return false;
 
-            var studentsFromOtherSchoolExist = classToDelete.StudentClasses.Any(sc => sc.Student.User.DrivingSchoolId != drivingSchoolId);
-            if (studentsFromOtherSchoolExist) return false;
-
             _context.Remove(classToDelete);
             _context.SaveChanges();
             return true;
         }
 
-        public Class GetClassById(int id, int drivingSchoolId)
+        public Class GetClassById(int id)
         {
             var classById = _context.Classes.Find(id);
-
-            var studentsFromOtherSchoolExist = classById.StudentClasses.Any(sc => sc.Student.User.DrivingSchoolId != drivingSchoolId);
-            if (studentsFromOtherSchoolExist) return null;
 
             return _context.Classes.Find(id);
         }
 
-        public List<Class> GetClassesByStudentId(int id, int drivingSchoolId)
+        public List<Class> GetClassesByStudentId(int id)
         {
-            var studentClasses = _context.StudentClasses.Where(c => c.StudentId == id && c.Student.User.DrivingSchoolId == drivingSchoolId);
+            var studentClasses = _context.StudentClasses.Where(c => c.StudentId == id);
 
             if(studentClasses == null)
                 return null;

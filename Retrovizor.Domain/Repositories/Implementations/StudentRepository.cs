@@ -123,18 +123,5 @@ namespace Retrovizor.Domain.Repositories.Implementations
             }
             return instructorsStudents;
         }
-
-        public UserCredentials VerifyCredentials(UserCredentials credentials)
-        {
-            /*var studentMatch = _context.Students.First(student => student.Username == credentials.Username
-            && HashHelper.ValidatePassword(student.Password, credentials.Password));
-
-            if (studentMatch == null) return null;
-
-            credentials.Id = studentMatch.Id;
-            credentials.Role = (Role)0;*/
-
-            return credentials;
-        }
     }
 }

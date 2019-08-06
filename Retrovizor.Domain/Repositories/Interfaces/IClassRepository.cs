@@ -8,10 +8,10 @@ namespace Retrovizor.Domain.Repositories.Interfaces
     public interface IClassRepository
     {
         List<Class> GetAllClassesByDrivingSchoolId(int id);
-        bool AddClass(Class classToAdd, int drivingSchoolId);
-        bool EditClass(Class editedClass, int drivingSchoolId);
-        bool DeleteClass(int idOfClassToDelete, int drivingSchoolId);
-        Class GetClassById(int id, int drivingSchoolId);
-        List<Class> GetClassesByStudentId(int id, int drivingSchoolId);
+        bool AddClass(Class classToAdd);
+        bool EditClass(Class editedClass);
+        bool DeleteClass(int idOfClassToDelete);
+        Class GetClassById(int id);
+        List<Class> GetClassesByStudentId(int id);
     }
 }

@@ -28,7 +28,7 @@ namespace Retrovizor.Web.Controllers
             return Ok(drivingSchoolToGet);
         }
 
-        [Authorize(Roles = "Developer"]
+        [Authorize(Roles = "Developer")]
         [HttpGet("get-by-instructor/{id}")]
         public IActionResult GetDrivingSchoolByInstructorId(int id)
         {
