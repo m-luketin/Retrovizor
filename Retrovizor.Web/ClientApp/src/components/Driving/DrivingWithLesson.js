@@ -1,6 +1,13 @@
+import "mapbox-gl/dist/mapbox-gl.css";
+import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import React, { Component } from "react";
-import ReactMapGL, { Marker } from "react-map-gl";
+import MapGl, { Marker } from "react-map-gl";
+import DeckGL, { GeoJsonLayer } from "deck.gl";
+import Geocoder from "react-map-gl-geocoder";
 import instructorImg from "../../assets/instructor.gif";
+
+const MAP_TOKEN =
+  "pk.eyJ1IjoibmJvcm92aWMiLCJhIjoiY2p5c2p6YzQwMGZrczNicDVydTRsdjRrZyJ9.vkuoGV111LH3wxKuTsMTgw";
 
 export default class DrivingWithLesson extends Component {
   constructor(props) {
@@ -16,12 +23,23 @@ export default class DrivingWithLesson extends Component {
       marker: {
         latitude: 43.51125,
         longitude: 16.46944444
-      }
+      },
+      searchResultLayer: null
     };
   }
 
+  mapRef = React.createRef();
+
   handleMapViewportChange = viewport => {
-    this.setState(state => ({ ...state, viewport }));
+    this.setState({
+      viewport
+    });
+  };
+
+  handleMarkerChangeOnSearch = (longitude, latitude) => {
+    this.setState({
+      marker: { latitude, longitude }
+    });
   };
 
   handleMarkerDragEnd = event => {
@@ -33,20 +51,46 @@ export default class DrivingWithLesson extends Component {
     this.setState(state => ({ ...state, marker: updatedMarker }));
   };
 
+  handleGeocoderViewportChange = viewport => {
+    this.handleMapViewportChange(viewport);
+    this.handleMarkerChangeOnSearch(viewport.longitude, viewport.latitude);
+  };
+
+  handleOnResult = event => {
+    this.setState({
+      searchResultLayer: new GeoJsonLayer({
+        id: "search-result",
+        data: event.result.geometry,
+        getFillColor: [255, 0, 0, 128],
+        getRadius: 1000,
+        pointRadiusMinPixels: 10,
+        pointRadiusMaxPixels: 10
+      })
+    });
+  };
+
   render() {
-    const { viewport, marker } = this.state;
+    const { viewport, marker, searchResultLayer } = this.state;
     const { handleMapViewportChange, handleMarkerDragEnd } = this;
 
     return (
       <main className="main__drive">
         <section className="main__map">
-          <ReactMapGL
+          <MapGl
+            ref={this.mapRef}
             {...viewport}
-            mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_WEBTOKEN}
-            onViewportChange={viewport =>
-              this.handleMapViewportChange(viewport)
-            }
+            mapboxApiAccessToken={MAP_TOKEN}
+            onViewportChange={viewport => handleMapViewportChange(viewport)}
           >
+            <Geocoder
+              mapRef={this.mapRef}
+              onResult={this.handleOnResult}
+              onViewportChange={this.handleGeocoderViewportChange}
+              mapboxApiAccessToken={MAP_TOKEN}
+              position="top-left"
+              className="map__dropdown"
+            />
+            <DeckGL {...viewport} layers={[searchResultLayer]} />
             <Marker
               draggable
               {...marker}
@@ -90,7 +134,7 @@ export default class DrivingWithLesson extends Component {
                 </g>
               </svg>
             </Marker>
-          </ReactMapGL>
+          </MapGl>
         </section>
         <section className="main__next--lesson--wrapper">
           <h3 className="main__next--lesson">Sljedeći termin:</h3>
