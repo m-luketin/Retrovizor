@@ -9,6 +9,7 @@ nav {
   height: 58px;
   box-shadow: #e4e4e4 0 0 30px;
   background-color: white;
+  z-index: 1;
 }
 
 .nav__hamburger {
@@ -23,13 +24,21 @@ nav {
 }
 
 .nav__car {
-  width: 35.19px;
-  height: 18.2px;
+  width: 36px;
+  height: 24.48px;
 }
 
 .nav__profile {
   width: 26.1px;
   height: 32.08px;
   margin-right: 10px;
+}
+
+.nav__hamburger--admin {
+  margin-left: 0;
+}
+
+.nav__car--admin {
+  margin-left: 10px;
 }
 /* Navigation */

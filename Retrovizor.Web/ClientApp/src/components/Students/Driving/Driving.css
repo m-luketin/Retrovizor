@@ -1,0 +1,77 @@
+.main__map {
+  width: 100vw;
+  height: 440px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main__map--text {
+  color: #676767;
+  font-size: 15px;
+  text-align: center;
+}
+
+.main__map--text--lines {
+  max-width: 65%;
+}
+
+.main__next--lesson--wrapper {
+  width: 100%;
+}
+
+.main__next--lesson {
+  color: #676767;
+  font-size: 25px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-left: 3px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.main__driving {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main__driving--instructor {
+  width: 74px;
+  height: 74px;
+}
+
+.main__button--driving {
+  width: 285px;
+  margin-top: 0;
+}
+
+.button__info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 0;
+}
+
+.button__info h3,
+.button__info p {
+  margin: 0;
+}
+
+.main__button--driving--add {
+  background-image: none;
+  border: 2px solid #1488cc;
+  position: relative;
+}
+
+.main__button--driving--add h3 {
+  color: #1488cc;
+  font-size: 20px;
+  margin-bottom: 0;
+  left: 64px;
+  position: absolute;
+}
+
+.main__button--driving--nothing {
+  width: 100%;
+}

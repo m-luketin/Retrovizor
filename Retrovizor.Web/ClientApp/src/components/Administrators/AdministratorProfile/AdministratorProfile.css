@@ -1,0 +1,17 @@
+.school--name {
+  font-size: 27px;
+  color: #676767;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.main__button--admin {
+  width: 367px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.main__button--admin--text {
+  position: relative;
+  left: 20px;
+}

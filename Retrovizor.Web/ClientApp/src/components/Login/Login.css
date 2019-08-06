@@ -54,12 +54,12 @@
 
 .field__input:focus {
   outline: none;
-  border-color: #1288cc;
-  color: #1288cc;
+  border-color: #1488cc;
+  color: #1488cc;
 }
 
 .field__input:focus::placeholder {
-  color: #1288cc;
+  color: #1488cc;
 }
 
 .field__label {
@@ -75,7 +75,7 @@
   margin-bottom: 24px;
   text-align: center;
   border-radius: 50px;
-  background-color: #1288cc;
+  background-color: #1488cc;
   color: #fff;
   cursor: pointer;
 }
@@ -85,5 +85,5 @@
 }
 
 .obstacle__contact {
-  color: #1288cc !important;
+  color: #1488cc !important;
 }
