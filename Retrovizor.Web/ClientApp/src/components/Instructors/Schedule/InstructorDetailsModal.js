@@ -170,8 +170,79 @@ export default class InstructorDetailsModal extends Component {
             <input type="text" placeholder="Lokacija" />
           </div>
         </div>
-        <input className="modal__instructor--checkbox" type="checkbox" />
-        <label className="modal__instructor--label">Ispit</label>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="12px"
+          height="12px"
+          viewBox="0 0 12 12"
+          version="1.1"
+        >
+          <g
+            id="Instruktor"
+            stroke="none"
+            strokeWidth="1"
+            fill="none"
+            fillRule="evenodd"
+          >
+            <g
+              id="Termin-ispit(2)"
+              transform="translate(-47.000000, -428.000000)"
+              fill="#8B959E"
+            >
+              <g id="Group-8">
+                <g id="Group-7" transform="translate(17.000000, 225.000000)">
+                  <g id="Group-6" transform="translate(30.000000, 200.000000)">
+                    <g id="Group-5" transform="translate(0.000000, 3.000000)">
+                      <path
+                        d="M4,0 L8,0 C10.209139,-4.05812251e-16 12,1.790861 12,4 L12,8 C12,10.209139 10.209139,12 8,12 L4,12 C1.790861,12 2.705415e-16,10.209139 0,8 L0,4 C-2.705415e-16,1.790861 1.790861,4.05812251e-16 4,0 Z M9.53762504,3.76460041 L9.53772104,3.76460041 C9.59649838,3.7021361 9.61748656,3.61305935 9.59277954,3.53092453 C9.56807253,3.4487897 9.50142389,3.38607503 9.41793954,3.36640452 C9.33445518,3.34673402 9.24681837,3.37309609 9.18804104,3.43556041 L4.71876104,8.06448841 L2.32356104,5.81002441 C2.26016314,5.75098895 2.16987095,5.73070036 2.08731193,5.7569394 C2.00475291,5.78317844 1.94274132,5.85187247 1.92505889,5.93667702 C1.90737646,6.02148156 1.93676774,6.10923382 2.00196104,6.16628041 L4.57168904,8.57818441 C4.66861829,8.66573901 4.81776877,8.65970217 4.90730504,8.56460041 L9.53762504,3.76460041 Z"
+                        id="Combined-Shape"
+                      />
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </svg>
+        {/* <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="12px"
+          height="12px"
+          viewBox="0 0 12 12"
+          version="1.1"
+        >
+          <g
+            id="Instruktor"
+            stroke="none"
+            strokeWidth="1"
+            fill="none"
+            fillRule="evenodd"
+          >
+            <g
+              id="Termin-ispit(2)"
+              transform="translate(-47.000000, -428.000000)"
+              stroke="#8B959E"
+            >
+              <g id="Group-8">
+                <g id="Group-7" transform="translate(17.000000, 225.000000)">
+                  <g id="Group-6" transform="translate(30.000000, 200.000000)">
+                    <g id="Group-5" transform="translate(0.000000, 3.000000)">
+                      <rect
+                        id="Rectangle"
+                        x="0.5"
+                        y="0.5"
+                        width="11"
+                        height="11"
+                        rx="4"
+                      />
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </svg> */}
+        <p className="modal__instructor--label">Ispit</p>
       </aside>
     );
   }

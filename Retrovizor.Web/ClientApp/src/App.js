@@ -21,6 +21,7 @@ import Student from "./components/Administrators/Students/Student";
 import StudentList from "./components/Instructors/Students/StudentList";
 import StudentDetails from "./components/Instructors/Students/StudentDetails";
 import InstructorSchedule from "./components/Instructors/Schedule/InstructorSchedule";
+import InstructorProfile from "./components/Instructors/InstructorProfile/InstructorProfile";
 
 export default class App extends Component {
   static displayName = App.name;
@@ -98,7 +99,12 @@ export default class App extends Component {
             <Route
               exact
               path="/instruktor/profil"
-              render={props => <Instructors {...props} />}
+              render={props => <InstructorProfile {...props} />}
+            />
+            <Route
+              exact
+              path="/instruktor/profil/postavke"
+              render={props => <Settings {...props} />}
             />
             {/* Instructors */}
 

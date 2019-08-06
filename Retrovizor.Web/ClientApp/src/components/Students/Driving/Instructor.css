@@ -140,6 +140,7 @@
 .modal__instructor--label {
   color: #676767;
   margin-left: 10px;
+  display: inline-block;
 }
 
 .instructor__schedule--date {
