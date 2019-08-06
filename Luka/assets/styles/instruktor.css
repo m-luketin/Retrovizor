@@ -1,0 +1,120 @@
+header {
+  display: flex;
+  align-items: flex-end;
+}
+
+.header__title {
+  color: #1488cc;
+  margin-left: 21px;
+}
+
+.main__button--instructor {
+  width: 83.22px;
+  height: 66px;
+}
+
+.main__button--text {
+  position: absolute;
+  left: 113px;
+}
+
+.main__button--text h3 {
+  font-size: 19px;
+}
+
+.main__button--text p {
+  font-size: 14px;
+}
+
+.main__button--transparent {
+  background-color: transparent;
+  background-image: none;
+  justify-content: space-evenly;
+}
+
+.main__button--description h3 {
+  color: #676767;
+  font-size: 15px;
+}
+
+.main__button--description p {
+  color: #676767;
+  font-size: 11px;
+}
+
+.main__button--golf {
+  width: 126px;
+  height: 80px;
+}
+
+.main__itinerary {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.main__itinerary--title {
+  color: #676767;
+  font-size: 16px;
+  width: 380px;
+  margin-bottom: 14px;
+}
+
+.main__itinerary--day {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 280px;
+  margin-bottom: 31px;
+}
+
+.main__itinerary--arrow {
+  width: 17px;
+  height: 17px;
+}
+
+.main__itinerary--text h3 {
+  color: #1488cc;
+  text-align: center;
+}
+
+.main__itinerary--text p {
+  color: #1488cc;
+  text-align: center;
+}
+
+.main__itinerary--time {
+  width: 280px;
+}
+
+.main__itinerary--time button {
+  border: 1px solid #1488cc;
+  border-radius: 7px;
+  width: 77px !important;
+  height: 32px !important;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.main__itinerary--wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.main__itinerary--button--available {
+  background-color: #1488cc;
+}
+
+.main__itinerary--button--unavailable {
+  background-color: transparent;
+  color: #1488cc;
+}
+
+/* goes on the last item if( list.length % 3 === 1) and
+ on the last two items if if( list.length % 3 === 2) */
+.main__itinerary--button--empty {
+  visibility: hidden;
+}

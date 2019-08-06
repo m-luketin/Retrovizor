@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+  box-sizing: border-box;
+  font-family: "Avenir Next";
+}
+
+.header {
+  padding-top: 36px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__title {
+  margin-left: 17px;
+  font-size: 28px;
+  font-weight: 600;
+  color: #676767;
+}
+
+.header > button {
+  margin-right: 17px;
+}
+
+.header__img {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.header--alt {
+  justify-content: flex-start;
+}
+
+.header__title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #676767;
+}
+
+.date__arrow-down {
+  width: 13px;
+  height: 13px;
+  transform: rotate(-90deg);
+  margin-right: 10.5px;
+}
+
+.date__day {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1288cc;
+}
+
+.date__day--lower {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.date__appointment {
+  height: 73px;
+  padding: 11px 20px;
+  margin-top: 20px;
+  background: linear-gradient(to right, #1583ca, #2a37b3);
+  border-radius: 17px;
+  color: #fff;
+  font-size: 19px;
+  display: flex;
+  align-items: center;
+}
+
+.date__appointment--taken {
+  background: #c5cacf;
+}
+
+.date__appointment--open {
+  background: #fff;
+  border: 2px solid #1288cc;
+  color: #1288cc;
+}
+
+.appointment__time {
+  width: 71px;
+  text-align: center;
+  padding-right: 20px;
+  border-right: 1px solid #fff;
+  margin-right: 20px;
+  line-height: 51px;
+}
+
+.appointment__time--open {
+  border-right-color: #1288cc;
+}
+
+.date__appointment--exam {
+  background: linear-gradient(to right, #a7c486, #81ab70);
+}

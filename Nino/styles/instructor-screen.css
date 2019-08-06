@@ -1,0 +1,125 @@
+.main {
+  padding: 0 30px;
+}
+
+.main__instructor {
+  display: flex;
+  align-items: center;
+  padding-bottom: 35px;
+  padding-top: 25px;
+}
+
+.instructor__icon {
+  width: 74px;
+  height: 74px;
+  border-radius: 14px;
+  margin-right: 30px;
+}
+
+.instructor__name,
+.instructor__driving-school {
+  color: #676767;
+}
+
+.instructor__name {
+  font-size: 23px;
+  font-weight: 600;
+}
+
+.instructor__driving-school {
+  font-size: 14px;
+}
+
+.main__item {
+  display: flex;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.item__icon {
+  width: 19px;
+  height: 19px;
+  margin-right: 15px;
+  margin-top: 4px;
+}
+
+.item__title {
+  font-size: 19px;
+  color: #676767;
+  font-weight: 600;
+}
+
+.item__info {
+  font-size: 14px;
+  color: #676767;
+}
+
+.item__img {
+  width: auto;
+  height: 138px;
+  position: absolute;
+  right: -80px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.date__arrow-down {
+  width: 13px;
+  height: 13px;
+  transform: rotate(-90deg);
+  margin-right: 10.5px;
+}
+
+.main__item--schedule {
+  display: block;
+}
+
+.item__header {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.date__day {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1288cc;
+}
+
+.date__day--lower {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.date__appointment {
+  padding: 11px 20px;
+  margin-top: 20px;
+  background: linear-gradient(to right, #1583ca, #2a37b3);
+  border-radius: 17px;
+  color: #fff;
+  font-size: 19px;
+  display: flex;
+  align-items: center;
+}
+
+.date__appointment--taken {
+  background: #c5cacf;
+}
+
+.date__appointment--open {
+  background: #fff;
+  border: 2px solid #1288cc;
+  color: #1288cc;
+}
+
+.appointment__time {
+  width: 71px;
+  text-align: center;
+  padding-right: 20px;
+  border-right: 1px solid #fff;
+  margin-right: 20px;
+  line-height: 51px;
+}
+
+.appointment__time--open {
+  border-right-color: #1288cc;
+}

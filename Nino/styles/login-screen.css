@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+} /* Temp */
+
+.main__login-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  font-family: "Avenir Next";
+  font-weight: 500;
+}
+
+.login-container__logo {
+  width: auto;
+  height: 41px;
+}
+
+.login-form__field {
+  position: relative;
+}
+
+.field__input,
+.field__label,
+.login-container__obstacle {
+  color: #676767;
+}
+
+.field__input,
+.field__submit {
+  width: 305px;
+  height: 46px;
+  padding: 8px 28px;
+  font-size: 22px;
+}
+
+.field__input,
+.login-container__logo {
+  margin-bottom: 48px;
+}
+
+.field__input {
+  border: 2px solid #676767;
+  border-radius: 23px;
+}
+
+.field__input:focus {
+  outline: none;
+  border-color: #1288cc;
+  color: #1288cc;
+}
+
+.field__input:focus::placeholder {
+  color: #1288cc;
+}
+
+.field__label {
+  padding: 0 4px;
+  background-color: #fff;
+  position: absolute;
+  left: 28px;
+  top: -9px;
+  z-index: 2;
+}
+
+.field__submit {
+  margin-bottom: 24px;
+  text-align: center;
+  border-radius: 50px;
+  background-color: #1288cc;
+  color: #fff;
+  cursor: pointer;
+}
+
+.login-container__obstacle {
+  font-size: 15px;
+}
+
+.obstacle__contact {
+  color: #1288cc;
+}

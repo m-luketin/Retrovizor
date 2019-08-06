@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./styles/common.css" />
+    <link rel="stylesheet" href="./styles/appointments-screen.css" />
+    <title>Retrovizor | Appointments</title>
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="header__title">Termini</h1>
+      <button>
+        <img
+          class="header__img"
+          src="./assets/images/plus-sign.svg"
+          alt="Plus znak"
+        />
+      </button>
+    </header>
+
+    <main class="main">
+      <div class="main__schedule">
+        <div class="schedule__date">
+          <img
+            class="date__arrow-down"
+            src="./assets/images/arrow.png"
+            alt=""
+          />
+          <span class="date__day"
+            >Srijeda, <span class="date__day--lower">17. srpnja</span></span
+          >
+
+          <div class="date__appointment">
+            <p class="appointment__time">8:30</p>
+            <p class="appointment__candidate">Matija Luketin</p>
+          </div>
+
+          <div class="date__appointment">
+            <p class="appointment__time">10:15</p>
+            <div class="appintment__content">
+              <p class="appointment__candidate">Nino Borović</p>
+              <p class="appointment__exam">Ispit</p>
+            </div>
+          </div>
+
+          <div class="date__appointment date__appointment--open">
+            <p class="appointment__time appointment__time--open">11:15</p>
+            <p class="appointment__candidate">Slobodno</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

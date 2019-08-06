@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./styles/common.css" />
+    <link rel="stylesheet" href="./styles/instructor-screen.css" />
+    <title>Retrovizor | Instruktori</title>
+  </head>
+  <body>
+    <header class="header header--alt">
+      <img class="header__arrow" src="./assets/images/arrow.png" alt="Arrow" />
+      <h1 class="header__title header__title--blue">
+        Instruktori
+      </h1>
+    </header>
+
+    <main class="main">
+      <figure class="main__instructor">
+        <img
+          class="instructor__icon"
+          src="./assets/images/instructor.jpg"
+          alt="Instruktor"
+        />
+        <figcaption>
+          <h2 class="instructor__name">Ivan Bartičević</h2>
+          <span class="instructor__driving-school">Autoškola "Dalmacija"</span>
+        </figcaption>
+      </figure>
+
+      <figure class="main__item">
+        <img class="item__icon" src="./assets/images/phone.png" alt="Mobitel" />
+        <figcaption>
+          <h3 class="item__title">Kontakt:</h3>
+          <a href="tel:+385951234567" class="item__info">+385 951234567</a>
+        </figcaption>
+      </figure>
+
+      <figure class="main__item">
+        <img class="item__icon" src="./assets/images/phone.png" alt="Mobitel" />
+
+        <figcaption>
+          <h3 class="item__title">Kandidati:</h3>
+          <p class="item__info">15/15</p>
+        </figcaption>
+      </figure>
+
+      <figure class="main__item">
+        <img class="item__icon" src="./assets/images/phone.png" alt="Mobitel" />
+
+        <figcaption>
+          <h3 class="item__title">Auto:</h3>
+          <p class="item__info">Golf VII GTI 2018</p>
+          <img class="item__img" src="./assets/images/car.png" alt="Auto" />
+        </figcaption>
+      </figure>
+
+      <figure class="main__item main__item--schedule">
+        <div class="item__header">
+          <img
+            class="item__icon"
+            src="./assets/images/phone.png"
+            alt="Mobitel"
+          />
+          <h3 class="item__title">Raspored:</h3>
+        </div>
+
+        <figcaption>
+          <div class="item__schedule">
+            <div class="schedule__date">
+              <img
+                class="date__arrow-down"
+                src="./assets/images/arrow.png"
+                alt=""
+              />
+              <span class="date__day"
+                >Srijeda, <span class="date__day--lower">17. srpnja</span></span
+              >
+
+              <div class="date__appointment date__appointment--taken">
+                <p class="appointment__time">8:30</p>
+                <p class="appointment__status">Zauzeto</p>
+              </div>
+
+              <div class="date__appointment">
+                <p class="appointment__time">10:15</p>
+                <p class="appointment__status">Rezervirano</p>
+              </div>
+
+              <div class="date__appointment date__appointment--open">
+                <p class="appointment__time appointment__time--open">11:15</p>
+                <p class="appointment__status">Slobodno</p>
+              </div>
+            </div>
+          </div>
+        </figcaption>
+      </figure>
+    </main>
+  </body>
+</html>

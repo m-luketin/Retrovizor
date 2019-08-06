@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./assets/styles/common.css" />
+    <link rel="stylesheet" href="./assets/styles/instruktor.css" />
+    <title>Instruktor</title>
+  </head>
+  <body>
+    <header>
+      <img
+        class="header__arrow"
+        src="./assets/images/ARROW-TEMP.png"
+        alt="Arrow"
+      />
+      <h1 class="header__title">
+        Instruktor
+      </h1>
+    </header>
+
+    <main>
+      <section>
+        <button class="main__button">
+          <img
+            class="main__button--instructor"
+            src="./assets/images/INSTRUCTOR-TEMP.gif"
+            alt="Instruktor"
+          />
+          <div class="main__button--text">
+            <h3>
+              Ivan Bartičević
+            </h3>
+            <p>
+              10/10 kandidata
+            </p>
+          </div>
+        </button>
+
+        <button class="main__button main__button--transparent">
+          <div class="main__button--description">
+            <h3>
+              Golf VII 1.8 TDI
+            </h3>
+            <p>
+              Automatik
+            </p>
+          </div>
+          <img
+            class="main__button--golf"
+            src="./assets/images/golf.png"
+            alt="Auto"
+          />
+        </button>
+      </section>
+
+      <section class="main__itinerary">
+        <h2 class="main__itinerary--title">Raspored</h2>
+
+        <article class="main__itinerary--day">
+          <img
+            class="main__itinerary--arrow"
+            src="./assets/images/ARROW-TEMP.png"
+            alt="Left arrow"
+          />
+          <div class="main__itinerary--text">
+            <h3>
+              Srijeda
+            </h3>
+            <p>
+              17. studenog
+            </p>
+          </div>
+          <img
+            class="main__itinerary--arrow"
+            src="./assets/images/ARROW-TEMP.png"
+            alt="Right arrow"
+          />
+        </article>
+
+        <article class="main__itinerary--time">
+          <div class="main__itinerary--wrapper">
+            <button class="main__itinerary--button--available">08:30</button>
+            <button class="main__itinerary--button--available">09:30</button>
+            <button class="main__itinerary--button--available">10:30</button>
+          </div>
+
+          <div class="main__itinerary--wrapper">
+            <button class="main__itinerary--button--available">11:30</button>
+            <button class="main__itinerary--button--unavailable">12:30</button>
+            <button class="main__itinerary--button--unavailable">13:30</button>
+          </div>
+
+          <div class="main__itinerary--wrapper">
+            <button class="main__itinerary--button--available">14:30</button>
+            <button class="main__itinerary--button--available">15:30</button>
+            <button class="main__itinerary--button--empty"></button>
+          </div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

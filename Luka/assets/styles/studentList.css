@@ -1,0 +1,16 @@
+.student__list--wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.student__list--wrapper img {
+  width: 74px;
+  height: 74px;
+}
+
+.student__list--wrapper span {
+  width: 220px;
+  height: 74px;
+  background-image: linear-gradient(to top right, blue, purple);
+}

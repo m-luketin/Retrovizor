@@ -1,0 +1,18 @@
+.main {
+  padding: 17px 22px;
+}
+
+.instructor__car-type {
+  color: #fff;
+  font-size: 11px;
+}
+
+.instructor__car-img {
+  width: auto;
+  height: 74px;
+  position: absolute;
+  right: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 0;
+}

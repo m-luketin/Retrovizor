@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: none;
+  box-sizing: border-box;
+  font-family: "Avenir Next";
+}
+
+.header {
+  padding: 0 18px;
+  padding-top: 36px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header--alt {
+  justify-content: flex-start;
+}
+
+.header__title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #676767;
+}
+
+.header__title--blue {
+  color: #1288cc;
+}
+
+.header__icon {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.header__arrow {
+  width: 30px;
+  height: 30px;
+  margin-right: 16px;
+}
+
+.main__instructor {
+  display: flex;
+  margin-bottom: 23px;
+}
+
+.instructor__icon {
+  width: 74px;
+  height: 74px;
+  border-radius: 14px;
+  margin-right: 20px;
+}
+
+.main__instructor > figcaption {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 285px;
+  padding: 11px 19px;
+  background: #1288cc;
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+}
+
+.instructor__name {
+  color: #fff;
+  font-size: 17px;
+  font-weight: 500;
+}
