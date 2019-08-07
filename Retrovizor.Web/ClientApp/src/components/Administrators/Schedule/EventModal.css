@@ -1,0 +1,93 @@
+.modal__event--type {
+  width: 222px !important;
+}
+
+.modal__event--number {
+  width: 72px !important;
+}
+
+.modal--big {
+  height: 468px;
+}
+
+.modal__input--right {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  max-height: 158px;
+  margin-right: -12px;
+  padding-right: 12px;
+}
+
+.modal__instructor--student {
+  width: 280px;
+  height: 32px;
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 7px;
+  border: 1px solid #8b959e;
+  color: #8b959e;
+  font-size: 17px;
+  padding: 6px 10px;
+  margin-bottom: 10px;
+}
+
+.modal__instructor--student p {
+  margin: 0;
+  color: #8b959e;
+}
+
+.modal__icon--delete {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 13px;
+  height: 14px;
+}
+
+.modal__icon--people {
+  width: 19.36px;
+  height: 17.6px;
+}
+
+.student__list--search {
+  width: 100%;
+  border: #8b959e 1px solid;
+  border-radius: 30px;
+  height: 32px;
+  padding-left: 20px;
+  padding-right: 10px;
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+
+.student__list--checkmark {
+  margin-left: 10px;
+  width: 32px !important;
+  height: 32px !important;
+}
+
+.student__list--wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.student__list--wrapper img {
+  width: 74px;
+  height: 74px;
+}
+
+.student__list--wrapper span {
+  width: 220px;
+  height: 74px;
+  margin-top: 0;
+}
+
+.student__list--name {
+  font-size: 20px;
+  margin: 0;
+  margin-left: 20px;
+}

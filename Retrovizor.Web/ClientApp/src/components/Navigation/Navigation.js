@@ -1,51 +1,46 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import "./Navigation.css";
+import StudentNav from "./StudentNav";
+import InstructorNav from "./InstructorNav";
+import AdministratorNav from "./AdministratorNav";
 
 export default class Navigation extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      navDisplay: []
+    };
+  }
+
+  componentDidMount() {
+    this.navDisplayArraySetup(window.location.href);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.navDisplayArraySetup(nextProps.location);
+  }
+
+  navDisplayArraySetup = stringToCheck => {
+    let { navDisplay } = this.state;
+    stringToCheck = window.location.href;
+
+    if (stringToCheck.includes("/kandidat/")) {
+      navDisplay = [true, false, false];
+    } else if (stringToCheck.includes("/instruktor/")) {
+      navDisplay = [false, true, false];
+    } else if (stringToCheck.includes("/administrator/")) {
+      navDisplay = [false, false, true];
+    } else this.setState({ navClass: "d-none" });
+
+    this.setState({ navDisplay });
+  };
+
   render() {
-    return (
-      <nav>
-        <Link to="/materijali">
-          <span>
-            <img
-              class="nav__hamburger"
-              src="./assets/images/HAMBURGER-TEMP.png"
-              alt="Hamburger"
-            />
-          </span>
-        </Link>
+    const { navDisplay } = this.state;
 
-        <Link to="/raspored">
-          <span>
-            <img
-              class="nav__checklist"
-              src="./assets/images/CHECKLIST-TEMP.png"
-              alt="Checklist"
-            />
-          </span>
-        </Link>
-
-        <Link to="/voznja">
-          <span>
-            <img
-              class="nav__car"
-              src="./assets/images/CAR-TEMP.png"
-              alt="Car"
-            />
-          </span>
-        </Link>
-
-        <Link to="/profil">
-          <span>
-            <img
-              class="nav__profile"
-              src="./assets/images/PROFILE-TEMP.png"
-              alt="Profile"
-            />
-          </span>
-        </Link>
-      </nav>
-    );
+    if (navDisplay[0]) return <StudentNav />;
+    else if (navDisplay[1]) return <InstructorNav />;
+    else if (navDisplay[2]) return <AdministratorNav />;
+    else return null;
   }
 }

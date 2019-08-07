@@ -1,0 +1,44 @@
+.header__icon {
+  width: 24px;
+  height: 23.04px;
+  margin-right: 5px;
+  margin-top: 25px;
+}
+
+.header__icon--calendar {
+  margin-right: 17px;
+}
+
+.main__button--schedule {
+  padding: 9px 25px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.main {
+  padding: 10px 18px;
+}
+
+.main__button > div {
+  width: 55px;
+  padding-right: 19.5px;
+  margin-right: 19.5px;
+  border-right: 1px solid #fff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.main__admin--schedule {
+  position: relative;
+}
+
+.instructor__item--schedule--admin {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.main__button--schedule--admin {
+  margin-top: 40px;
+}

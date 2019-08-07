@@ -1,0 +1,64 @@
+header {
+  display: flex;
+  align-items: flex-end;
+}
+
+.main__button--description {
+  position: absolute;
+  font-size: 20px;
+  font-weight: 500;
+  left: 66px;
+  max-width: 235px;
+}
+
+.main__button--number {
+  position: absolute;
+  width: 21px;
+  height: 33px;
+  font-size: 24px;
+  left: 29.5px;
+}
+
+.main__button--lock {
+  position: absolute;
+  width: 17.68px;
+  height: 26px;
+  left: 24.16px;
+}
+
+.main__button--bell {
+  position: absolute;
+  width: 23.2px;
+  height: 26.68px;
+  left: 21.48px;
+}
+
+.main__button--shield {
+  position: absolute;
+  width: 22.68px;
+  height: 24.84px;
+  left: 22.24px;
+}
+
+.main__button--info {
+  position: absolute;
+  width: 27px;
+  height: 27px;
+  left: 20px;
+}
+
+.logout {
+  position: absolute;
+  bottom: 58px;
+  left: 18px;
+  margin-bottom: 21px;
+  display: flex;
+  align-items: center;
+}
+
+.logout figcaption {
+  display: inline-block;
+  font-size: 20px;
+  color: #8b959e;
+  margin-left: 11px;
+}

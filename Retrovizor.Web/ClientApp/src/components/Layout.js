@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Container } from "reactstrap";
 import Navigation from "./Navigation/Navigation";
+import "./Common.css";
 
 export class Layout extends Component {
   static displayName = Layout.name;
@@ -8,7 +9,7 @@ export class Layout extends Component {
   render() {
     return (
       <div>
-        <Navigation />
+        <Navigation location={window.location.href} />
         <Container>{this.props.children}</Container>
       </div>
     );

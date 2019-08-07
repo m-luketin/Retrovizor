@@ -1,0 +1,218 @@
+.main__instructor--list {
+  margin-top: 27px;
+}
+
+.main__button--instructor {
+  margin-bottom: 20px;
+}
+
+.instructor__name {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.instructor__car {
+  font-size: 12px;
+}
+
+.instructor__stars {
+  height: 9px;
+  display: flex;
+  margin-top: 3px;
+}
+
+.instructor__star {
+  width: 9px;
+  height: 9px;
+  margin-right: 3px;
+}
+
+.main__button--name {
+  background-image: none;
+  margin-left: 11px;
+}
+
+.main__button--name h3,
+.main__button--name p {
+  color: gray;
+}
+
+.main__instructor {
+  padding: 18px;
+}
+
+.instructor__item {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.instructor__item div {
+  margin-left: 15px;
+}
+
+.instructor__item img {
+  margin-top: 7px;
+}
+
+.instructor__item--title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #8b959e;
+}
+
+.instructor__item--text {
+  font-size: 15px;
+  margin-bottom: 0;
+  color: #8b959e;
+}
+
+.instructor__item--phone {
+  width: 17px;
+  height: 20px;
+}
+
+.instructor__item--speedy {
+  width: 21px;
+  height: 14.28px;
+}
+
+.instructor__item--people {
+  width: 22px;
+  height: 20px;
+}
+
+.intructor__item--car {
+  width: 21px;
+  height: 18.48px;
+}
+
+.instructor__item--preview {
+  width: 302px;
+  height: 138px;
+  margin-right: -132px;
+  margin-left: 47px;
+}
+
+.instructor__item--calendar {
+  width: 22.8px;
+  height: 16px;
+}
+
+.instructor__item--itinerary {
+  margin-top: -30px;
+}
+
+.instructor__item--wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: -30px;
+}
+
+.intructor__item--arrow {
+  width: 13px;
+  height: 13px;
+  transform: rotate(270deg);
+  margin-left: 3px;
+  margin-top: 7px;
+}
+
+.instructor__item--schedule {
+  display: flex;
+  height: 27px;
+}
+
+.instructor__item--clock {
+  width: 21px;
+  height: 21px;
+}
+
+
+.instructor__item--person {
+  margin-left: 3px;
+}
+
+.instructor__item--pointer {
+  width: 15.64px;
+  height: 24px;
+  margin-left: 3px;
+}
+
+.modal__instructor--checkbox {
+  background-image: #8b959e;
+  width: 12px;
+  height: 12px;
+}
+
+.modal__instructor--label {
+  color: #8b959e;
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.instructor__schedule--date {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1488cc;
+  margin-left: 10.5px;
+}
+
+.instructor__schedule--day {
+  font-size: 16px;
+  color: #1488cc;
+  margin-left: 4px;
+  margin-top: 1px;
+}
+
+.instructor__schedule--button {
+  width: 354px;
+  position: relative;
+  margin-top: 20px;
+}
+
+.instructor__schedule--button p {
+  font-size: 20px;
+}
+
+.instructor__schedule--time {
+  height: 52px;
+  padding: 0 !important;
+  width: auto !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.instructor__schedule--time h3 {
+  font-size: 20px;
+  padding-right: 20px;
+  margin-bottom: 0;
+}
+
+.instructor__schedule--taken {
+  background-image: none;
+  background-color: #c5cacf;
+}
+
+.button__garbage {
+  position: absolute;
+  right: 20px;
+}
+
+.instructor__schedule--exam {
+  background-image: linear-gradient(to top right, #a8e063, #56ab2f);
+}
+
+.instructor__schedule--free {
+  background-image: none;
+  background-color: #fff;
+  border: 1px solid #1488cc;
+}
+
+.instructor__schedule--free h3,
+.instructor__schedule--free p {
+  color: #1488cc;
+}
+
+.button__info--arrow {
+  transform: rotate(180deg);
+}

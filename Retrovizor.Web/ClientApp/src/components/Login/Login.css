@@ -31,7 +31,7 @@
 .field__input,
 .field__label,
 .login-container__obstacle {
-  color: #676767;
+  color: #8b959e;
 }
 
 .field__input,
@@ -42,40 +42,68 @@
   font-size: 22px;
 }
 
-.field__input,
+.login-form__field,
 .login-container__logo {
   margin-bottom: 48px;
 }
 
 .field__input {
-  border: 2px solid #676767;
+  border: 2px solid #8b959e;
   border-radius: 23px;
 }
 
 .field__input:focus {
   outline: none;
-  border-color: #1288cc;
-  color: #1288cc;
+  border-color: #1488cc;
+  color: #1488cc;
 }
 
 .field__input:focus::placeholder {
-  color: #1288cc;
+  color: #1488cc;
+}
+
+.field__border-overlay {
+  background: #fff;
+  width: 0px;
+  height: 5px;
+  position: absolute;
+  left: 26px;
+  top: 0;
+  transition: all ease-in-out 0.15s;
+}
+
+.field__border-overlay--delay {
+  transition-delay: 0.175s;
+}
+
+.field__border-overlay--focused {
+  width: 120px;
 }
 
 .field__label {
   padding: 0 4px;
-  background-color: #fff;
   position: absolute;
   left: 28px;
-  top: -9px;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 2;
+  font-size: 22px;
+  font-weight: 400;
+  pointer-events: none;
+  transition: all ease-in-out 0.25s;
+}
+
+.field__label--focused {
+  top: 0px;
+  font-weight: 500;
+  font-size: 16px;
 }
 
 .field__submit {
   margin-bottom: 24px;
   text-align: center;
   border-radius: 50px;
-  background-color: #1288cc;
+  background-color: #1488cc;
   color: #fff;
   cursor: pointer;
 }
@@ -85,5 +113,5 @@
 }
 
 .obstacle__contact {
-  color: #1288cc !important;
+  color: #1488cc !important;
 }

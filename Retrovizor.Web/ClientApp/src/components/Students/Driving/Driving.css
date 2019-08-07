@@ -1,0 +1,145 @@
+.main__map {
+  width: 100vw;
+  height: 440px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.mapboxgl-ctrl-geocoder--input {
+  padding: 0;
+  height: unset;
+}
+
+.mapboxgl-ctrl-geocoder {
+  width: 377px;
+  border-radius: 50px;
+  padding: 5px 40px;
+  border: 1px solid #676767;
+  margin: 0 !important;
+  position: relative;
+}
+
+.suggestions {
+  top: calc(100% + 1px) !important;
+  box-shadow: none !important;
+  border-radius: 15px !important;
+}
+
+.mapboxgl-ctrl-geocoder--icon-search {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.mapboxgl-ctrl-geocoder--icon-close,
+.mapboxgl-ctrl-geocoder--icon-search {
+  margin: 0;
+}
+
+.mapboxgl-ctrl-logo,
+.mapboxgl-ctrl-attrib,
+.mapboxgl-ctrl-attrib::after {
+  display: none !important;
+}
+
+.mapboxgl-ctrl-top-right {
+  width: 100%;
+  margin-top: 4px;
+  display: flex;
+  justify-content: center;
+}
+
+.mapboxgl-ctrl-geocoder--suggestion-title,
+.mapboxgl-ctrl-geocoder--suggestion-address {
+  color: #676767;
+}
+
+.map-container__map {
+  width: 100%;
+  height: 100%;
+}
+
+.map__submit {
+  width: 377px;
+  padding: 10px 72px;
+  background: #1488cc;
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  border-radius: 50px;
+  transform: translateX(-50%);
+}
+
+.main__map--text {
+  color: #8b959e;
+  font-size: 15px;
+  text-align: center;
+}
+
+.main__map--text--lines {
+  max-width: 65%;
+}
+
+.main__next--lesson--wrapper {
+  width: 100%;
+}
+
+.main__next--lesson {
+  color: #8b959e;
+  font-size: 25px;
+  margin-bottom: 20px;
+  margin-left: 3px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.main__driving {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main__driving--instructor {
+  width: 74px;
+  height: 74px;
+}
+
+.main__button--driving {
+  width: 285px;
+  margin-top: 0;
+}
+
+.button__info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 0;
+  font-size: 20px;
+}
+
+.button__info h3,
+.button__info p {
+  margin: 0;
+}
+
+.main__button--driving--add {
+  background-image: none;
+  border: 2px solid #1488cc;
+  position: relative;
+}
+
+.main__button--driving--add h3 {
+  color: #1488cc;
+  font-size: 20px;
+  margin-bottom: 0;
+  left: 64px;
+  position: absolute;
+}
+
+.main__button--driving--nothing {
+  width: 100%;
+}
