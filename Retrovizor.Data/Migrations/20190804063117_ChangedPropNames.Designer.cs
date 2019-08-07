@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Retrovizor.Data.Entities;
 
 namespace Retrovizor.Data.Migrations
 {
     [DbContext(typeof(RetrovizorContext))]
-    partial class RetrovizorContextModelSnapshot : ModelSnapshot
+    [Migration("20190804063117_ChangedPropNames")]
+    partial class ChangedPropNames
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,21 +27,19 @@ namespace Retrovizor.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("UserId");
+                    b.Property<int>("DrivingSchoolId");
+
+                    b.Property<int?>("UserId");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DrivingSchoolId");
+
                     b.HasIndex("UserId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[UserId] IS NOT NULL");
 
                     b.ToTable("Admins");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            UserId = 1
-                        });
                 });
 
             modelBuilder.Entity("Retrovizor.Data.Entities.Models.Class", b =>
@@ -72,14 +72,6 @@ namespace Retrovizor.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DrivingSchools");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Address = "Solinska 5",
-                            Name = "Semafor"
-                        });
                 });
 
             modelBuilder.Entity("Retrovizor.Data.Entities.Models.Event", b =>
@@ -128,32 +120,27 @@ namespace Retrovizor.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("DrivingSchoolId");
+
                     b.Property<string>("FirstName");
 
                     b.Property<string>("LastName");
 
-                    b.Property<int>("UserId");
+                    b.Property<int?>("UserId");
 
                     b.Property<int>("VehicleId");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DrivingSchoolId");
+
                     b.HasIndex("UserId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[UserId] IS NOT NULL");
 
                     b.HasIndex("VehicleId");
 
                     b.ToTable("Instructors");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            FirstName = "Matija",
-                            LastName = "Luketin",
-                            UserId = 2,
-                            VehicleId = 1
-                        });
                 });
 
             modelBuilder.Entity("Retrovizor.Data.Entities.Models.Location", b =>
@@ -219,28 +206,23 @@ namespace Retrovizor.Data.Migrations
 
                     b.Property<string>("Category");
 
+                    b.Property<int>("DrivingSchoolId");
+
                     b.Property<string>("FirstName");
 
                     b.Property<string>("LastName");
 
-                    b.Property<int>("UserId");
+                    b.Property<int?>("UserId");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DrivingSchoolId");
+
                     b.HasIndex("UserId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[UserId] IS NOT NULL");
 
                     b.ToTable("Students");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Category = "B",
-                            FirstName = "Luka",
-                            LastName = "Nola",
-                            UserId = 3
-                        });
                 });
 
             modelBuilder.Entity("Retrovizor.Data.Entities.Models.StudentClass", b =>
@@ -294,7 +276,7 @@ namespace Retrovizor.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("DrivingSchoolId");
+                    b.Property<int?>("DrivingSchoolId");
 
                     b.Property<string>("OIB");
 
@@ -311,38 +293,6 @@ namespace Retrovizor.Data.Migrations
                     b.HasIndex("DrivingSchoolId");
 
                     b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            DrivingSchoolId = 1,
-                            OIB = "123456789",
-                            Password = "NqSs3eyOEG9CA8AbO6GgIXjZOgqjAX6tJ0nq1WOOWAt9YnwY",
-                            PhoneNumber = "0921112222",
-                            Role = 2,
-                            Username = "nborovic"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            DrivingSchoolId = 1,
-                            OIB = "987654321",
-                            Password = "zaFUUQie8N96psne7PziMc24lTzDt+75t6MoUqCB83kwaSU6",
-                            PhoneNumber = "0915559999",
-                            Role = 1,
-                            Username = "mluketin"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            DrivingSchoolId = 1,
-                            OIB = "543216789",
-                            Password = "CZ/N7zgZL4faI4Cp4pgd0/L98ZlWS2M6K+VhQf360Ywv2Vkh",
-                            PhoneNumber = "0982221111",
-                            Role = 0,
-                            Username = "lnola"
-                        });
                 });
 
             modelBuilder.Entity("Retrovizor.Data.Entities.Models.Vehicle", b =>
@@ -366,18 +316,6 @@ namespace Retrovizor.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Vehicles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            FuelType = "Dizel",
-                            Image = "vehicle.jpg",
-                            LicensePlate = "ML4422",
-                            Manufacturer = "Golf",
-                            Model = "VII",
-                            Type = "Type"
-                        });
                 });
 
             modelBuilder.Entity("Retrovizor.Data.Entities.Models.VehicleSession", b =>
@@ -403,6 +341,10 @@ namespace Retrovizor.Data.Migrations
 
             modelBuilder.Entity("Retrovizor.Data.Entities.Models.Admin", b =>
                 {
+                    b.HasOne("Retrovizor.Data.Entities.Models.DrivingSchool")
+                        .WithMany("Admins")
+                        .HasForeignKey("DrivingSchoolId");
+
                     b.HasOne("Retrovizor.Data.Entities.Models.User", "User")
                         .WithOne("Admin")
                         .HasForeignKey("Retrovizor.Data.Entities.Models.Admin", "UserId");
@@ -417,6 +359,10 @@ namespace Retrovizor.Data.Migrations
 
             modelBuilder.Entity("Retrovizor.Data.Entities.Models.Instructor", b =>
                 {
+                    b.HasOne("Retrovizor.Data.Entities.Models.DrivingSchool")
+                        .WithMany("Instructors")
+                        .HasForeignKey("DrivingSchoolId");
+
                     b.HasOne("Retrovizor.Data.Entities.Models.User", "User")
                         .WithOne("Instructor")
                         .HasForeignKey("Retrovizor.Data.Entities.Models.Instructor", "UserId");
@@ -446,6 +392,10 @@ namespace Retrovizor.Data.Migrations
 
             modelBuilder.Entity("Retrovizor.Data.Entities.Models.Student", b =>
                 {
+                    b.HasOne("Retrovizor.Data.Entities.Models.DrivingSchool")
+                        .WithMany("Students")
+                        .HasForeignKey("DrivingSchoolId");
+
                     b.HasOne("Retrovizor.Data.Entities.Models.User", "User")
                         .WithOne("Student")
                         .HasForeignKey("Retrovizor.Data.Entities.Models.Student", "UserId");

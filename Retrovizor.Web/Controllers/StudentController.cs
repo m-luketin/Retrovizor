@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Retrovizor.Data.Entities.Models;
@@ -19,12 +20,26 @@ namespace Retrovizor.Web.Controllers
         }
         private readonly IStudentRepository _studentRepository;
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("all")]
         public IActionResult GetAllStudents()
         {
             return Ok(_studentRepository.GetAllStudents());
         }
 
+        [Authorize]
+        [HttpGet("get")]
+        public IActionResult GetStudentById(int id)
+        {
+            var studentToGet = _studentRepository.GetStudentById(id);
+
+            if (studentToGet == null)
+                return NotFound();
+
+            return Ok(studentToGet);
+        }
+
+        [Authorize(Roles = "Admin")]
         [HttpPost("add")]
         public IActionResult AddStudent(Student studentToAdd)
         {
@@ -36,6 +51,7 @@ namespace Retrovizor.Web.Controllers
             return Forbid();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("edit")]
         public IActionResult EditStudent(Student editedStudent)
         {
@@ -47,6 +63,7 @@ namespace Retrovizor.Web.Controllers
             return NotFound();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("delete/{id}")]
         public IActionResult DeleteStudent(int id)
         {
@@ -58,17 +75,7 @@ namespace Retrovizor.Web.Controllers
             return NotFound();
         }
 
-        [HttpGet("get/{id}")]
-        public IActionResult GetStudentById(int id)
-        {
-            var studentToGet = _studentRepository.GetStudentById(id);
-
-            if(studentToGet == null)
-                return NotFound();
-
-            return Ok(studentToGet);
-        }
-
+        [Authorize(Roles = "Admin")]
         [HttpGet("get-by-driving-school/{id}")]
         public IActionResult GetStudentsByDrivingSchoolId(int id)
         {
@@ -80,6 +87,7 @@ namespace Retrovizor.Web.Controllers
             return Ok(studentToGet);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("get-by-instructor/{id}")]
         public IActionResult GetStudentsByInstructorId(int id)
         {
@@ -91,6 +99,7 @@ namespace Retrovizor.Web.Controllers
             return Ok(studentToGet);
         }
 
+        [Authorize(Roles = "Admin, Instructor")]
         [HttpGet("get-current-by-instructor/{id}")]
         public IActionResult GetCurrentStudentsByInstructorId(int id)
         {

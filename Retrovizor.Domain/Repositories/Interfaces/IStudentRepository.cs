@@ -1,4 +1,5 @@
 ﻿using Retrovizor.Data.Entities.Models;
+using Retrovizor.Domain.Classes;
 using System;
 using System.Collections.Generic;
 using System.Text;

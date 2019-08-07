@@ -1,9 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Retrovizor.Data.Entities.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Retrovizor.Data.Entities
 {
@@ -12,6 +9,7 @@ namespace Retrovizor.Data.Entities
         public RetrovizorContext(DbContextOptions options) : base(options)
         {}
 
+        public DbSet<User> Users { get; set; }
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Class> Classes { get; set; }
         public DbSet<DrivingSchool> DrivingSchools { get; set; }
@@ -26,9 +24,23 @@ namespace Retrovizor.Data.Entities
         public DbSet<StudentExam> StudentExams { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<VehicleSession> VehicleSessions { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.Admin)
+                .WithOne(a => a.User)
+                .HasForeignKey<Admin>(a => a.UserId);
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.Instructor)
+                .WithOne(i => i.User)
+                .HasForeignKey<Instructor>(i => i.UserId);
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.Student)
+                .WithOne(s => s.User)
+                .HasForeignKey<Student>(s => s.UserId);
+
             modelBuilder.Entity<StudentExam>()
                 .HasKey(se => new { se.StudentId, se.ExamId, se.DateTaken });
             modelBuilder.Entity<StudentClass>()
@@ -46,7 +58,7 @@ namespace Retrovizor.Data.Entities
                 .HasOne(se => se.Exam)
                 .WithMany(se => se.StudentExams)
                 .HasForeignKey(se => se.ExamId);
-            
+
             modelBuilder.Entity<StudentClass>()
                 .HasOne(sc => sc.Student)
                 .WithMany(sc => sc.StudentClasses)
@@ -86,13 +98,13 @@ namespace Retrovizor.Data.Entities
                 .HasOne(r => r.Student)
                 .WithMany(r => r.Reviews)
                 .HasForeignKey(r => r.StudentId);
-            
+
             // overriding default delete behaviour
             var cascadeFKs = modelBuilder.Model.GetEntityTypes()
                 .SelectMany(t => t.GetForeignKeys())
                 .Where(fk => !fk.IsOwnership && fk.DeleteBehavior == DeleteBehavior.Cascade);
 
-            foreach(var fk in cascadeFKs)
+            foreach (var fk in cascadeFKs)
                 fk.DeleteBehavior = DeleteBehavior.ClientSetNull;
 
             base.OnModelCreating(modelBuilder);

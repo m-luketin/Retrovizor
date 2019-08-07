@@ -1,5 +1,6 @@
 ﻿using Retrovizor.Data.Entities;
 using Retrovizor.Data.Entities.Models;
+using Retrovizor.Domain.Classes;
 using Retrovizor.Domain.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,9 @@ namespace Retrovizor.Domain.Repositories.Implementations
             _context = context;
         }
         private readonly RetrovizorContext _context;
-        
+
+        public List<Event> GetAll() => _context.Events.ToList();
+
         public bool AddEvent(Event eventToAdd)
         {
             var doesEventExist = _context.Events.Any(e =>
@@ -104,7 +107,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public List<Event> GetEventsByDrivingSchoolId(int id)
         {
-            var students = _context.Students.Where(s => s.DrivingSchoolId == id).ToList();
+            var students = _context.Students.Where(s => s.User.DrivingSchoolId == id).ToList();
 
             if(students == null)
                 return null;

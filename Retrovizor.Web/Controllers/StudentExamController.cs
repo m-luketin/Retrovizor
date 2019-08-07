@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Retrovizor.Data.Entities.Models;
@@ -19,6 +20,7 @@ namespace Retrovizor.Web.Controllers
         }
         private readonly IStudentExamRepository _studentExamRepository;
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("edit")]
         public IActionResult EditStudentExam(StudentExam studentExamToEdit)
         {
@@ -30,6 +32,7 @@ namespace Retrovizor.Web.Controllers
             return NotFound();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("add")]
         public IActionResult AssignExamToStudent(StudentExam studentExam)
         {
@@ -41,6 +44,7 @@ namespace Retrovizor.Web.Controllers
             return Forbid();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("delete")]
         public IActionResult DeleteStudentExam(int studentId, int examId)
         {
@@ -52,6 +56,7 @@ namespace Retrovizor.Web.Controllers
             return NotFound();
         }
 
+        [Authorize]
         [HttpGet("get")]
         public IActionResult GetStudentExam(int studentId, int examId)
         {
