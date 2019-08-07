@@ -2,14 +2,16 @@ import React, { Component } from "react";
 import DrivingWithLesson from "./DrivingWithLesson";
 import DrivingWithoutLesson from "./DrivingWithoutLesson";
 import DrivingWithoutInstructor from "./DrivingWithoutInstructor";
+import "mapbox-gl/dist/mapbox-gl.css";
+import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import "./Driving.css";
 
 export default class Driving extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      doesStudentHaveInstructor: false,
-      doesStudentHaveLesson: false
+      doesStudentHaveInstructor: true,
+      doesStudentHaveLesson: true
     };
   }
   render() {
