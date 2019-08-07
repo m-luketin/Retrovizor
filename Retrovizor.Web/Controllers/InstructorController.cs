@@ -22,6 +22,18 @@ namespace Retrovizor.Web.Controllers
             return Ok(_instructorRepository.GetAllInstructorsByDrivingSchoolId(id));
         }
 
+        [Authorize]
+        [HttpGet("get/{id}")]
+        public IActionResult GetInstructorById(int id)
+        {
+            var instructorToGet = _instructorRepository.GetInstructorById(id);
+
+            if (instructorToGet == null)
+                return NotFound();
+
+            return Ok(instructorToGet);
+        }
+
         [Authorize(Roles = "Admin")]
         [HttpPost("add")]
         public IActionResult AddInstructor(Instructor instructorToAdd)

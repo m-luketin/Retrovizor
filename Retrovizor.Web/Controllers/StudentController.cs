@@ -27,6 +27,18 @@ namespace Retrovizor.Web.Controllers
             return Ok(_studentRepository.GetAllStudents());
         }
 
+        [Authorize]
+        [HttpGet("get")]
+        public IActionResult GetStudentById(int id)
+        {
+            var studentToGet = _studentRepository.GetStudentById(id);
+
+            if (studentToGet == null)
+                return NotFound();
+
+            return Ok(studentToGet);
+        }
+
         [Authorize(Roles = "Admin")]
         [HttpPost("add")]
         public IActionResult AddStudent(Student studentToAdd)
