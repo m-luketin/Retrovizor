@@ -50,25 +50,30 @@
   margin-left: 15px;
 }
 
-.instructor__item svg {
+.instructor__item img {
   margin-top: 7px;
 }
 
 .instructor__item--title {
   font-size: 20px;
   font-weight: 600;
-  color: #676767;
+  color: #8b959e;
 }
 
 .instructor__item--text {
   font-size: 15px;
   margin-bottom: 0;
-  color: #676767;
+  color: #8b959e;
 }
 
 .instructor__item--phone {
   width: 17px;
   height: 20px;
+}
+
+.instructor__item--speedy {
+  width: 21px;
+  height: 14.28px;
 }
 
 .instructor__item--people {
@@ -132,13 +137,13 @@
 }
 
 .modal__instructor--checkbox {
-  background-image: #676767;
+  background-image: #8b959e;
   width: 12px;
   height: 12px;
 }
 
 .modal__instructor--label {
-  color: #676767;
+  color: #8b959e;
   margin-left: 10px;
   display: inline-block;
 }
@@ -160,6 +165,7 @@
 .instructor__schedule--button {
   width: 354px;
   position: relative;
+  margin-top: 20px;
 }
 
 .instructor__schedule--button p {

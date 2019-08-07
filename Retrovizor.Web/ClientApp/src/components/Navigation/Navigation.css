@@ -6,16 +6,31 @@ nav {
   position: fixed;
   bottom: 0;
   width: 100vw;
-  height: 58px;
+  height: 65px;
   box-shadow: #e4e4e4 0 0 30px;
   background-color: white;
   z-index: 1;
 }
 
+nav span {
+  max-width: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.nav__span--first {
+  margin-left: 10px;
+}
+
+.nav__span--last {
+  margin-right: 10px;
+}
+
 .nav__hamburger {
   width: 29px;
   height: 27.6px;
-  margin-left: 10px;
 }
 
 .nav__checklist {
@@ -31,14 +46,14 @@ nav {
 .nav__profile {
   width: 26.1px;
   height: 32.08px;
-  margin-right: 10px;
 }
 
-.nav__hamburger--admin {
-  margin-left: 0;
-}
-
-.nav__car--admin {
-  margin-left: 10px;
+.nav__description {
+  font-size: 11px;
+  font-weight: 500;
+  margin: 0;
+  color: #8b959e;
+  width: 100%;
+  text-align: center;
 }
 /* Navigation */

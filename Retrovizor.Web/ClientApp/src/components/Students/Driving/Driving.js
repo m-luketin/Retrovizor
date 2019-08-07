@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import "./Driving.css";
 import DrivingWithLesson from "./DrivingWithLesson";
 import DrivingWithoutLesson from "./DrivingWithoutLesson";
 import DrivingWithoutInstructor from "./DrivingWithoutInstructor";
+import "./Driving.css";
 
 export default class Driving extends Component {
   constructor(props) {

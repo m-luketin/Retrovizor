@@ -3,7 +3,8 @@
   padding: 0;
   color: white;
   text-align: left;
-  /* font */
+  text-decoration: none !important;
+  font-family: "Avenir Next", sans-serif !important;
 }
 
 .container {
@@ -17,7 +18,7 @@
 }
 
 .header__title {
-  color: #676767;
+  color: #8b959e;
   margin-top: 36px;
   margin-left: 3px;
   font-size: 28px;
@@ -121,6 +122,17 @@ main {
 .main__button--free div {
   border-right: 1px solid #1488cc !important;
 }
+
+.button__date {
+  font-size: 22px;
+  color: #fff;
+}
+
+.button__month {
+  font-size: 16px;
+  color: #fff;
+}
+
 /* Main */
 
 .d-none {

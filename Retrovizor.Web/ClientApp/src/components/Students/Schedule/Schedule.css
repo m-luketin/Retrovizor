@@ -11,6 +11,8 @@
 
 .main__button--schedule {
   padding: 9px 25px;
+  margin-top: 0;
+  margin-bottom: 20px;
 }
 
 .main {
@@ -22,6 +24,9 @@
   padding-right: 19.5px;
   margin-right: 19.5px;
   border-right: 1px solid #fff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .main__admin--schedule {

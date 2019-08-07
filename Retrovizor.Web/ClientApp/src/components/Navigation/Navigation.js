@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./Navigation.css";
 import StudentNav from "./StudentNav";
-import AdministratorNav from "./AdministratorNav";
 import InstructorNav from "./InstructorNav";
+import AdministratorNav from "./AdministratorNav";
 
 export default class Navigation extends Component {
   constructor(props) {
