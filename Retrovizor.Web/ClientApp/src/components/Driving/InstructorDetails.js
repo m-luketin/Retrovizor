@@ -9,7 +9,7 @@ export default class InstructorDetails extends Component {
     return (
       <React.Fragment>
         <header>
-          <Link to="/voznja">
+          <Link to="/kandidat/voznja">
             <svg
               className="header__arrow"
               xmlns="http://www.w3.org/2000/svg"

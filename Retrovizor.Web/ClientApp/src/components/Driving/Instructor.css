@@ -116,6 +116,11 @@
   height: 27px;
 }
 
+.instructor__item--clock {
+  width: 21px;
+  height: 21px;
+}
+
 .instructor__schedule--date {
   font-size: 20px;
   font-weight: 600;

@@ -18,7 +18,7 @@ export default class DrivingWithoutLesson extends Component {
               alt="Instruktor"
             />
 
-            <Link to="/voznja/instruktor">
+            <Link to="/kandidat/voznja/instruktor">
               <button className="main__button main__button--schedule main__button--driving main__button--driving--add">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +30,7 @@ export default class DrivingWithoutLesson extends Component {
                   <g
                     id="Symbols"
                     stroke="none"
-                    stroke-width="1"
+                    strokeWidth="1"
                     fill="none"
                     fillRule="evenodd"
                   >

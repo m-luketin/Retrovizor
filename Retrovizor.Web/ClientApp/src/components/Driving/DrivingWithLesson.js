@@ -1,5 +1,3 @@
-import "mapbox-gl/dist/mapbox-gl.css";
-import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import React, { Component } from "react";
 import MapGl, { Marker } from "react-map-gl";
 import DeckGL, { GeoJsonLayer } from "deck.gl";
@@ -87,7 +85,7 @@ export default class DrivingWithLesson extends Component {
               onResult={this.handleOnResult}
               onViewportChange={this.handleGeocoderViewportChange}
               mapboxApiAccessToken={MAP_TOKEN}
-              position="top-left"
+              placeholder="Traži"
               className="map__dropdown"
             />
             <DeckGL {...viewport} layers={[searchResultLayer]} />
@@ -111,15 +109,15 @@ export default class DrivingWithLesson extends Component {
                 <g
                   id="Polaznik"
                   stroke="none"
-                  stroke-width="1"
+                  strokeWidth="1"
                   fill="none"
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                 >
                   <g
                     id="Vožnja(1)"
                     transform="translate(-228.000000, -301.000000)"
                     fill="#1488CC"
-                    fill-rule="nonzero"
+                    fillRule="nonzero"
                   >
                     <g
                       id="Budicon-Solid/Travel/location-pin"
@@ -134,6 +132,9 @@ export default class DrivingWithLesson extends Component {
                 </g>
               </svg>
             </Marker>
+            <button className="map__submit">
+              Potvrdi lokaciju preuzimanja
+            </button>
           </MapGl>
         </section>
         <section className="main__next--lesson--wrapper">
