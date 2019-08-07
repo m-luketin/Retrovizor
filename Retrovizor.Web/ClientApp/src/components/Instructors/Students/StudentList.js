@@ -1,23 +1,18 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import StudentAddModal from "./StudentAddModal";
-import "./Students.css";
-import "./StudentModals.css";
 // SVG import
 import profileImg from "../../../assets/Instructor.gif";
-import GrayPlus from "../../../assets/GrayPlus.svg";
 import WhiteArrow from "../../../assets/WhiteArrow.svg";
 
-export default class Students extends Component {
+export default class StudentList extends Component {
   render() {
     return (
       <React.Fragment>
         <header className="header">
           <h1 className="header__title">Kandidati</h1>
-          <img className="header__icon--plus" alt="Plus" src={GrayPlus} />
         </header>
         <main className="main">
-          <Link to="/administrator/kandidati/kandidat">
+          <Link to="/instruktor/kandidati/kandidat">
             <figure className="main__candidate">
               <img
                 className="candidate__icon"
@@ -101,8 +96,6 @@ export default class Students extends Component {
             </figcaption>
           </figure>
         </main>
-
-        <StudentAddModal />
       </React.Fragment>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import instructorImg from "../../../assets/instructor.gif";
+// SVG import
+import Profile from "../../../assets/Instructor.gif";
 
 export default class DrivingWithLesson extends Component {
   render() {
@@ -11,7 +12,7 @@ export default class DrivingWithLesson extends Component {
           <div className="main__driving">
             <img
               className="main__driving--instructor"
-              src={instructorImg}
+              src={Profile}
               alt="Instruktor"
             />
 

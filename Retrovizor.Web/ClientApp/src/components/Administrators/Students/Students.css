@@ -15,4 +15,5 @@
 .timeline__item--smaller {
   width: 314px;
   margin-left: 20px;
+  margin-right: -8px;
 }

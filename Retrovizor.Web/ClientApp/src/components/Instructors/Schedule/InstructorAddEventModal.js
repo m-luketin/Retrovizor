@@ -1,34 +1,14 @@
 import React, { Component } from "react";
-import "./EventModal.css";
 // SVG import
 import GrayArrow from "../../../assets/GrayArrow.svg";
 import Calendar from "../../../assets/Calendar.svg";
-import People from "../../../assets/People.svg";
+import Clock from "../../../assets/Clock.svg";
 
-export default class EventAddModal extends Component {
+export default class InstructorAddEventModal extends Component {
   render() {
     return (
       <aside className="modal--wrapper">
-        <h3 className="modal__title">Dodaj događaj</h3>
-        <div className="modal__input--wrapper">
-          <div className="modal__instructor--wrapper">
-            <img
-              className="modal__instructor--arrow"
-              alt="Arrow"
-              src={GrayArrow}
-            />
-            <input
-              className="modal__event--type"
-              type="text"
-              placeholder="Tip"
-            />
-          </div>
-          <input
-            className="modal__event--number"
-            type="number"
-            placeholder="Sat"
-          />
-        </div>
+        <h3 className="modal__title">Dodaj termin</h3>
         <div className="modal__input--wrapper">
           <img
             className="modal__icon--calendar"
@@ -45,14 +25,14 @@ export default class EventAddModal extends Component {
           </div>
         </div>
         <div className="modal__input--wrapper">
-          <img className="modal__icon--people" alt="Ljudi" src={People} />
+          <img className="instructor__item--clock" alt="Sat" src={Clock} />
           <div className="modal__instructor--wrapper">
             <img
               className="modal__instructor--arrow"
               alt="Arrow"
               src={GrayArrow}
             />
-            <input type="text" placeholder="Kandidati" />
+            <input type="text" placeholder="Vrijeme" />
           </div>
         </div>
 

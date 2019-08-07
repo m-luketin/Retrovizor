@@ -4,15 +4,13 @@ import { Link } from "react-router-dom";
 import Profile from "../../../assets/Instructor.gif";
 import Phone from "../../../assets/Phone.svg";
 import HeaderArrow from "../../../assets/HeaderArrow.svg";
-import BluePencil from "../../../assets/BluePencil.svg";
-import NormalCar from "../../../assets/NormalCar.svg";
 import Clock from "../../../assets/Clock.svg";
 import Timeline from "../../../assets/Timeline.svg";
 import FullCheckmark from "../../../assets/FullCheckmark.svg";
 import RedExclimation from "../../../assets/RedExclimation.svg";
 import Pending from "../../../assets/Pending.svg";
 
-export default class Student extends Component {
+export default class StudentDetails extends Component {
   render() {
     return (
       <React.Fragment>
@@ -21,11 +19,6 @@ export default class Student extends Component {
             <img className="header__arrow" alt="Strelica" src={HeaderArrow} />
             <h1 className="header__title header__title--blue">Kandidat</h1>
           </Link>
-          <img
-            className="header__icon--pencil"
-            alt="plava olovka"
-            src={BluePencil}
-          />
         </header>
         <main className="main__drive main__instructor">
           <section className="main__next--lesson--wrapper">
@@ -61,24 +54,10 @@ export default class Student extends Component {
             </figure>
 
             <figure className="instructor__item">
-              <img
-                className="intructor__item--car"
-                alt="Auto"
-                src={NormalCar}
-              />
-              <div>
-                <figcaption className="instructor__item--title">
-                  Instruktor
-                </figcaption>
-                <p className="instructor__item--text">15/15</p>
-              </div>
-            </figure>
-
-            <figure className="instructor__item">
               <img className="instructor__item--clock" alt="Sat" src={Clock} />
               <div>
                 <figcaption className="instructor__item--title">Sat</figcaption>
-                <p className="instructor__item--text">12/35</p>
+                <p className="instructor__item--text">Golf VII GTI 2018</p>
               </div>
             </figure>
           </section>
@@ -115,6 +94,7 @@ export default class Student extends Component {
                 <p className="item__status">5/5 sati</p>
               </figcaption>
             </figure>
+
             <img className="item__icon" alt="Usklicnik" src={RedExclimation} />
             <figure className="timeline__item timeline__item--smaller timeline__item--warning">
               <figcaption>

@@ -37,6 +37,8 @@ main section {
 }
 
 .profile__image--wrapper {
+  width: 74px;
+  height: 74px;
   position: relative;
 }
 
@@ -59,16 +61,20 @@ main section {
   width: 19px;
   height: 19px;
   bottom: 6px;
-  right: 44px;
+  right: 6px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.profile__details {
+  margin-left: 40px;
+}
+
 .profile__name {
   font-size: 28px;
   font-weight: 500;
-  color: #676767;
+  color: #8b959e;
 }
 
 .profile__category {
@@ -98,11 +104,16 @@ main section {
   width: 100%;
 }
 
+.timeline__icon {
+  width: 25px;
+  height: 21px;
+}
+
 .timeline__title {
   font-size: 19px;
   font-weight: 600;
   margin-bottom: 20px;
-  color: #676767;
+  color: #8b959e;
   margin-left: 15px;
 }
 
