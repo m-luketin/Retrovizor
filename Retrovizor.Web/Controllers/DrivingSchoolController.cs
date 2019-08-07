@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Retrovizor.Data.Entities.Models;
+using Retrovizor.Domain.Classes;
+using Retrovizor.Domain.Helpers;
 using Retrovizor.Domain.Repositories.Interfaces;
 
 namespace Retrovizor.Web.Controllers
@@ -19,12 +16,7 @@ namespace Retrovizor.Web.Controllers
         }
         private readonly IDrivingSchoolRepository _drivingSchoolRepository;
 
-        [HttpGet("all")]
-        public IActionResult GetAllDrivingSchools()
-        {
-            return Ok(_drivingSchoolRepository.GetAllDrivingSchools());
-        }
-
+        [Authorize(Roles = "Developer")]
         [HttpGet("get/{id}")]
         public IActionResult GetDrivingSchoolById(int id)
         {
@@ -36,6 +28,7 @@ namespace Retrovizor.Web.Controllers
             return Ok(drivingSchoolToGet);
         }
 
+        [Authorize(Roles = "Developer")]
         [HttpGet("get-by-instructor/{id}")]
         public IActionResult GetDrivingSchoolByInstructorId(int id)
         {
@@ -47,6 +40,7 @@ namespace Retrovizor.Web.Controllers
             return Ok(classes);
         }
 
+        [Authorize(Roles = "Developer")]
         [HttpGet("get-by-student/{id}")]
         public IActionResult GetDrivingSchoolByStudentId(int id)
         {
@@ -58,10 +52,14 @@ namespace Retrovizor.Web.Controllers
             return Ok(classes);
         }
 
-        [HttpGet("get-by-admin/{id}")]
-        public IActionResult GetDrivingSchoolByAdminId(int id)
+        [Authorize(Roles = "Admin")]
+        [HttpGet("get-by-admin")]
+        public IActionResult GetDrivingSchoolByAdminId()
         {
-            var classes = _drivingSchoolRepository.GetDrivingSchoolByAdminId(id);
+            var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+            var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
+
+            var classes = _drivingSchoolRepository.GetDrivingSchoolByAdminId(userCredentials.Id);
 
             if(classes == null)
                 return NotFound();

@@ -1,5 +1,8 @@
-﻿using Retrovizor.Data.Entities;
+﻿using CashRegister.Data.Helpers;
+using Retrovizor.Data.Entities;
 using Retrovizor.Data.Entities.Models;
+using Retrovizor.Data.Enums;
+using Retrovizor.Domain.Classes;
 using Retrovizor.Domain.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -17,16 +20,15 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public List<Instructor> GetAllInstructorsByDrivingSchoolId(int id)
         {
-            return _context.Instructors.Where(i => i.DrivingSchoolId == id).ToList();
+            return _context.Instructors.Where(i => i.User.DrivingSchoolId == id).ToList();
         }
 
         public bool AddInstructor(Instructor instructorToAdd)
         {
-            var doesInstructorExist = _context.Instructors.Any(instructor =>
-                string.Equals(instructor.OIB, instructorToAdd.OIB, StringComparison.CurrentCultureIgnoreCase));
+            if (_context.Users.Any(u => u.Username == instructorToAdd.User.Username
+            || u.OIB == instructorToAdd.User.OIB || u.PhoneNumber == instructorToAdd.User.PhoneNumber)) return false;
 
-            if(doesInstructorExist)
-                return false;
+            instructorToAdd.User.DrivingSchool = _context.DrivingSchools.Find(instructorToAdd.User.DrivingSchoolId);
 
             _context.Instructors.Add(instructorToAdd);
             _context.SaveChanges();
@@ -42,10 +44,10 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
             instructorToEdit.FirstName = editedInstructor.FirstName;
             instructorToEdit.LastName = editedInstructor.LastName;
-            instructorToEdit.Username = editedInstructor.Username;
-            instructorToEdit.Password = editedInstructor.Password;
-            instructorToEdit.OIB = editedInstructor.OIB;
-            instructorToEdit.PhoneNumber = editedInstructor.PhoneNumber;
+            instructorToEdit.User.Username = editedInstructor.User.Username;
+            instructorToEdit.User.Password = editedInstructor.User.Password;
+            instructorToEdit.User.OIB = editedInstructor.User.OIB;
+            instructorToEdit.User.PhoneNumber = editedInstructor.User.PhoneNumber;
 
             _context.SaveChanges();
             return true;
@@ -85,7 +87,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public List<Instructor> GetInstructorsByDrivingSchoolId(int id)
         {
-            return _context.Instructors.Where(i => i.DrivingSchoolId == id).ToList();
+            return _context.Instructors.Where(i => i.User.DrivingSchoolId == id).ToList();
         }
     }
 }

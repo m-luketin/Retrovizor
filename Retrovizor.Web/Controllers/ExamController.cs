@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Retrovizor.Data.Entities.Models;
@@ -19,12 +20,14 @@ namespace Retrovizor.Web.Controllers
         }
         private readonly IExamRepository _examRepository;
 
-        [HttpGet("get-by-driving-school")]
+        [Authorize(Roles = "Admin")]
+        [HttpGet("get-by-driving-school/{id}")]
         public IActionResult GetAllExams(int id)
         {
             return Ok(_examRepository.GetAllExamsByDrivingSchoolId(id));
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("add")]
         public IActionResult AddExam(Exam examToAdd)
         {
@@ -36,6 +39,7 @@ namespace Retrovizor.Web.Controllers
             return Forbid();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("edit")]
         public IActionResult EditExam(Exam editedExam)
         {
@@ -47,6 +51,7 @@ namespace Retrovizor.Web.Controllers
             return NotFound();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("delete/{id}")]
         public IActionResult DeleteExam(int id)
         {
@@ -58,6 +63,7 @@ namespace Retrovizor.Web.Controllers
             return NotFound();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("get/{id}")]
         public IActionResult GetExamById(int id)
         {
@@ -69,6 +75,7 @@ namespace Retrovizor.Web.Controllers
             return Ok(examToGet);
         }
 
+        [Authorize]
         [HttpGet("get-by-student/{id}")]
         public IActionResult GetExamsByStudentId(int id)
         {
@@ -80,6 +87,7 @@ namespace Retrovizor.Web.Controllers
             return Ok(exams);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("get-pass-rate/{id}")]
         public IActionResult GetExamPassRateByExamId(int id)
         {

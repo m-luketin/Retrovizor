@@ -17,7 +17,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public List<Class> GetAllClassesByDrivingSchoolId(int id)
         {
-            var students = _context.Students.Where(s => s.DrivingSchoolId == id);
+            var students = _context.Students.Where(s => s.User.DrivingSchoolId == id);
 
             if(students == null)
                 return null;
@@ -76,6 +76,8 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public Class GetClassById(int id)
         {
+            var classById = _context.Classes.Find(id);
+
             return _context.Classes.Find(id);
         }
 

@@ -1,7 +1,8 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Retrovizor.Data.Entities.Models;
@@ -19,13 +20,8 @@ namespace Retrovizor.Web.Controllers
         }
         private readonly IVehicleRepository _vehicleRepository;
 
-        [HttpGet("all")]
-        public IActionResult GetAllVehicles()
-        {
-            return Ok(_vehicleRepository.GetAllVehicles());
-        }
-
         [HttpPost("add")]
+        [Authorize(Roles = "Admin")]
         public IActionResult AddVehicle(Vehicle vehicleToAdd)
         {
             var wasAddSuccessful = _vehicleRepository.AddVehicle(vehicleToAdd);
@@ -36,6 +32,7 @@ namespace Retrovizor.Web.Controllers
             return Forbid();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("edit")]
         public IActionResult EditVehicle(Vehicle editedVehicle)
         {
@@ -47,6 +44,7 @@ namespace Retrovizor.Web.Controllers
             return NotFound();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("delete/{id}")]
         public IActionResult DeleteVehicle(int id)
         {
@@ -58,6 +56,7 @@ namespace Retrovizor.Web.Controllers
             return NotFound();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("get/{id}")]
         public IActionResult GetVehicleById(int id)
         {
@@ -69,6 +68,7 @@ namespace Retrovizor.Web.Controllers
             return Ok(vehicleToGet);
         }
 
+        [Authorize]
         [HttpGet("get-by-student/{id}")]
         public IActionResult GetVehiclesByStudentId(int id)
         {
@@ -80,6 +80,7 @@ namespace Retrovizor.Web.Controllers
             return Ok(vehiclesToGet);
         }
 
+        [Authorize]
         [HttpGet("get-by-instructor/{id}")]
         public IActionResult GetVehiclesByInstructorId(int id)
         {
@@ -91,6 +92,7 @@ namespace Retrovizor.Web.Controllers
             return Ok(vehiclesToGet);
         }
 
+        [Authorize]
         [HttpGet("get-current-by-student/{id}")]
         public IActionResult GetCurrentVehicleByStudentId(int id)
         {
@@ -102,6 +104,7 @@ namespace Retrovizor.Web.Controllers
             return Ok(vehicleToGet);
         }
 
+        [Authorize]
         [HttpGet("get-current-by-instructor/{id}")]
         public IActionResult GetCurrentVehicleByInstructorId(int id)
         {

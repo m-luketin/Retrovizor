@@ -16,7 +16,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
        
         public List<Admin> GetAdminsByDrivingSchoolId(int id)
         {
-            return _context.Admins.Where(a => a.DrivingSchoolId == id).ToList();
+            return _context.Admins.Where(a => a.User.DrivingSchoolId == id).ToList();
         }
     }
 }
