@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import StudentAddModal from "./StudentAddModal.js";
 // SVG import
 import Profile from "../../../assets/Instructor.gif";
 import Phone from "../../../assets/Phone.svg";
@@ -13,7 +14,26 @@ import RedExclimation from "../../../assets/RedExclimation.svg";
 import Pending from "../../../assets/Pending.svg";
 
 export default class Student extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      addModalVisibility: false
+    };
+  }
+
+  handleOpenAddModal = () => {
+    document.getElementsByTagName("body")[0].classList.add("o-hidden");
+    this.setState({ addModalVisibility: true });
+  };
+
+  handleCloseAddModal = () => {
+    document.getElementsByTagName("body")[0].classList.remove("o-hidden");
+    this.setState({ addModalVisibility: false });
+  };
+
   render() {
+    const { addModalVisibility } = this.state;
+
     return (
       <React.Fragment>
         <header className="header--instructors">
@@ -22,6 +42,7 @@ export default class Student extends Component {
             <h1 className="header__title header__title--blue">Kandidat</h1>
           </Link>
           <img
+            onClick={this.handleOpenAddModal}
             className="header__icon--pencil"
             alt="plava olovka"
             src={BluePencil}
@@ -136,6 +157,10 @@ export default class Student extends Component {
             </figure>
           </section>
         </main>
+
+        {addModalVisibility ? (
+          <StudentAddModal onCloseAddModal={this.handleCloseAddModal} />
+        ) : null}
       </React.Fragment>
     );
   }

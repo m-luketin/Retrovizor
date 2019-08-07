@@ -9,12 +9,36 @@ import FullStar from "../../../assets/FullStar.svg";
 import OutlineStar from "../../../assets/OutlineStar.svg";
 
 export default class Instructors extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      addModalVisibility: false
+    };
+  }
+
+  handleOpenAddModal = () => {
+    document.getElementsByTagName("body")[0].classList.add("o-hidden");
+    this.setState({ addModalVisibility: true });
+  };
+
+  handleCloseAddModal = () => {
+    document.getElementsByTagName("body")[0].classList.remove("o-hidden");
+    this.setState({ addModalVisibility: false });
+  };
+
   render() {
+    const { addModalVisibility } = this.state;
+
     return (
       <React.Fragment>
         <header className="header--instructors">
           <h1 className="header__title">Instruktori</h1>
-          <img className="header__icon--plus" alt="Plus" src={GrayPlus} />
+          <img
+            onClick={this.handleOpenAddModal}
+            className="header__icon--plus"
+            alt="Plus"
+            src={GrayPlus}
+          />
         </header>
         <main className="main__drive main__instructor--list">
           <section className="main__next--lesson--wrapper">
@@ -189,7 +213,9 @@ export default class Instructors extends Component {
             </div>
           </section>
 
-          <InstructorAddModal />
+          {addModalVisibility ? (
+            <InstructorAddModal onCloseAddModal={this.handleCloseAddModal} />
+          ) : null}
         </main>
       </React.Fragment>
     );

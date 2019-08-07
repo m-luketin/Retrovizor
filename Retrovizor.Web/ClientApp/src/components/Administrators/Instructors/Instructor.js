@@ -14,7 +14,26 @@ import NormalCar from "../../../assets/NormalCar.svg";
 import People from "../../../assets/People.svg";
 
 export default class Instructor extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      editModalVisibility: false
+    };
+  }
+
+  handleOpenEditModal = () => {
+    document.getElementsByTagName("body")[0].classList.add("o-hidden");
+    this.setState({ editModalVisibility: true });
+  };
+
+  handleCloseEditModal = () => {
+    document.getElementsByTagName("body")[0].classList.remove("o-hidden");
+    this.setState({ editModalVisibility: false });
+  };
+
   render() {
+    const { editModalVisibility } = this.state;
+
     return (
       <React.Fragment>
         <header className="header--instructors">
@@ -23,6 +42,7 @@ export default class Instructor extends Component {
             <h1 className="header__title header__title--blue">Instruktor</h1>
           </Link>
           <img
+            onClick={this.handleOpenEditModal}
             className="header__icon--pencil"
             alt="plava olovka"
             src={BluePencil}
@@ -164,7 +184,9 @@ export default class Instructor extends Component {
           </section>
         </main>
 
-        <InstructorEditModal />
+        {editModalVisibility ? (
+          <InstructorEditModal onCloseEditModal={this.handleCloseEditModal} />
+        ) : null}
       </React.Fragment>
     );
   }

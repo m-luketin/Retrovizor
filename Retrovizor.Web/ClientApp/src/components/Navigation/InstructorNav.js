@@ -103,4 +103,3 @@ export default class InstructorNav extends Component {
     );
   }
 }
-1;
