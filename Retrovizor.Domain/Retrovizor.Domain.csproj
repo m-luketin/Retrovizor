@@ -29,6 +29,8 @@
   <ItemGroup>
     <PackageReference Include="JWT" Version="5.2.2" />
     <PackageReference Include="jose-jwt" Version="2.4.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.5.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.5.0" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Helpers\JwtSecurityToken.cs" />

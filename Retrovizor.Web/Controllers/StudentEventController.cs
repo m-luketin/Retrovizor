@@ -20,7 +20,7 @@ namespace Retrovizor.Web.Controllers
         }
         private readonly IStudentEventRepository _studentEventRepository;
 
-        [Authorize("Admin, Instructor")]
+        [Authorize(Roles = "Admin, Instructor")]
         [HttpPost("add")]
         public IActionResult AddStudentEvent(StudentEvent studentEvent)
         {
@@ -32,7 +32,7 @@ namespace Retrovizor.Web.Controllers
             return Forbid();
         }
 
-        [Authorize("Admin, Instructor")]
+        [Authorize(Roles = "Admin, Instructor")]
         [HttpDelete("delete")]
         public IActionResult DeleteStudentEvent(int studentId, int eventId)
         {
