@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 // SVG import
-import Profile from "../../../assets/Instructor.gif";
+import Profile from "../../../assets/instructor.gif";
 import DisplayCar from "../../../assets/DisplayCar.png";
 import Phone from "../../../assets/Phone.svg";
 import NormalCar from "../../../assets/NormalCar.svg";

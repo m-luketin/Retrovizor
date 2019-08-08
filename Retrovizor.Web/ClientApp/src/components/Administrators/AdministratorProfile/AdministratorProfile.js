@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./AdministratorProfile.css";
 // SVG import
-import Profile from "../../../assets/Instructor.gif";
+import Profile from "../../../assets/instructor.gif";
 import Gear from "../../../assets/Gear.svg";
 import GrayPencil from "../../../assets/GrayPencil.svg";
 import Phone from "../../../assets/Phone.svg";

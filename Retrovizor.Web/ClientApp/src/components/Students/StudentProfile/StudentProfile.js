@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./StudentProfile.css";
 // SVG import
-import Profile from "../../../assets/Instructor.gif";
+import Profile from "../../../assets/instructor.gif";
 import Timeline from "../../../assets/Timeline.svg";
 import FullCheckmark from "../../../assets/FullCheckmark.svg";
 import RedExclimation from "../../../assets/RedExclimation.svg";

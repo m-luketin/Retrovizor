@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // SVG import
-import Profile from "../../../assets/Instructor.gif";
+import Profile from "../../../assets/instructor.gif";
 import HeaderArrow from "../../../assets/HeaderArrow.svg";
 import FullCheckmark from "../../../assets/FullCheckmark.svg";
 import OutlineCheckmark from "../../../assets/OutlineCheckmark.svg";

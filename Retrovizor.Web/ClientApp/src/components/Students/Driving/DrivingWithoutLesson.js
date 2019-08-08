@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 // SVG import
-import Profile from "../../../assets/Instructor.gif";
+import Profile from "../../../assets/instructor.gif";
 import BluePlus from "../../../assets/BluePlus.svg";
 
 export default class DrivingWithoutLesson extends Component {

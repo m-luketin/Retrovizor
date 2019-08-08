@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Instructor.css";
 // SVG import
-import Profile from "../../../assets/Instructor.gif";
+import Profile from "../../../assets/instructor.gif";
 import HeaderArrow from "../../../assets/HeaderArrow.svg";
 import FullStar from "../../../assets/FullStar.svg";
 import OutlineStar from "../../../assets/OutlineStar.svg";

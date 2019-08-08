@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import InstructorEditModal from "./InstructorEditModal";
 import "./Instructors.css";
 // SVG import
-import Profile from "../../../assets/Instructor.gif";
+import Profile from "../../../assets/instructor.gif";
 import DisplayCar from "../../../assets/DisplayCar.png";
 import Phone from "../../../assets/Phone.svg";
 import HeaderArrow from "../../../assets/HeaderArrow.svg";
