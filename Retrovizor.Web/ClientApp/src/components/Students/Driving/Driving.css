@@ -13,12 +13,13 @@
 }
 
 .mapboxgl-ctrl-geocoder {
-  width: 377px;
   border-radius: 50px;
   padding: 5px 40px;
   border: 1px solid #676767;
   margin: 0 !important;
   position: relative;
+  width: 380px;
+  margin-top: 15px !important;
 }
 
 .suggestions {
@@ -53,6 +54,11 @@
 .mapboxgl-ctrl-geocoder--suggestion-title,
 .mapboxgl-ctrl-geocoder--suggestion-address {
   color: #676767;
+}
+
+.mapboxgl-canvas {
+  padding: 10px 10px 10px 10px;
+  border-radius: 20px;
 }
 
 .map-container__map {
