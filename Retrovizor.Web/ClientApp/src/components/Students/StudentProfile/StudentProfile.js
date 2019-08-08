@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./StudentProfile.css";
 // SVG import
-import ProfileImg from "../../../assets/Instructor.gif";
+import Profile from "../../../assets/Instructor.gif";
 import Timeline from "../../../assets/Timeline.svg";
 import FullCheckmark from "../../../assets/FullCheckmark.svg";
 import RedExclimation from "../../../assets/RedExclimation.svg";
@@ -30,7 +30,7 @@ export default class StudentProfile extends Component {
             <figure>
               <div className="profile__image--wrapper">
                 <img
-                  src={ProfileImg}
+                  src={Profile}
                   alt="User icon"
                   className="profile__user-icon"
                 />

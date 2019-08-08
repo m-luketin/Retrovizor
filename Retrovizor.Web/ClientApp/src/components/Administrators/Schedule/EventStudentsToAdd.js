@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // SVG import
-import ProfileImg from "../../../assets/Instructor.gif";
+import Profile from "../../../assets/Instructor.gif";
 import HeaderArrow from "../../../assets/HeaderArrow.svg";
 import FullCheckmark from "../../../assets/FullCheckmark.svg";
 import OutlineCheckmark from "../../../assets/OutlineCheckmark.svg";
@@ -27,7 +27,7 @@ export default class EventStudentsToAdd extends Component {
                 alt="Oznaka"
                 src={FullCheckmark}
               />
-              <img src={ProfileImg} alt="Kandidat" />
+              <img src={Profile} alt="Kandidat" />
               <span className="main__button">
                 <p className="student__list--name">Luka Nola</p>
               </span>
@@ -39,7 +39,7 @@ export default class EventStudentsToAdd extends Component {
                 alt="Oznaka"
                 src={OutlineCheckmark}
               />
-              <img src={ProfileImg} alt="Kandidat" />
+              <img src={Profile} alt="Kandidat" />
               <span className="main__button">
                 <p className="student__list--name">Luka Nola</p>
               </span>

@@ -4,7 +4,7 @@ import StudentAddModal from "./StudentAddModal";
 import "./Students.css";
 import "./StudentModals.css";
 // SVG import
-import profileImg from "../../../assets/Instructor.gif";
+import Profile from "../../../assets/Instructor.gif";
 import GrayPlus from "../../../assets/GrayPlus.svg";
 import WhiteArrow from "../../../assets/WhiteArrow.svg";
 
@@ -45,7 +45,7 @@ export default class Students extends Component {
             <figure className="main__candidate">
               <img
                 className="candidate__icon"
-                src={profileImg}
+                src={Profile}
                 alt="Kandidat"
               />
               <figcaption>
@@ -61,7 +61,7 @@ export default class Students extends Component {
           </Link>
 
           <figure className="main__candidate">
-            <img className="candidate__icon" src={profileImg} alt="Kandidat" />
+            <img className="candidate__icon" src={Profile} alt="Kandidat" />
             <figcaption>
               <h2 className="candidate__name">Luka Bendić</h2>
               <p className="candidate__lessons">12/35 sati</p>
@@ -74,7 +74,7 @@ export default class Students extends Component {
           </figure>
 
           <figure className="main__candidate">
-            <img className="candidate__icon" src={profileImg} alt="Kandidat" />
+            <img className="candidate__icon" src={Profile} alt="Kandidat" />
             <figcaption>
               <h2 className="candidate__name">Luka Bendić</h2>
               <p className="candidate__lessons">12/35 sati</p>
@@ -87,7 +87,7 @@ export default class Students extends Component {
           </figure>
 
           <figure className="main__candidate">
-            <img className="candidate__icon" src={profileImg} alt="Kandidat" />
+            <img className="candidate__icon" src={Profile} alt="Kandidat" />
             <figcaption>
               <h2 className="candidate__name">Luka Bendić</h2>
               <p className="candidate__lessons">12/35 sati</p>
@@ -100,7 +100,7 @@ export default class Students extends Component {
           </figure>
 
           <figure className="main__candidate">
-            <img className="candidate__icon" src={profileImg} alt="Kandidat" />
+            <img className="candidate__icon" src={Profile} alt="Kandidat" />
             <figcaption>
               <h2 className="candidate__name">Luka Bendić</h2>
               <p className="candidate__lessons">12/35 sati</p>
@@ -113,7 +113,7 @@ export default class Students extends Component {
           </figure>
 
           <figure className="main__candidate">
-            <img className="candidate__icon" src={profileImg} alt="Kandidat" />
+            <img className="candidate__icon" src={Profile} alt="Kandidat" />
             <figcaption>
               <h2 className="candidate__name">Luka Bendić</h2>
               <p className="candidate__lessons">12/35 sati</p>

@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-// SVG import
-import Profile from "../../../assets/Instructor.gif";
 import MapGl, { Marker } from "react-map-gl";
 import DeckGL, { GeoJsonLayer } from "deck.gl";
 import Geocoder from "react-map-gl-geocoder";
-import instructorImg from "../../assets/instructor.gif";
+// SVG import
+import Profile from "../../../assets/Instructor.gif";
 
 const MAP_TOKEN =
   "pk.eyJ1IjoibmJvcm92aWMiLCJhIjoiY2p5c2p6YzQwMGZrczNicDVydTRsdjRrZyJ9.vkuoGV111LH3wxKuTsMTgw";

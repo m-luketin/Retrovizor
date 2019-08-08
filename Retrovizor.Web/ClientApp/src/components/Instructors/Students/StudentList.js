@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 // SVG import
-import profileImg from "../../../assets/Instructor.gif";
+import Profile from "../../../assets/Instructor.gif";
 import WhiteArrow from "../../../assets/WhiteArrow.svg";
 
 export default class StudentList extends Component {
@@ -14,11 +14,7 @@ export default class StudentList extends Component {
         <main className="main">
           <Link to="/instruktor/kandidati/kandidat">
             <figure className="main__candidate">
-              <img
-                className="candidate__icon"
-                src={profileImg}
-                alt="Kandidat"
-              />
+              <img className="candidate__icon" src={Profile} alt="Kandidat" />
               <figcaption>
                 <h2 className="candidate__name">Luka Bendić</h2>
                 <p className="candidate__lessons">12/35 sati</p>
@@ -32,7 +28,7 @@ export default class StudentList extends Component {
           </Link>
 
           <figure className="main__candidate">
-            <img className="candidate__icon" src={profileImg} alt="Kandidat" />
+            <img className="candidate__icon" src={Profile} alt="Kandidat" />
             <figcaption>
               <h2 className="candidate__name">Luka Bendić</h2>
               <p className="candidate__lessons">12/35 sati</p>
@@ -45,7 +41,7 @@ export default class StudentList extends Component {
           </figure>
 
           <figure className="main__candidate">
-            <img className="candidate__icon" src={profileImg} alt="Kandidat" />
+            <img className="candidate__icon" src={Profile} alt="Kandidat" />
             <figcaption>
               <h2 className="candidate__name">Luka Bendić</h2>
               <p className="candidate__lessons">12/35 sati</p>
@@ -58,7 +54,7 @@ export default class StudentList extends Component {
           </figure>
 
           <figure className="main__candidate">
-            <img className="candidate__icon" src={profileImg} alt="Kandidat" />
+            <img className="candidate__icon" src={Profile} alt="Kandidat" />
             <figcaption>
               <h2 className="candidate__name">Luka Bendić</h2>
               <p className="candidate__lessons">12/35 sati</p>
@@ -71,7 +67,7 @@ export default class StudentList extends Component {
           </figure>
 
           <figure className="main__candidate">
-            <img className="candidate__icon" src={profileImg} alt="Kandidat" />
+            <img className="candidate__icon" src={Profile} alt="Kandidat" />
             <figcaption>
               <h2 className="candidate__name">Luka Bendić</h2>
               <p className="candidate__lessons">12/35 sati</p>
@@ -84,7 +80,7 @@ export default class StudentList extends Component {
           </figure>
 
           <figure className="main__candidate">
-            <img className="candidate__icon" src={profileImg} alt="Kandidat" />
+            <img className="candidate__icon" src={Profile} alt="Kandidat" />
             <figcaption>
               <h2 className="candidate__name">Luka Bendić</h2>
               <p className="candidate__lessons">12/35 sati</p>
