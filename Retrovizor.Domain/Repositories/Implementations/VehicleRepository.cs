@@ -44,7 +44,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             vehicleToEdit.Model = editedVehicle.Model;
             vehicleToEdit.FuelType = editedVehicle.FuelType;
             vehicleToEdit.LicensePlate = editedVehicle.LicensePlate;
-            vehicleToEdit.Image = editedVehicle.Image;
+            vehicleToEdit.Picture = editedVehicle.Picture;
             vehicleToEdit.Type = editedVehicle.Type;
 
             _context.SaveChanges();

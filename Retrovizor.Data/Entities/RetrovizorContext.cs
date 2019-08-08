@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Retrovizor.Data.Entities.Models;
+using Retrovizor.Data.Enums;
+using System;
 using System.Linq;
 
 namespace Retrovizor.Data.Entities
@@ -124,12 +126,13 @@ namespace Retrovizor.Data.Entities
                 }
             );
 
-            modelBuilder.Entity<Admin>().HasData(
+            modelBuilder.Entity<User>().HasData(
                 new
                 {
                     Id = 1,
                     Username = "Duje",
                     Password = "NqSs3eyOEG9CA8AbO6GgIXjZOgqjAX6tJ0nq1WOOWAt9YnwY", //onphdvwr
+                    Role = Role.Admin,
                     DrivingSchoolId = 1
                 },
                 new
@@ -137,6 +140,7 @@ namespace Retrovizor.Data.Entities
                     Id = 2,
                     Username = "Kreso",
                     Password = "zaFUUQie8N96psne7PziMc24lTzDt+75t6MoUqCB83kwaSU6", //jxfqcnh
+                    Role = Role.Admin,
                     DrivingSchoolId = 1
                 },
                 new
@@ -144,7 +148,146 @@ namespace Retrovizor.Data.Entities
                     Id = 3,
                     Username = "Drazen",
                     Password = "CZ/N7zgZL4faI4Cp4pgd0/L98ZlWS2M6K+VhQf360Ywv2Vkh", //xxjdkpdk
+                    Role = Role.Admin,
                     DrivingSchoolId = 2
+                },
+                new
+                {
+                    Id = 4,
+                    Username = "IDomazet",
+                    Password = "yxq0Ed+O2iWi98Toqah+BS75nkM7Z7+SXaoi/SPwsXkbVWHA", //npfzcpvqu
+                    OIB = "12345123451",
+                    PhoneNumber = "00385976086801",
+                    Role = Role.Instructor,
+                    DrivingSchoolId = 1
+                },
+                new
+                {
+                    Id = 5,
+                    Username = "MCeprnja",
+                    Password = "wyWLW6MQdogtds5NSUP/NJhVcrUVFGDPk9zS58Nk3Xnykq/e", //tfetheb
+                    OIB = "12345123452",
+                    PhoneNumber = "00385976086801",
+                    Role = Role.Instructor,
+                    DrivingSchoolId = 1
+                },
+                new
+                {
+                    Id = 6,
+                    Username = "ZDelas",
+                    Password = "wnCehHvutg39CCPGSMSABgFA6dKxI1GS/TpYkgEArLBcv16O", //irmhlobp
+                    OIB = "12345123453",
+                    PhoneNumber = "00385976086801",
+                    Role = Role.Instructor,
+                    DrivingSchoolId = 1
+                },
+                new
+                {
+                    Id = 7,
+                    Username = "JSvalina",
+                    Password = "V+dugmSl5R+gGdUFn8fLVNMd3f67CAtoNaxYlCIi+aR4hn1b", //unqpza
+                    OIB = "12345123454",
+                    PhoneNumber = "00385976086801",
+                    Role = Role.Instructor,
+                    DrivingSchoolId = 2
+                },
+                new
+                {
+                    Id = 8,
+                    Username = "MLuketin",
+                    Password = "gIrZXsGJ1KwFWOkycqVaS1N7zAtxOwqVGYfJEkrOshKIPlwa", //fgabxer
+                    OIB = "12345123461",
+                    PhoneNumber = "00385976086801",
+                    Role = Role.Student,
+                    DrivingSchoolId = 1
+                },
+                new
+                {
+                    Id = 9,
+                    Username = "LNola",
+                    Password = "4otiXl9sR1IrN1Oxk7JXw5b8jn5kcQ2GSKVvBriy4F0Ct72H", //zkcuurig
+                    OIB = "12345123462",
+                    PhoneNumber = "00385976086801",
+                    Role = Role.Student,
+                    DrivingSchoolId = 1
+                },
+                new
+                {
+                    Id = 10,
+                    Username = "NBorovic",
+                    Password = "Q/2RZdW5Q3AwxcWIKlk4jGizvLawjC5kAU11YDL+1UKDQHFT", //tqznrrif
+                    OIB = "12345123463",
+                    PhoneNumber = "00385976086801",
+                    Role = Role.Student,
+                    DrivingSchoolId = 1
+                },
+                new
+                {
+                    Id = 11,
+                    Username = "LBendic",
+                    Password = "e+5Zz+VgZHqNuaK5p8c/OGHpwlnO6zNTI89ouMxxy5fEja/P", //kdwcjys
+                    OIB = "12345123464",
+                    PhoneNumber = "00385976086801",
+                    Role = Role.Student,
+                    DrivingSchoolId = 1
+                },
+                new
+                {
+                    Id = 12,
+                    Username = "KTomic",
+                    Password = "oINRmcaSWlLomk6pbdtw9m7tBVjHzvsQvgm1lbGDiB713H0R", //vzndlm
+                    OIB = "12345123465",
+                    PhoneNumber = "00385976086801",
+                    Role = Role.Student,
+                    DrivingSchoolId = 1
+                },
+                new
+                {
+                    Id = 13,
+                    Username = "PCondic",
+                    Password = "Ae5m6kB/XbEkj6vPzceoGLeguy7oVink9iK+smuifbgSQMlQ", //ktjokers
+                    OIB = "12345123466",
+                    PhoneNumber = "00385976086801",
+                    Role = Role.Student,
+                    DrivingSchoolId = 1
+                },
+                new
+                {
+                    Id = 14,
+                    Username = "AAmanzi",
+                    Password = "zEXK/8+DyNVCBICYavDmMnA4x7iT5AwMQkLVQBJSDeNwA1Ic", //wvvlziix
+                    OIB = "12345123467",
+                    PhoneNumber = "00385976086801",
+                    Role = Role.Student,
+                    DrivingSchoolId = 2
+                },
+                new
+                {
+                    Id = 15,
+                    Username = "AVuletic",
+                    Password = "hQFfPhep54nqhqGES06j18OyU79CeUPrDK/iSEZdt4BhFzq+", //fglrhth
+                    OIB = "12345123468",
+                    PhoneNumber = "00385976086801",
+                    Role = Role.Student,
+                    DrivingSchoolId = 2
+                }
+            );
+
+            modelBuilder.Entity<Admin>().HasData(
+                new
+                {
+                    Id = 1,
+                    UserId = 1
+                },
+                new
+                {
+                    Id = 2,
+                    UserId = 2
+                },
+                new
+                {
+                    Id = 3,
+                    UserId = 3
                 }
             );
 
@@ -154,48 +297,32 @@ namespace Retrovizor.Data.Entities
                     Id = 1,
                     FirstName = "Izabela",
                     LastName = "Domazet",
-                    Username = "IDomazet",
-                    Password = "yxq0Ed+O2iWi98Toqah+BS75nkM7Z7+SXaoi/SPwsXkbVWHA", //npfzcpvqu
-                    OIB = "12345123451",
-                    PhoneNumber = "00385976086801",
                     VehicleId = 1,
-                    DrivingSchoolId = 1
+                    UserId = 4
                 },
                 new
                 {
                     Id = 2,
                     FirstName = "Mario",
                     LastName = "Ceprnja",
-                    Username = "MCeprnja",
-                    Password = "wyWLW6MQdogtds5NSUP/NJhVcrUVFGDPk9zS58Nk3Xnykq/e", //tfetheb
-                    OIB = "12345123452",
-                    PhoneNumber = "00385976086801",
                     VehicleId = 2,
-                    DrivingSchoolId = 1
+                    UserId = 5
                 },
                 new
                 {
                     Id = 3,
                     FirstName = "Zvonimir",
                     LastName = "Delas",
-                    Username = "ZDelas",
-                    Password = "wnCehHvutg39CCPGSMSABgFA6dKxI1GS/TpYkgEArLBcv16O", //irmhlobp
-                    OIB = "12345123453",
-                    PhoneNumber = "00385976086801",
                     VehicleId = 3,
-                    DrivingSchoolId = 1
+                    UserId = 6
                 },
                 new
                 {
                     Id = 4,
                     FirstName = "Josip",
                     LastName = "Svalina",
-                    Username = "JSvalina",
-                    Password = "V+dugmSl5R+gGdUFn8fLVNMd3f67CAtoNaxYlCIi+aR4hn1b", //unqpza
-                    OIB = "12345123454",
-                    PhoneNumber = "00385976086801",
                     VehicleId = 4,
-                    DrivingSchoolId = 2
+                    UserId = 7
                 }
             );
 
@@ -205,96 +332,65 @@ namespace Retrovizor.Data.Entities
                     Id = 1,
                     FirstName = "Matija",
                     LastName = "Luketin",
-                    Username = "MLuketin",
-                    Password = "gIrZXsGJ1KwFWOkycqVaS1N7zAtxOwqVGYfJEkrOshKIPlwa", //fgabxer
-                    OIB = "12345123461",
-                    PhoneNumber = "00385976086801",
                     Category = "A1",
-                    DrivingSchoolId = 1
+                    UserId = 8
                 },
                 new
                 {
                     Id = 2,
                     FirstName = "Luka",
                     LastName = "Nola",
-                    Username = "LNola",
-                    Password = "4otiXl9sR1IrN1Oxk7JXw5b8jn5kcQ2GSKVvBriy4F0Ct72H", //zkcuurig
-                    OIB = "12345123462",
-                    PhoneNumber = "00385976086801",
                     Category = "B",
-                    DrivingSchoolId = 1
+                    UserId = 9
                 },
                 new
                 {
                     Id = 3,
                     FirstName = "Nino",
                     LastName = "Borovic",
-                    Username = "NBorovic",
-                    Password = "Q/2RZdW5Q3AwxcWIKlk4jGizvLawjC5kAU11YDL+1UKDQHFT", //tqznrrif
-                    OIB = "12345123463",
-                    PhoneNumber = "00385976086801",
                     Category = "B",
-                    DrivingSchoolId = 1
+                    UserId = 10
                 },
                 new
                 {
                     Id = 4,
                     FirstName = "Luka",
                     LastName = "Bendic",
-                    Username = "LBendic",
-                    Password = "e+5Zz+VgZHqNuaK5p8c/OGHpwlnO6zNTI89ouMxxy5fEja/P", //kdwcjys
-                    OIB = "12345123464",
-                    PhoneNumber = "00385976086801",
                     Category = "A2",
-                    DrivingSchoolId = 1
+                    UserId = 11
                 },
                 new
                 {
                     Id = 5,
                     FirstName = "Klara Bruna",
                     LastName = "Tomic",
-                    Username = "KTomic",
-                    Password = "oINRmcaSWlLomk6pbdtw9m7tBVjHzvsQvgm1lbGDiB713H0R", //vzndlm
-                    OIB = "12345123465",
-                    PhoneNumber = "00385976086801",
                     Category = "B",
-                    DrivingSchoolId = 1
+                    UserId = 12
                 },
                 new
                 {
                     Id = 6,
                     FirstName = "Petra",
                     LastName = "Condic",
-                    Username = "PCondic",
-                    Password = "Ae5m6kB/XbEkj6vPzceoGLeguy7oVink9iK+smuifbgSQMlQ", //ktjokers
-                    OIB = "12345123466",
                     PhoneNumber = "00385976086801",
-                    Category = "b",
-                    DrivingSchoolId = 1
+                    Category = "B",
+                    UserId = 13
                 },
                 new
                 {
                     Id = 7,
                     FirstName = "Alex",
                     LastName = "Amanzi",
-                    Username = "AAmanzi",
-                    Password = "zEXK/8+DyNVCBICYavDmMnA4x7iT5AwMQkLVQBJSDeNwA1Ic", //wvvlziix
-                    OIB = "12345123467",
-                    PhoneNumber = "00385976086801",
                     Category = "B",
-                    DrivingSchoolId = 2
+                    UserId = 14
                 },
                 new
                 {
                     Id = 8,
                     FirstName = "Ante",
                     LastName = "Vuletic",
-                    Username = "AVuletic",
-                    Password = "hQFfPhep54nqhqGES06j18OyU79CeUPrDK/iSEZdt4BhFzq+", //fglrhth
-                    OIB = "12345123468",
-                    PhoneNumber = "00385976086801",
                     Category = "A",
-                    DrivingSchoolId = 2
+                    UserId = 15
                 }
             );
 
@@ -470,7 +566,7 @@ namespace Retrovizor.Data.Entities
                     Manufacturer = "Volkswagen",
                     Model = "Golf 7",
                     FuelType = "Gasoline",
-                    Image = "",
+                    
                     Type = "Car",
                     LicensePlate = "ST-200-OK"
                 },
@@ -480,7 +576,7 @@ namespace Retrovizor.Data.Entities
                     Manufacturer = "Mercedes",
                     Model = "A Class",
                     FuelType = "Gasoline",
-                    Image = "",
+                    
                     Type = "Car",
                     LicensePlate = "ST-404-NF"
                 },
@@ -490,7 +586,7 @@ namespace Retrovizor.Data.Entities
                     Manufacturer = "Renault",
                     Model = "Megane III",
                     FuelType = "Diesel",
-                    Image = "",
+                    
                     Type = "Car",
                     LicensePlate = "ST-500-FB"
                 },
@@ -500,7 +596,7 @@ namespace Retrovizor.Data.Entities
                     Manufacturer = "Kawasaki",
                     Model = "ZZR",
                     FuelType = "Gasoline",
-                    Image = "",
+                    
                     Type = "Motorcycle",
                     LicensePlate = "ST-408-TO"
                 }
@@ -920,141 +1016,121 @@ namespace Retrovizor.Data.Entities
                 {
                     Id = 1,
                     Text = "U kojim ce uvjetima prijanjanje guma na cesti biti smanjeno?",
-                    Type = "Propisi",
-                    Image = ""
+                    Type = "Propisi"
                 },
                 new
                 {
                     Id = 2,
                     Text = "Kad vozac reagira brze?",
-                    Type = "Propisi",
-                    Image = ""
+                    Type = "Propisi"
                 },
                 new
                 {
                     Id = 3,
                     Text = "Sto je motorno vozilo?",
-                    Type = "Propisi",
-                    Image = ""
+                    Type = "Propisi"
                 },
                 new
                 {
                     Id = 4,
                     Text = "Sto je najveca dopustena masa vozila?",
-                    Type = "Propisi",
-                    Image = ""
+                    Type = "Propisi"
                 },
                 new
                 {
                     Id = 5,
                     Text = "Kako vozac daje svjetlosni znak upozorenja ostalim sudionicima u prometu?",
-                    Type = "Propisi",
-                    Image = ""
+                    Type = "Propisi"
                 },
                 new
                 {
                     Id = 6,
                     Text = "Sto se podrazumijeva pod svjetlosnim znakovima upozorenja u prometu?",
-                    Type = "Propisi",
-                    Image = ""
+                    Type = "Propisi"
                 },
                 new
                 {
                     Id = 7,
                     Text = "Sto vozac mora stalno pratiti za vrijeme voznje?",
-                    Type = "Propisi",
-                    Image = ""
+                    Type = "Propisi"
                 },
                 new
                 {
                     Id = 8,
                     Text = "Koja je uloga parkirne kocnice na motornom vozilu?",
-                    Type = "Propisi",
-                    Image = ""
+                    Type = "Propisi"
                 },
                 new
                 {
                     Id = 9,
                     Text = "Kako se na semaforu moze pojaviti zuto svjetlo?",
-                    Type = "Propisi",
-                    Image = ""
+                    Type = "Propisi"
                 },
                 new
                 {
                     Id = 10,
                     Text = "Sto je prestrojavanje?",
-                    Type = "Propisi",
-                    Image = ""
+                    Type = "Propisi"
                 },
                 new
                 {
                     Id = 11,
                     Text = "Koji plin se oslobađa pri izgaranju benzina, a koji u zatvorenom prostoru može izazvati smrt?",
-                    Type = "Prva pomoc",
-                    Image = ""
+                    Type = "Prva pomoc"
                 }, 
                 new
                 {
                     Id = 12,
                     Text = "Ozlijedenu osobu koja je dozivjela epilepticki napadaj stavljamo u koju poziciju?",
-                    Type = "Prva pomoc",
-                    Image = ""
+                    Type = "Prva pomoc"
                 }, 
                 new
                 {
                     Id = 13,
                     Text = "Koji je ljudski ritam normalnog disanja?",
-                    Type = "Prva pomoc",
-                    Image = ""
+                    Type = "Prva pomoc"
                 },
                 new
                 {
                     Id = 14,
                     Text = "Sto alkohol izaziva?",
-                    Type = "Prva pomoc",
-                    Image = ""
+                    Type = "Prva pomoc"
                 }, 
                 new
                 {
                     Id = 15,
                     Text = "Koji je prvi postupak s ozlijedenim kod udara struje?",
-                    Type = "Prva pomoc",
-                    Image = ""
+                    Type = "Prva pomoc"
                 }, 
                 new
                 {
                     Id = 16,
                     Text = "Koji je normalan ljudski ritam otkucaja srca?",
-                    Type = "Prva pomoc",
-                    Image = ""
+                    Type = "Prva pomoc"
                 }, 
                 new
                 {
                     Id = 17,
                     Text = "Koje su karakteristike venskog krvarenja?",
-                    Type = "Prva pomoc",
-                    Image = ""
+                    Type = "Prva pomoc"
                 },
                 new
                 {
                     Id = 18,
                     Text = "Sto je macje oko?",
-                    Type = "Prva pomoc",
-                    Image = ""
+                    Type = "Prva pomoc"
                 },
                 new
                 {
                     Id = 19,
                     Text = "Koja je uloga imobilizacije?",
-                    Type = "Prva pomoc",
-                    Image = ""
+                    Type = "Prva pomoc"
                 }, 
                 new
                 {
                     Id = 20,
                     Text = "Za sto se upotrebljava kompresivni zavoj?",
-                    Type = "Prva pomoc",
-                    Image = ""
+                    Type = "Prva pomoc"
                 }
             );
 
@@ -1468,93 +1544,6 @@ namespace Retrovizor.Data.Entities
             );
 
             base.OnModelCreating(modelBuilder);
-
-            // test seed data
-
-            modelBuilder.Entity<User>().HasData(
-                new User
-                {
-                    Id=1,
-                    Username="nborovic",
-                    Password= "NqSs3eyOEG9CA8AbO6GgIXjZOgqjAX6tJ0nq1WOOWAt9YnwY",
-                    OIB="123456789",
-                    PhoneNumber="0921112222",
-                    Role=Enums.Role.Admin,
-                    DrivingSchoolId=1
-                },
-                new User
-                {
-                    Id=2,
-                    Username="mluketin",
-                    Password= "zaFUUQie8N96psne7PziMc24lTzDt+75t6MoUqCB83kwaSU6",
-                    OIB="987654321",
-                    PhoneNumber="0915559999",
-                    Role=Enums.Role.Instructor,
-                    DrivingSchoolId=1
-                },
-                new User
-                {
-                    Id=3,
-                    Username="lnola",
-                    Password= "CZ/N7zgZL4faI4Cp4pgd0/L98ZlWS2M6K+VhQf360Ywv2Vkh",
-                    OIB="543216789",
-                    PhoneNumber="0982221111",
-                    Role=Enums.Role.Student,
-                    DrivingSchoolId=1
-                }
-            );
-
-            modelBuilder.Entity<DrivingSchool>().HasData(
-                new DrivingSchool
-                {
-                    Id = 1,
-                    Name = "Semafor",
-                    Address = "Solinska 5"
-                }
-            );
-
-            modelBuilder.Entity<Admin>().HasData(
-                new Admin
-                {
-                    Id = 1,
-                    UserId = 1
-                }
-            );
-
-            modelBuilder.Entity<Instructor>().HasData(
-                new Instructor
-                {
-                    Id = 1,
-                    FirstName = "Matija",
-                    LastName = "Luketin",
-                    UserId = 2,
-                    VehicleId=1
-                }
-            );
-
-            modelBuilder.Entity<Student>().HasData(
-                new Student
-                {
-                    Id = 1,
-                    FirstName = "Luka",
-                    LastName = "Nola",
-                    UserId = 3,
-                    Category = "B",
-                }
-            );
-
-            modelBuilder.Entity<Vehicle>().HasData(
-                new Vehicle
-                {
-                    Id = 1,
-                    FuelType = "Dizel",
-                    Image = "vehicle.jpg",
-                    LicensePlate = "ML4422",
-                    Manufacturer = "Golf",
-                    Model = "VII",
-                    Type = "Type"
-                }
-            );
         }
     }
 }

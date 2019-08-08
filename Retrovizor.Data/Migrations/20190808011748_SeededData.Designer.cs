@@ -10,7 +10,7 @@ using Retrovizor.Data.Entities;
 namespace Retrovizor.Data.Migrations
 {
     [DbContext(typeof(RetrovizorContext))]
-    [Migration("20190805101448_SeededData")]
+    [Migration("20190808011748_SeededData")]
     partial class SeededData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,15 +27,12 @@ namespace Retrovizor.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("DrivingSchoolId");
-
-                    b.Property<string>("Password");
-
-                    b.Property<string>("Username");
+                    b.Property<int>("UserId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DrivingSchoolId");
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Admins");
 
@@ -43,23 +40,17 @@ namespace Retrovizor.Data.Migrations
                         new
                         {
                             Id = 1,
-                            DrivingSchoolId = 1,
-                            Password = "",
-                            Username = "Duje"
+                            UserId = 1
                         },
                         new
                         {
                             Id = 2,
-                            DrivingSchoolId = 1,
-                            Password = "",
-                            Username = "Kreso"
+                            UserId = 2
                         },
                         new
                         {
                             Id = 3,
-                            DrivingSchoolId = 2,
-                            Password = "",
-                            Username = "Drazen"
+                            UserId = 3
                         });
                 });
 
@@ -718,25 +709,18 @@ namespace Retrovizor.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("DrivingSchoolId");
-
                     b.Property<string>("FirstName");
 
                     b.Property<string>("LastName");
 
-                    b.Property<string>("OIB");
-
-                    b.Property<string>("Password");
-
-                    b.Property<string>("PhoneNumber");
-
-                    b.Property<string>("Username");
+                    b.Property<int>("UserId");
 
                     b.Property<int>("VehicleId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DrivingSchoolId");
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.HasIndex("VehicleId");
 
@@ -746,49 +730,33 @@ namespace Retrovizor.Data.Migrations
                         new
                         {
                             Id = 1,
-                            DrivingSchoolId = 1,
                             FirstName = "Izabela",
                             LastName = "Domazet",
-                            OIB = "12345123451",
-                            Password = "",
-                            PhoneNumber = "00385976086801",
-                            Username = "IDomazet",
+                            UserId = 4,
                             VehicleId = 1
                         },
                         new
                         {
                             Id = 2,
-                            DrivingSchoolId = 1,
                             FirstName = "Mario",
                             LastName = "Ceprnja",
-                            OIB = "12345123452",
-                            Password = "",
-                            PhoneNumber = "00385976086801",
-                            Username = "MCeprnja",
+                            UserId = 5,
                             VehicleId = 2
                         },
                         new
                         {
                             Id = 3,
-                            DrivingSchoolId = 1,
                             FirstName = "Zvonimir",
                             LastName = "Delas",
-                            OIB = "12345123453",
-                            Password = "",
-                            PhoneNumber = "00385976086801",
-                            Username = "ZDelas",
+                            UserId = 6,
                             VehicleId = 3
                         },
                         new
                         {
                             Id = 4,
-                            DrivingSchoolId = 2,
                             FirstName = "Josip",
                             LastName = "Svalina",
-                            OIB = "12345123454",
-                            Password = "",
-                            PhoneNumber = "00385976086801",
-                            Username = "JSvalina",
+                            UserId = 7,
                             VehicleId = 4
                         });
                 });
@@ -839,7 +807,7 @@ namespace Retrovizor.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Image");
+                    b.Property<string>("Picture");
 
                     b.Property<string>("Text");
 
@@ -853,143 +821,140 @@ namespace Retrovizor.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Image = "",
                             Text = "U kojim ce uvjetima prijanjanje guma na cesti biti smanjeno?",
                             Type = "Propisi"
                         },
                         new
                         {
                             Id = 2,
-                            Image = "",
                             Text = "Kad vozac reagira brze?",
                             Type = "Propisi"
                         },
                         new
                         {
                             Id = 3,
-                            Image = "",
                             Text = "Sto je motorno vozilo?",
                             Type = "Propisi"
                         },
                         new
                         {
                             Id = 4,
-                            Image = "",
                             Text = "Sto je najveca dopustena masa vozila?",
                             Type = "Propisi"
                         },
                         new
                         {
                             Id = 5,
-                            Image = "",
                             Text = "Kako vozac daje svjetlosni znak upozorenja ostalim sudionicima u prometu?",
                             Type = "Propisi"
                         },
                         new
                         {
                             Id = 6,
-                            Image = "",
                             Text = "Sto se podrazumijeva pod svjetlosnim znakovima upozorenja u prometu?",
                             Type = "Propisi"
                         },
                         new
                         {
                             Id = 7,
-                            Image = "",
                             Text = "Sto vozac mora stalno pratiti za vrijeme voznje?",
                             Type = "Propisi"
                         },
                         new
                         {
                             Id = 8,
-                            Image = "",
                             Text = "Koja je uloga parkirne kocnice na motornom vozilu?",
                             Type = "Propisi"
                         },
                         new
                         {
                             Id = 9,
-                            Image = "",
                             Text = "Kako se na semaforu moze pojaviti zuto svjetlo?",
                             Type = "Propisi"
                         },
                         new
                         {
                             Id = 10,
-                            Image = "",
                             Text = "Sto je prestrojavanje?",
                             Type = "Propisi"
                         },
                         new
                         {
                             Id = 11,
-                            Image = "",
                             Text = "Koji plin se oslobađa pri izgaranju benzina, a koji u zatvorenom prostoru može izazvati smrt?",
                             Type = "Prva pomoc"
                         },
                         new
                         {
                             Id = 12,
-                            Image = "",
                             Text = "Ozlijedenu osobu koja je dozivjela epilepticki napadaj stavljamo u koju poziciju?",
                             Type = "Prva pomoc"
                         },
                         new
                         {
                             Id = 13,
-                            Image = "",
                             Text = "Koji je ljudski ritam normalnog disanja?",
                             Type = "Prva pomoc"
                         },
                         new
                         {
                             Id = 14,
-                            Image = "",
                             Text = "Sto alkohol izaziva?",
                             Type = "Prva pomoc"
                         },
                         new
                         {
                             Id = 15,
-                            Image = "",
                             Text = "Koji je prvi postupak s ozlijedenim kod udara struje?",
                             Type = "Prva pomoc"
                         },
                         new
                         {
                             Id = 16,
-                            Image = "",
                             Text = "Koji je normalan ljudski ritam otkucaja srca?",
                             Type = "Prva pomoc"
                         },
                         new
                         {
                             Id = 17,
-                            Image = "",
                             Text = "Koje su karakteristike venskog krvarenja?",
                             Type = "Prva pomoc"
                         },
                         new
                         {
                             Id = 18,
-                            Image = "",
                             Text = "Sto je macje oko?",
                             Type = "Prva pomoc"
                         },
                         new
                         {
                             Id = 19,
-                            Image = "",
                             Text = "Koja je uloga imobilizacije?",
                             Type = "Prva pomoc"
                         },
                         new
                         {
                             Id = 20,
-                            Image = "",
                             Text = "Za sto se upotrebljava kompresivni zavoj?",
                             Type = "Prva pomoc"
                         });
+                });
+
+            modelBuilder.Entity("Retrovizor.Data.Entities.Models.RefreshToken", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("UserId");
+
+                    b.Property<string>("Value");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("RefreshTokens");
                 });
 
             modelBuilder.Entity("Retrovizor.Data.Entities.Models.Review", b =>
@@ -1059,23 +1024,16 @@ namespace Retrovizor.Data.Migrations
 
                     b.Property<string>("Category");
 
-                    b.Property<int>("DrivingSchoolId");
-
                     b.Property<string>("FirstName");
 
                     b.Property<string>("LastName");
 
-                    b.Property<string>("OIB");
-
-                    b.Property<string>("Password");
-
-                    b.Property<string>("PhoneNumber");
-
-                    b.Property<string>("Username");
+                    b.Property<int>("UserId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DrivingSchoolId");
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("Students");
 
@@ -1084,97 +1042,65 @@ namespace Retrovizor.Data.Migrations
                         {
                             Id = 1,
                             Category = "A1",
-                            DrivingSchoolId = 1,
                             FirstName = "Matija",
                             LastName = "Luketin",
-                            OIB = "12345123461",
-                            Password = "",
-                            PhoneNumber = "00385976086801",
-                            Username = "MLuketin"
+                            UserId = 8
                         },
                         new
                         {
                             Id = 2,
                             Category = "B",
-                            DrivingSchoolId = 1,
                             FirstName = "Luka",
                             LastName = "Nola",
-                            OIB = "12345123462",
-                            Password = "",
-                            PhoneNumber = "00385976086801",
-                            Username = "LNola"
+                            UserId = 9
                         },
                         new
                         {
                             Id = 3,
                             Category = "B",
-                            DrivingSchoolId = 1,
                             FirstName = "Nino",
                             LastName = "Borovic",
-                            OIB = "12345123463",
-                            Password = "",
-                            PhoneNumber = "00385976086801",
-                            Username = "NBorovic"
+                            UserId = 10
                         },
                         new
                         {
                             Id = 4,
                             Category = "A2",
-                            DrivingSchoolId = 1,
                             FirstName = "Luka",
                             LastName = "Bendic",
-                            OIB = "12345123464",
-                            Password = "",
-                            PhoneNumber = "00385976086801",
-                            Username = "LBendic"
+                            UserId = 11
                         },
                         new
                         {
                             Id = 5,
                             Category = "B",
-                            DrivingSchoolId = 1,
                             FirstName = "Klara Bruna",
                             LastName = "Tomic",
-                            OIB = "12345123465",
-                            Password = "",
-                            PhoneNumber = "00385976086801",
-                            Username = "KTomic"
+                            UserId = 12
                         },
                         new
                         {
                             Id = 6,
-                            Category = "",
-                            DrivingSchoolId = 1,
+                            Category = "B",
                             FirstName = "Petra",
                             LastName = "Condic",
-                            OIB = "12345123466",
-                            Password = "B",
-                            PhoneNumber = "00385976086801",
-                            Username = "PCondic"
+                            UserId = 13
                         },
                         new
                         {
                             Id = 7,
                             Category = "B",
-                            DrivingSchoolId = 2,
                             FirstName = "Alex",
                             LastName = "Amanzi",
-                            OIB = "12345123467",
-                            Password = "",
-                            PhoneNumber = "00385976086801",
-                            Username = "AAmanzi"
+                            UserId = 14
                         },
                         new
                         {
                             Id = 8,
                             Category = "A",
-                            DrivingSchoolId = 2,
                             FirstName = "Ante",
                             LastName = "Vuletic",
-                            OIB = "12345123468",
-                            Password = "",
-                            PhoneNumber = "00385976086801",
-                            Username = "AVuletic"
+                            UserId = 15
                         });
                 });
 
@@ -1533,6 +1459,177 @@ namespace Retrovizor.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Retrovizor.Data.Entities.Models.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("DrivingSchoolId");
+
+                    b.Property<string>("OIB");
+
+                    b.Property<string>("Password");
+
+                    b.Property<string>("PhoneNumber");
+
+                    b.Property<int>("Role");
+
+                    b.Property<string>("Username");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DrivingSchoolId");
+
+                    b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DrivingSchoolId = 1,
+                            Password = "NqSs3eyOEG9CA8AbO6GgIXjZOgqjAX6tJ0nq1WOOWAt9YnwY",
+                            Role = 2,
+                            Username = "Duje"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DrivingSchoolId = 1,
+                            Password = "zaFUUQie8N96psne7PziMc24lTzDt+75t6MoUqCB83kwaSU6",
+                            Role = 2,
+                            Username = "Kreso"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DrivingSchoolId = 2,
+                            Password = "CZ/N7zgZL4faI4Cp4pgd0/L98ZlWS2M6K+VhQf360Ywv2Vkh",
+                            Role = 2,
+                            Username = "Drazen"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DrivingSchoolId = 1,
+                            OIB = "12345123451",
+                            Password = "yxq0Ed+O2iWi98Toqah+BS75nkM7Z7+SXaoi/SPwsXkbVWHA",
+                            PhoneNumber = "00385976086801",
+                            Role = 1,
+                            Username = "IDomazet"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            DrivingSchoolId = 1,
+                            OIB = "12345123452",
+                            Password = "wyWLW6MQdogtds5NSUP/NJhVcrUVFGDPk9zS58Nk3Xnykq/e",
+                            PhoneNumber = "00385976086801",
+                            Role = 1,
+                            Username = "MCeprnja"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            DrivingSchoolId = 1,
+                            OIB = "12345123453",
+                            Password = "wnCehHvutg39CCPGSMSABgFA6dKxI1GS/TpYkgEArLBcv16O",
+                            PhoneNumber = "00385976086801",
+                            Role = 1,
+                            Username = "ZDelas"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            DrivingSchoolId = 2,
+                            OIB = "12345123454",
+                            Password = "V+dugmSl5R+gGdUFn8fLVNMd3f67CAtoNaxYlCIi+aR4hn1b",
+                            PhoneNumber = "00385976086801",
+                            Role = 1,
+                            Username = "JSvalina"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            DrivingSchoolId = 1,
+                            OIB = "12345123461",
+                            Password = "gIrZXsGJ1KwFWOkycqVaS1N7zAtxOwqVGYfJEkrOshKIPlwa",
+                            PhoneNumber = "00385976086801",
+                            Role = 0,
+                            Username = "MLuketin"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            DrivingSchoolId = 1,
+                            OIB = "12345123462",
+                            Password = "4otiXl9sR1IrN1Oxk7JXw5b8jn5kcQ2GSKVvBriy4F0Ct72H",
+                            PhoneNumber = "00385976086801",
+                            Role = 0,
+                            Username = "LNola"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            DrivingSchoolId = 1,
+                            OIB = "12345123463",
+                            Password = "Q/2RZdW5Q3AwxcWIKlk4jGizvLawjC5kAU11YDL+1UKDQHFT",
+                            PhoneNumber = "00385976086801",
+                            Role = 0,
+                            Username = "NBorovic"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            DrivingSchoolId = 1,
+                            OIB = "12345123464",
+                            Password = "e+5Zz+VgZHqNuaK5p8c/OGHpwlnO6zNTI89ouMxxy5fEja/P",
+                            PhoneNumber = "00385976086801",
+                            Role = 0,
+                            Username = "LBendic"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            DrivingSchoolId = 1,
+                            OIB = "12345123465",
+                            Password = "oINRmcaSWlLomk6pbdtw9m7tBVjHzvsQvgm1lbGDiB713H0R",
+                            PhoneNumber = "00385976086801",
+                            Role = 0,
+                            Username = "KTomic"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            DrivingSchoolId = 1,
+                            OIB = "12345123466",
+                            Password = "Ae5m6kB/XbEkj6vPzceoGLeguy7oVink9iK+smuifbgSQMlQ",
+                            PhoneNumber = "00385976086801",
+                            Role = 0,
+                            Username = "PCondic"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            DrivingSchoolId = 2,
+                            OIB = "12345123467",
+                            Password = "zEXK/8+DyNVCBICYavDmMnA4x7iT5AwMQkLVQBJSDeNwA1Ic",
+                            PhoneNumber = "00385976086801",
+                            Role = 0,
+                            Username = "AAmanzi"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            DrivingSchoolId = 2,
+                            OIB = "12345123468",
+                            Password = "hQFfPhep54nqhqGES06j18OyU79CeUPrDK/iSEZdt4BhFzq+",
+                            PhoneNumber = "00385976086801",
+                            Role = 0,
+                            Username = "AVuletic"
+                        });
+                });
+
             modelBuilder.Entity("Retrovizor.Data.Entities.Models.Vehicle", b =>
                 {
                     b.Property<int>("Id")
@@ -1541,13 +1638,13 @@ namespace Retrovizor.Data.Migrations
 
                     b.Property<string>("FuelType");
 
-                    b.Property<string>("Image");
-
                     b.Property<string>("LicensePlate");
 
                     b.Property<string>("Manufacturer");
 
                     b.Property<string>("Model");
+
+                    b.Property<string>("Picture");
 
                     b.Property<string>("Type");
 
@@ -1560,7 +1657,6 @@ namespace Retrovizor.Data.Migrations
                         {
                             Id = 1,
                             FuelType = "Gasoline",
-                            Image = "",
                             LicensePlate = "ST-200-OK",
                             Manufacturer = "Volkswagen",
                             Model = "Golf 7",
@@ -1570,7 +1666,6 @@ namespace Retrovizor.Data.Migrations
                         {
                             Id = 2,
                             FuelType = "Gasoline",
-                            Image = "",
                             LicensePlate = "ST-404-NF",
                             Manufacturer = "Mercedes",
                             Model = "A Class",
@@ -1580,7 +1675,6 @@ namespace Retrovizor.Data.Migrations
                         {
                             Id = 3,
                             FuelType = "Diesel",
-                            Image = "",
                             LicensePlate = "ST-500-FB",
                             Manufacturer = "Renault",
                             Model = "Megane III",
@@ -1590,7 +1684,6 @@ namespace Retrovizor.Data.Migrations
                         {
                             Id = 4,
                             FuelType = "Gasoline",
-                            Image = "",
                             LicensePlate = "ST-408-TO",
                             Manufacturer = "Kawasaki",
                             Model = "ZZR",
@@ -1671,9 +1764,9 @@ namespace Retrovizor.Data.Migrations
 
             modelBuilder.Entity("Retrovizor.Data.Entities.Models.Admin", b =>
                 {
-                    b.HasOne("Retrovizor.Data.Entities.Models.DrivingSchool", "DrivingSchool")
-                        .WithMany("Admins")
-                        .HasForeignKey("DrivingSchoolId");
+                    b.HasOne("Retrovizor.Data.Entities.Models.User", "User")
+                        .WithOne("Admin")
+                        .HasForeignKey("Retrovizor.Data.Entities.Models.Admin", "UserId");
                 });
 
             modelBuilder.Entity("Retrovizor.Data.Entities.Models.Answer", b =>
@@ -1692,13 +1785,20 @@ namespace Retrovizor.Data.Migrations
 
             modelBuilder.Entity("Retrovizor.Data.Entities.Models.Instructor", b =>
                 {
-                    b.HasOne("Retrovizor.Data.Entities.Models.DrivingSchool", "DrivingSchool")
-                        .WithMany("Instructors")
-                        .HasForeignKey("DrivingSchoolId");
+                    b.HasOne("Retrovizor.Data.Entities.Models.User", "User")
+                        .WithOne("Instructor")
+                        .HasForeignKey("Retrovizor.Data.Entities.Models.Instructor", "UserId");
 
                     b.HasOne("Retrovizor.Data.Entities.Models.Vehicle", "Vehicle")
                         .WithMany("Instructors")
                         .HasForeignKey("VehicleId");
+                });
+
+            modelBuilder.Entity("Retrovizor.Data.Entities.Models.RefreshToken", b =>
+                {
+                    b.HasOne("Retrovizor.Data.Entities.Models.User", "User")
+                        .WithMany("RefreshTokens")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Retrovizor.Data.Entities.Models.Review", b =>
@@ -1714,9 +1814,9 @@ namespace Retrovizor.Data.Migrations
 
             modelBuilder.Entity("Retrovizor.Data.Entities.Models.Student", b =>
                 {
-                    b.HasOne("Retrovizor.Data.Entities.Models.DrivingSchool", "DrivingSchool")
-                        .WithMany("Students")
-                        .HasForeignKey("DrivingSchoolId");
+                    b.HasOne("Retrovizor.Data.Entities.Models.User", "User")
+                        .WithOne("Student")
+                        .HasForeignKey("Retrovizor.Data.Entities.Models.Student", "UserId");
                 });
 
             modelBuilder.Entity("Retrovizor.Data.Entities.Models.StudentClass", b =>
@@ -1750,6 +1850,13 @@ namespace Retrovizor.Data.Migrations
                     b.HasOne("Retrovizor.Data.Entities.Models.Student", "Student")
                         .WithMany("StudentExams")
                         .HasForeignKey("StudentId");
+                });
+
+            modelBuilder.Entity("Retrovizor.Data.Entities.Models.User", b =>
+                {
+                    b.HasOne("Retrovizor.Data.Entities.Models.DrivingSchool", "DrivingSchool")
+                        .WithMany("Users")
+                        .HasForeignKey("DrivingSchoolId");
                 });
 
             modelBuilder.Entity("Retrovizor.Data.Entities.Models.VehicleSession", b =>
