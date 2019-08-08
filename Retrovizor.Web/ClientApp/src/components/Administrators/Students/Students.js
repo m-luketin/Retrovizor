@@ -43,11 +43,7 @@ export default class Students extends Component {
         <main className="main">
           <Link to="/administrator/kandidati/kandidat">
             <figure className="main__candidate">
-              <img
-                className="candidate__icon"
-                src={Profile}
-                alt="Kandidat"
-              />
+              <img className="candidate__icon" src={Profile} alt="Kandidat" />
               <figcaption>
                 <h2 className="candidate__name">Luka Bendić</h2>
                 <p className="candidate__lessons">12/35 sati</p>

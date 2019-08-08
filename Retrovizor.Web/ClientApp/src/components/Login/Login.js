@@ -1,75 +1,79 @@
-import React, { Component } from "react";
+import React from "react";
 import "./Login.css";
+import { withFormik, Form } from "formik";
+import * as Yup from "yup";
+import axios from "axios";
+import { setTokens, authorizedRequest } from "../utils";
+import Input from "../Input";
+
 // SVG import
 import Logo from "../../assets/Logo.svg";
 
-export default class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      inputFocused: false
+authorizedRequest("/api/instructor/get/1", "get", "").then(data =>
+  console.log(data)
+);
+
+const Login = ({ handleSubmit, errors, touched, isSubmitting }) => (
+  <main className="main">
+    <div className="main__login-container">
+      <img className="login-container__logo" alt="Logo" src={Logo} />
+      <Form className="login-container__login-form">
+        <Input
+          type="text"
+          name="username"
+          styles="field__input"
+          label="Korisničko ime"
+          error={errors.username}
+        />
+        {console.log(errors)}
+        <Input
+          type="password"
+          name="password"
+          styles="field__input"
+          label="Lozinka"
+          error={errors.password}
+        />
+        <button
+          type="submit"
+          className="field__submit"
+          disabled={isSubmitting}
+          onClick={() => handleSubmit()}
+        >
+          Prijava
+        </button>
+      </Form>
+      <p className="login-container__obstacle">
+        Imaš poteškoća s prijavom?
+        <a className="obstacle__contact"> Obrati nam se.</a>
+      </p>
+    </div>
+  </main>
+);
+
+export default withFormik({
+  mapPropsToValues() {
+    return {
+      username: "",
+      password: ""
     };
+  },
+
+  validationSchema: Yup.object().shape({
+    username: Yup.string().required("Polje je obavezno"),
+    password: Yup.string().required("Polje je obavezno")
+  }),
+
+  handleSubmit(values, { resetForm }) {
+    const userCredentials = {
+      username: values.username,
+      password: values.password
+    };
+
+    resetForm();
+
+    axios
+      .post("/api/auth/login", userCredentials)
+      .then(res => setTokens(res.data.access, res.data.refresh))
+      .catch(err => alert(err));
   }
-
-  handleInputFocus = () => {
-    this.setState({ inputFocused: true });
-  };
-
-  handleInputBlur = () => {
-    this.setState({ inputFocused: false });
-  };
-
-  render() {
-    const { inputFocused } = this.state;
-    const { handleInputFocus, handleInputBlur } = this;
-
-    return (
-      <main className="main">
-        <div className="main__login-container">
-          <img className="login-container__logo" alt="Logo" src={Logo} />
-          <form className="login-container__login-form">
-            <div className="login-form__field">
-              <div
-                class={`field__border-overlay ${
-                  inputFocused
-                    ? "field__border-overlay--focused"
-                    : "field__border-overlay--delay"
-                }`}
-              />
-              <label
-                forhtml="username"
-                className={`field__label ${
-                  inputFocused ? "field__label--focused" : ""
-                }`}
-              >
-                Korisničko ime
-              </label>
-              <input
-                type="text"
-                name="username"
-                className="field__input"
-                onFocus={handleInputFocus}
-                onBlur={handleInputBlur}
-              />
-            </div>
-            <div className="login-form__field">
-              <input
-                type="password"
-                placeholder="Lozinka"
-                name="username"
-                className="field__input"
-              />
-            </div>
-            <button type="submit" className="field__submit">
-              Prijava
-            </button>
-          </form>
-          <p className="login-container__obstacle">
-            Imaš poteškoća s prijavom?
-            <a className="obstacle__contact"> Obrati nam se.</a>
-          </p>
-        </div>
-      </main>
-    );
-  }
-}
+})(Login);

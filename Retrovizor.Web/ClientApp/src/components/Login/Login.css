@@ -62,6 +62,13 @@
   color: #1488cc;
 }
 
+.field__error {
+  color: red;
+  position: absolute;
+  bottom: -26px;
+  left: 18px;
+}
+
 .field__border-overlay {
   background: #fff;
   width: 0px;
