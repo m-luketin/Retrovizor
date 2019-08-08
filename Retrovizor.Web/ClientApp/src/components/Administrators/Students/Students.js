@@ -9,12 +9,36 @@ import GrayPlus from "../../../assets/GrayPlus.svg";
 import WhiteArrow from "../../../assets/WhiteArrow.svg";
 
 export default class Students extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      addModalVisibility: false
+    };
+  }
+
+  handleOpenAddModal = () => {
+    document.getElementsByTagName("body")[0].classList.add("o-hidden");
+    this.setState({ addModalVisibility: true });
+  };
+
+  handleCloseAddModal = () => {
+    document.getElementsByTagName("body")[0].classList.remove("o-hidden");
+    this.setState({ addModalVisibility: false });
+  };
+
   render() {
+    const { addModalVisibility } = this.state;
+
     return (
       <React.Fragment>
         <header className="header">
           <h1 className="header__title">Kandidati</h1>
-          <img className="header__icon--plus" alt="Plus" src={GrayPlus} />
+          <img
+            onClick={this.handleOpenAddModal}
+            className="header__icon--plus"
+            alt="Plus"
+            src={GrayPlus}
+          />
         </header>
         <main className="main">
           <Link to="/administrator/kandidati/kandidat">
@@ -102,7 +126,9 @@ export default class Students extends Component {
           </figure>
         </main>
 
-        <StudentAddModal />
+        {addModalVisibility ? (
+          <StudentAddModal onCloseAddModal={this.handleCloseAddModal} />
+        ) : null}
       </React.Fragment>
     );
   }

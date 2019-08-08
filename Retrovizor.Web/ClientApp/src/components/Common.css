@@ -12,6 +12,19 @@
   overflow-x: hidden;
 }
 
+aside {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-color: #00000085;
+  z-index: 2;
+  top: 0;
+  left: 0;
+}
+
 /* Header */
 .header--alt {
   justify-content: flex-start !important;
@@ -153,4 +166,8 @@ main {
 
 .pl-8px {
   padding-left: 8px !important;
+}
+
+.o-hidden {
+  overflow: hidden;
 }

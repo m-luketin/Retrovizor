@@ -1,13 +1,31 @@
 import React, { Component } from "react";
 import EventAddModal from "./EventAddModal";
-import EventAddStudentsModal from "./EventAddStudentsModal";
 // SVG import
 import Calendar from "../../../assets/Calendar.svg";
 import GrayPlus from "../../../assets/GrayPlus.svg";
 import HeaderArrow from "../../../assets/HeaderArrow.svg";
 
 export default class AdministratorSchedule extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      addModalVisibility: false
+    };
+  }
+
+  handleOpenAddModal = () => {
+    document.getElementsByTagName("body")[0].classList.add("o-hidden");
+    this.setState({ addModalVisibility: true });
+  };
+
+  handleCloseAddModal = () => {
+    document.getElementsByTagName("body")[0].classList.remove("o-hidden");
+    this.setState({ addModalVisibility: false });
+  };
+
   render() {
+    const { addModalVisibility } = this.state;
+
     return (
       <React.Fragment>
         <header className="header">
@@ -18,7 +36,12 @@ export default class AdministratorSchedule extends Component {
               alt="Kalendar"
               src={Calendar}
             />
-            <img className="header__icon--plus" alt="Plus" src={GrayPlus} />
+            <img
+              onClick={this.handleOpenAddModal}
+              className="header__icon--plus"
+              alt="Plus"
+              src={GrayPlus}
+            />
           </div>
         </header>
 
@@ -63,10 +86,10 @@ export default class AdministratorSchedule extends Component {
               <p className="button__info">Luka Bendić</p>
             </span>
           </button>
-
-          <EventAddModal />
-          <EventAddStudentsModal />
         </main>
+        {addModalVisibility ? (
+          <EventAddModal onCloseAddModal={this.handleCloseAddModal} />
+        ) : null}
       </React.Fragment>
     );
   }

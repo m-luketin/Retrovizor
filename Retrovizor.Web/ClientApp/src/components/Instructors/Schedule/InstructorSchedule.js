@@ -7,13 +7,51 @@ import HeaderArrow from "../../../assets/HeaderArrow.svg";
 import WhiteArrow from "../../../assets/WhiteArrow.svg";
 
 export default class InstructorSchedule extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      addEventModalVisibility: false,
+      instructorDetailsModalVisibility: false
+    };
+  }
+
+  handleOpenAddEventModal = () => {
+    document.getElementsByTagName("body")[0].classList.add("o-hidden");
+    this.setState({ addEventModalVisibility: true });
+  };
+
+  handleCloseAddEventModal = () => {
+    document.getElementsByTagName("body")[0].classList.remove("o-hidden");
+    this.setState({ addEventModalVisibility: false });
+  };
+
+  handleOpenInstructorDetailsModal = () => {
+    document.getElementsByTagName("body")[0].classList.add("o-hidden");
+    this.setState({ instructorDetailsModalVisibility: true });
+  };
+
+  handleCloseInstructorDetailsModal = () => {
+    document.getElementsByTagName("body")[0].classList.remove("o-hidden");
+    this.setState({ instructorDetailsModalVisibility: false });
+  };
+
   render() {
+    const {
+      addEventModalVisibility,
+      instructorDetailsModalVisibility
+    } = this.state;
+
     return (
       <React.Fragment>
         <header className="header">
           <h1 className="header__title">Raspored</h1>
           <div>
-            <img className="header__icon--plus" alt="Plus" src={GrayPlus} />
+            <img
+              onClick={this.handleOpenAddEventModal}
+              className="header__icon--plus"
+              alt="Plus"
+              src={GrayPlus}
+            />
           </div>
         </header>
 
@@ -29,7 +67,10 @@ export default class InstructorSchedule extends Component {
             <p className="instructor__schedule--day">17. srpnja</p>
           </div>
           {/* main__button--schedule--admin is for search by date - remove if its not search by date */}
-          <button className="main__button main__button--schedule main__button--schedule--admin">
+          <button
+            onClick={this.handleOpenInstructorDetailsModal}
+            className="main__button main__button--schedule main__button--schedule--admin"
+          >
             <div className="instructor__schedule--time">
               <h3>08:30</h3>
             </div>
@@ -44,7 +85,10 @@ export default class InstructorSchedule extends Component {
             />
           </button>
 
-          <button className="main__button main__button--schedule instructor__schedule--exam">
+          <button
+            onClick={this.handleOpenInstructorDetailsModal}
+            className="main__button main__button--schedule instructor__schedule--exam"
+          >
             <div className="instructor__schedule--time">
               <h3>10:15</h3>
             </div>
@@ -59,7 +103,10 @@ export default class InstructorSchedule extends Component {
             />
           </button>
 
-          <button className="main__button main__button--schedule instructor__schedule--free">
+          <button
+            onClick={this.handleOpenInstructorDetailsModal}
+            className="main__button main__button--schedule instructor__schedule--free"
+          >
             <div className="brc-blue instructor__schedule--time ">
               <h3>11:15</h3>
             </div>
@@ -71,9 +118,18 @@ export default class InstructorSchedule extends Component {
             />
           </button>
         </main>
-
-        <InstructorAddEventModal />
-        <InstructorDetailsModal />
+        {addEventModalVisibility ? (
+          <InstructorAddEventModal
+            onCloseAddEventModal={this.handleCloseAddEventModal}
+          />
+        ) : null}
+        {instructorDetailsModalVisibility ? (
+          <InstructorDetailsModal
+            onCloseInstructorDetailsModal={
+              this.handleCloseInstructorDetailsModal
+            }
+          />
+        ) : null}
       </React.Fragment>
     );
   }
