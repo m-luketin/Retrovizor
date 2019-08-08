@@ -19,8 +19,21 @@ export const authorizedRequest = async (url, method, payload) => {
   axios.defaults.headers.common["Authorization"] = `Bearer ${token.access}`;
 
   try {
-    const { data } = await axios.get(url);
-    return data;
+    let response = null;
+
+    switch (method) {
+      case "get":
+        response = await axios.get(url);
+        break;
+      case "post":
+        response = await axios.post(url, payload);
+        break;
+      case "delete":
+        response = await axios.delete(url);
+        break;
+    }
+
+    return response.data;
   } catch (error) {
     const response = await axios.post("/api/auth/refresh", {
       access: "",

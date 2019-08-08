@@ -4,7 +4,7 @@ import StudentAddModal from "./StudentAddModal";
 import "./Students.css";
 import "./StudentModals.css";
 // SVG import
-import Profile from "../../../assets/instructor.gif";
+import Profile from "../../../assets/Instructor.gif";
 import GrayPlus from "../../../assets/GrayPlus.svg";
 import WhiteArrow from "../../../assets/WhiteArrow.svg";
 

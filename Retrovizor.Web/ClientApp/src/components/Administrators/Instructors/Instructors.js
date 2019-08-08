@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import InstructorAddModal from "./InstructorAddModal";
 import "./Instructors.css";
 // SVG import
-import Profile from "../../../assets/instructor.gif";
+import Profile from "../../../assets/Instructor.gif";
 import GrayPlus from "../../../assets/GrayPlus.svg";
 import FullStar from "../../../assets/FullStar.svg";
 import OutlineStar from "../../../assets/OutlineStar.svg";

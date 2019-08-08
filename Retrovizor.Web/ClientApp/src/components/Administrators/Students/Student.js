@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import StudentAddModal from "./StudentAddModal.js";
 // SVG import
-import Profile from "../../../assets/instructor.gif";
+import Profile from "../../../assets/Instructor.gif";
 import Phone from "../../../assets/Phone.svg";
 import HeaderArrow from "../../../assets/HeaderArrow.svg";
 import BluePencil from "../../../assets/BluePencil.svg";
