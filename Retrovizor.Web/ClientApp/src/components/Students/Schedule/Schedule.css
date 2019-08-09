@@ -50,6 +50,7 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     width: 900px;
+    margin: auto;
   }
   .main__button--schedule {
     margin: 10px 15px;

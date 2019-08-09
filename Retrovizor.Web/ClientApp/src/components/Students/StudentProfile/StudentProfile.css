@@ -164,6 +164,13 @@ main section {
   margin-bottom: 13px;
 }
 
+@media screen and (min-width: 420px)
+{
+  .main__timeline {
+   width: 380px;
+  }
+}
+
 @media screen and (min-width: 1000px)
 {
   .main__profile {
@@ -218,6 +225,7 @@ main section {
  .item__status {
    font-size: 20px;
  }
+
 }
 
 @media screen and (min-width: 1200px)
