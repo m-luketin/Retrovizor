@@ -33,7 +33,6 @@ export default class StudentProfile extends Component {
 					name: response.firstName,
 					category: response.category
 				});
-				console.log(response);
 			})
 			.then(() => {
 				authorizedRequest(`api/class/get-by-student/${this.state.id}`)
@@ -55,7 +54,6 @@ export default class StudentProfile extends Component {
 									});
 								});
 								this.setState({ timeline: tmpTimeline });
-								console.log(...this.state.timeline);
 							});
 					});
 			});

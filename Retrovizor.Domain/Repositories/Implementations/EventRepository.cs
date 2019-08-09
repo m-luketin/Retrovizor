@@ -1,4 +1,5 @@
-﻿using Retrovizor.Data.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Retrovizor.Data.Entities;
 using Retrovizor.Data.Entities.Models;
 using Retrovizor.Domain.Classes;
 using Retrovizor.Domain.Repositories.Interfaces;
@@ -70,19 +71,9 @@ namespace Retrovizor.Domain.Repositories.Implementations
             return _context.Events.Find(id);
         }
 
-        public List<Event> GetEventsByStudentId(int id)
+        public List<StudentEvent> GetEventsByStudentId(int id)
         {
-            var studentEvents = _context.StudentEvents.Where(c => c.StudentId == id);
-
-            if(studentEvents == null)
-                return null;
-
-            var eventsToGet = new List<Event>();
-
-            foreach(var studentEvent in studentEvents)
-                eventsToGet.Add(studentEvent.Event);
-
-            return eventsToGet;
+            return _context.StudentEvents.Include(se => se.Event).Where(c => c.StudentId == id).ToList();
         }
 
         public List<Event> GetInstructorDrivingLessonsByInstructorId(int id)
