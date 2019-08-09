@@ -169,6 +169,10 @@
 
 @media screen and (min-width: 1000px)
 {
+  .main__drive {
+    display: flex;
+    flex-direction: column;
+  }
   .map__submit{
     margin-bottom: 370px;
     margin-left: 200px;

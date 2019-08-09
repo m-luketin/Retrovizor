@@ -97,7 +97,6 @@ main section {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  width: 380px;
 }
 
 .main__timeline--title {
@@ -165,10 +164,37 @@ main section {
   margin-bottom: 13px;
 }
 
-
-
 @media screen and (min-width: 1000px)
 {
+  .main__profile {
+    height: 600px;
+    display: flex;
+    align-items: center;
+  }
+
+  .profile__user-icon {
+    width: 120px;
+    height: 120px;
+    margin-right: 50px;
+    border-radius: 18px;
+  }
+
+  .profile__name {
+    font-size: 38px;
+    font-weight: 500;
+    color: #8b959e;
+    margin-top: 40px;
+    margin-left: 20px;
+  }
+  
+  .profile__category {
+    padding: 2px 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: #1488cc;
+    margin-left: 20px;
+  }
+
  .main__timeline {
    display:flex;
    flex-wrap: wrap;
@@ -191,5 +217,15 @@ main section {
 
  .item__status {
    font-size: 20px;
+ }
+}
+
+@media screen and (min-width: 1200px)
+{
+ .main__timeline {
+   display:flex;
+   flex-wrap: wrap;
+   width: 800px;
+   justify-content: start;
  }
 }
