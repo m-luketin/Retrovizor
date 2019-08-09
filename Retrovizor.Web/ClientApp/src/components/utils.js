@@ -1,8 +1,5 @@
 import axios from "axios";
 
-export const getInstructorsBySchoolId = id =>
-  axios.get(`api/Instructor/get-by-driving-school/${id}`);
-
 export const getTokens = () => {
   var access = localStorage.getItem("access");
   var refresh = localStorage.getItem("refresh");
@@ -30,6 +27,9 @@ export const authorizedRequest = async (url, method, payload) => {
         break;
       case "delete":
         response = await axios.delete(url);
+        break;
+
+      default:
         break;
     }
 

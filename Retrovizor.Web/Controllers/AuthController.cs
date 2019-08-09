@@ -42,14 +42,13 @@ namespace Retrovizor.Web.Controllers
             return Ok(new Token(accessToken, refreshToken));
         }
 
-        [Authorize]
         [HttpPost("refresh")]
-        public IActionResult Refresh(string refreshToken)
+        public IActionResult Refresh(Token token)
         {
             var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
             var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
 
-            var savedRefreshToken = _refreshTokenRepository.GetUserRefreshToken(refreshToken, userCredentials.Id);
+            var savedRefreshToken = _refreshTokenRepository.GetUserRefreshToken(token.Refresh, userCredentials.Id);
 
             if (savedRefreshToken == null) throw new SecurityTokenException("Invalid refresh token!");
 

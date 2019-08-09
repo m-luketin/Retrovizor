@@ -10,8 +10,8 @@ using Retrovizor.Data.Entities;
 namespace Retrovizor.Data.Migrations
 {
     [DbContext(typeof(RetrovizorContext))]
-    [Migration("20190808011748_SeededData")]
-    partial class SeededData
+    [Migration("20190808181347_Initial-Migration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

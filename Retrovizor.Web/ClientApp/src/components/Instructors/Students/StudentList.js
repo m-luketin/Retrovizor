@@ -3,8 +3,18 @@ import { Link } from "react-router-dom";
 // SVG import
 import Profile from "../../../assets/Instructor.gif";
 import WhiteArrow from "../../../assets/WhiteArrow.svg";
+import { authorizedRequest } from "../../utils";
 
 export default class StudentList extends Component {
+  componentDidMount() {
+    authorizedRequest(
+      `api/Student/get-current-by-instructor/1`,
+      "get",
+      "",
+      true
+    ).then(data => console.log(JSON.parse(`${data}}]}]`)));
+  }
+
   render() {
     return (
       <React.Fragment>

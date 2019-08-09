@@ -1,4 +1,5 @@
 ﻿using CashRegister.Data.Helpers;
+using Microsoft.EntityFrameworkCore;
 using Retrovizor.Data.Entities;
 using Retrovizor.Data.Entities.Models;
 using Retrovizor.Data.Enums;
@@ -93,7 +94,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public List<Student> GetCurrentStudentsByInstructorId(int id)
         {
-            var instructorVehicleSessions = _context.VehicleSessions.Where(vs => vs.InstructorId == id).ToList();
+            var instructorVehicleSessions = _context.VehicleSessions.Include("Student").Where(vs => vs.InstructorId == id).ToList();
 
             if(instructorVehicleSessions == null)
                 return null;

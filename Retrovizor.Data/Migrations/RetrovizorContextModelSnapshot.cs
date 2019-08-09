@@ -955,23 +955,6 @@ namespace Retrovizor.Data.Migrations
                     b.ToTable("RefreshTokens");
                 });
 
-            modelBuilder.Entity("Retrovizor.Data.Entities.Models.RefreshToken", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("UserId");
-
-                    b.Property<string>("Value");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("RefreshTokens");
-                });
-
             modelBuilder.Entity("Retrovizor.Data.Entities.Models.Review", b =>
                 {
                     b.Property<int>("Id")
@@ -1115,6 +1098,7 @@ namespace Retrovizor.Data.Migrations
                             Category = "A",
                             FirstName = "Ante",
                             LastName = "Vuletic",
+                            UserId = 15
                         });
                 });
 
@@ -1641,63 +1625,6 @@ namespace Retrovizor.Data.Migrations
                             PhoneNumber = "00385976086801",
                             Role = 0,
                             Username = "AVuletic"
-                        });
-                });
-
-            modelBuilder.Entity("Retrovizor.Data.Entities.Models.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("DrivingSchoolId");
-
-                    b.Property<string>("OIB");
-
-                    b.Property<string>("Password");
-
-                    b.Property<string>("PhoneNumber");
-
-                    b.Property<int>("Role");
-
-                    b.Property<string>("Username");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DrivingSchoolId");
-
-                    b.ToTable("Users");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            DrivingSchoolId = 1,
-                            OIB = "123456789",
-                            Password = "NqSs3eyOEG9CA8AbO6GgIXjZOgqjAX6tJ0nq1WOOWAt9YnwY",
-                            PhoneNumber = "0921112222",
-                            Role = 2,
-                            Username = "nborovic"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            DrivingSchoolId = 1,
-                            OIB = "987654321",
-                            Password = "zaFUUQie8N96psne7PziMc24lTzDt+75t6MoUqCB83kwaSU6",
-                            PhoneNumber = "0915559999",
-                            Role = 1,
-                            Username = "mluketin"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            DrivingSchoolId = 1,
-                            OIB = "543216789",
-                            Password = "CZ/N7zgZL4faI4Cp4pgd0/L98ZlWS2M6K+VhQf360Ywv2Vkh",
-                            PhoneNumber = "0982221111",
-                            Role = 0,
-                            Username = "lnola"
                         });
                 });
 
