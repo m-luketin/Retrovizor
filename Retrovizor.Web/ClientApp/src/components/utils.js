@@ -49,3 +49,22 @@ export const authorizedRequest = async (url, method, payload) => {
     return data;
   }
 };
+
+export const formatPhoneNumber = number => {
+  let addedPlus = "+" + number.substring(2);
+  let addedSpace =
+    addedPlus.substring(0, 4) +
+    " " +
+    addedPlus.substring(4, 7) +
+    " " +
+    addedPlus.substring(7, 10) +
+    " " +
+    addedPlus.substring(10, 13);
+
+  return addedSpace;
+};
+
+export const getStudentCurrentLesson = student => {
+  return student.studentClasses[student.studentClasses.length - 1]
+    .currentLesson;
+};

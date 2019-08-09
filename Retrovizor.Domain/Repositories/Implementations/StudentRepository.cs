@@ -40,7 +40,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
         {
             var studentToEdit = _context.Students.Find(editedStudent.Id);
 
-            if(studentToEdit == null)
+            if (studentToEdit == null)
                 return false;
 
             studentToEdit.FirstName = editedStudent.FirstName;
@@ -59,7 +59,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
         {
             var studentToDelete = _context.Students.Find(idOfStudentToDelete);
 
-            if(studentToDelete == null)
+            if (studentToDelete == null)
                 return false;
 
             _context.Remove(studentToDelete);
@@ -81,12 +81,12 @@ namespace Retrovizor.Domain.Repositories.Implementations
         {
             var vehicleSessions = _context.VehicleSessions.Where(vs => vs.InstructorId == id).ToList();
 
-            if(vehicleSessions == null)
+            if (vehicleSessions.Count == 0)
                 return null;
 
             var students = new List<Student>();
 
-            foreach(var vehicleSession in vehicleSessions)
+            foreach (var vehicleSession in vehicleSessions)
                 students.Add(vehicleSession.Student);
 
             return students.Distinct().ToList();
@@ -94,32 +94,41 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public List<Student> GetCurrentStudentsByInstructorId(int id)
         {
-            var instructorVehicleSessions = _context.VehicleSessions.Include("Student").Where(vs => vs.InstructorId == id).ToList();
+            var instructorVehicleSessions = _context.VehicleSessions
+                .Include("Student")
+                .Include("Student.StudentClasses")
+                .Include("Student.User")
+                .Include("Student.VehicleSessions.Vehicle")
+                .Include("Student.StudentEvents")
+                .Include("Student.StudentEvents.Event")
+                .Include("Student.StudentExams")
+                .Include("Student.StudentExams.Exam")
+                .Where(vs => vs.InstructorId == id).ToList();
 
-            if(instructorVehicleSessions == null)
+            if (instructorVehicleSessions.Count == 0)
                 return null;
 
             var students = new List<Student>();
 
-            foreach(var instructorVehicleSession in instructorVehicleSessions)
+            foreach (var instructorVehicleSession in instructorVehicleSessions)
                 students.Add(instructorVehicleSession.Student);
 
-            students =  students.Distinct().ToList();
+            students = students.Distinct().ToList();
             var instructorsStudents = new List<Student>();
 
-            foreach(var student in students)
+            foreach (var student in students)
             {
                 var studentVehicleSessions = _context.VehicleSessions.Where(vs => vs.StudentId == student.Id).ToList();
-                if(studentVehicleSessions == null)
-                   continue;
+                if (studentVehicleSessions.Count == 0)
+                    continue;
 
                 var currentVehicleSession = studentVehicleSessions.First();
 
-                foreach(var vehicleSession in studentVehicleSessions)
-                    if(vehicleSession.DateAssigned - currentVehicleSession.DateAssigned < new TimeSpan(0))
+                foreach (var vehicleSession in studentVehicleSessions)
+                    if (vehicleSession.DateAssigned - currentVehicleSession.DateAssigned < new TimeSpan(0))
                         currentVehicleSession = vehicleSession;
-                
-                if(currentVehicleSession.InstructorId == id)
+
+                if (currentVehicleSession.InstructorId == id)
                     instructorsStudents.Add(student);
             }
             return instructorsStudents;

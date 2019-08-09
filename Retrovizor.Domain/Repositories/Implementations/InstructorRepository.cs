@@ -7,6 +7,7 @@ using Retrovizor.Domain.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Retrovizor.Domain.Repositories.Implementations
 {
@@ -67,7 +68,12 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public Instructor GetInstructorById(int id)
         {
-            return _context.Instructors.Find(id);
+            return _context.Instructors
+                .Include("User")
+                .Include("User.DrivingSchool")
+                .Include("VehicleSessions")
+                .Include("Vehicle")
+                .FirstOrDefault(instructor=>instructor.Id==id);
         }
 
         public Instructor GetCurrentInstructorByStudentId(int id)

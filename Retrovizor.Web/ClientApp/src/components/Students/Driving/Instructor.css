@@ -54,6 +54,10 @@
   margin-top: 7px;
 }
 
+.instructor__item--car--wrapper {
+  max-width: 135px;
+}
+
 .instructor__item--title {
   font-size: 20px;
   font-weight: 600;
@@ -125,7 +129,6 @@
   width: 21px;
   height: 21px;
 }
-
 
 .instructor__item--person {
   margin-left: 3px;

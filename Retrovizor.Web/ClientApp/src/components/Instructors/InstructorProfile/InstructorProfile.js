@@ -8,9 +8,39 @@ import NormalCar from "../../../assets/NormalCar.svg";
 import People from "../../../assets/People.svg";
 import Gear from "../../../assets/Gear.svg";
 import GrayPencil from "../../../assets/GrayPencil.svg";
+import { authorizedRequest, formatPhoneNumber } from "../../utils";
 
 export default class InstructorProfile extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      instructorToDisplay: null
+    };
+  }
+
+  componentDidMount() {
+    authorizedRequest(`api/Instructor/get/2`, "get", "").then(data => {
+      this.setState({ instructorToDisplay: data });
+      // console.log(data);
+    });
+  }
+
+  getActiveStudentCount = () => {
+    let numberOfStudents = 0;
+    const { instructorToDisplay } = this.state;
+
+    instructorToDisplay.vehicleSessions.forEach(session => {
+      if (session.isActive) numberOfStudents++;
+    });
+
+    return numberOfStudents;
+  };
+
   render() {
+    const { instructorToDisplay } = this.state;
+
+    if (instructorToDisplay === null) return null;
+
     return (
       <React.Fragment>
         <header className="header--instructors">
@@ -45,9 +75,12 @@ export default class InstructorProfile extends Component {
 
               <button className="main__button main__button--schedule main__button--driving main__button--name">
                 <span className="button__info">
-                  <h3 className="instructor__name">Ivan Bartičević</h3>
+                  <h3 className="instructor__name">
+                    {instructorToDisplay.firstName}{" "}
+                    {instructorToDisplay.lastName}
+                  </h3>
                   <p className="instructor__school c-blue">
-                    Autoškola "Dalmacija"
+                    Autoškola "{instructorToDisplay.user.drivingSchool.name}"
                   </p>
                 </span>
               </button>
@@ -63,7 +96,9 @@ export default class InstructorProfile extends Component {
                 <figcaption className="instructor__item--title">
                   Kontakt:
                 </figcaption>
-                <p className="instructor__item--text c-blue">+385 123123123</p>
+                <p className="instructor__item--text c-blue">
+                  {formatPhoneNumber(instructorToDisplay.user.phoneNumber)}
+                </p>
               </div>
             </figure>
 
@@ -77,7 +112,9 @@ export default class InstructorProfile extends Component {
                 <figcaption className="instructor__item--title">
                   Kandidati:
                 </figcaption>
-                <p className="instructor__item--text">15/15</p>
+                <p className="instructor__item--text">
+                  {this.getActiveStudentCount()}/15
+                </p>
               </div>
             </figure>
 
@@ -88,11 +125,14 @@ export default class InstructorProfile extends Component {
                   alt="Auto"
                   src={NormalCar}
                 />
-                <div>
+                <div className="instructor__item--car--wrapper">
                   <figcaption className="instructor__item--title">
                     Auto:
                   </figcaption>
-                  <p className="instructor__item--text">Golf VII GTI 2018</p>
+                  <p className="instructor__item--text">
+                    {instructorToDisplay.vehicle.manufacturer}{" "}
+                    {instructorToDisplay.vehicle.model} 2018
+                  </p>
                 </div>
               </figure>
               <img
