@@ -97,6 +97,7 @@ main section {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  width: 380px;
 }
 
 .main__timeline--title {
@@ -162,4 +163,33 @@ main section {
   width: 32px;
   height: 32px;
   margin-bottom: 13px;
+}
+
+
+
+@media screen and (min-width: 1000px)
+{
+ .main__timeline {
+   display:flex;
+   flex-wrap: wrap;
+   width: 900px;
+   justify-content: start;
+ }
+
+ .item__icon {
+   margin: 0px 3px 13px 7px;
+ }
+
+ .timeline__item {
+   width: 400px;
+   height: 100px;
+ }
+
+ .item__title {
+   font-size: 25px;
+ }
+
+ .item__status {
+   font-size: 20px;
+ }
 }
