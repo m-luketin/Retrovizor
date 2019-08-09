@@ -56,7 +56,7 @@ export default class Settings extends Component {
           <button className="main__button">
             <img className="main__button--info" alt="Info" src={Info} />
             <h3 className="main__button--description">
-              Uvijeti i pravila o zaštiti privatnosti
+              Uvjeti i pravila o zaštiti privatnosti
             </h3>
             <img
               className="main__button--arrow"

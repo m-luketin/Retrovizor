@@ -57,12 +57,12 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public bool DeleteRefreshToken(string token)
         {
-            var tokenToDelete = _context.RefreshTokens.FirstOrDefault(rt => rt.Value == token);
+            //var tokenToDelete = _context.RefreshTokens.FirstOrDefault(rt => rt.Value == token);
 
-            if (token == null) return false;
+            //if (token == null) return false;
 
-            _context.RefreshTokens.Remove(tokenToDelete);
-            _context.SaveChanges();
+            //_context.RefreshTokens.Remove(tokenToDelete);
+            //_context.SaveChanges();
             return true;
         }
     }

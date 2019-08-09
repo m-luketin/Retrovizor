@@ -1,8 +1,10 @@
 ﻿using CashRegister.Data.Helpers;
+using Microsoft.EntityFrameworkCore;
 using Retrovizor.Data.Entities;
 using Retrovizor.Data.Entities.Models;
 using Retrovizor.Data.Enums;
 using Retrovizor.Domain.Classes;
+using Retrovizor.Domain.Helpers;
 using Retrovizor.Domain.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -68,7 +70,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public Student GetStudentById(int id)
         {
-            return _context.Students.Find(id);
+            return _context.Students.FirstOrDefault(s => s.User.Id == id);
         }
 
         public List<Student> GetStudentsByDrivingSchoolId(int id)
