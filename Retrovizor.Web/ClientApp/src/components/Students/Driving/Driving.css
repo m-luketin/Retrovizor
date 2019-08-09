@@ -105,7 +105,7 @@
 
 .main__driving {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .main__driving--instructor {
@@ -148,4 +148,41 @@
 
 .main__button--driving--nothing {
   width: 100%;
+}
+
+@media screen and (min-width: 700px)
+{
+  .main__button--driving {
+    width: 90%;
+    margin-top: 0;
+  }
+  
+  .button__info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+    width: 100%;
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1000px)
+{
+  .map__submit{
+    margin-bottom: 370px;
+    margin-left: 200px;
+    width: 360px;
+    height: 32px;
+    padding-top: 5px !important;
+    font-size: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mapboxgl-ctrl-geocoder
+  {
+    margin-right: 400px !important;
+    width: 50% !important;
+  }
 }
