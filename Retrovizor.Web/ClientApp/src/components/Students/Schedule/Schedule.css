@@ -42,3 +42,16 @@
 .main__button--schedule--admin {
   margin-top: 40px;
 }
+
+@media screen and (min-width: 1000px)
+{
+  .main {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 900px;
+  }
+  .main__button--schedule {
+    margin: 10px 15px;
+  }
+}
