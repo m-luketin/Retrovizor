@@ -173,7 +173,8 @@
     display: flex;
     flex-direction: column;
   }
-  .map__submit{
+
+  .map__submit {
     margin-bottom: 370px;
     margin-left: 200px;
     width: 360px;
@@ -189,5 +190,12 @@
   {
     margin-right: 400px !important;
     width: 50% !important;
+  }
+
+  .main__driving--reservation {
+    width: 100% !important;
+  }
+  .main__button--reservation {
+    width: 100% !important;
   }
 }

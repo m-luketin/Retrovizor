@@ -140,14 +140,14 @@ export default class DrivingWithLesson extends Component {
         </section>
         <section className="main__next--lesson--wrapper">
           <h3 className="main__next--lesson">Sljedeći termin:</h3>
-          <div className="main__driving">
+          <div className="main__driving main__driving--reservation">
             <img
               className="main__driving--instructor"
               src={Profile}
               alt="Instruktor"
             />
 
-            <button className="main__button main__button--schedule main__button--driving">
+            <button className="main__button main__button--schedule main__button--driving main__button--reservation">
               <div>
                 <span className="button__date">24</span>
                 <br />

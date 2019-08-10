@@ -27,12 +27,12 @@ export default class InstructorProfile extends Component {
         </header>
         <main className="main__drive main__instructor">
           <section className="main__next--lesson--wrapper">
-            <div className="main__driving mb-20px">
+            <div className="main__driving mb-20px ">
               <div className="profile__image--wrapper">
                 <img
                   src={Profile}
                   alt="User icon"
-                  className="profile__user-icon"
+                  className="profile__user-icon profile__user-icon--instructor"
                 />
                 <span className="profile__user--edit--wrapper">
                   <img
@@ -44,7 +44,7 @@ export default class InstructorProfile extends Component {
               </div>
 
               <button className="main__button main__button--schedule main__button--driving main__button--name">
-                <span className="button__info">
+                <span className="button__info instructor__header">
                   <h3 className="instructor__name">Ivan Bartičević</h3>
                   <p className="instructor__school c-blue">
                     Autoškola "Dalmacija"

@@ -52,7 +52,16 @@
     width: 900px;
     margin: auto;
   }
+
   .main__button--schedule {
     margin: 10px 15px;
+  }
+
+  .main__admin--schedule {
+    padding-top: 30px;
+  }
+
+  .instructor__schedule--date {
+    margin-bottom: 20px;
   }
 }
