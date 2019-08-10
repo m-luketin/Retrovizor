@@ -163,3 +163,76 @@ main section {
   height: 32px;
   margin-bottom: 13px;
 }
+
+@media screen and (min-width: 420px)
+{
+  .main__timeline {
+   width: 380px;
+  }
+}
+
+@media screen and (min-width: 1000px)
+{
+  .main__profile {
+    height: 600px;
+    display: flex;
+    align-items: center;
+  }
+
+  .profile__user-icon {
+    width: 120px;
+    height: 120px;
+    margin-right: 50px;
+    border-radius: 18px;
+  }
+
+  .profile__name {
+    font-size: 38px;
+    font-weight: 500;
+    color: #8b959e;
+    margin-top: 40px;
+    margin-left: 20px;
+  }
+  
+  .profile__category {
+    padding: 2px 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: #1488cc;
+    margin-left: 20px;
+  }
+
+ .main__timeline {
+   display:flex;
+   flex-wrap: wrap;
+   width: 900px;
+   justify-content: start;
+ }
+
+ .item__icon {
+   margin: 0px 3px 13px 7px;
+ }
+
+ .timeline__item {
+   width: 400px;
+   height: 100px;
+ }
+
+ .item__title {
+   font-size: 25px;
+ }
+
+ .item__status {
+   font-size: 20px;
+ }
+}
+
+@media screen and (min-width: 1200px)
+{
+ .main__timeline {
+   display:flex;
+   flex-wrap: wrap;
+   width: 800px;
+   justify-content: start;
+ }
+}

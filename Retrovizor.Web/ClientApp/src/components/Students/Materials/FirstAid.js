@@ -17,7 +17,7 @@ export default class FirstAid extends Component {
           </Link>
         </header>
 
-        <main>
+        <main className="first-aid__main">
           <button className="main__button main__button--green">
             <img
               className="main__button--exclimation"
