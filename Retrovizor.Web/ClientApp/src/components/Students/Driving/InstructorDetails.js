@@ -203,6 +203,7 @@ export default class InstructorDetails extends Component {
                 value={this.state.selectedDate}
                 minDate={new Date()}
                 minDetail={"month"}
+                activeStartDate={new Date(2019, 10, 8)}
               />
             ) : null}
 
