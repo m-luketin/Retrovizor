@@ -9,7 +9,7 @@ namespace Retrovizor.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthController : Controller
+    public class AuthController : ControllerBase
     {
         public AuthController(JwtHelper jwtHelper, IUserRepository userRepository, IRefreshTokenRepository refreshTokenRepository)
         {
@@ -69,6 +69,31 @@ namespace Retrovizor.Web.Controllers
 
             _refreshTokenRepository.RevokeUserTokens(userCredentials.Id);
             return Ok();
+        }
+
+        [Authorize]
+        [HttpDelete("delete-token")]
+        public IActionResult DeleteToken()
+        {
+            var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+            var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
+
+            _refreshTokenRepository.DeleteRefreshToken(userCredentials.Id.ToString());
+            return Ok();
+        }
+
+        [Authorize]
+        [HttpGet("get-role")]
+        public IActionResult GetRole()
+        {
+            var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+            var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
+
+            var role = _refreshTokenRepository.GetRole(userCredentials.Id);
+            if (string.IsNullOrEmpty(role))
+                return NotFound();
+
+            return Ok(role);
         }
     }
 }

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { authorizedRequest } from "../utils";
 import "./Settings.css";
 // SVG import
 import HeaderArrow from "../../assets/HeaderArrow.svg";
@@ -14,6 +15,21 @@ export default class Settings extends Component {
     this.props.history.goBack();
   };
 
+  handleLogOut = () => {
+    authorizedRequest("api/Auth/delete-token", "delete", {
+      access: "",
+      refresh: window.localStorage.refresh
+    })
+      .then(() => {
+        window.localStorage.removeItem("access");
+        window.localStorage.removeItem("refresh");
+        window.localStorage.removeItem("user");
+
+        this.props.history.push("/");
+      })
+      .catch(console.log("Something went wrong"));
+  };
+
   render() {
     return (
       <React.Fragment>
@@ -22,8 +38,8 @@ export default class Settings extends Component {
           <h1 className="header__title header__title--blue">Postavke</h1>
         </header>
 
-        <main>
-          <button className="main__button">
+        <main className="settings__main">
+          <button className="main__button main__button--settings">
             <img className="main__button--lock" alt="Lokot" src={Lock} />
             <h3 className="main__button--description">Privatnost</h3>
             <img
@@ -33,7 +49,7 @@ export default class Settings extends Component {
             />
           </button>
 
-          <button className="main__button">
+          <button className="main__button main__button--settings">
             <img className="main__button--bell" alt="Zvono" src={Bell} />
             <h3 className="main__button--description">Obavijesti</h3>
             <img
@@ -43,7 +59,7 @@ export default class Settings extends Component {
             />
           </button>
 
-          <button className="main__button">
+          <button className="main__button main__button--settings">
             <img className="main__button--shield" alt="Stit" src={Shield} />
             <h3 className="main__button--description">Sigurnosti</h3>
             <img
@@ -53,10 +69,10 @@ export default class Settings extends Component {
             />
           </button>
 
-          <button className="main__button">
+          <button className="main__button main__button--settings">
             <img className="main__button--info" alt="Info" src={Info} />
             <h3 className="main__button--description">
-              Uvijeti i pravila o zaštiti privatnosti
+              Uvjeti i pravila o zaštiti privatnosti
             </h3>
             <img
               className="main__button--arrow"
@@ -65,7 +81,7 @@ export default class Settings extends Component {
             />
           </button>
 
-          <figure className="logout">
+          <figure onClick={this.handleLogOut} className="logout">
             <img alt="Logout" src={Logout} />
             <figcaption>Logout</figcaption>
           </figure>

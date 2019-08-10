@@ -149,3 +149,71 @@
 .main__button--driving--nothing {
   width: 100%;
 }
+
+.main__map {
+  position : relative;
+}
+
+.main__map:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(to top,
+                    rgba(255,255,255, 1), 
+                    rgba(255,255,255, 0) 95%);
+  pointer-events: none;
+  width: 100%;
+  height: 4em;
+}
+
+@media screen and (min-width: 700px)
+{
+  .main__button--driving {
+    width: 90%;
+    margin-top: 0;
+  }
+  
+  .button__info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 0;
+    width: 100%;
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1000px)
+{
+  .main__drive {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .map__submit {
+    margin-bottom: 370px;
+    margin-left: 200px;
+    width: 360px;
+    height: 32px;
+    padding-top: 5px !important;
+    font-size: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mapboxgl-ctrl-geocoder
+  {
+    margin-right: 400px !important;
+    width: 50% !important;
+  }
+
+  .main__driving--reservation {
+    width: 100% !important;
+  }
+  .main__button--reservation {
+    width: 100% !important;
+  }
+}

@@ -5,6 +5,7 @@ import HeaderArrow from "../../../assets/HeaderArrow.svg";
 import FullCheckmark from "../../../assets/FullCheckmark.svg";
 import OutlineCheckmark from "../../../assets/OutlineCheckmark.svg";
 
+
 export default class EventStudentsToAdd extends Component {
   render() {
     return (

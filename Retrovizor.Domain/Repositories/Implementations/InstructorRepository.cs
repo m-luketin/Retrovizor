@@ -23,7 +23,10 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public List<Instructor> GetAllInstructorsByDrivingSchoolId(int id)
         {
-            return _context.Instructors.Where(i => i.User.DrivingSchoolId == id).ToList();
+            return _context.Instructors
+                .Include("Vehicle")
+                .Include("Reviews")
+                .Where(i => i.User.DrivingSchoolId == id).ToList();
         }
 
         public bool AddInstructor(Instructor instructorToAdd)
@@ -74,16 +77,30 @@ namespace Retrovizor.Domain.Repositories.Implementations
             return true;
         }
 
-        public Instructor GetInstructorById(int id)
+        public Instructor GetInstructorById(int userId)
         {
-            return _context.Instructors.Include(i => i.Vehicle).Include(i => i.User).FirstOrDefault(i => i.Id == id);
+            var id = GetInstructorIdFromUserId(userId);
+
+            return _context.Instructors
+                .Include("User")
+                .Include("User.DrivingSchool")
+                .Include("VehicleSessions")
+                .Include("Vehicle")
+                .FirstOrDefault(instructor=>instructor.Id==id);
         }
 
-        public Instructor GetCurrentInstructorByStudentId(int id)
+        public Instructor GetCurrentInstructorByStudentId(int userId)
         {
-            var vehicleSessions = _context.VehicleSessions.Where(vs => vs.StudentId == id);
+            var id = GetStudentIdFromUserId(userId);
 
-            if(vehicleSessions == null)
+            var vehicleSessions = _context.VehicleSessions
+                .Include("Instructor")
+                .Include("Instructor.User")
+                .Include("Instructor.User.DrivingSchool")
+                .Include("Instructor.Vehicle")
+                .Where(vs => vs.StudentId == id).ToList();
+
+            if(vehicleSessions.Count == 0)
                 return null;
 
             var currentVehicleSession = vehicleSessions.FirstOrDefault(vs => vs.IsActive);
@@ -98,5 +115,27 @@ namespace Retrovizor.Domain.Repositories.Implementations
         {
             return _context.Instructors.Include("Vehicle").Where(i => i.User.DrivingSchoolId == id).ToList();
         }
+
+        //public List<Instructor> GetAvailableInstructorsByDrivingSchoolId(int id)
+        //{
+        //    return _context.Instructors.Where(i => i.User.DrivingSchoolId == id && i.isAvailable).ToList();
+        //}
+
+        private int GetInstructorIdFromUserId(int userId)
+        {
+            var user = _context.Users.Include("Instructor").FirstOrDefault(u => u.Id == userId);
+            var id = user.Instructor.Id;
+
+            return id;
+        }
+
+        private int GetStudentIdFromUserId(int userId)
+        {
+            var user = _context.Users.Include("Student").FirstOrDefault(u => u.Id == userId);
+            var id = user.Student.Id;
+
+            return id;
+        }
+
     }
 }

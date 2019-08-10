@@ -6,7 +6,10 @@ import HeaderArrow from "../../../assets/HeaderArrow.svg";
 import WhiteArrow from "../../../assets/WhiteArrow.svg";
 import Exclimation from "../../../assets/Exclimation.svg";
 
+
 export default class FirstAid extends Component {
+  
+
   render() {
     return (
       <React.Fragment>
@@ -17,7 +20,7 @@ export default class FirstAid extends Component {
           </Link>
         </header>
 
-        <main>
+        <main className="first-aid__main">
           <button className="main__button main__button--green">
             <img
               className="main__button--exclimation"

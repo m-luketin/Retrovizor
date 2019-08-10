@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { PrivateRoute } from "./components/PrivateRoute";
 import { Layout } from "./components/Layout";
 import Login from "./components/Login/Login";
 import Materials from "./components/Students/Materials/Materials";
@@ -33,121 +34,143 @@ export default class App extends Component {
           <Switch>
             <Route exact path="/" render={props => <Login {...props} />} />
             {/* Students */}
-            <Route
+            <PrivateRoute
               exact
               path="/kandidat/materijali"
-              render={props => <Materials {...props} />}
+              component={Materials}
+              // render={props => <Materials {...props} />}
             />
-            <Route
+            <PrivateRoute
               exact
               path="/kandidat/materijali/propisi"
-              render={props => <Regulations {...props} />}
+              component={Regulations}
+              // render={props => <Regulations {...props} />}
             />
-            <Route
+            <PrivateRoute
               exact
               path="/kandidat/materijali/prva-pomoc"
-              render={props => <FirstAid {...props} />}
+              component={FirstAid}
+              // render={props => <FirstAid {...props} />}
             />
-            <Route
+            <PrivateRoute
               exact
               path="/kandidat/raspored"
-              render={props => <Schedule {...props} />}
+              component={Schedule}
+              // render={props => <Schedule {...props} />}
             />
-            <Route
+            <PrivateRoute
               exact
               path="/kandidat/voznja"
-              render={props => <Driving {...props} />}
+              component={Driving}
+              // render={props => <Driving {...props} />}
             />
-            <Route
+            <PrivateRoute
               exact
               path="/kandidat/voznja/instruktor"
-              render={props => <InstructorDetails {...props} />}
+              component={InstructorDetails}
+              // render={props => <InstructorDetails {...props} />}
             />
-            <Route
+            <PrivateRoute
               exact
               path="/kandidat/voznja/instruktori"
-              render={props => <InstructorList {...props} />}
+              component={InstructorList}
+              // render={props => <InstructorList {...props} />}
             />
-            <Route
+            <PrivateRoute
               exact
               path="/kandidat/profil"
-              render={props => <StudentProfile {...props} />}
+              component={StudentProfile}
+              // render={props => <StudentProfile {...props} />}
             />
-            <Route
+            <PrivateRoute
               exact
               path="/kandidat/profil/postavke"
-              render={props => <Settings {...props} />}
+              component={Settings}
+              // render={props => <Settings {...props} />}
             />
             {/* Students */}
 
             {/* Instructors */}
-            <Route
+            <PrivateRoute
               exact
               path="/instruktor/kandidati"
-              render={props => <StudentList {...props} />}
+              component={StudentList}
+              // render={props => <StudentList {...props} />}
             />
-            <Route
+            <PrivateRoute
               exact
               path="/instruktor/kandidati/kandidat"
-              render={props => <StudentDetails {...props} />}
+              component={StudentDetails}
+              // render={props => <StudentDetails {...props} />}
             />
-            <Route
+            <PrivateRoute
               exact
               path="/instruktor/raspored"
-              render={props => <InstructorSchedule {...props} />}
+              component={InstructorSchedule}
+              // render={props => <InstructorSchedule {...props} />}
             />
-            <Route
+            <PrivateRoute
               exact
               path="/instruktor/profil"
-              render={props => <InstructorProfile {...props} />}
+              component={InstructorProfile}
+              // render={props => <InstructorProfile {...props} />}
             />
-            <Route
+            <PrivateRoute
               exact
               path="/instruktor/profil/postavke"
-              render={props => <Settings {...props} />}
+              component={Settings}
+              // render={props => <Settings {...props} />}
             />
             {/* Instructors */}
 
             {/* Administrator */}
-            <Route
+            <PrivateRoute
               exact
               path="/administrator/instruktori"
-              render={props => <Instructors {...props} />}
+              component={Instructors}
+              // render={props => <Instructors {...props} />}
             />
-            <Route
+            <PrivateRoute
               exact
               path="/administrator/instruktori/detalji/:id"
-              render={props => <Instructor {...props} />}
+              component={Instructor}
+              // render={props => <Instructor {...props} />}
             />
-            <Route
+            <PrivateRoute
               exact
               path="/administrator/kandidati"
-              render={props => <Students {...props} />}
+              component={Students}
+              // render={props => <Students {...props} />}
             />
-            <Route
+            <PrivateRoute
               exact
               path="/administrator/kandidati/kandidat/:id"
-              render={props => <Student {...props} />}
+              component={Student}
+              // render={props => <Student {...props} />}
             />
-            <Route
+            <PrivateRoute
               exact
               path="/administrator/raspored"
-              render={props => <AdministratorSchedule {...props} />}
+              component={AdministratorSchedule}
+              // render={props => <AdministratorSchedule {...props} />}
             />
-            <Route
+            <PrivateRoute
               exact
               path="/administrator/raspored/lista-kandidata"
-              render={props => <EventStudentsToAdd {...props} />}
+              component={EventStudentsToAdd}
+              // render={props => <EventStudentsToAdd {...props} />}
             />
-            <Route
+            <PrivateRoute
               exact
               path="/administrator/profil"
-              render={props => <AdministratorProfile {...props} />}
+              component={AdministratorProfile}
+              // render={props => <AdministratorProfile {...props} />}
             />
-            <Route
+            <PrivateRoute
               exact
               path="/administrator/profil/postavke"
-              render={props => <Settings {...props} />}
+              component={Settings}
+              // render={props => <Settings {...props} />}
             />
             {/* Administrator */}
             <Redirect to="/" />

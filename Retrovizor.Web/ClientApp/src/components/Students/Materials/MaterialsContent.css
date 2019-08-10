@@ -3,6 +3,16 @@ header {
   align-items: flex-end;
 }
 
+.regulations__main {
+  display: flex;
+  flex-direction: column;
+}
+
+.first-aid__main {
+  display: flex;
+  flex-direction: column;
+}
+
 .header__title--blue {
   color: #1488cc;
   margin-left: 21px;

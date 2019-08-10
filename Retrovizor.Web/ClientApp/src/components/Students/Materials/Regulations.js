@@ -6,7 +6,10 @@ import HeaderArrow from "../../../assets/HeaderArrow.svg";
 import WhiteArrow from "../../../assets/WhiteArrow.svg";
 import FullHeart from "../../../assets/FullHeart.svg";
 
+
 export default class Regulations extends Component {
+  
+
   render() {
     return (
       <React.Fragment>
@@ -19,7 +22,7 @@ export default class Regulations extends Component {
           </Link>
         </header>
 
-        <main>
+        <main className="regulations__main">
           <button className="main__button main__button--green">
             <img
               className="main__button--exclimation"

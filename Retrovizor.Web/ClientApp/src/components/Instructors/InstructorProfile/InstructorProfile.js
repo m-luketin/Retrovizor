@@ -1,5 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import {
+  authorizedRequest,
+  formatPhoneNumber,
+  getInstructorsActiveStudentCount
+} from "../../utils";
 // SVG import
 import Profile from "../../../assets/Instructor.gif";
 import DisplayCar from "../../../assets/DisplayCar.png";
@@ -9,8 +14,27 @@ import People from "../../../assets/People.svg";
 import Gear from "../../../assets/Gear.svg";
 import GrayPencil from "../../../assets/GrayPencil.svg";
 
+
 export default class InstructorProfile extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      instructorToDisplay: null
+    };
+  }
+
+  componentDidMount() {
+    authorizedRequest(`api/Instructor/get/0`, "get", "").then(data => {
+      this.setState({ instructorToDisplay: data });
+      // console.log(data);
+    });
+  }
+
   render() {
+    const { instructorToDisplay } = this.state;
+
+    if (instructorToDisplay === null) return null;
+
     return (
       <React.Fragment>
         <header className="header--instructors">
@@ -27,12 +51,12 @@ export default class InstructorProfile extends Component {
         </header>
         <main className="main__drive main__instructor">
           <section className="main__next--lesson--wrapper">
-            <div className="main__driving mb-20px">
+            <div className="main__driving mb-20px ">
               <div className="profile__image--wrapper">
                 <img
                   src={Profile}
                   alt="User icon"
-                  className="profile__user-icon"
+                  className="profile__user-icon profile__user-icon--instructor"
                 />
                 <span className="profile__user--edit--wrapper">
                   <img
@@ -45,9 +69,12 @@ export default class InstructorProfile extends Component {
 
               <button className="main__button main__button--schedule main__button--driving main__button--name">
                 <span className="button__info">
-                  <h3 className="instructor__name">Ivan Bartičević</h3>
+                  <h3 className="instructor__name">
+                    {instructorToDisplay.firstName}{" "}
+                    {instructorToDisplay.lastName}
+                  </h3>
                   <p className="instructor__school c-blue">
-                    Autoškola "Dalmacija"
+                    Autoškola "{instructorToDisplay.user.drivingSchool.name}"
                   </p>
                 </span>
               </button>
@@ -63,7 +90,9 @@ export default class InstructorProfile extends Component {
                 <figcaption className="instructor__item--title">
                   Kontakt:
                 </figcaption>
-                <p className="instructor__item--text c-blue">+385 123123123</p>
+                <p className="instructor__item--text c-blue">
+                  {formatPhoneNumber(instructorToDisplay.user.phoneNumber)}
+                </p>
               </div>
             </figure>
 
@@ -77,7 +106,9 @@ export default class InstructorProfile extends Component {
                 <figcaption className="instructor__item--title">
                   Kandidati:
                 </figcaption>
-                <p className="instructor__item--text">15/15</p>
+                <p className="instructor__item--text">
+                  {getInstructorsActiveStudentCount(instructorToDisplay)}/15
+                </p>
               </div>
             </figure>
 
@@ -88,11 +119,14 @@ export default class InstructorProfile extends Component {
                   alt="Auto"
                   src={NormalCar}
                 />
-                <div>
+                <div className="instructor__item--car--wrapper">
                   <figcaption className="instructor__item--title">
                     Auto:
                   </figcaption>
-                  <p className="instructor__item--text">Golf VII GTI 2018</p>
+                  <p className="instructor__item--text">
+                    {instructorToDisplay.vehicle.manufacturer}{" "}
+                    {instructorToDisplay.vehicle.model} 2018
+                  </p>
                 </div>
               </figure>
               <img

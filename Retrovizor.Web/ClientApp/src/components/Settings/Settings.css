@@ -62,3 +62,18 @@ header {
   color: #8b959e;
   margin-left: 11px;
 }
+
+@media screen and (min-width: 1000px)
+{
+  .settings__main {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 800px;
+    margin: auto;
+  }
+
+  .main__button--settings {
+    margin: 10px;
+  }
+}

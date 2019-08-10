@@ -3,7 +3,7 @@ import "./Login.css";
 import { withFormik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import { setTokens, authorizedRequest } from "../utils";
+import { setTokens } from "../utils";
 import Input from "../Input";
 
 // SVG import
@@ -62,7 +62,7 @@ export default withFormik({
     password: Yup.string().required("Polje je obavezno")
   }),
 
-  handleSubmit(values, { resetForm }) {
+  handleSubmit(values, { resetForm, props }) {
     const userCredentials = {
       username: values.username,
       password: values.password
@@ -72,7 +72,12 @@ export default withFormik({
 
     axios
       .post("/api/auth/login", userCredentials)
-      .then(res => setTokens(res.data.access, res.data.refresh))
-      .catch(err => alert(err));
+      .then(res => {
+        setTokens(res.data.access, res.data.refresh).then(() => {
+          const user = window.localStorage.getItem("user");
+          props.history.push(`/${user}/profil`);
+        });
+      })
+      .catch(err => alert("Kriva kombinacija imena i šifre"));
   }
 })(Login);

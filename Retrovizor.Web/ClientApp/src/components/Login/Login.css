@@ -62,3 +62,30 @@
 .obstacle__contact {
   color: #1488cc !important;
 }
+
+@media screen and (min-width: 700px)
+{
+  .login-container__logo
+  {
+    width: 377px;
+    height: 88px;
+  }
+
+  .field__input {
+    width: 499px;
+    height: 58px;
+    border-radius: 50px;
+  }
+
+  .field__submit {
+    width: 497px;
+    height: 57px;
+  }
+
+  .login-container__obstacle {
+    width: 413px;
+    height: 29px;
+    font-size: 21px;
+    padding: 0 2px;
+  }
+}
