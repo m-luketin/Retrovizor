@@ -22,7 +22,8 @@ class InstructorAddModal extends Component {
       values,
       handleSubmit,
       submitting,
-      errors
+      errors,
+      touched
     } = this.props;
 
     return (
@@ -37,6 +38,7 @@ class InstructorAddModal extends Component {
               label="Ime i prezime"
               value={values.fullName}
               error={errors.fullName}
+              touched={touched.fullName}
             />
           </div>
           <div className="modal__input--wrapper">
@@ -47,6 +49,7 @@ class InstructorAddModal extends Component {
               label="Kontakt"
               value={values.contact}
               error={errors.contact}
+              touched={touched.contact}
             />
           </div>
           <div className="modal__input--wrapper">
@@ -55,9 +58,10 @@ class InstructorAddModal extends Component {
               name="car"
               styles="modal__input--car"
               type="text"
-              label="Auto"
-              value={values.car}
-              error={errors.car}
+              label="Vozilo"
+              value={values.vehicle}
+              error={errors.vehicle}
+              touched={touched.vehicle}
             />
             <img
               className="modal__icon--calendar"
@@ -71,6 +75,7 @@ class InstructorAddModal extends Component {
               label="Godina"
               value={values.year}
               error={errors.year}
+              touched={touched.year}
             />
           </div>
 
@@ -97,7 +102,7 @@ export default withFormik({
     return {
       fullName: "",
       contact: "",
-      car: "",
+      vehicle: "",
       year: 0
     };
   },

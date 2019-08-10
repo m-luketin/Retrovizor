@@ -66,14 +66,7 @@ export default class Students extends Component {
                       <h2 className="candidate__name">
                         {student.firstName} {student.lastName}
                       </h2>
-                      <p className="candidate__lessons">
-                        {
-                          student.studentClasses[
-                            student.studentClasses.length - 1
-                          ].currentLesson
-                        }
-                        /35 sati
-                      </p>
+                      <p className="candidate__lessons">/35 sati</p>
                       <img
                         className="main__button--arrow"
                         alt="Strelica"

@@ -2,12 +2,7 @@ import React, { Component } from "react";
 import Input from "../../Input";
 import { withFormik } from "formik";
 import * as Yup from "yup";
-import {
-  authorizedRequest,
-  formatPhoneNumber,
-  getFirstName,
-  getLastName
-} from "../../utils";
+import { authorizedRequest } from "../../utils";
 import "./InstructorModals.css";
 // SVG import
 import Person from "../../../assets/Person.svg";
@@ -32,22 +27,15 @@ class InstructorEditModal extends Component {
     });
   }
 
-  handleDelete = () => {
-    const { id } = this.props;
-
-    authorizedRequest(`api/instructor/delete/${id}`, "delete");
-  };
-
   render() {
     const {
       values,
       errors,
       handleSubmit,
       submitting,
+      touched,
       onCloseEditModal
     } = this.props;
-
-    const { handleDelete } = this;
 
     return (
       <aside>
@@ -61,6 +49,7 @@ class InstructorEditModal extends Component {
               label="Ime i prezime"
               value={values.fullName}
               error={errors.fullName}
+              touched={touched.fullName}
             />
           </div>
           <div className="modal__input--wrapper">
@@ -71,6 +60,7 @@ class InstructorEditModal extends Component {
               label="Kontakt"
               value={values.contact}
               error={errors.contact}
+              touched={touched.contact}
             />
           </div>
           <div className="modal__input--wrapper">
@@ -82,6 +72,7 @@ class InstructorEditModal extends Component {
               label="Vozilo"
               value={values.vehicle}
               error={errors.vehicle}
+              touched={touched.vehicle}
             />
             <img
               className="modal__icon--calendar"
@@ -95,6 +86,7 @@ class InstructorEditModal extends Component {
               label="Godina"
               value={values.year}
               error={errors.year}
+              touched={touched.year}
             />
           </div>
           <div className="modal__input--wrapper modal__input--wrapper--bottom">
@@ -102,7 +94,7 @@ class InstructorEditModal extends Component {
               Poništi
             </button>
 
-            <button className="modal__button--red" onClick={handleDelete}>
+            <button className="modal__button--red" onClick={handleSubmit}>
               Obriši
             </button>
           </div>
@@ -142,21 +134,10 @@ export default withFormik({
       .required("Obavezno")
   }),
 
-  handleSubmit(values, { resetForm }) {
-    const instructor = {
-      firstName: getFirstName(values.fullName),
-      lastName: getLastName(values.fullName),
-      user: {
-        phoneNumber: formatPhoneNumber(values.contact)
-      },
-      vehicle: {
-        model: values.car,
-        year: values.year
-      }
-    };
+  handleSubmit(props) {
+    const { id } = props;
 
-    resetForm();
-
-    authorizedRequest("api/instructor/add", "post", instructor);
+    authorizedRequest(`api/instructor/delete/${id}`, "delete");
+    props.history.push("administrator/instruktori");
   }
 })(InstructorEditModal);

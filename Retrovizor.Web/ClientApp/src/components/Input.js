@@ -56,7 +56,9 @@ class Input extends Component {
             />
           )}
         />
-        <span className="field__error">{props.error}</span>
+        {props.touched && props.error && (
+          <span className="field__error">{props.error}</span>
+        )}
       </div>
     );
   }

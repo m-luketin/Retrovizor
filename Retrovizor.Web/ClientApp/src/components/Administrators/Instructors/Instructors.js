@@ -53,7 +53,7 @@ export default class Instructors extends Component {
             {instructors === null
               ? "Loading"
               : instructors.map(instructor => (
-                  <div className="main__driving">
+                  <div key={instructor.id} className="main__driving">
                     <img
                       className="main__driving--instructor"
                       src={Profile}
