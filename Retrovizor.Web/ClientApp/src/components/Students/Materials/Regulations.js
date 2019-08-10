@@ -22,7 +22,7 @@ export default class Regulations extends Component {
           </Link>
         </header>
 
-        <main>
+        <main className="regulations__main">
           <button className="main__button main__button--green">
             <img
               className="main__button--exclimation"

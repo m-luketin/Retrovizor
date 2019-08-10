@@ -1,4 +1,5 @@
-﻿using Retrovizor.Data.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Retrovizor.Data.Entities;
 using Retrovizor.Data.Entities.Models;
 using Retrovizor.Domain.Repositories.Interfaces;
 using System;
@@ -83,20 +84,9 @@ namespace Retrovizor.Domain.Repositories.Implementations
             return _context.Exams.Find(id);
         }
 
-        public List<Exam> GetExamsByStudentId(int id)
+        public List<StudentExam> GetExamsByStudentId(int id)
         {
-            var studentExams = _context.StudentExams.Where(se => se.StudentId == id).ToList();
-
-            if(studentExams == null)
-                return null;
-
-            var exams = new List<Exam>();
-
-            foreach(var studentExam in studentExams)
-                if(studentExam.Exam != null)
-                    exams.Add(studentExam.Exam);
-
-            return exams;
+            return _context.StudentExams.Where(se => se.StudentId == id).Include(se => se.Exam).ToList();
         }
         
         public double GetExamPassRateByExamId(int id)

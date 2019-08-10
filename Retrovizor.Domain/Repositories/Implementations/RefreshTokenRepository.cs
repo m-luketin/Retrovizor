@@ -57,6 +57,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public bool DeleteRefreshToken(string token)
         {
+
             var userId = 0;
             var tokenToDelete = new RefreshToken();
 

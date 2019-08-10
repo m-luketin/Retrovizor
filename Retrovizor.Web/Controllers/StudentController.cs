@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Retrovizor.Data.Entities.Models;
+using Retrovizor.Data.Enums;
 using Retrovizor.Domain.Helpers;
 using Retrovizor.Domain.Repositories.Interfaces;
 
@@ -30,13 +31,14 @@ namespace Retrovizor.Web.Controllers
 
         [Authorize]
         [HttpGet("get/{id}")]
-        public IActionResult GetStudentById()
+        public IActionResult GetStudentById(int id)
         {
             var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
             if (accessTokenAsString == "null") return Unauthorized();
             var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
 
-            var id = userCredentials.Id;
+            if(userCredentials.Role == Role.Student) // student can only GET themselves
+                id = userCredentials.Id;
 
             var studentToGet = _studentRepository.GetStudentById(id);
 

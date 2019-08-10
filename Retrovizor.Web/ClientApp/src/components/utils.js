@@ -34,6 +34,8 @@ export const authorizedRequest = async (url, method, payload) => {
 
       default:
         break;
+      default:
+        break;
     }
 
     return response.data;

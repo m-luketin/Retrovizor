@@ -4,6 +4,7 @@ using Retrovizor.Data.Entities;
 using Retrovizor.Data.Entities.Models;
 using Retrovizor.Data.Enums;
 using Retrovizor.Domain.Classes;
+using Retrovizor.Domain.Helpers;
 using Retrovizor.Domain.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -41,6 +42,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             var studentToEdit = _context.Students.Find(editedStudent.Id);
 
             if (studentToEdit == null)
+
                 return false;
 
             studentToEdit.FirstName = editedStudent.FirstName;
@@ -67,7 +69,8 @@ namespace Retrovizor.Domain.Repositories.Implementations
             return true;
         }
 
-        public Student GetStudentById(int userId)
+
+        public Student GetStudentByUserId(int userId)
         {
             var id = GetStudentIdFromUserId(userId);
 
@@ -78,6 +81,10 @@ namespace Retrovizor.Domain.Repositories.Implementations
                 .Include("StudentEvents.Event")
                 .Include("User")
                 .FirstOrDefault(student => student.Id == id);
+
+        public Student GetStudentById(int id)
+        {
+            return _context.Students.FirstOrDefault(s => s.User.Id == id);
         }
 
         public List<Student> GetStudentsByDrivingSchoolId(int id)
@@ -90,6 +97,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             var vehicleSessions = _context.VehicleSessions.Where(vs => vs.InstructorId == id).ToList();
 
             if (vehicleSessions.Count == 0)
+
                 return null;
 
             var students = new List<Student>();
@@ -100,7 +108,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
             return students.Distinct().ToList();
         }
 
-        public List<Student> GetCurrentStudentsByInstructorId(int userId)
+        public List<Student> GetCurrentStudentsByUserId(int userId)
         {
             var id = GetStudentIdFromUserId(userId);
 
@@ -116,9 +124,10 @@ namespace Retrovizor.Domain.Repositories.Implementations
                 .Where(vs => vs.InstructorId == id).ToList();
 
             if (instructorVehicleSessions.Count == 0)
-                return null;
+              return null;
 
             var students = new List<Student>();
+
 
             foreach (var instructorVehicleSession in instructorVehicleSessions)
                 students.Add(instructorVehicleSession.Student);
@@ -139,10 +148,47 @@ namespace Retrovizor.Domain.Repositories.Implementations
                         currentVehicleSession = vehicleSession;
 
                 if (currentVehicleSession.InstructorId == id)
+
                     instructorsStudents.Add(student);
             }
             return instructorsStudents;
         }
+        
+        public List<Student> GetCurrentStudentsByInstructorId(int id)
+        {
+            var instructorVehicleSessions = _context.VehicleSessions.Where(vs => vs.InstructorId == id).ToList();
+
+            if(instructorVehicleSessions == null)
+              return null;
+
+            var students = new List<Student>();
+
+
+            foreach (var instructorVehicleSession in instructorVehicleSessions)
+                students.Add(instructorVehicleSession.Student);
+
+            students = students.Distinct().ToList();
+            var instructorsStudents = new List<Student>();
+
+            foreach (var student in students)
+            {
+                var studentVehicleSessions = _context.VehicleSessions.Where(vs => vs.StudentId == student.Id).ToList();
+                if (studentVehicleSessions.Count == 0)
+                    continue;
+
+                var currentVehicleSession = studentVehicleSessions.First();
+
+                foreach (var vehicleSession in studentVehicleSessions)
+                    if (vehicleSession.DateAssigned - currentVehicleSession.DateAssigned < new TimeSpan(0))
+                        currentVehicleSession = vehicleSession;
+
+                if (currentVehicleSession.InstructorId == id)
+
+                    instructorsStudents.Add(student);
+            }
+            return instructorsStudents;
+        }
+                
 
         private int GetStudentIdFromUserId(int userId)
         {

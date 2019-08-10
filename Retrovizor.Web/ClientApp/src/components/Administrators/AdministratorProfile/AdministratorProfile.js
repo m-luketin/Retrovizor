@@ -31,7 +31,7 @@ export default class AdministratorProfile extends Component {
             <div className="main__driving mb-20px">
               <div className="profile__image--wrapper">
                 <img
-                  className="profile__user-icon"
+                  className="profile__user-icon profile__user-icon--admin"
                   src={Profile}
                   alt="User icon"
                 />
@@ -44,7 +44,7 @@ export default class AdministratorProfile extends Component {
                 </span>
               </div>
 
-              <span className="button__info">
+              <span className="button__info button__info--admin">
                 <h3 className="instructor__name school--name">
                   Autoškola Dalmacija
                 </h3>

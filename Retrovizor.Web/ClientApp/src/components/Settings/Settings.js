@@ -38,8 +38,8 @@ export default class Settings extends Component {
           <h1 className="header__title header__title--blue">Postavke</h1>
         </header>
 
-        <main>
-          <button className="main__button">
+        <main className="settings__main">
+          <button className="main__button main__button--settings">
             <img className="main__button--lock" alt="Lokot" src={Lock} />
             <h3 className="main__button--description">Privatnost</h3>
             <img
@@ -49,7 +49,7 @@ export default class Settings extends Component {
             />
           </button>
 
-          <button className="main__button">
+          <button className="main__button main__button--settings">
             <img className="main__button--bell" alt="Zvono" src={Bell} />
             <h3 className="main__button--description">Obavijesti</h3>
             <img
@@ -59,7 +59,7 @@ export default class Settings extends Component {
             />
           </button>
 
-          <button className="main__button">
+          <button className="main__button main__button--settings">
             <img className="main__button--shield" alt="Stit" src={Shield} />
             <h3 className="main__button--description">Sigurnosti</h3>
             <img
@@ -69,10 +69,10 @@ export default class Settings extends Component {
             />
           </button>
 
-          <button className="main__button">
+          <button className="main__button main__button--settings">
             <img className="main__button--info" alt="Info" src={Info} />
             <h3 className="main__button--description">
-              Uvijeti i pravila o zaštiti privatnosti
+              Uvjeti i pravila o zaštiti privatnosti
             </h3>
             <img
               className="main__button--arrow"

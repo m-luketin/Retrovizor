@@ -219,3 +219,44 @@
 .button__info--arrow {
   transform: rotate(180deg);
 }
+
+
+@media screen and (min-width: 1000px)
+{
+  .main__next--lesson--wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .instructor__item {
+    width: 170px;
+  }
+
+  .instructor__item--preview {
+    margin-left: 150px;
+  }
+
+  .instructor__item--wrapper {
+    width: 500px;
+  }
+
+  .profile__user-icon--instructor {
+    height: 74px;
+    width: 74px;
+  }
+
+  .instructor__header {
+    width: 800px;
+    display: flex ;
+    flex-direction: column;
+  }
+
+  .main__button--name {
+    display: flex ;
+    flex-direction: row;
+    height: 100px;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+}

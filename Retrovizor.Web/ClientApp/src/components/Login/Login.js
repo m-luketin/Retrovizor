@@ -9,7 +9,7 @@ import Input from "../Input";
 // SVG import
 import Logo from "../../assets/Logo.svg";
 
-const Login = ({ handleSubmit, errors, touched, isSubmitting }) => (
+const Login = ({ handleSubmit, errors, isSubmitting }) => (
   <main className="main">
     <div className="main__login-container">
       <img className="login-container__logo" alt="Logo" src={Logo} />
@@ -21,7 +21,6 @@ const Login = ({ handleSubmit, errors, touched, isSubmitting }) => (
           label="Korisničko ime"
           error={errors.username}
         />
-        {console.log(errors)}
         <Input
           type="password"
           name="password"

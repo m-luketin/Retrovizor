@@ -14,7 +14,7 @@ namespace Retrovizor.Web.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthController : Controller
+    public class AuthController : ControllerBase
     {
         public AuthController(JwtHelper jwtHelper, IUserRepository userRepository, IRefreshTokenRepository refreshTokenRepository)
         {
