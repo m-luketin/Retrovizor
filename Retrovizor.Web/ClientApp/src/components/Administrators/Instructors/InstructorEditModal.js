@@ -16,19 +16,27 @@ import NormalCar from "../../../assets/NormalCar.svg";
 import Calendar from "../../../assets/Calendar.svg";
 class InstructorEditModal extends Component {
   componentDidMount() {
-    authorizedRequest("api/instructor/get/1", "get").then(data => {
+    const { id } = this.props;
+
+    authorizedRequest(`api/instructor/get/${id}`, "get").then(data => {
       this.props.setFieldValue(
         "fullName",
         data.firstName + " " + data.lastName
       );
-      this.props.setFieldValue("contact", data.phoneNumber);
+      this.props.setFieldValue("contact", data.user.phoneNumber);
       this.props.setFieldValue(
-        "car",
+        "vehicle",
         data.vehicle.manufacturer + " " + data.vehicle.model
       );
       this.props.setFieldValue("year", data.vehicle.year);
     });
   }
+
+  handleDelete = () => {
+    const { id } = this.props;
+
+    authorizedRequest(`api/instructor/delete/${id}`, "delete");
+  };
 
   render() {
     const {
@@ -38,6 +46,8 @@ class InstructorEditModal extends Component {
       submitting,
       onCloseEditModal
     } = this.props;
+
+    const { handleDelete } = this;
 
     return (
       <aside>
@@ -66,12 +76,12 @@ class InstructorEditModal extends Component {
           <div className="modal__input--wrapper">
             <img className="modal__icon--car" alt="Auto" src={NormalCar} />
             <Input
-              name="car"
+              name="vehicle"
               styles="modal__input--car"
               type="text"
-              label="Auto"
-              value={values.car}
-              error={errors.car}
+              label="Vozilo"
+              value={values.vehicle}
+              error={errors.vehicle}
             />
             <img
               className="modal__icon--calendar"
@@ -92,7 +102,9 @@ class InstructorEditModal extends Component {
               Poništi
             </button>
 
-            <button className="modal__button--red">Obriši</button>
+            <button className="modal__button--red" onClick={handleDelete}>
+              Obriši
+            </button>
           </div>
         </section>
       </aside>
@@ -102,6 +114,15 @@ class InstructorEditModal extends Component {
 
 export default withFormik({
   enableReinitialize: true,
+
+  mapPropsToValues() {
+    return {
+      fullName: "",
+      contact: "",
+      vehicle: "",
+      year: 0
+    };
+  },
 
   validationSchema: Yup.object().shape({
     fullName: Yup.string()

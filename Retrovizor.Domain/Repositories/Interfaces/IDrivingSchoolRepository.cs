@@ -12,5 +12,7 @@ namespace Retrovizor.Domain.Repositories.Interfaces
         DrivingSchool GetDrivingSchoolByStudentId(int id);
         DrivingSchool GetDrivingSchoolByInstructorId(int id);
         DrivingSchool GetDrivingSchoolByAdminId(int id);
+        int GetStudentCount(int id);
+        int GetInstructorCount(int id);
     }
 }

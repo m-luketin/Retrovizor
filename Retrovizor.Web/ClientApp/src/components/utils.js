@@ -23,11 +23,13 @@ export const authorizedRequest = async (url, method, payload) => {
         response = await axios.get(url);
         break;
       case "post":
-        console.log(payload);
+        payload;
         response = await axios.post(url, payload);
         break;
       case "delete":
         response = await axios.delete(url);
+        break;
+      default:
         break;
     }
 
@@ -54,6 +56,8 @@ export const authorizedRequest = async (url, method, payload) => {
         break;
       case "delete":
         response = await axios.delete(url);
+        break;
+      default:
         break;
     }
 

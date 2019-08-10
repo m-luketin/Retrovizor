@@ -85,10 +85,16 @@ namespace Retrovizor.Web.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        [HttpGet("get-by-driving-school/{id}")]
-        public IActionResult GetStudentsByDrivingSchoolId(int id)
+        [HttpGet("get-by-driving-school")]
+        public IActionResult GetStudentsByDrivingSchoolId()
         {
-            var studentToGet = _studentRepository.GetStudentsByDrivingSchoolId(id);
+            var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+
+            if (accessTokenAsString == "null") return Unauthorized();
+
+            var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
+
+            var studentToGet = _studentRepository.GetStudentsByDrivingSchoolId(userCredentials.DrivingSchoolId);
 
             if(studentToGet == null)
                 return NotFound();
@@ -114,10 +120,10 @@ namespace Retrovizor.Web.Controllers
         {
             var studentToGet = _studentRepository.GetCurrentStudentsByInstructorId(id);
 
-            if(studentToGet == null)
+            if (studentToGet == null)
                 return NotFound();
 
             return Ok(studentToGet);
-        }
+        }       
     }
 }

@@ -12,13 +12,28 @@ import GrayPencil from "../../../assets/GrayPencil.svg";
 import Calendar from "../../../assets/Calendar.svg";
 import NormalCar from "../../../assets/NormalCar.svg";
 import People from "../../../assets/People.svg";
+import { authorizedRequest } from "../../utils";
 
 export default class Instructor extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      editModalVisibility: false
+      editModalVisibility: false,
+      instructor: { user: {}, vehicle: {} },
+      drivingSchool: {}
     };
+  }
+
+  componentDidMount() {
+    const { id } = this.props.match.params;
+
+    authorizedRequest(`/api/instructor/get/${id}`, "get").then(data =>
+      this.setState({ ...this.state, instructor: data })
+    );
+
+    authorizedRequest("/api/drivingschool/get", "get").then(data => {
+      this.setState({ ...this.state, drivingSchool: data });
+    });
   }
 
   handleOpenEditModal = () => {
@@ -32,7 +47,8 @@ export default class Instructor extends Component {
   };
 
   render() {
-    const { editModalVisibility } = this.state;
+    const { editModalVisibility, instructor, drivingSchool } = this.state;
+    const { id } = this.props.match.params;
 
     return (
       <React.Fragment>
@@ -68,8 +84,12 @@ export default class Instructor extends Component {
 
               <button className="main__button main__button--schedule main__button--driving main__button--name">
                 <span className="button__info">
-                  <h3 className="instructor__name">Ivan Bartičević</h3>
-                  <p className="instructor__school">Autoškola "Dalmacija"</p>
+                  <h3 className="instructor__name">
+                    {instructor.firstName} {instructor.lastName}
+                  </h3>
+                  <p className="instructor__school">
+                    Autoškola "{drivingSchool.name}"
+                  </p>
                 </span>
               </button>
             </div>
@@ -84,7 +104,12 @@ export default class Instructor extends Component {
                 <figcaption className="instructor__item--title">
                   Kontakt:
                 </figcaption>
-                <p className="instructor__item--text c-blue">+385 123123123</p>
+                <a
+                  className="instructor__item--text c-blue"
+                  href={`tel:${instructor.user.phoneNumber}`}
+                >
+                  {instructor.user.phoneNumber}
+                </a>
               </div>
             </figure>
 
@@ -113,7 +138,7 @@ export default class Instructor extends Component {
                   <figcaption className="instructor__item--title">
                     Auto:
                   </figcaption>
-                  <p className="instructor__item--text">Golf VII GTI 2018</p>
+                  <p className="instructor__item--text">GTI</p>
                 </div>
               </figure>
               <img
@@ -185,7 +210,10 @@ export default class Instructor extends Component {
         </main>
 
         {editModalVisibility ? (
-          <InstructorEditModal onCloseEditModal={this.handleCloseEditModal} />
+          <InstructorEditModal
+            id={id}
+            onCloseEditModal={this.handleCloseEditModal}
+          />
         ) : null}
       </React.Fragment>
     );

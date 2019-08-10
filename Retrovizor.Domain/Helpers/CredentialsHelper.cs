@@ -42,7 +42,7 @@ namespace Retrovizor.Domain.Helpers
             return FirstLetterCapitalization(formattedString);
         }
 
-        public static string GenerateUsername(string firstName, string lastName, List<User> users)
+        public static string GenerateUsername(string firstName, string lastName)
         {
             return firstName[0] + lastName;
         }

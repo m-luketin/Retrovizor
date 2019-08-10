@@ -27,6 +27,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
             credentials.Id = userMatch.Id;
             credentials.Role = userMatch.Role;
+            credentials.DrivingSchoolId = userMatch.DrivingSchoolId;
 
             return credentials;
         }

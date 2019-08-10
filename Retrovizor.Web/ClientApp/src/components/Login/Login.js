@@ -9,10 +9,6 @@ import Input from "../Input";
 // SVG import
 import Logo from "../../assets/Logo.svg";
 
-authorizedRequest("/api/instructor/get/1", "get", "").then(data =>
-  console.log(data)
-);
-
 const Login = ({ values, handleSubmit, errors, touched, isSubmitting }) => (
   <main className="main">
     <div className="main__login-container">
@@ -27,7 +23,6 @@ const Login = ({ values, handleSubmit, errors, touched, isSubmitting }) => (
           value={values.username}
           login={true}
         />
-        {console.log(errors)}
         <Input
           type="password"
           name="password"

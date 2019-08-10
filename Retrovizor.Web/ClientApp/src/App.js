@@ -116,7 +116,7 @@ export default class App extends Component {
             />
             <Route
               exact
-              path="/administrator/instruktori/detalji"
+              path="/administrator/instruktori/detalji/:id"
               render={props => <Instructor {...props} />}
             />
             <Route
@@ -126,7 +126,7 @@ export default class App extends Component {
             />
             <Route
               exact
-              path="/administrator/kandidati/kandidat"
+              path="/administrator/kandidati/kandidat/:id"
               render={props => <Student {...props} />}
             />
             <Route

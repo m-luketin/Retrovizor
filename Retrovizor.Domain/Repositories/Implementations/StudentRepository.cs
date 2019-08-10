@@ -1,8 +1,10 @@
 ﻿using CashRegister.Data.Helpers;
+using Microsoft.EntityFrameworkCore;
 using Retrovizor.Data.Entities;
 using Retrovizor.Data.Entities.Models;
 using Retrovizor.Data.Enums;
 using Retrovizor.Domain.Classes;
+using Retrovizor.Domain.Helpers;
 using Retrovizor.Domain.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -25,10 +27,9 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public bool AddStudent(Student studentToAdd)
         {
-            studentToAdd.User.Username = "nborovicc";
-            studentToAdd.User.Password = "lozinka";
+            studentToAdd.User.Username = CredentialsHelper.GenerateUsername(studentToAdd.FirstName, studentToAdd.LastName);
+            studentToAdd.User.Password = HashHelper.Hash(CredentialsHelper.GenerateRandomPassword());
             studentToAdd.User.Role = Role.Student;
-            studentToAdd.User.OIB = "531531613";
 
             if (_context.Users.Any(u => u.Username == studentToAdd.User.Username)) return false;
 
@@ -75,7 +76,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public List<Student> GetStudentsByDrivingSchoolId(int id)
         {
-            return _context.Students.Where(s => s.User.DrivingSchoolId == id).ToList();
+            return _context.Students.Include(s => s.User).Include(s => s.StudentClasses).Where(s => s.User.DrivingSchoolId == id).ToList();
         }
 
         public List<Student> GetStudentsByInstructorId(int id)

@@ -7,13 +7,21 @@ import "./StudentModals.css";
 import Profile from "../../../assets/Instructor.gif";
 import GrayPlus from "../../../assets/GrayPlus.svg";
 import WhiteArrow from "../../../assets/WhiteArrow.svg";
+import { authorizedRequest } from "../../utils";
 
 export default class Students extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      addModalVisibility: false
+      addModalVisibility: false,
+      students: null
     };
+  }
+
+  componentDidMount() {
+    authorizedRequest("/api/student/get-by-driving-school", "get").then(data =>
+      this.setState({ ...this.state, students: data })
+    );
   }
 
   handleOpenAddModal = () => {
@@ -27,7 +35,7 @@ export default class Students extends Component {
   };
 
   render() {
-    const { addModalVisibility } = this.state;
+    const { addModalVisibility, students } = this.state;
 
     return (
       <React.Fragment>
@@ -41,85 +49,40 @@ export default class Students extends Component {
           />
         </header>
         <main className="main">
-          <Link to="/administrator/kandidati/kandidat">
-            <figure className="main__candidate">
-              <img className="candidate__icon" src={Profile} alt="Kandidat" />
-              <figcaption>
-                <h2 className="candidate__name">Luka Bendić</h2>
-                <p className="candidate__lessons">12/35 sati</p>
-                <img
-                  className="main__button--arrow"
-                  alt="Strelica"
-                  src={WhiteArrow}
-                />
-              </figcaption>
-            </figure>
-          </Link>
-
-          <figure className="main__candidate">
-            <img className="candidate__icon" src={Profile} alt="Kandidat" />
-            <figcaption>
-              <h2 className="candidate__name">Luka Bendić</h2>
-              <p className="candidate__lessons">12/35 sati</p>
-              <img
-                className="main__button--arrow"
-                alt="Strelica"
-                src={WhiteArrow}
-              />
-            </figcaption>
-          </figure>
-
-          <figure className="main__candidate">
-            <img className="candidate__icon" src={Profile} alt="Kandidat" />
-            <figcaption>
-              <h2 className="candidate__name">Luka Bendić</h2>
-              <p className="candidate__lessons">12/35 sati</p>
-              <img
-                className="main__button--arrow"
-                alt="Strelica"
-                src={WhiteArrow}
-              />
-            </figcaption>
-          </figure>
-
-          <figure className="main__candidate">
-            <img className="candidate__icon" src={Profile} alt="Kandidat" />
-            <figcaption>
-              <h2 className="candidate__name">Luka Bendić</h2>
-              <p className="candidate__lessons">12/35 sati</p>
-              <img
-                className="main__button--arrow"
-                alt="Strelica"
-                src={WhiteArrow}
-              />
-            </figcaption>
-          </figure>
-
-          <figure className="main__candidate">
-            <img className="candidate__icon" src={Profile} alt="Kandidat" />
-            <figcaption>
-              <h2 className="candidate__name">Luka Bendić</h2>
-              <p className="candidate__lessons">12/35 sati</p>
-              <img
-                className="main__button--arrow"
-                alt="Strelica"
-                src={WhiteArrow}
-              />
-            </figcaption>
-          </figure>
-
-          <figure className="main__candidate">
-            <img className="candidate__icon" src={Profile} alt="Kandidat" />
-            <figcaption>
-              <h2 className="candidate__name">Luka Bendić</h2>
-              <p className="candidate__lessons">12/35 sati</p>
-              <img
-                className="main__button--arrow"
-                alt="Strelica"
-                src={WhiteArrow}
-              />
-            </figcaption>
-          </figure>
+          {!students
+            ? "Loading"
+            : students.map(student => (
+                <Link
+                  key={student.id}
+                  to={`/administrator/kandidati/kandidat/${student.id}`}
+                >
+                  <figure className="main__candidate">
+                    <img
+                      className="candidate__icon"
+                      src={Profile}
+                      alt="Kandidat"
+                    />
+                    <figcaption>
+                      <h2 className="candidate__name">
+                        {student.firstName} {student.lastName}
+                      </h2>
+                      <p className="candidate__lessons">
+                        {
+                          student.studentClasses[
+                            student.studentClasses.length - 1
+                          ].currentLesson
+                        }
+                        /35 sati
+                      </p>
+                      <img
+                        className="main__button--arrow"
+                        alt="Strelica"
+                        src={WhiteArrow}
+                      />
+                    </figcaption>
+                  </figure>
+                </Link>
+              ))}
         </main>
 
         {addModalVisibility ? (
