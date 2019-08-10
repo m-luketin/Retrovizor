@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { formatPhoneNumber, getStudentCurrentLesson } from "../../utils";
 // SVG import
 import Profile from "../../../assets/Instructor.gif";
 import Phone from "../../../assets/Phone.svg";
@@ -9,7 +10,6 @@ import Timeline from "../../../assets/Timeline.svg";
 import FullCheckmark from "../../../assets/FullCheckmark.svg";
 import RedExclimation from "../../../assets/RedExclimation.svg";
 import Pending from "../../../assets/Pending.svg";
-import { formatPhoneNumber, getStudentCurrentLesson } from "../../utils";
 
 export default class StudentDetails extends Component {
   constructor(props) {

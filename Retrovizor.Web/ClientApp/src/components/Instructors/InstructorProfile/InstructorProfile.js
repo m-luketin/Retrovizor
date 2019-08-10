@@ -1,5 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import {
+  authorizedRequest,
+  formatPhoneNumber,
+  getInstructorsActiveStudentCount
+} from "../../utils";
 // SVG import
 import Profile from "../../../assets/Instructor.gif";
 import DisplayCar from "../../../assets/DisplayCar.png";
@@ -8,7 +13,6 @@ import NormalCar from "../../../assets/NormalCar.svg";
 import People from "../../../assets/People.svg";
 import Gear from "../../../assets/Gear.svg";
 import GrayPencil from "../../../assets/GrayPencil.svg";
-import { authorizedRequest, formatPhoneNumber } from "../../utils";
 
 export default class InstructorProfile extends Component {
   constructor(props) {
@@ -19,22 +23,11 @@ export default class InstructorProfile extends Component {
   }
 
   componentDidMount() {
-    authorizedRequest(`api/Instructor/get/2`, "get", "").then(data => {
+    authorizedRequest(`api/Instructor/get/0`, "get", "").then(data => {
       this.setState({ instructorToDisplay: data });
       // console.log(data);
     });
   }
-
-  getActiveStudentCount = () => {
-    let numberOfStudents = 0;
-    const { instructorToDisplay } = this.state;
-
-    instructorToDisplay.vehicleSessions.forEach(session => {
-      if (session.isActive) numberOfStudents++;
-    });
-
-    return numberOfStudents;
-  };
 
   render() {
     const { instructorToDisplay } = this.state;
@@ -113,7 +106,7 @@ export default class InstructorProfile extends Component {
                   Kandidati:
                 </figcaption>
                 <p className="instructor__item--text">
-                  {this.getActiveStudentCount()}/15
+                  {getInstructorsActiveStudentCount(instructorToDisplay)}/15
                 </p>
               </div>
             </figure>

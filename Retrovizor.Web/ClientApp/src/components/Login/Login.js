@@ -70,6 +70,6 @@ export default withFormik({
     axios
       .post("/api/auth/login", userCredentials)
       .then(res => setTokens(res.data.access, res.data.refresh))
-      .catch(err => alert(err));
+      .catch(err => alert("Kriva kombinacija imena i šifre"));
   }
 })(Login);

@@ -46,6 +46,9 @@ namespace Retrovizor.Web.Controllers
         public IActionResult Refresh(Token token)
         {
             var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+
+            if (accessTokenAsString == "null") return Unauthorized();
+
             var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
 
             var savedRefreshToken = _refreshTokenRepository.GetUserRefreshToken(token.Refresh, userCredentials.Id);

@@ -11,6 +11,8 @@
     "mapbox": "^1.0.0-beta10",
     "mapbox-gl": "^1.2.0",
     "react": "^16.8.6",
+    "react-calendar": "^2.19.0",
+    "react-datepicker": "^2.8.0",
     "react-dom": "^16.8.6",
     "react-google-maps": "^9.4.5",
     "react-map-gl": "^5.0.7",

@@ -67,9 +67,17 @@ namespace Retrovizor.Domain.Repositories.Implementations
             return true;
         }
 
-        public Student GetStudentById(int id)
+        public Student GetStudentById(int userId)
         {
-            return _context.Students.Find(id);
+            var id = GetStudentIdFromUserId(userId);
+
+            return _context.Students
+                .Include("VehicleSessions")
+                .Include("VehicleSessions.Instructor")
+                .Include("StudentEvents")
+                .Include("StudentEvents.Event")
+                .Include("User")
+                .FirstOrDefault(student => student.Id == id);
         }
 
         public List<Student> GetStudentsByDrivingSchoolId(int id)
@@ -92,8 +100,10 @@ namespace Retrovizor.Domain.Repositories.Implementations
             return students.Distinct().ToList();
         }
 
-        public List<Student> GetCurrentStudentsByInstructorId(int id)
+        public List<Student> GetCurrentStudentsByInstructorId(int userId)
         {
+            var id = GetStudentIdFromUserId(userId);
+
             var instructorVehicleSessions = _context.VehicleSessions
                 .Include("Student")
                 .Include("Student.StudentClasses")
@@ -132,6 +142,14 @@ namespace Retrovizor.Domain.Repositories.Implementations
                     instructorsStudents.Add(student);
             }
             return instructorsStudents;
+        }
+
+        private int GetStudentIdFromUserId(int userId)
+        {
+            var user = _context.Users.Include("Student").FirstOrDefault(u => u.Id == userId);
+            var id = user.Student.Id;
+
+            return id;
         }
     }
 }

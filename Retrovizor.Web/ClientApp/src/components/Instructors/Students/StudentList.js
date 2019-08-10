@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { authorizedRequest } from "../../utils";
 // SVG import
 import Profile from "../../../assets/Instructor.gif";
 import WhiteArrow from "../../../assets/WhiteArrow.svg";
-import { authorizedRequest } from "../../utils";
 
 export default class StudentList extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ export default class StudentList extends Component {
 
   componentDidMount() {
     authorizedRequest(
-      `api/Student/get-current-by-instructor/2`,
+      `api/Student/get-current-by-instructor/0`,
       "get",
       ""
     ).then(data => {

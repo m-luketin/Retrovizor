@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Retrovizor.Data.Entities.Models;
+using Retrovizor.Domain.Helpers;
 using Retrovizor.Domain.Repositories.Interfaces;
 
 namespace Retrovizor.Web.Controllers
@@ -28,9 +29,15 @@ namespace Retrovizor.Web.Controllers
         }
 
         [Authorize]
-        [HttpGet("get")]
-        public IActionResult GetStudentById(int id)
+        [HttpGet("get/{id}")]
+        public IActionResult GetStudentById()
         {
+            var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+            if (accessTokenAsString == "null") return Unauthorized();
+            var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
+
+            var id = userCredentials.Id;
+
             var studentToGet = _studentRepository.GetStudentById(id);
 
             if (studentToGet == null)
@@ -101,14 +108,38 @@ namespace Retrovizor.Web.Controllers
 
         [Authorize(Roles = "Admin, Instructor")]
         [HttpGet("get-current-by-instructor/{id}")]
-        public IActionResult GetCurrentStudentsByInstructorId(int id)
+        public IActionResult GetCurrentStudentsByInstructorId()
         {
+            var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+            if (accessTokenAsString == "null") return Unauthorized();
+            var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
+
+            var id = userCredentials.Id;
+
             var studentToGet = _studentRepository.GetCurrentStudentsByInstructorId(id);
 
             if(studentToGet == null)
                 return NotFound();
 
             return Ok(studentToGet);
+        }
+
+        [Authorize]
+        [HttpGet("get-school-id/{id}")]
+        public IActionResult GetStudentDrivingSchoolId()
+        {
+            var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+            if (accessTokenAsString == "null") return Unauthorized();
+            var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
+
+            var id = userCredentials.Id;
+
+            var studentToGet = _studentRepository.GetStudentById(id);
+
+            if (studentToGet == null)
+                return NotFound();
+
+            return Ok(studentToGet.User.DrivingSchoolId);
         }
     }
 }

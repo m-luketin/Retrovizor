@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Retrovizor.Data.Entities.Models;
+using Retrovizor.Domain.Helpers;
 using Retrovizor.Domain.Repositories.Interfaces;
 
 namespace Retrovizor.Web.Controllers
@@ -20,13 +21,19 @@ namespace Retrovizor.Web.Controllers
         }
         private readonly IVehicleSessionRepository _vehicleSessionRepository;
 
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin, Student")]
         [HttpPost("add")]
         public IActionResult AddVehicleSession(VehicleSession vehicleSessionToAdd)
         {
-            var wasSucessful = _vehicleSessionRepository.AddVehicleSession(vehicleSessionToAdd);
+            var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+            if (accessTokenAsString == "null") return Unauthorized();
+            var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
 
-            if(wasSucessful)
+            vehicleSessionToAdd.StudentId = userCredentials.Id;
+
+            var wasSuccessful = _vehicleSessionRepository.AddVehicleSession(vehicleSessionToAdd);
+
+            if(wasSuccessful)
                 return Ok();
 
             return Forbid();

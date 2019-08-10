@@ -5,6 +5,7 @@ using Retrovizor.Domain.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Retrovizor.Domain.Repositories.Implementations
 {
@@ -89,20 +90,21 @@ namespace Retrovizor.Domain.Repositories.Implementations
         {
             var vehicleSessions = _context.VehicleSessions.Where(vs => vs.InstructorId == id).ToList();
 
-            if(vehicleSessions == null)
+            if(vehicleSessions.Count == 0)
                 return null;
 
             var drivingLessons = new List<Event>();
 
             foreach(var vehicleSession in vehicleSessions)
             {
-                var studentEvents = _context.StudentEvents.Where(se => se.StudentId == vehicleSession.StudentId).ToList();
+                var studentEvents = _context.StudentEvents.Include("Event").Where(se => se.StudentId == vehicleSession.StudentId).ToList();
 
                 foreach(var studentEvent in studentEvents)
-                    if(studentEvent.Event.Type == "Driving Lesson")
+                    if(studentEvent.Event.Type == "Voznja")
                         drivingLessons.Add(studentEvent.Event);
             }
-            return drivingLessons;
+
+            return drivingLessons.OrderBy(dl => dl.StartsAt).ToList();
         }
 
         public List<Event> GetEventsByDrivingSchoolId(int id)
