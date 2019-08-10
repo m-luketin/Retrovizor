@@ -27,10 +27,11 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public bool AddStudent(Student studentToAdd)
         {
-            if (_context.Users.Any(u => u.Username == studentToAdd.User.Username
-                || u.OIB == studentToAdd.User.OIB || u.PhoneNumber == studentToAdd.User.PhoneNumber)) return false;
+            studentToAdd.User.Username = CredentialsHelper.GenerateUsername(studentToAdd.FirstName, studentToAdd.LastName);
+            studentToAdd.User.Password = HashHelper.Hash(CredentialsHelper.GenerateRandomPassword());
+            studentToAdd.User.Role = Role.Student;
 
-            studentToAdd.User.DrivingSchool = _context.DrivingSchools.Find(studentToAdd.User.DrivingSchoolId);
+            if (_context.Users.Any(u => u.Username == studentToAdd.User.Username)) return false;
 
             _context.Students.Add(studentToAdd);
             _context.SaveChanges();
@@ -89,7 +90,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public List<Student> GetStudentsByDrivingSchoolId(int id)
         {
-            return _context.Students.Where(s => s.User.DrivingSchoolId == id).ToList();
+            return _context.Students.Include(s => s.User).Include(s => s.StudentClasses).Where(s => s.User.DrivingSchoolId == id).ToList();
         }
 
         public List<Student> GetStudentsByInstructorId(int id)

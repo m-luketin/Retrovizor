@@ -132,7 +132,7 @@ export default class App extends Component {
             />
             <PrivateRoute
               exact
-              path="/administrator/instruktori/detalji"
+              path="/administrator/instruktori/detalji/:id"
               component={Instructor}
               // render={props => <Instructor {...props} />}
             />
@@ -144,7 +144,7 @@ export default class App extends Component {
             />
             <PrivateRoute
               exact
-              path="/administrator/kandidati/kandidat"
+              path="/administrator/kandidati/kandidat/:id"
               component={Student}
               // render={props => <Student {...props} />}
             />

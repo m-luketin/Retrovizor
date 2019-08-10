@@ -8,6 +8,7 @@ namespace Retrovizor.Domain.Repositories.Interfaces
 {
     public interface IAdminRepository
     {
+        User GetAdminByUserId(int id);
         List<Admin> GetAdminsByDrivingSchoolId(int id);
     }
 }

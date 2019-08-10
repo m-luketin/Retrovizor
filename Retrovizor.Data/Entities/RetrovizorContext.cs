@@ -565,8 +565,8 @@ namespace Retrovizor.Data.Entities
                     Id = 1,
                     Manufacturer = "Volkswagen",
                     Model = "Golf 7",
-                    FuelType = "Gasoline",
-                    
+                    Year = 2015,
+                    FuelType = "Gasoline",           
                     Type = "Car",
                     LicensePlate = "ST-200-OK"
                 },
@@ -575,8 +575,8 @@ namespace Retrovizor.Data.Entities
                     Id = 2,
                     Manufacturer = "Mercedes",
                     Model = "A Class",
+                    Year = 2017,
                     FuelType = "Gasoline",
-                    
                     Type = "Car",
                     LicensePlate = "ST-404-NF"
                 },
@@ -585,8 +585,8 @@ namespace Retrovizor.Data.Entities
                     Id = 3,
                     Manufacturer = "Renault",
                     Model = "Megane III",
+                    Year = 2018,
                     FuelType = "Diesel",
-                    
                     Type = "Car",
                     LicensePlate = "ST-500-FB"
                 },
@@ -595,8 +595,8 @@ namespace Retrovizor.Data.Entities
                     Id = 4,
                     Manufacturer = "Kawasaki",
                     Model = "ZZR",
+                    Year = 2016,
                     FuelType = "Gasoline",
-                    
                     Type = "Motorcycle",
                     LicensePlate = "ST-408-TO"
                 }

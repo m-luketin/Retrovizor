@@ -16,5 +16,6 @@ namespace Retrovizor.Domain.Repositories.Interfaces
         Vehicle GetCurrentVehicleByInstructorId(int id);
         List<Vehicle> GetVehiclesByStudentId(int id);
         List<Vehicle> GetVehiclesByInstructorId(int id);
+        bool DoesVehicleExist(string vehicle, int year);
     }
 }

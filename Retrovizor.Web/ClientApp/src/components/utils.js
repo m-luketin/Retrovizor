@@ -26,12 +26,15 @@ export const authorizedRequest = async (url, method, payload) => {
         response = await axios.get(url);
         break;
       case "post":
+        payload;
         response = await axios.post(url, payload);
         break;
       case "delete":
         response = await axios.delete(url, payload);
         break;
 
+      default:
+        break;
       default:
         break;
       default:
@@ -62,12 +65,13 @@ export const authorizedRequest = async (url, method, payload) => {
       case "delete":
         response = await axios.delete(url);
         break;
-
+        
       default:
         break;
     }
 
     return response.data;
+
   }
 };
 
@@ -95,7 +99,7 @@ export const setupReviewStarsForMapping = reviewsArray => {
 
   let reviewNumber = getReviewStarsAverage(reviewsArray);
 
-  // only because DB is no setup right - delete this newx line when setup
+  // only because DB is no setup right - delete this line when setup
   reviewNumber = 4;
 
   for (let i = 0; i < 5; i++) {
@@ -222,3 +226,15 @@ export const formatDateNotForDisplay = date => {
 
   return [year, month, day].join("-");
 };
+
+export const getFirstName = fullName =>
+  fullName
+    .split(" ")
+    .slice(0, -1)
+    .join(" ");
+
+export const getLastName = fullName =>
+  fullName
+    .split("")
+    .slice(-1)
+    .join("");

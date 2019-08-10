@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import InstructorAddModal from "./InstructorAddModal";
+import { authorizedRequest } from "../../utils";
 import "./Instructors.css";
 // SVG import
 import Profile from "../../../assets/Instructor.gif";
@@ -12,8 +13,15 @@ export default class Instructors extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      addModalVisibility: false
+      addModalVisibility: false,
+      instructors: null
     };
+  }
+
+  componentDidMount() {
+    authorizedRequest("/api/instructor/get-by-driving-school", "get").then(
+      data => this.setState({ ...this.state, instructors: data })
+    );
   }
 
   handleOpenAddModal = () => {
@@ -27,7 +35,7 @@ export default class Instructors extends Component {
   };
 
   render() {
-    const { addModalVisibility } = this.state;
+    const { addModalVisibility, instructors } = this.state;
 
     return (
       <React.Fragment>
@@ -42,175 +50,60 @@ export default class Instructors extends Component {
         </header>
         <main className="main__drive main__instructor--list">
           <section className="main__next--lesson--wrapper">
-            <div className="main__driving">
-              <img
-                className="main__driving--instructor"
-                src={Profile}
-                alt="Instruktor"
-              />
+            {instructors === null
+              ? "Loading"
+              : instructors.map(instructor => (
+                  <div key={instructor.id} className="main__driving">
+                    <img
+                      className="main__driving--instructor"
+                      src={Profile}
+                      alt="Instruktor"
+                    />
 
-              <Link to="/administrator/instruktori/detalji">
-                <button className="main__button main__button--schedule main__button--driving main__button--instructor">
-                  <span className="button__info">
-                    <h3 className="instructor__name">Ivan Bartičević</h3>
-                    <p className="instructor__car">Golf VII</p>
-                    <div className="instructor__stars">
-                      <img
-                        className="instructor__star"
-                        alt="Zvijezda"
-                        src={FullStar}
-                      />
-                      <img
-                        className="instructor__star"
-                        alt="Zvijezda"
-                        src={FullStar}
-                      />
-                      <img
-                        className="instructor__star"
-                        alt="Zvijezda"
-                        src={FullStar}
-                      />
-                      <img
-                        className="instructor__star"
-                        alt="Zvijezda"
-                        src={FullStar}
-                      />
-                      <img
-                        className="instructor__star"
-                        alt="Zvijezda"
-                        src={OutlineStar}
-                      />
-                    </div>
-                  </span>
-                </button>
-              </Link>
-            </div>
-
-            <div className="main__driving">
-              <img
-                className="main__driving--instructor"
-                src={Profile}
-                alt="Instruktor"
-              />
-
-              <button className="main__button main__button--schedule main__button--driving main__button--instructor">
-                <span className="button__info">
-                  <h3 className="instructor__name">Ivan Bartičević</h3>
-                  <p className="instructor__car">Golf VII</p>
-                  <div className="instructor__stars">
-                    <img
-                      className="instructor__star"
-                      alt="Zvijezda"
-                      src={FullStar}
-                    />
-                    <img
-                      className="instructor__star"
-                      alt="Zvijezda"
-                      src={FullStar}
-                    />
-                    <img
-                      className="instructor__star"
-                      alt="Zvijezda"
-                      src={FullStar}
-                    />
-                    <img
-                      className="instructor__star"
-                      alt="Zvijezda"
-                      src={FullStar}
-                    />
-                    <img
-                      className="instructor__star"
-                      alt="Zvijezda"
-                      src={OutlineStar}
-                    />
+                    <Link
+                      to={`/administrator/instruktori/detalji/${instructor.id}`}
+                    >
+                      <button
+                        key={instructor.id}
+                        className="main__button main__button--schedule main__button--driving main__button--instructor"
+                      >
+                        <span className="button__info">
+                          <h3 className="instructor__name">
+                            {instructor.firstName} {instructor.lastName}
+                          </h3>
+                          <p className="instructor__car" />
+                          <div className="instructor__stars">
+                            <img
+                              className="instructor__star"
+                              alt="Zvijezda"
+                              src={FullStar}
+                            />
+                            <img
+                              className="instructor__star"
+                              alt="Zvijezda"
+                              src={FullStar}
+                            />
+                            <img
+                              className="instructor__star"
+                              alt="Zvijezda"
+                              src={FullStar}
+                            />
+                            <img
+                              className="instructor__star"
+                              alt="Zvijezda"
+                              src={FullStar}
+                            />
+                            <img
+                              className="instructor__star"
+                              alt="Zvijezda"
+                              src={OutlineStar}
+                            />
+                          </div>
+                        </span>
+                      </button>
+                    </Link>
                   </div>
-                </span>
-              </button>
-            </div>
-
-            <div className="main__driving">
-              <img
-                className="main__driving--instructor"
-                src={Profile}
-                alt="Instruktor"
-              />
-
-              <button className="main__button main__button--schedule main__button--driving main__button--instructor">
-                <span className="button__info">
-                  <h3 className="instructor__name">Ivan Bartičević</h3>
-                  <p className="instructor__car">Golf VII</p>
-                  <div className="instructor__stars">
-                    <img
-                      className="instructor__star"
-                      alt="Zvijezda"
-                      src={FullStar}
-                    />
-                    <img
-                      className="instructor__star"
-                      alt="Zvijezda"
-                      src={FullStar}
-                    />
-                    <img
-                      className="instructor__star"
-                      alt="Zvijezda"
-                      src={FullStar}
-                    />
-                    <img
-                      className="instructor__star"
-                      alt="Zvijezda"
-                      src={FullStar}
-                    />
-                    <img
-                      className="instructor__star"
-                      alt="Zvijezda"
-                      src={OutlineStar}
-                    />
-                  </div>
-                </span>
-              </button>
-            </div>
-
-            <div className="main__driving">
-              <img
-                className="main__driving--instructor"
-                src={Profile}
-                alt="Instruktor"
-              />
-
-              <button className="main__button main__button--schedule main__button--driving main__button--instructor">
-                <span className="button__info">
-                  <h3 className="instructor__name">Ivan Bartičević</h3>
-                  <p className="instructor__car">Golf VII</p>
-                  <div className="instructor__stars">
-                    <img
-                      className="instructor__star"
-                      alt="Zvijezda"
-                      src={FullStar}
-                    />
-                    <img
-                      className="instructor__star"
-                      alt="Zvijezda"
-                      src={FullStar}
-                    />
-                    <img
-                      className="instructor__star"
-                      alt="Zvijezda"
-                      src={FullStar}
-                    />
-                    <img
-                      className="instructor__star"
-                      alt="Zvijezda"
-                      src={FullStar}
-                    />
-                    <img
-                      className="instructor__star"
-                      alt="Zvijezda"
-                      src={OutlineStar}
-                    />
-                  </div>
-                </span>
-              </button>
-            </div>
+                ))}
           </section>
 
           {addModalVisibility ? (

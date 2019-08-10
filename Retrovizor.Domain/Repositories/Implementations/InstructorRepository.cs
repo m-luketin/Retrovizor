@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Retrovizor.Domain.Helpers;
 
 namespace Retrovizor.Domain.Repositories.Implementations
 {
@@ -17,6 +18,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
         {
             _context = context;
         }
+
         private readonly RetrovizorContext _context;
 
         public List<Instructor> GetAllInstructorsByDrivingSchoolId(int id)
@@ -29,10 +31,16 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public bool AddInstructor(Instructor instructorToAdd)
         {
-            if (_context.Users.Any(u => u.Username == instructorToAdd.User.Username
-            || u.OIB == instructorToAdd.User.OIB || u.PhoneNumber == instructorToAdd.User.PhoneNumber)) return false;
+            if (_context.Users.Any(u => u.Username == instructorToAdd.User.Username)) return false;
 
-            instructorToAdd.User.DrivingSchool = _context.DrivingSchools.Find(instructorToAdd.User.DrivingSchoolId);
+            var vehicle = _context.Vehicles.FirstOrDefault(v => instructorToAdd.Vehicle.Model.Contains(v.Manufacturer)
+                    && instructorToAdd.Vehicle.Model.Contains(v.Model) && instructorToAdd.Vehicle.Year == v.Year);
+
+            if (vehicle == null) return false;
+
+            instructorToAdd.User.Username = CredentialsHelper.GenerateUsername(instructorToAdd.FirstName, instructorToAdd.LastName);
+            instructorToAdd.User.Password = HashHelper.Hash(CredentialsHelper.GenerateRandomPassword());
+            instructorToAdd.User.Role = Role.Instructor;
 
             _context.Instructors.Add(instructorToAdd);
             _context.SaveChanges();
@@ -105,7 +113,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public List<Instructor> GetInstructorsByDrivingSchoolId(int id)
         {
-            return _context.Instructors.Where(i => i.User.DrivingSchoolId == id).ToList();
+            return _context.Instructors.Include("Vehicle").Where(i => i.User.DrivingSchoolId == id).ToList();
         }
 
         //public List<Instructor> GetAvailableInstructorsByDrivingSchoolId(int id)

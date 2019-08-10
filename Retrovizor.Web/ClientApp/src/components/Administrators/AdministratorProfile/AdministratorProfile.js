@@ -9,9 +9,41 @@ import Phone from "../../../assets/Phone.svg";
 import SpeedyCar from "../../../assets/SpeedyCar.svg";
 import People from "../../../assets/People.svg";
 import Calendar from "../../../assets/Calendar.svg";
+import { authorizedRequest } from "../../utils";
 
 export default class AdministratorProfile extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: { admin: {} },
+      studentCount: 0,
+      instructorCount: 0,
+      drivingSchool: {}
+    };
+  }
+
+  componentDidMount() {
+    authorizedRequest("/api/admin/get", "get").then(data => {
+      this.setState({ ...this.state, user: data });
+    });
+    authorizedRequest("/api/drivingschool/get-student-count", "get").then(
+      data => {
+        this.setState({ ...this.state, studentCount: data });
+      }
+    );
+    authorizedRequest("/api/drivingschool/get-instructor-count", "get").then(
+      data => {
+        this.setState({ ...this.state, instructorCount: data });
+      }
+    );
+    authorizedRequest("/api/drivingschool/get", "get").then(data => {
+      this.setState({ ...this.state, drivingSchool: data });
+    });
+  }
+
   render() {
+    const { user, studentCount, instructorCount, drivingSchool } = this.state;
+
     return (
       <React.Fragment>
         <header className="header">
@@ -46,24 +78,10 @@ export default class AdministratorProfile extends Component {
 
               <span className="button__info button__info--admin">
                 <h3 className="instructor__name school--name">
-                  Autoškola Dalmacija
+                  {drivingSchool.name}
                 </h3>
               </span>
             </div>
-
-            <figure className="instructor__item">
-              <img
-                className="instructor__item--phone"
-                alt="Phone"
-                src={Phone}
-              />
-              <div>
-                <figcaption className="instructor__item--title">
-                  Kontakt
-                </figcaption>
-                <p className="instructor__item--text c-blue">+385 123123123</p>
-              </div>
-            </figure>
 
             <figure className="instructor__item">
               <img
@@ -75,7 +93,7 @@ export default class AdministratorProfile extends Component {
                 <figcaption className="instructor__item--title">
                   Instruktori
                 </figcaption>
-                <p className="instructor__item--text">8</p>
+                <p className="instructor__item--text">{instructorCount}</p>
               </div>
             </figure>
 
@@ -89,7 +107,7 @@ export default class AdministratorProfile extends Component {
                 <figcaption className="instructor__item--title">
                   Kandidati
                 </figcaption>
-                <p className="instructor__item--text">50</p>
+                <p className="instructor__item--text">{studentCount}</p>
               </div>
             </figure>
 

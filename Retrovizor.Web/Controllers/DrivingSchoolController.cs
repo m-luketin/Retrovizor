@@ -16,11 +16,15 @@ namespace Retrovizor.Web.Controllers
         }
         private readonly IDrivingSchoolRepository _drivingSchoolRepository;
 
-        [Authorize(Roles = "Developer")]
-        [HttpGet("get/{id}")]
-        public IActionResult GetDrivingSchoolById(int id)
+        [Authorize]
+        [HttpGet("get")]
+        public IActionResult GetDrivingSchoolById()
         {
-            var drivingSchoolToGet = _drivingSchoolRepository.GetDrivingSchoolById(id);
+            var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+            if (accessTokenAsString == "null") return Unauthorized();
+            var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
+
+            var drivingSchoolToGet = _drivingSchoolRepository.GetDrivingSchoolById(userCredentials.DrivingSchoolId);
 
             if(drivingSchoolToGet == null)
                 return NotFound();
@@ -57,6 +61,7 @@ namespace Retrovizor.Web.Controllers
         public IActionResult GetDrivingSchoolByAdminId()
         {
             var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+            if (accessTokenAsString == "null") return Unauthorized();
             var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
 
             var classes = _drivingSchoolRepository.GetDrivingSchoolByAdminId(userCredentials.Id);
@@ -65,6 +70,28 @@ namespace Retrovizor.Web.Controllers
                 return NotFound();
 
             return Ok(classes);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet("get-student-count")]
+        public IActionResult GetStudentCount()
+        {
+            var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+            if (accessTokenAsString == "null") return Unauthorized();
+            var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
+
+            return Ok(_drivingSchoolRepository.GetStudentCount(userCredentials.DrivingSchoolId));
+        }
+        
+        [Authorize(Roles = "Admin")]
+        [HttpGet("get-instructor-count")] 
+        public IActionResult GetInstructorCount()
+        {
+            var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+            if (accessTokenAsString == "null") return Unauthorized();
+            var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
+
+            return Ok(_drivingSchoolRepository.GetInstructorCount(userCredentials.DrivingSchoolId));
         }
     }
 }

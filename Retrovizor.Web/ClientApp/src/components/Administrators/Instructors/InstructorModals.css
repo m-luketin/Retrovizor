@@ -33,6 +33,7 @@
   border: 1px solid #8b959e;
   font-size: 17px;
   padding: 10px;
+  color: #8b959e;
 }
 
 .modal__input--wrapper input:focus {

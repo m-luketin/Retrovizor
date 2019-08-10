@@ -117,5 +117,11 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
             return vehicles;
         }
+
+        public bool DoesVehicleExist(string vehicle, int year)
+        {
+            return _context.Vehicles.Any(v => vehicle.Contains(v.Manufacturer)
+                && vehicle.Contains(v.Model) && v.Year == year);
+        }
     }
 }

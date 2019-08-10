@@ -22,35 +22,43 @@ class Input extends Component {
     const { inputFocused } = this.state;
 
     return (
-      <div className="login-form__field">
+      <div className={`form__field ${props.login ? "login-form__field" : ""}`}>
         <div
           className={`field__border-overlay ${
-            inputFocused
+            inputFocused || props.value !== ""
               ? "field__border-overlay--focused"
               : "field__border-overlay--delay"
-          }`}
+          } ${props.login ? "" : "field__border-overlay--pl-8px"}`}
         />
         <label
           forhtml={props.name}
           className={`field__label ${
-            inputFocused ? "field__label--focused" : ""
+            inputFocused || props.value !== ""
+              ? `field__label--focused ${
+                  props.login ? "" : "field__label--focused--fs-14px"
+                }`
+              : ""
+          } ${
+            props.login ? "" : "field__label--fs-17px field__label--pl-10px"
           }`}
         >
           {props.label}
         </label>
         <Field
-          type={props.type}
           name={props.name}
           render={({ field }) => (
             <input
               {...field}
+              type={props.type}
               className={props.styles}
               onFocus={handleInputFocus}
               onBlur={handleInputBlur}
             />
           )}
         />
-        <span className="field__error">{props.error}</span>
+        {props.touched && props.error && (
+          <span className="field__error">{props.error}</span>
+        )}
       </div>
     );
   }

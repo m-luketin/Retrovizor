@@ -17,10 +17,14 @@ namespace Retrovizor.Web.Controllers
         private readonly IInstructorRepository _instructorRepository;
 
         [Authorize]
-        [HttpGet("get-by-driving-school/{id}")]
-        public IActionResult GetAllInstructors(int id)
+        [HttpGet("get-by-driving-school")]
+        public IActionResult GetAllInstructors()
         {
-            return Ok(_instructorRepository.GetAllInstructorsByDrivingSchoolId(id));
+            var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+            if (accessTokenAsString == "null") return Unauthorized();
+            var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
+
+            return Ok(_instructorRepository.GetAllInstructorsByDrivingSchoolId(userCredentials.DrivingSchoolId));
         }
 
         [Authorize]
@@ -45,6 +49,14 @@ namespace Retrovizor.Web.Controllers
         [HttpPost("add")]
         public IActionResult AddInstructor(Instructor instructorToAdd)
         {
+            var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+            if (accessTokenAsString == "null") return Unauthorized();
+            var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
+
+            var fullName = CredentialsHelper.GenerateUsername(instructorToAdd.FirstName, instructorToAdd.LastName);
+
+            instructorToAdd.User.DrivingSchoolId = userCredentials.Id;
+
             var wasAddSuccessful = _instructorRepository.AddInstructor(instructorToAdd);
 
             if(wasAddSuccessful)

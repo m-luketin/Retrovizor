@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Retrovizor.Data.Entities;
 
 namespace Retrovizor.Data.Migrations
 {
     [DbContext(typeof(RetrovizorContext))]
-    partial class RetrovizorContextModelSnapshot : ModelSnapshot
+    [Migration("20190809151412_InitialMigration")]
+    partial class InitialMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1646,8 +1648,6 @@ namespace Retrovizor.Data.Migrations
 
                     b.Property<string>("Type");
 
-                    b.Property<int>("Year");
-
                     b.HasKey("Id");
 
                     b.ToTable("Vehicles");
@@ -1660,8 +1660,7 @@ namespace Retrovizor.Data.Migrations
                             LicensePlate = "ST-200-OK",
                             Manufacturer = "Volkswagen",
                             Model = "Golf 7",
-                            Type = "Car",
-                            Year = 2015
+                            Type = "Car"
                         },
                         new
                         {
@@ -1670,8 +1669,7 @@ namespace Retrovizor.Data.Migrations
                             LicensePlate = "ST-404-NF",
                             Manufacturer = "Mercedes",
                             Model = "A Class",
-                            Type = "Car",
-                            Year = 2017
+                            Type = "Car"
                         },
                         new
                         {
@@ -1680,8 +1678,7 @@ namespace Retrovizor.Data.Migrations
                             LicensePlate = "ST-500-FB",
                             Manufacturer = "Renault",
                             Model = "Megane III",
-                            Type = "Car",
-                            Year = 2018
+                            Type = "Car"
                         },
                         new
                         {
@@ -1690,8 +1687,7 @@ namespace Retrovizor.Data.Migrations
                             LicensePlate = "ST-408-TO",
                             Manufacturer = "Kawasaki",
                             Model = "ZZR",
-                            Type = "Motorcycle",
-                            Year = 2016
+                            Type = "Motorcycle"
                         });
                 });
 

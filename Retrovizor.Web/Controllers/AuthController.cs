@@ -1,11 +1,6 @@
-﻿using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using Retrovizor.Data.Enums;
 using Retrovizor.Domain.Classes;
 using Retrovizor.Domain.Helpers;
 using Retrovizor.Domain.Repositories.Interfaces;
@@ -56,7 +51,7 @@ namespace Retrovizor.Web.Controllers
             if (savedRefreshToken == null) throw new SecurityTokenException("Invalid refresh token!");
 
             var newJwtToken = _jwtHelper.GetAccessToken(userCredentials);
-            var newRefreshToken = _jwtHelper.GetRefreshToken();
+            var newRefreshToken = _jwtHelper.GetRefreshToken();         
 
             if (!_refreshTokenRepository.AddRefreshToken(newRefreshToken, userCredentials.Id)) return Unauthorized();
 
