@@ -11,6 +11,7 @@ import RedExclimation from '../../../assets/RedExclimation.svg';
 import Pending from '../../../assets/Pending.svg';
 import GrayPencil from '../../../assets/GrayPencil.svg';
 
+
 export default class StudentProfile extends Component {
 	constructor(props) {
 		super(props);

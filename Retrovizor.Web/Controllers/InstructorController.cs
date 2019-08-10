@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Retrovizor.Data.Entities.Models;
+using Retrovizor.Domain.Helpers;
 using Retrovizor.Domain.Repositories.Interfaces;
 
 namespace Retrovizor.Web.Controllers
@@ -24,8 +25,14 @@ namespace Retrovizor.Web.Controllers
 
         [Authorize]
         [HttpGet("get/{id}")]
-        public IActionResult GetInstructorById(int id)
+        public IActionResult GetInstructorById()
         {
+            var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+            if (accessTokenAsString == "null") return Unauthorized();
+            var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
+
+            var id = userCredentials.Id;
+
             var instructorToGet = _instructorRepository.GetInstructorById(id);
 
             if (instructorToGet == null)
@@ -50,9 +57,9 @@ namespace Retrovizor.Web.Controllers
         [HttpPost("edit")]
         public IActionResult EditInstructor(Instructor editedInstructor)
         {
-            var wasEditSucessful = _instructorRepository.EditInstructor(editedInstructor);
+            var wasEditSuccessful = _instructorRepository.EditInstructor(editedInstructor);
 
-            if(wasEditSucessful)
+            if(wasEditSuccessful)
                 return Ok();
 
             return NotFound();
@@ -72,8 +79,14 @@ namespace Retrovizor.Web.Controllers
 
         [Authorize]
         [HttpGet("get-by-student/{id}")]
-        public IActionResult GetCurrentInstructorByStudentId(int id)
+        public IActionResult GetCurrentInstructorByStudentId()
         {
+            var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+            if (accessTokenAsString == "null") return Unauthorized();
+            var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
+
+            var id = userCredentials.Id;
+
             var instructorToGet = _instructorRepository.GetCurrentInstructorByStudentId(id);
 
             if(instructorToGet == null)
@@ -83,7 +96,7 @@ namespace Retrovizor.Web.Controllers
         }
 
         [Authorize]
-        [HttpGet("get-by-driving-school/{id}")]
+        [HttpGet("get-instructor-by-driving-school/{id}")]
         public IActionResult GetInstructorsByDrivingSchoolId(int id)
         {
             var instructorsToGet = _instructorRepository.GetInstructorsByDrivingSchoolId(id);
@@ -93,5 +106,17 @@ namespace Retrovizor.Web.Controllers
 
             return Ok(instructorsToGet);
         }
+
+        //[Authorize]
+        //[HttpGet("get-available/{id}")]
+        //public IActionResult GetAvailableInstructorsByDrivingSchoolId(int id)
+        //{
+        //    var instructorsToGet = _instructorRepository.GetAvailableInstructorsByDrivingSchoolId(id);
+
+        //    if (instructorsToGet == null)
+        //        return NotFound();
+
+        //    return Ok(instructorsToGet);
+        //}
     }
 }

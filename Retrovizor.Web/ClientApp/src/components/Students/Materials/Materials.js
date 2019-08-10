@@ -7,7 +7,10 @@ import WhiteSpeedyCar from "../../../assets/WhiteSpeedyCar.svg";
 import WhiteBus from "../../../assets/WhiteBus.svg";
 import Heart from "../../../assets/Heart.svg";
 
+
 export default class Materials extends Component {
+  
+
   render() {
     return (
       <React.Fragment>

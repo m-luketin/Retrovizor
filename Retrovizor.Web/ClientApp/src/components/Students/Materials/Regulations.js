@@ -6,7 +6,10 @@ import HeaderArrow from "../../../assets/HeaderArrow.svg";
 import WhiteArrow from "../../../assets/WhiteArrow.svg";
 import FullHeart from "../../../assets/FullHeart.svg";
 
+
 export default class Regulations extends Component {
+  
+
   render() {
     return (
       <React.Fragment>

@@ -57,13 +57,43 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public bool DeleteRefreshToken(string token)
         {
-            //var tokenToDelete = _context.RefreshTokens.FirstOrDefault(rt => rt.Value == token);
 
-            //if (token == null) return false;
+            var userId = 0;
+            var tokenToDelete = new RefreshToken();
 
-            //_context.RefreshTokens.Remove(tokenToDelete);
-            //_context.SaveChanges();
+            if (token.Length <= 4)
+                userId = int.Parse(token);
+
+            if (userId != 0)
+                tokenToDelete = _context.RefreshTokens.Where(rt => rt.UserId == userId).ToList()[0];
+            else
+                tokenToDelete = _context.RefreshTokens.FirstOrDefault(rt => rt.Value == token);
+
+            if (tokenToDelete == null) return false;
+
+            _context.RefreshTokens.Remove(tokenToDelete);
+            _context.SaveChanges();
             return true;
+        }
+
+        public string GetRole(int userId)
+        {
+            var user = _context.Users
+                .Include("Student")
+                .Include("Instructor")
+                .Include("Admin")
+                .FirstOrDefault(u => u.Id == userId);
+
+            if (user == null)
+                return null;
+
+            if (user.Student != null)
+                return "kandidat";
+
+            if (user.Instructor != null)
+                return "instruktor";
+
+            return "aministrator";
         }
     }
 }

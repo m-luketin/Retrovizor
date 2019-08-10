@@ -6,6 +6,7 @@ import GrayPlus from "../../../assets/GrayPlus.svg";
 import HeaderArrow from "../../../assets/HeaderArrow.svg";
 import WhiteArrow from "../../../assets/WhiteArrow.svg";
 
+
 export default class InstructorSchedule extends Component {
   constructor(props) {
     super(props);
@@ -14,6 +15,8 @@ export default class InstructorSchedule extends Component {
       instructorDetailsModalVisibility: false
     };
   }
+
+  
 
   handleOpenAddEventModal = () => {
     document.getElementsByTagName("body")[0].classList.add("o-hidden");

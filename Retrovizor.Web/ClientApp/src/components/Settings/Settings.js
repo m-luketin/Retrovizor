@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { authorizedRequest } from "../utils";
 import "./Settings.css";
 // SVG import
 import HeaderArrow from "../../assets/HeaderArrow.svg";
@@ -12,6 +13,21 @@ import Logout from "../../assets/Logout.svg";
 export default class Settings extends Component {
   returnToLastPage = () => {
     this.props.history.goBack();
+  };
+
+  handleLogOut = () => {
+    authorizedRequest("api/Auth/delete-token", "delete", {
+      access: "",
+      refresh: window.localStorage.refresh
+    })
+      .then(() => {
+        window.localStorage.removeItem("access");
+        window.localStorage.removeItem("refresh");
+        window.localStorage.removeItem("user");
+
+        this.props.history.push("/");
+      })
+      .catch(console.log("Something went wrong"));
   };
 
   render() {
@@ -65,7 +81,7 @@ export default class Settings extends Component {
             />
           </button>
 
-          <figure className="logout">
+          <figure onClick={this.handleLogOut} className="logout">
             <img alt="Logout" src={Logout} />
             <figcaption>Logout</figcaption>
           </figure>

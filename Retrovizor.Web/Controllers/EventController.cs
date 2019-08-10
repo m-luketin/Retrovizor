@@ -81,7 +81,7 @@ namespace Retrovizor.Web.Controllers
             return Ok(events);
         }
 
-        [Authorize(Roles = "Admin, Instructor")]
+        [Authorize]
         [HttpGet("get-by-instructor/{id}")]
         public IActionResult GetInstructorSchedule(int id)
         {

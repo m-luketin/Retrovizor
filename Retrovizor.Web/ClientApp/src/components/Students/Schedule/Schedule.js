@@ -4,6 +4,7 @@ import { authorizedRequest } from '../../utils';
 // SVG import
 import Calendar from '../../../assets/Calendar.svg';
 
+
 export default class Schedule extends Component {
 	constructor(props) {
 		super(props);
@@ -12,6 +13,7 @@ export default class Schedule extends Component {
 			events: []
 		};
 	}
+
 
 	convertMonth = month => {
 		switch (month) {

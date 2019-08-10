@@ -20,7 +20,12 @@ export default class DrivingWithoutLesson extends Component {
               alt="Instruktor"
             />
 
-            <Link to="/kandidat/voznja/instruktor">
+            <Link
+              to={{
+                pathname: "/kandidat/voznja/instruktor",
+                state: { studentId: this.props.studentId }
+              }}
+            >
               <button className="main__button main__button--schedule main__button--driving main__button--driving--add">
                 <img alt="Plus" src={BluePlus} />
                 <h3>Dodaj termin</h3>

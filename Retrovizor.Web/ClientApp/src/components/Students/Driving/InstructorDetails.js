@@ -1,18 +1,84 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Calendar from "react-calendar";
+import {
+  authorizedRequest,
+  formatPhoneNumber,
+  getInstructorsActiveStudentCount,
+  formatTimeForDisplay,
+  formatDate,
+  formatDateNotForDisplay
+} from "../../utils";
 import "./Instructor.css";
 // SVG import
 import Profile from "../../../assets/Instructor.gif";
 import DisplayCar from "../../../assets/DisplayCar.png";
 import Phone from "../../../assets/Phone.svg";
 import HeaderArrow from "../../../assets/HeaderArrow.svg";
-import Calendar from "../../../assets/Calendar.svg";
+import CalendarSvg from "../../../assets/Calendar.svg";
 import NormalCar from "../../../assets/NormalCar.svg";
 import People from "../../../assets/People.svg";
 import Garbage from "../../../assets/Garbage.svg";
 
 export default class InstructorDetails extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      instrucorToDisplay: null,
+      eventsArray: null,
+      filteredEventsArray: [],
+      calendarVisibility: false,
+      selectedDate: new Date()
+    };
+  }
+
+  componentDidMount() {
+    authorizedRequest(`api/Instructor/get-by-student/0`, "get", "").then(
+      data => {
+        this.setState({ instrucorToDisplay: data });
+        // console.log(data);
+
+        authorizedRequest(
+          `api/Event/get-by-instructor/${data.id}`,
+          "get",
+          ""
+        ).then(events => {
+          this.setState({ eventsArray: events });
+          // console.log(events);
+        });
+      }
+    );
+  }
+
+  handleToggleCalendarVisibility = () => {
+    const { calendarVisibility } = this.state;
+    this.setState({ calendarVisibility: !calendarVisibility });
+  };
+
+  handleCalendarChange = e => {
+    let { filteredEventsArray, eventsArray } = this.state;
+    filteredEventsArray = [];
+
+    eventsArray.forEach(event => {
+      if (event.startsAt.includes(formatDateNotForDisplay(e))) {
+        filteredEventsArray.push(event);
+      }
+    });
+    this.setState({ filteredEventsArray, selectedDate: e });
+  };
+
   render() {
+    const {
+      instrucorToDisplay,
+      filteredEventsArray,
+      calendarVisibility,
+      selectedDate
+    } = this.state;
+    const { studentId } = this.props.location.state;
+
+    if (instrucorToDisplay === null || filteredEventsArray === null)
+      return null;
+
     return (
       <React.Fragment>
         <header>
@@ -32,8 +98,12 @@ export default class InstructorDetails extends Component {
 
               <button className="main__button main__button--schedule main__button--driving main__button--name">
                 <span className="button__info">
-                  <h3 className="instructor__name">Ivan Bartičević</h3>
-                  <p className="instructor__school">Autoškola "Dalmacija"</p>
+                  <h3 className="instructor__name">
+                    {instrucorToDisplay.firstName} {instrucorToDisplay.lastName}
+                  </h3>
+                  <p className="instructor__school">
+                    Autoškola "{instrucorToDisplay.user.drivingSchool.name}"
+                  </p>
                 </span>
               </button>
             </div>
@@ -48,7 +118,9 @@ export default class InstructorDetails extends Component {
                 <figcaption className="instructor__item--title">
                   Kontakt:
                 </figcaption>
-                <p className="instructor__item--text c-blue">+385 123123123</p>
+                <p className="instructor__item--text c-blue">
+                  {formatPhoneNumber(instrucorToDisplay.user.phoneNumber)}
+                </p>
               </div>
             </figure>
 
@@ -62,7 +134,9 @@ export default class InstructorDetails extends Component {
                 <figcaption className="instructor__item--title">
                   Kandidati:
                 </figcaption>
-                <p className="instructor__item--text">15/15</p>
+                <p className="instructor__item--text">
+                  {getInstructorsActiveStudentCount(instrucorToDisplay)}/15
+                </p>
               </div>
             </figure>
 
@@ -77,7 +151,10 @@ export default class InstructorDetails extends Component {
                   <figcaption className="instructor__item--title">
                     Auto:
                   </figcaption>
-                  <p className="instructor__item--text">Golf VII GTI 2018</p>
+                  <p className="instructor__item--text">
+                    {instrucorToDisplay.vehicle.manufacturer}{" "}
+                    {instrucorToDisplay.vehicle.model}
+                  </p>
                 </div>
               </figure>
               <img
@@ -91,7 +168,7 @@ export default class InstructorDetails extends Component {
               <img
                 className="instructor__item--calendar"
                 alt="Kalendar"
-                src={Calendar}
+                src={CalendarSvg}
               />
               <div>
                 <figcaption className="instructor__item--title">
@@ -102,24 +179,62 @@ export default class InstructorDetails extends Component {
           </section>
 
           <section>
-            <div className="instructor__item--schedule">
+            <div
+              onClick={this.handleToggleCalendarVisibility}
+              className="instructor__item--schedule"
+            >
               <img
                 className="intructor__item--arrow"
                 alt="Strelica"
                 src={HeaderArrow}
               />
-              <h3 className="instructor__schedule--date">Srijeda,</h3>
-              <p className="instructor__schedule--day">17. srpnja</p>
+              <h3 className="instructor__schedule--date">
+                {formatDate(selectedDate.toString())[0]},
+              </h3>
+              <p className="instructor__schedule--day">
+                {formatDate(selectedDate.toString())[1]}.{" "}
+                {formatDate(selectedDate.toString())[2]}
+              </p>
             </div>
 
-            <button className="main__button main__button--schedule instructor__schedule--button instructor__schedule--taken">
-              <div className="instructor__schedule--time">
-                <h3>08:30</h3>
-              </div>
-              <p className="button__info">Zauzeto</p>
-            </button>
+            {calendarVisibility ? (
+              <Calendar
+                onChange={e => this.handleCalendarChange(e)}
+                value={this.state.selectedDate}
+                minDate={new Date()}
+                minDetail={"month"}
+                activeStartDate={new Date(2019, 10, 8)}
+              />
+            ) : null}
 
-            <button className="main__button main__button--schedule instructor__schedule--button ">
+            {filteredEventsArray.length > 0
+              ? filteredEventsArray.map((event, index) => (
+                  <React.Fragment key={index}>
+                    {studentId === event.studentEvents[0].studentId ? (
+                      <button className="main__button main__button--schedule instructor__schedule--button ">
+                        <div className="instructor__schedule--time">
+                          <h3>{formatTimeForDisplay(event.startsAt)}</h3>
+                        </div>
+                        <p className="button__info">Rezervirano</p>
+                        <img
+                          className="button__garbage"
+                          alt="Brisi"
+                          src={Garbage}
+                        />
+                      </button>
+                    ) : (
+                      <button className="main__button main__button--schedule instructor__schedule--button instructor__schedule--taken">
+                        <div className="instructor__schedule--time">
+                          <h3>{formatTimeForDisplay(event.startsAt)}</h3>
+                        </div>
+                        <p className="button__info">Zauzeto</p>
+                      </button>
+                    )}
+                  </React.Fragment>
+                ))
+              : null}
+
+            {/* <button className="main__button main__button--schedule instructor__schedule--button ">
               <div className="instructor__schedule--time">
                 <h3>10:15</h3>
               </div>
@@ -137,7 +252,7 @@ export default class InstructorDetails extends Component {
                 alt="Strelica"
                 src={HeaderArrow}
               />
-            </button>
+            </button> */}
           </section>
         </main>
       </React.Fragment>

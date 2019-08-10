@@ -34,6 +34,7 @@ namespace Retrovizor.Web.Controllers
         public IActionResult GetStudentById(int id)
         {
             var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+            if (accessTokenAsString == "null") return Unauthorized();
             var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
 
             if(userCredentials.Role == Role.Student) // student can only GET themselves
@@ -109,14 +110,38 @@ namespace Retrovizor.Web.Controllers
 
         [Authorize(Roles = "Admin, Instructor")]
         [HttpGet("get-current-by-instructor/{id}")]
-        public IActionResult GetCurrentStudentsByInstructorId(int id)
+        public IActionResult GetCurrentStudentsByInstructorId()
         {
+            var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+            if (accessTokenAsString == "null") return Unauthorized();
+            var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
+
+            var id = userCredentials.Id;
+
             var studentToGet = _studentRepository.GetCurrentStudentsByInstructorId(id);
 
             if(studentToGet == null)
                 return NotFound();
 
             return Ok(studentToGet);
+        }
+
+        [Authorize]
+        [HttpGet("get-school-id/{id}")]
+        public IActionResult GetStudentDrivingSchoolId()
+        {
+            var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+            if (accessTokenAsString == "null") return Unauthorized();
+            var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
+
+            var id = userCredentials.Id;
+
+            var studentToGet = _studentRepository.GetStudentById(id);
+
+            if (studentToGet == null)
+                return NotFound();
+
+            return Ok(studentToGet.User.DrivingSchoolId);
         }
     }
 }

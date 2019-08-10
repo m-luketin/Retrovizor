@@ -4,6 +4,7 @@ using Retrovizor.Domain.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Retrovizor.Domain.Repositories.Implementations
 {
@@ -17,15 +18,22 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public bool AddVehicleSession(VehicleSession vehicleSessionToAdd)
         {
+            vehicleSessionToAdd.StudentId = GetStudentIdFromUserId(vehicleSessionToAdd.StudentId);
+
             var doesInstructorExist = _context.Instructors.Any(i => i.Id == vehicleSessionToAdd.InstructorId);
             var doesStudentExist = _context.Students.Any(s => s.Id == vehicleSessionToAdd.StudentId);
 
             if(!doesInstructorExist || !doesStudentExist)
                 return false;
 
-            var vehicle = _context.Instructors.Find(vehicleSessionToAdd.InstructorId).Vehicle;
-            if(vehicle == null)
+            var instructor = _context.Instructors
+                .Include("Vehicle")
+                .FirstOrDefault(i => i.Id == vehicleSessionToAdd.InstructorId);
+
+            if(instructor == null)
                 return false;
+
+            var vehicle = instructor.Vehicle;
 
             var doesVehicleSessionExist = _context.VehicleSessions.Any(vehicleSession =>
                 vehicleSession.StudentId == vehicleSessionToAdd.StudentId && 
@@ -34,9 +42,12 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
             if(doesVehicleSessionExist)
                 return false;
-
-            var instructor = _context.Instructors.Find(vehicleSessionToAdd.InstructorId);
+            
             var student = _context.Students.Find(vehicleSessionToAdd.StudentId);
+
+            var currentActiveSession = _context.VehicleSessions.FirstOrDefault(vs => vs.IsActive);
+            if (currentActiveSession != null)
+                currentActiveSession.IsActive = false;       
 
             _context.VehicleSessions.Add(
                 new VehicleSession(){
@@ -46,7 +57,8 @@ namespace Retrovizor.Domain.Repositories.Implementations
                 Instructor = instructor,
                 Vehicle = vehicle,
                 VehicleId = vehicle.Id,
-                DateAssigned = DateTime.Now
+                DateAssigned = DateTime.Now,
+                IsActive = true
             });
             _context.SaveChanges();
             return true;
@@ -74,6 +86,14 @@ namespace Retrovizor.Domain.Repositories.Implementations
         public List<VehicleSession> GetVehicleSessionsByVehicleId(int id)
         {
             return _context.VehicleSessions.Where(sc => id == sc.VehicleId).ToList();
+        }
+
+        private int GetStudentIdFromUserId(int userId)
+        {
+            var user = _context.Users.Include("Student").FirstOrDefault(u => u.Id == userId);
+            var id = user.Student.Id;
+
+            return id;
         }
     }
 }
