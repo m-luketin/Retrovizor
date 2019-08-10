@@ -82,6 +82,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
                 .Include("StudentEvents.Event")
                 .Include("User")
                 .FirstOrDefault(student => student.Id == id);
+        }
 
         public Student GetStudentById(int id)
         {

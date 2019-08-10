@@ -32,16 +32,11 @@ export const authorizedRequest = async (url, method, payload) => {
       case "delete":
         response = await axios.delete(url, payload);
         break;
-
-      default:
-        break;
-      default:
-        break;
       default:
         break;
     }
-
-    return response.data;
+    if(response !== null)
+      return response.data;
   } catch (error) {
     const refreshResponse = await axios.post("/api/auth/refresh", {
       access: "",
@@ -69,8 +64,8 @@ export const authorizedRequest = async (url, method, payload) => {
       default:
         break;
     }
-
-    return response.data;
+    if(response !== null)
+     return response.data;
 
   }
 };

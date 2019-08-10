@@ -89,6 +89,7 @@ namespace Retrovizor.Data.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Manufacturer = table.Column<string>(nullable: true),
                     Model = table.Column<string>(nullable: true),
+                    Year = table.Column<int>(nullable: false),
                     FuelType = table.Column<string>(nullable: true),
                     Picture = table.Column<string>(nullable: true),
                     Type = table.Column<string>(nullable: true),
@@ -461,13 +462,13 @@ namespace Retrovizor.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Vehicles",
-                columns: new[] { "Id", "FuelType", "LicensePlate", "Manufacturer", "Model", "Picture", "Type" },
+                columns: new[] { "Id", "FuelType", "LicensePlate", "Manufacturer", "Model", "Picture", "Type", "Year" },
                 values: new object[,]
                 {
-                    { 3, "Diesel", "ST-500-FB", "Renault", "Megane III", null, "Car" },
-                    { 1, "Gasoline", "ST-200-OK", "Volkswagen", "Golf 7", null, "Car" },
-                    { 2, "Gasoline", "ST-404-NF", "Mercedes", "A Class", null, "Car" },
-                    { 4, "Gasoline", "ST-408-TO", "Kawasaki", "ZZR", null, "Motorcycle" }
+                    { 3, "Diesel", "ST-500-FB", "Renault", "Megane III", null, "Car", 2018 },
+                    { 1, "Gasoline", "ST-200-OK", "Volkswagen", "Golf 7", null, "Car", 2015 },
+                    { 2, "Gasoline", "ST-404-NF", "Mercedes", "A Class", null, "Car", 2017 },
+                    { 4, "Gasoline", "ST-408-TO", "Kawasaki", "ZZR", null, "Motorcycle", 2016 }
                 });
 
             migrationBuilder.InsertData(
