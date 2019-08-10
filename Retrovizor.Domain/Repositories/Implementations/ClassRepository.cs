@@ -1,4 +1,5 @@
-﻿using Retrovizor.Data.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Retrovizor.Data.Entities;
 using Retrovizor.Data.Entities.Models;
 using Retrovizor.Domain.Repositories.Interfaces;
 using System;
@@ -81,19 +82,9 @@ namespace Retrovizor.Domain.Repositories.Implementations
             return _context.Classes.Find(id);
         }
 
-        public List<Class> GetClassesByStudentId(int id)
+        public List<StudentClass> GetClassesByStudentId(int id)
         {
-            var studentClasses = _context.StudentClasses.Where(c => c.StudentId == id);
-
-            if(studentClasses == null)
-                return null;
-
-            var classesToGet = new List<Class>();
-
-            foreach(var studentClass in studentClasses)
-                classesToGet.Add(studentClass.Class);
-
-            return classesToGet;
+            return _context.StudentClasses.Where(c => c.StudentId == id).Include(c => c.Class).ToList();
         }
     }
 }

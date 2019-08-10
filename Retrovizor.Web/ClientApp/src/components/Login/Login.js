@@ -3,17 +3,13 @@ import "./Login.css";
 import { withFormik, Form } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import { setTokens, authorizedRequest } from "../utils";
+import { setTokens } from "../utils";
 import Input from "../Input";
 
 // SVG import
 import Logo from "../../assets/Logo.svg";
 
-authorizedRequest("/api/instructor/get/1", "get", "").then(data =>
-  console.log(data)
-);
-
-const Login = ({ handleSubmit, errors, touched, isSubmitting }) => (
+const Login = ({ handleSubmit, errors, isSubmitting }) => (
   <main className="main">
     <div className="main__login-container">
       <img className="login-container__logo" alt="Logo" src={Logo} />
@@ -25,7 +21,6 @@ const Login = ({ handleSubmit, errors, touched, isSubmitting }) => (
           label="Korisničko ime"
           error={errors.username}
         />
-        {console.log(errors)}
         <Input
           type="password"
           name="password"
