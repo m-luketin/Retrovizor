@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Retrovizor.Data.Entities.Models;
+using Retrovizor.Domain.Helpers;
 using Retrovizor.Domain.Repositories.Interfaces;
 
 namespace Retrovizor.Web.Controllers
@@ -43,6 +44,14 @@ namespace Retrovizor.Web.Controllers
         [HttpPost("add")]
         public IActionResult AddStudent(Student studentToAdd)
         {
+            var accessTokenAsString = JwtHelper.GetTokenSubstring(Request.Headers["Authorization"].ToString());
+
+            if (accessTokenAsString == "null") return Unauthorized();
+
+            var userCredentials = JwtHelper.GetCredentialsFromToken(accessTokenAsString);
+
+            studentToAdd.User.DrivingSchoolId = 1;
+
             var wasAddSuccessful = _studentRepository.AddStudent(studentToAdd);
 
             if(wasAddSuccessful)

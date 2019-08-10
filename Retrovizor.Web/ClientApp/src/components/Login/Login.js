@@ -13,7 +13,7 @@ authorizedRequest("/api/instructor/get/1", "get", "").then(data =>
   console.log(data)
 );
 
-const Login = ({ handleSubmit, errors, touched, isSubmitting }) => (
+const Login = ({ values, handleSubmit, errors, touched, isSubmitting }) => (
   <main className="main">
     <div className="main__login-container">
       <img className="login-container__logo" alt="Logo" src={Logo} />
@@ -24,6 +24,8 @@ const Login = ({ handleSubmit, errors, touched, isSubmitting }) => (
           styles="field__input"
           label="Korisničko ime"
           error={errors.username}
+          value={values.username}
+          login={true}
         />
         {console.log(errors)}
         <Input
@@ -32,6 +34,8 @@ const Login = ({ handleSubmit, errors, touched, isSubmitting }) => (
           styles="field__input"
           label="Lozinka"
           error={errors.password}
+          value={values.password}
+          login={true}
         />
         <button
           type="submit"

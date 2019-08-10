@@ -7,6 +7,7 @@ using Retrovizor.Domain.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Retrovizor.Domain.Repositories.Implementations
 {
@@ -16,6 +17,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
         {
             _context = context;
         }
+
         private readonly RetrovizorContext _context;
 
         public List<Instructor> GetAllInstructorsByDrivingSchoolId(int id)
@@ -26,12 +28,17 @@ namespace Retrovizor.Domain.Repositories.Implementations
         public bool AddInstructor(Instructor instructorToAdd)
         {
             if (_context.Users.Any(u => u.Username == instructorToAdd.User.Username
-            || u.OIB == instructorToAdd.User.OIB || u.PhoneNumber == instructorToAdd.User.PhoneNumber)) return false;
+                || u.PhoneNumber == instructorToAdd.User.PhoneNumber)) return false;
+
+            var vehicle = _context.Vehicles.FirstOrDefault(v => instructorToAdd.Vehicle.Model.Contains(v.Manufacturer)
+                    && instructorToAdd.Vehicle.Model.Contains(v.Model) && instructorToAdd.Vehicle.Year == v.Year);
+
+            if (vehicle == null) return false;
 
             instructorToAdd.User.DrivingSchool = _context.DrivingSchools.Find(instructorToAdd.User.DrivingSchoolId);
 
             _context.Instructors.Add(instructorToAdd);
-            _context.SaveChanges();
+            //_context.SaveChanges();
             return true;
         }
 
@@ -67,7 +74,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public Instructor GetInstructorById(int id)
         {
-            return _context.Instructors.Find(id);
+            return _context.Instructors.Include(i => i.Vehicle).FirstOrDefault(i => i.Id == id);
         }
 
         public Instructor GetCurrentInstructorByStudentId(int id)

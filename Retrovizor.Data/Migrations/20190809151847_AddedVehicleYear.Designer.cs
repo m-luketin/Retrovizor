@@ -10,8 +10,8 @@ using Retrovizor.Data.Entities;
 namespace Retrovizor.Data.Migrations
 {
     [DbContext(typeof(RetrovizorContext))]
-    [Migration("20190808011748_SeededData")]
-    partial class SeededData
+    [Migration("20190809151847_AddedVehicleYear")]
+    partial class AddedVehicleYear
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -1648,6 +1648,8 @@ namespace Retrovizor.Data.Migrations
 
                     b.Property<string>("Type");
 
+                    b.Property<int>("Year");
+
                     b.HasKey("Id");
 
                     b.ToTable("Vehicles");
@@ -1660,7 +1662,8 @@ namespace Retrovizor.Data.Migrations
                             LicensePlate = "ST-200-OK",
                             Manufacturer = "Volkswagen",
                             Model = "Golf 7",
-                            Type = "Car"
+                            Type = "Car",
+                            Year = 2015
                         },
                         new
                         {
@@ -1669,7 +1672,8 @@ namespace Retrovizor.Data.Migrations
                             LicensePlate = "ST-404-NF",
                             Manufacturer = "Mercedes",
                             Model = "A Class",
-                            Type = "Car"
+                            Type = "Car",
+                            Year = 2017
                         },
                         new
                         {
@@ -1678,7 +1682,8 @@ namespace Retrovizor.Data.Migrations
                             LicensePlate = "ST-500-FB",
                             Manufacturer = "Renault",
                             Model = "Megane III",
-                            Type = "Car"
+                            Type = "Car",
+                            Year = 2018
                         },
                         new
                         {
@@ -1687,7 +1692,8 @@ namespace Retrovizor.Data.Migrations
                             LicensePlate = "ST-408-TO",
                             Manufacturer = "Kawasaki",
                             Model = "ZZR",
-                            Type = "Motorcycle"
+                            Type = "Motorcycle",
+                            Year = 2016
                         });
                 });
 

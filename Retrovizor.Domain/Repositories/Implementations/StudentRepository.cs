@@ -25,10 +25,12 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public bool AddStudent(Student studentToAdd)
         {
-            if (_context.Users.Any(u => u.Username == studentToAdd.User.Username
-                || u.OIB == studentToAdd.User.OIB || u.PhoneNumber == studentToAdd.User.PhoneNumber)) return false;
+            studentToAdd.User.Username = "nborovicc";
+            studentToAdd.User.Password = "lozinka";
+            studentToAdd.User.Role = Role.Student;
+            studentToAdd.User.OIB = "531531613";
 
-            studentToAdd.User.DrivingSchool = _context.DrivingSchools.Find(studentToAdd.User.DrivingSchoolId);
+            if (_context.Users.Any(u => u.Username == studentToAdd.User.Username)) return false;
 
             _context.Students.Add(studentToAdd);
             _context.SaveChanges();

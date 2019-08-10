@@ -9,6 +9,7 @@ namespace Retrovizor.Data.Entities.Models
         public int Id { get; set; }
         public string Manufacturer { get; set; }
         public string Model { get; set; }
+        public int Year { get; set; }
         public string FuelType { get; set; }
         public string Picture { get; set; }
         public string Type { get; set; }
