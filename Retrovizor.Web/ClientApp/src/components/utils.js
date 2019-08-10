@@ -26,7 +26,7 @@ export const authorizedRequest = async (url, method, payload) => {
         response = await axios.post(url, payload);
         break;
       case "delete":
-        response = await axios.delete(url);
+        response = await axios.delete(url, payload);
         break;
 
       default:

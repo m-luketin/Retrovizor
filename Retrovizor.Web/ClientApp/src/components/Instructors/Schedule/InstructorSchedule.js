@@ -5,6 +5,7 @@ import InstructorDetailsModal from "./InstructorDetailsModal";
 import GrayPlus from "../../../assets/GrayPlus.svg";
 import HeaderArrow from "../../../assets/HeaderArrow.svg";
 import WhiteArrow from "../../../assets/WhiteArrow.svg";
+import { isUserValid } from "../../PrivateRoute";
 
 export default class InstructorSchedule extends Component {
   constructor(props) {
@@ -13,6 +14,10 @@ export default class InstructorSchedule extends Component {
       addEventModalVisibility: false,
       instructorDetailsModalVisibility: false
     };
+  }
+
+  componentDidMount() {
+    isUserValid();
   }
 
   handleOpenAddEventModal = () => {

@@ -12,6 +12,7 @@ import Timeline from "../../../assets/Timeline.svg";
 import FullCheckmark from "../../../assets/FullCheckmark.svg";
 import RedExclimation from "../../../assets/RedExclimation.svg";
 import Pending from "../../../assets/Pending.svg";
+import { isUserValid } from "../../PrivateRoute.js";
 
 export default class Student extends Component {
   constructor(props) {
@@ -19,6 +20,10 @@ export default class Student extends Component {
     this.state = {
       addModalVisibility: false
     };
+  }
+
+  componentDidMount() {
+    isUserValid();
   }
 
   handleOpenAddModal = () => {

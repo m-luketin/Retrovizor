@@ -4,6 +4,7 @@ import EventAddModal from "./EventAddModal";
 import Calendar from "../../../assets/Calendar.svg";
 import GrayPlus from "../../../assets/GrayPlus.svg";
 import HeaderArrow from "../../../assets/HeaderArrow.svg";
+import { isUserValid } from "../../PrivateRoute";
 
 export default class AdministratorSchedule extends Component {
   constructor(props) {
@@ -11,6 +12,10 @@ export default class AdministratorSchedule extends Component {
     this.state = {
       addModalVisibility: false
     };
+  }
+
+  componentDidMount() {
+    isUserValid();
   }
 
   handleOpenAddModal = () => {

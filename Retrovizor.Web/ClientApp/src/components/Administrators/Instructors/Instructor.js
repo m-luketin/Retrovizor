@@ -12,6 +12,7 @@ import GrayPencil from "../../../assets/GrayPencil.svg";
 import Calendar from "../../../assets/Calendar.svg";
 import NormalCar from "../../../assets/NormalCar.svg";
 import People from "../../../assets/People.svg";
+import { isUserValid } from "../../PrivateRoute";
 
 export default class Instructor extends Component {
   constructor(props) {
@@ -19,6 +20,10 @@ export default class Instructor extends Component {
     this.state = {
       editModalVisibility: false
     };
+  }
+
+  componentDidMount() {
+    isUserValid();
   }
 
   handleOpenEditModal = () => {

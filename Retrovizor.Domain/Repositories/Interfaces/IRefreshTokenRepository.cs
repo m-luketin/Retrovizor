@@ -6,5 +6,6 @@
         bool AddRefreshToken(string tokenToAdd, int userId);
         bool DeleteRefreshToken(string tokenToDelete);
         bool RevokeUserTokens(int userId);
+        string GetRole(int userId);
     }
 }

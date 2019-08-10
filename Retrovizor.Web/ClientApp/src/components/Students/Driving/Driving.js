@@ -6,6 +6,7 @@ import { authorizedRequest } from "../../utils";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import "./Driving.css";
+import { isUserValid } from "../../PrivateRoute";
 
 export default class Driving extends Component {
   constructor(props) {
@@ -20,6 +21,8 @@ export default class Driving extends Component {
   }
 
   componentDidMount() {
+    isUserValid();
+
     authorizedRequest(`api/Student/get/0`, "get", "").then(data => {
       this.displaySetup(data);
       this.setState({ studentData: data });

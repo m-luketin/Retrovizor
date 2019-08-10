@@ -8,8 +8,13 @@ import FullCheckmark from "../../../assets/FullCheckmark.svg";
 import RedExclimation from "../../../assets/RedExclimation.svg";
 import Pending from "../../../assets/Pending.svg";
 import GrayPencil from "../../../assets/GrayPencil.svg";
+import { isUserValid } from "../../PrivateRoute";
 
 export default class StudentProfile extends Component {
+  componentDidMount() {
+    isUserValid();
+  }
+
   render() {
     return (
       <React.Fragment>

@@ -7,6 +7,7 @@ import "./StudentModals.css";
 import Profile from "../../../assets/Instructor.gif";
 import GrayPlus from "../../../assets/GrayPlus.svg";
 import WhiteArrow from "../../../assets/WhiteArrow.svg";
+import { isUserValid } from "../../PrivateRoute";
 
 export default class Students extends Component {
   constructor(props) {
@@ -14,6 +15,10 @@ export default class Students extends Component {
     this.state = {
       addModalVisibility: false
     };
+  }
+
+  componentDidMount() {
+    isUserValid();
   }
 
   handleOpenAddModal = () => {

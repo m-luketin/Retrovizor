@@ -7,6 +7,7 @@ import Profile from "../../../assets/Instructor.gif";
 import HeaderArrow from "../../../assets/HeaderArrow.svg";
 import FullStar from "../../../assets/FullStar.svg";
 import OutlineStar from "../../../assets/OutlineStar.svg";
+import { isUserValid } from "../../PrivateRoute";
 
 export default class InstructorList extends Component {
   constructor(props) {
@@ -17,6 +18,8 @@ export default class InstructorList extends Component {
   }
 
   componentDidMount() {
+    isUserValid();
+
     authorizedRequest(`api/Student/get-school-id/0`, "get", "").then(
       drivingSchoolId => {
         // console.log(drivingSchoolId);

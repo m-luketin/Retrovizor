@@ -13,6 +13,7 @@ import NormalCar from "../../../assets/NormalCar.svg";
 import People from "../../../assets/People.svg";
 import Gear from "../../../assets/Gear.svg";
 import GrayPencil from "../../../assets/GrayPencil.svg";
+import { isUserValid } from "../../PrivateRoute";
 
 export default class InstructorProfile extends Component {
   constructor(props) {
@@ -23,6 +24,8 @@ export default class InstructorProfile extends Component {
   }
 
   componentDidMount() {
+    isUserValid();
+
     authorizedRequest(`api/Instructor/get/0`, "get", "").then(data => {
       this.setState({ instructorToDisplay: data });
       // console.log(data);

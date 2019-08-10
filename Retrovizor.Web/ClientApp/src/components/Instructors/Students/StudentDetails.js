@@ -10,6 +10,7 @@ import Timeline from "../../../assets/Timeline.svg";
 import FullCheckmark from "../../../assets/FullCheckmark.svg";
 import RedExclimation from "../../../assets/RedExclimation.svg";
 import Pending from "../../../assets/Pending.svg";
+import { isUserValid } from "../../PrivateRoute";
 
 export default class StudentDetails extends Component {
   constructor(props) {
@@ -23,6 +24,10 @@ export default class StudentDetails extends Component {
         points: 0
       }
     };
+  }
+
+  componentWillMount() {
+    isUserValid();
   }
 
   // componentDidMount() {
