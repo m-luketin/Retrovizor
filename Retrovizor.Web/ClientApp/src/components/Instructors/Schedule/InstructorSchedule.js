@@ -5,7 +5,7 @@ import InstructorDetailsModal from "./InstructorDetailsModal";
 import GrayPlus from "../../../assets/GrayPlus.svg";
 import HeaderArrow from "../../../assets/HeaderArrow.svg";
 import WhiteArrow from "../../../assets/WhiteArrow.svg";
-import { isUserValid } from "../../PrivateRoute";
+
 
 export default class InstructorSchedule extends Component {
   constructor(props) {
@@ -16,9 +16,7 @@ export default class InstructorSchedule extends Component {
     };
   }
 
-  componentDidMount() {
-    isUserValid();
-  }
+  
 
   handleOpenAddEventModal = () => {
     document.getElementsByTagName("body")[0].classList.add("o-hidden");

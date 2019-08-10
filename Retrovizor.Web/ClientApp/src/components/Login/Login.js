@@ -59,7 +59,7 @@ export default withFormik({
     password: Yup.string().required("Polje je obavezno")
   }),
 
-  handleSubmit(values, { resetForm }) {
+  handleSubmit(values, { resetForm, props }) {
     const userCredentials = {
       username: values.username,
       password: values.password
@@ -69,7 +69,12 @@ export default withFormik({
 
     axios
       .post("/api/auth/login", userCredentials)
-      .then(res => setTokens(res.data.access, res.data.refresh))
+      .then(res => {
+        setTokens(res.data.access, res.data.refresh).then(() => {
+          const user = window.localStorage.getItem("user");
+          props.history.push(`/${user}/profil`);
+        });
+      })
       .catch(err => alert("Kriva kombinacija imena i šifre"));
   }
 })(Login);

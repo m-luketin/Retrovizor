@@ -2,12 +2,10 @@ import React, { Component } from "react";
 import "./Schedule.css";
 // SVG import
 import Calendar from "../../../assets/Calendar.svg";
-import { isUserValid } from "../../PrivateRoute";
+
 
 export default class Schedule extends Component {
-  componentDidMount() {
-    isUserValid();
-  }
+  
 
   render() {
     return (

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { setUserToLocalStorage } from "./PrivateRoute";
 
 export const getTokens = () => {
   var access = localStorage.getItem("access");
@@ -6,9 +7,11 @@ export const getTokens = () => {
   return { access, refresh };
 };
 
-export const setTokens = (token, refreshToken) => {
+export const setTokens = async (token, refreshToken) => {
   localStorage.setItem("access", token);
   localStorage.setItem("refresh", refreshToken);
+
+  await setUserToLocalStorage();
 };
 
 export const authorizedRequest = async (url, method, payload) => {

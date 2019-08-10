@@ -5,12 +5,10 @@ import "./MaterialsContent.css";
 import HeaderArrow from "../../../assets/HeaderArrow.svg";
 import WhiteArrow from "../../../assets/WhiteArrow.svg";
 import FullHeart from "../../../assets/FullHeart.svg";
-import { isUserValid } from "../../PrivateRoute";
+
 
 export default class Regulations extends Component {
-  componentDidMount() {
-    isUserValid();
-  }
+  
 
   render() {
     return (

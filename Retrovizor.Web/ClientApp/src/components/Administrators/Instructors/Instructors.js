@@ -7,7 +7,6 @@ import Profile from "../../../assets/Instructor.gif";
 import GrayPlus from "../../../assets/GrayPlus.svg";
 import FullStar from "../../../assets/FullStar.svg";
 import OutlineStar from "../../../assets/OutlineStar.svg";
-import { isUserValid } from "../../PrivateRoute";
 
 export default class Instructors extends Component {
   constructor(props) {
@@ -15,10 +14,6 @@ export default class Instructors extends Component {
     this.state = {
       addModalVisibility: false
     };
-  }
-
-  componentDidMount() {
-    isUserValid();
   }
 
   handleOpenAddModal = () => {

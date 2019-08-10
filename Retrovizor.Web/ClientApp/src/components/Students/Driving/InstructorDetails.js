@@ -19,7 +19,6 @@ import CalendarSvg from "../../../assets/Calendar.svg";
 import NormalCar from "../../../assets/NormalCar.svg";
 import People from "../../../assets/People.svg";
 import Garbage from "../../../assets/Garbage.svg";
-import { isUserValid } from "../../PrivateRoute";
 
 export default class InstructorDetails extends Component {
   constructor(props) {
@@ -34,8 +33,6 @@ export default class InstructorDetails extends Component {
   }
 
   componentDidMount() {
-    isUserValid();
-
     authorizedRequest(`api/Instructor/get-by-student/0`, "get", "").then(
       data => {
         this.setState({ instrucorToDisplay: data });

@@ -9,13 +9,8 @@ import Phone from "../../../assets/Phone.svg";
 import SpeedyCar from "../../../assets/SpeedyCar.svg";
 import People from "../../../assets/People.svg";
 import Calendar from "../../../assets/Calendar.svg";
-import { isUserValid } from "../../PrivateRoute";
 
 export default class AdministratorProfile extends Component {
-  componentDidMount() {
-    isUserValid();
-  }
-
   render() {
     return (
       <React.Fragment>

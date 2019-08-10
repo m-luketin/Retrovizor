@@ -7,7 +7,7 @@ import "./StudentModals.css";
 import Profile from "../../../assets/Instructor.gif";
 import GrayPlus from "../../../assets/GrayPlus.svg";
 import WhiteArrow from "../../../assets/WhiteArrow.svg";
-import { isUserValid } from "../../PrivateRoute";
+
 
 export default class Students extends Component {
   constructor(props) {
@@ -17,9 +17,7 @@ export default class Students extends Component {
     };
   }
 
-  componentDidMount() {
-    isUserValid();
-  }
+  
 
   handleOpenAddModal = () => {
     document.getElementsByTagName("body")[0].classList.add("o-hidden");

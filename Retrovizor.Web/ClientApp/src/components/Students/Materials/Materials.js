@@ -6,12 +6,10 @@ import WhiteArrow from "../../../assets/WhiteArrow.svg";
 import WhiteSpeedyCar from "../../../assets/WhiteSpeedyCar.svg";
 import WhiteBus from "../../../assets/WhiteBus.svg";
 import Heart from "../../../assets/Heart.svg";
-import { isUserValid } from "../../PrivateRoute";
+
 
 export default class Materials extends Component {
-  componentDidMount() {
-    isUserValid();
-  }
+  
 
   render() {
     return (

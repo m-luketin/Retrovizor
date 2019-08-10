@@ -4,13 +4,9 @@ import Profile from "../../../assets/Instructor.gif";
 import HeaderArrow from "../../../assets/HeaderArrow.svg";
 import FullCheckmark from "../../../assets/FullCheckmark.svg";
 import OutlineCheckmark from "../../../assets/OutlineCheckmark.svg";
-import { isUserValid } from "../../PrivateRoute";
+
 
 export default class EventStudentsToAdd extends Component {
-  componentDidMount() {
-    isUserValid();
-  }
-
   render() {
     return (
       <React.Fragment>

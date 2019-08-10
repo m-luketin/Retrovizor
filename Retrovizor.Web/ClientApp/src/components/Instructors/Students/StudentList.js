@@ -4,7 +4,7 @@ import { authorizedRequest } from "../../utils";
 // SVG import
 import Profile from "../../../assets/Instructor.gif";
 import WhiteArrow from "../../../assets/WhiteArrow.svg";
-import { isUserValid } from "../../PrivateRoute";
+
 
 export default class StudentList extends Component {
   constructor(props) {
@@ -15,8 +15,6 @@ export default class StudentList extends Component {
   }
 
   componentDidMount() {
-    isUserValid();
-
     authorizedRequest(
       `api/Student/get-current-by-instructor/0`,
       "get",

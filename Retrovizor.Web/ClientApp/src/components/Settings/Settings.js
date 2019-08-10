@@ -23,6 +23,7 @@ export default class Settings extends Component {
       .then(() => {
         window.localStorage.removeItem("access");
         window.localStorage.removeItem("refresh");
+        window.localStorage.removeItem("user");
 
         this.props.history.push("/");
       })

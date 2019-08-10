@@ -5,12 +5,10 @@ import "./MaterialsContent.css";
 import HeaderArrow from "../../../assets/HeaderArrow.svg";
 import WhiteArrow from "../../../assets/WhiteArrow.svg";
 import Exclimation from "../../../assets/Exclimation.svg";
-import { isUserValid } from "../../PrivateRoute";
+
 
 export default class FirstAid extends Component {
-  componentDidMount() {
-    isUserValid();
-  }
+  
 
   render() {
     return (
