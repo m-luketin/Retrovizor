@@ -28,7 +28,7 @@ export default class InstructorList extends Component {
           ""
         ).then(data => {
           this.setState({ instructorsArray: data });
-          // console.log(data);
+          console.log(data);
         });
       }
     );
