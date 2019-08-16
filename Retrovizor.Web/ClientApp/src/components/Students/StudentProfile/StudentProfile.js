@@ -36,12 +36,13 @@ export default class StudentProfile extends Component {
 				});
 			})
 			.then(() => {
-				authorizedRequest(`api/class/get-by-student/${this.state.id}`)
-					.then(response => {
-						tmpTimelineClasses = response;
+				console.log(this.state);
+				authorizedRequest(`api/class/get-by-student/${this.state.id}`, 'get')
+				.then(response => {
+					tmpTimelineClasses = response;
 					})
 					.then(() => {
-						authorizedRequest(`api/exam/get-by-student/${this.state.id}`)
+						authorizedRequest(`api/exam/get-by-student/${this.state.id}`, 'get')
 							.then(response => {
 								tmpTimelineExams = response;
 							})

@@ -52,7 +52,7 @@ export default class Schedule extends Component {
 				});
 			})
 			.then(() => {
-				authorizedRequest(`api/event/get-by-student/${this.state.id}`).then(response => {
+				authorizedRequest(`api/event/get-by-student/${this.state.id}`, 'get').then(response => {
           response.sort((a,b) => (a.event.startsAt > b.event.startsAt) ? 1 : ((b.event.startsAt > a.event.startsAt) ? -1 : 0));
 					this.setState({ events: response });
 				});
