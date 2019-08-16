@@ -86,7 +86,7 @@ namespace Retrovizor.Domain.Repositories.Implementations
 
         public Student GetStudentById(int id)
         {
-            return _context.Students.FirstOrDefault(s => s.User.Id == id);
+            return _context.Students.Include(s => s.VehicleSessions).Include(s => s.User).FirstOrDefault(s => s.User.Id == id);
         }
 
         public List<Student> GetStudentsByDrivingSchoolId(int id)

@@ -40,7 +40,7 @@ namespace Retrovizor.Web.Controllers
             if(userCredentials.Role == Role.Student) // student can only GET themselves
                 id = userCredentials.Id;
 
-            var studentToGet = _studentRepository.GetStudentById(id);
+            var studentToGet = _studentRepository.GetStudentByUserId(id);
 
             if (studentToGet == null)
                 return NotFound();

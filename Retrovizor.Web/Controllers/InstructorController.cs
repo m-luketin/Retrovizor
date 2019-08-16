@@ -108,7 +108,7 @@ namespace Retrovizor.Web.Controllers
         }
 
         [Authorize]
-        [HttpGet("get-instructor-by-driving-school/{id}")]
+        [HttpGet("get-by-driving-school/{id}")]
         public IActionResult GetInstructorsByDrivingSchoolId(int id)
         {
             var instructorsToGet = _instructorRepository.GetInstructorsByDrivingSchoolId(id);
